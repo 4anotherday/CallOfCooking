@@ -1,0 +1,6 @@
+[submodule "CallOfCooking"]
+	path = CallOfCooking
+	url = https://github.com/4anotherday/CallOfCooking
+[submodule "Motor"]
+	path = Motor
+	url = https://github.com/4anotherday/Motor
