@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "ComponentIDs.h"
+#include "UserComponentIDs.h"
 class PlayerHealth :
 	public Component
 {
