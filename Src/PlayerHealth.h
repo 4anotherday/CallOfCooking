@@ -1,9 +1,9 @@
 #pragma once
 #include "Component.h"
-#include "ComponentIDs.h"
-#include "UserComponentIDs.h"
-class PlayerHealth :
-	public Component
+#ifndef PLAYERHEALTH_H
+#define PLAYERHEALTH_H
+
+class PlayerHealth : public Component	
 {
 public:
 	/// <summary>
@@ -36,4 +36,5 @@ private:
 	int lives;
 	int maxLife;
 };
+#endif // !PLAYERHEALTH_H
 

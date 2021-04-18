@@ -1,4 +1,6 @@
 #include "PlayerHealth.h"
+#include "UserComponentIDs.h"
+
 PlayerHealth::PlayerHealth(int nLives) :Component(ComponentId::__StartPointUser__ + UserComponentId::Health), maxLife(nLives), lives(nLives)
 {
 }
