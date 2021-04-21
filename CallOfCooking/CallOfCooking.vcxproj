@@ -20,6 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\PlayerAttackComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerHealth.cpp" />
+    <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\PlayerAttackComponent.h" />
+    <ClInclude Include="..\Src\PlayerHealth.h" />
+    <ClInclude Include="..\Src\PlayerMovementComponent.h" />
+    <ClInclude Include="..\Src\UserComponentIDs.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
