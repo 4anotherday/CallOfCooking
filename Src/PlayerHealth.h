@@ -1,4 +1,5 @@
 #pragma once
+#include "KeyboardInput.h"
 #include "Component.h"
 #ifndef PLAYERHEALTH_H
 #define PLAYERHEALTH_H
@@ -27,7 +28,7 @@ public:
 	/// <summary>
 	/// lose one life
 	/// </summary>
-	void loseLife();
+	void loseLife(int n);
 	/// <summary>
 	/// reset the player life points
 	/// </summary>
