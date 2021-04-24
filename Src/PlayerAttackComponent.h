@@ -16,7 +16,7 @@ public:
 	PlayerAttackComponent();
 	PlayerAttackComponent(GameObject* gameObject);
 
-	virtual void update();
+	virtual void update() override;
 	
 private:
 	Transform* _tr;
