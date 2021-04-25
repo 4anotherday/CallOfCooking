@@ -25,13 +25,15 @@ public:
 	
 private:
 
-	void rotateAttackHitBox(float deltaTime);
+	void rotateAttackHitBox();
 	void attack(float deltaTime);
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
+	//Gameobject child which contains a collider(hitbox)
+	GameObject* hitbox;
 
 	KeyCode _attackKey;
 

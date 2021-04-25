@@ -37,31 +37,31 @@ void PlayerAttackComponent::awake(luabridge::LuaRef& data)
 
 void PlayerAttackComponent::start()
 {
-	//Here we should take a gameobject child which contains a collider (attack hitbox)
-
+	//Here we should take a gameobject child which contains a collider (hitbox)
+	hitbox = *(_gameObject->getChildren().begin()); 
 }
 
 void PlayerAttackComponent::update()
 {	
 	float currentDeltaTime = _engineTime->deltaTime();
 
-	rotateAttackHitBox(currentDeltaTime);
+	rotateAttackHitBox();
 	attack(currentDeltaTime);
 }
 
-void PlayerAttackComponent::rotateAttackHitBox(float deltaTime)
+void PlayerAttackComponent::rotateAttackHitBox()
 {
-
-
+	Vector3 attackDir = Vector3(_mouse->getMousePos().at(0) - _tr->getPosition().getX(), _mouse->getMousePos().at(1) - _tr->getPosition().getY(), 0.0f).normalize();
+	static_cast<Transform*>(hitbox->getComponent(ComponentId::Transform))->setPosition(_tr->getPosition() + attackDir * _attackHitBoxDistance);
 }
 
 void PlayerAttackComponent::attack(float deltaTime)
 {
-	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && _engineTime->deltaTime() > _lastAttack + _attackRate)
+	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
 	{
-		_lastAttack = _engineTime->deltaTime();
+		_lastAttack = deltaTime;
 
-
+		//Here we should substract enemy health with the onTrigger function of the hitbox collider
 
 	}
 }
