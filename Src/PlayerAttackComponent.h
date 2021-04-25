@@ -8,6 +8,8 @@
 class GameObject;
 class RigidBodyComponent;
 class Transform;
+class EngineTime;
+class MouseInput;
 
 class PlayerAttackComponent : public Component	
 {
@@ -15,15 +17,24 @@ public:
 
 	PlayerAttackComponent();
 	PlayerAttackComponent(GameObject* gameObject);
+	virtual ~PlayerAttackComponent();
 
+	virtual void awake(luabridge::LuaRef& data) override;
+	virtual void start() override;
 	virtual void update() override;
 	
 private:
+
+	void rotateAttackHitBox(float deltaTime);
+	void attack(float deltaTime);
+
 	Transform* _tr;
 	RigidBodyComponent* _rb;
+	EngineTime* _engineTime;
+	MouseInput* _mouse;
 
 	KeyCode _attackKey;
 
-	float _damage;
+	float _damage,_lastAttack,_attackRate, _attackHitBoxDistance;
 };
 #endif // !PLAYERATTACKCOMPONENT_H

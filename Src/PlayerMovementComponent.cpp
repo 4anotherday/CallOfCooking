@@ -10,19 +10,26 @@
 
 PlayerMovementComponent::PlayerMovementComponent():Component(UserComponentId::PlayerMovementComponent),
 _tr(nullptr), _rb(nullptr),
-_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10),
+_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10),_rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
 {
-
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
 _tr(nullptr), _rb(nullptr),
-_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S),_speed(10),
+_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S),_speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()),_mouseInput(MouseInput::getInstance()),_engineTime(EngineTime::getInstance())
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+}
+
+PlayerMovementComponent::~PlayerMovementComponent()
+{
+	delete _tr; _tr = nullptr;
+	delete _rb; _rb = nullptr;
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
@@ -78,5 +85,5 @@ void PlayerMovementComponent::rotate(const float deltaTime)
 
 	float angle = atan2(mousePosX, mousePosY) * 3.141592653589793 / 180.0;
 
-	_rb->setRotation(Vector3(0,0,angle) *_speed * deltaTime);
+	_rb->setRotation(Vector3(0,0,angle) *_rotationSpeed * deltaTime);
 }
