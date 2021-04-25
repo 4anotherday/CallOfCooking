@@ -22,6 +22,7 @@ public:
 	virtual void awake(luabridge::LuaRef& data) override;
 	virtual void start() override;
 	virtual void update() override;
+	virtual void onTrigger(GameObject* other) override;
 	
 private:
 
@@ -32,8 +33,7 @@ private:
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
-	//Gameobject child which contains a collider(hitbox)
-	GameObject* hitbox;
+	const GameObject* _parent;
 
 	KeyCode _attackKey;
 

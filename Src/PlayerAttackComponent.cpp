@@ -37,8 +37,7 @@ void PlayerAttackComponent::awake(luabridge::LuaRef& data)
 
 void PlayerAttackComponent::start()
 {
-	//Here we should take a gameobject child which contains a collider (hitbox)
-	hitbox = *(_gameObject->getChildren().begin()); 
+	_parent = _gameObject->getParent();
 }
 
 void PlayerAttackComponent::update()
@@ -49,19 +48,44 @@ void PlayerAttackComponent::update()
 	attack(currentDeltaTime);
 }
 
+void PlayerAttackComponent::onTrigger(GameObject* other)
+{
+	//The enemy is in player range
+	//static_cast<Enemy*>(other)->setInPlayerRange(true);
+}
+
 void PlayerAttackComponent::rotateAttackHitBox()
 {
 	Vector3 attackDir = Vector3(_mouse->getMousePos().at(0) - _tr->getPosition().getX(), _mouse->getMousePos().at(1) - _tr->getPosition().getY(), 0.0f).normalize();
-	static_cast<Transform*>(hitbox->getComponent(ComponentId::Transform))->setPosition(_tr->getPosition() + attackDir * _attackHitBoxDistance);
+	_tr->setPosition(static_cast<Transform*>(_parent->getComponent(ComponentId::Transform))->getPosition() + attackDir * _attackHitBoxDistance);
 }
 
 void PlayerAttackComponent::attack(float deltaTime)
 {
+	//Eemies are not in player range
+	/*for (auto& e : enemiesPool)
+	{
+		Transform* enemyTr = static_cast<Transform*>(e->getComponent(ComponentId::Transform));
+
+		float distance = (_tr->getPosition() - enemyTr->getPosition()).magnitude();
+
+		if (distance > _attackHitBoxDistance)
+		{
+			e->setInPlayerRange(true);
+		}
+	}*/
+
+	//Here we attack
 	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
 	{
 		_lastAttack = deltaTime;
 
-		//Here we should substract enemy health with the onTrigger function of the hitbox collider
-
+		/*for (auto& e : enemiesPool)
+		{
+			if (e->inPlayerRange())
+			{
+				e->recieveDamage(_damage);
+			}
+		}*/
 	}
 }
