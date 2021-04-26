@@ -18,7 +18,9 @@ namespace UserComponentId {
 		Health = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
 		PlayerAttackComponent,
-		ScoreManagerComponent
+		ScoreManagerComponent,
+		EnemyBehaviorComponent,
+		EnemyHealthComponent
 	};
 }
 
