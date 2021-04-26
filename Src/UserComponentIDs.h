@@ -17,7 +17,8 @@ namespace UserComponentId {
 	enum UserComponentId : unsigned int {
 		Health = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
-		PlayerAttackComponent
+		PlayerAttackComponent,
+		ScoreManagerComponent
 	};
 }
 
