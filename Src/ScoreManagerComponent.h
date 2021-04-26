@@ -11,6 +11,8 @@ public:
 	ScoreManagerComponent();
 	~ScoreManagerComponent();
 
+	virtual void awake(luabridge::LuaRef& data);
+
 	/// <summary>
 	/// Adds amount points to the current score
 	/// </summary>

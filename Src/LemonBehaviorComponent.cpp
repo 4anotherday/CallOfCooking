@@ -1,7 +1,7 @@
 #include "LemonBehaviorComponent.h"
 #include "ParticleSystemComponent.h"
 #include "UserComponentIDs.h"
-#include "PlayerHealth.h"
+#include "PlayerHealthComponent.h"
 #include "GameObject.h"
 #include "Transform.h"
 #include "Engine.h"
@@ -23,7 +23,7 @@ void LemonBehaviorComponent::start()
 {
 	_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_healthPlayer = static_cast<PlayerHealth*>(_gameObject->getComponent(UserComponentId::Health));
+	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));
 }
 
 void LemonBehaviorComponent::update()

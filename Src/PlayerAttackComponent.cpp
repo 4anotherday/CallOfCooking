@@ -32,7 +32,10 @@ PlayerAttackComponent::~PlayerAttackComponent()
 
 void PlayerAttackComponent::awake(luabridge::LuaRef& data)
 {
-
+	_damage = data["Damage"].cast<float>();
+	_lastAttack = data["Damage"].cast<float>();
+	_attackRate = data["Damage"].cast<float>();
+	_attackHitBoxDistance = data["Damage"].cast<float>();
 }
 
 void PlayerAttackComponent::start()
@@ -62,7 +65,7 @@ void PlayerAttackComponent::rotateAttackHitBox()
 
 void PlayerAttackComponent::attack(float deltaTime)
 {
-	//Eemies are not in player range
+	//Enemies are not in player range
 	/*for (auto& e : enemiesPool)
 	{
 		Transform* enemyTr = static_cast<Transform*>(e->getComponent(ComponentId::Transform));

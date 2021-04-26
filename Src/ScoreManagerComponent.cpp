@@ -8,3 +8,9 @@ ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::Score
 ScoreManagerComponent::~ScoreManagerComponent()
 {
 }
+
+void ScoreManagerComponent::awake(luabridge::LuaRef& data)
+{
+	_score = data["Score"].cast<int>();
+	_maxScore = data["MaxScore"].cast<int>();
+}

@@ -1,24 +1,26 @@
 #pragma once
 #include "KeyboardInput.h"
 #include "Component.h"
-#ifndef PLAYERHEALTH_H
-#define PLAYERHEALTH_H
+#ifndef PLAYERHEALTHCOMPONENT_H
+#define PLAYERHEALTHCOMPONENT_H
 
-class PlayerHealth : public Component	
+class PlayerHealthComponent : public Component	
 {
 public:
 	/// <summary>
 	/// initialize the player with "lives" lives
 	/// </summary>
 	/// <param name="nLives">initial lives of the player</param>
-	PlayerHealth(int nLives);
+	PlayerHealthComponent(int nLives);
 
 	/// <summary>
 	/// initialize the player with "lives" lives
 	/// </summary>
 	/// <param name="nLives">initial lives of the player</param>
 	/// <param name="go">the gameObject this component will be attached to</param>
-	PlayerHealth(int nLives, GameObject* go);
+	PlayerHealthComponent(int nLives, GameObject* go);
+
+	virtual void awake(luabridge::LuaRef& data);
 
 	/// <summary>
 	/// add n life points to the player
@@ -34,8 +36,8 @@ public:
 	/// </summary>
 	void reset();
 private:
-	int lives;
-	int maxLife;
+	int _lives;
+	int _maxLife;
 };
-#endif // !PLAYERHEALTH_H
+#endif // !PLAYERHEALTHCOMPONENT_H
 

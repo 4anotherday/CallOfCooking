@@ -4,9 +4,9 @@
 
 #include "EnemyBehaviorComponent.h"
 
-class PartycleSystemComponent;
+class ParticleSystemComponent;
 class Transform;
-class PlayerHealth;
+class PlayerHealthComponent;
 
 class LemonBehaviorComponent : public EnemyBehaviorComponent
 {
@@ -44,7 +44,7 @@ public:
 private:
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
-	PlayerHealth* _healthPlayer;
+	PlayerHealthComponent* _healthPlayer;
 
 	float _range;
 };

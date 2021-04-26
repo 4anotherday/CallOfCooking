@@ -34,6 +34,8 @@ PlayerMovementComponent::~PlayerMovementComponent()
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
+	_speed = data["Speed"].cast<float>();
+	_rotationSpeed = data["RotationSpeed"].cast<float>();
 }
 
 void PlayerMovementComponent::update()
