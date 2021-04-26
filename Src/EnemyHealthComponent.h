@@ -3,7 +3,6 @@
 #define ENEMYHEALTHCOMPONENT_H
 
 #include "Component.h"
-#include "KeyCodes.h"
 
 class ScoreManagerComponent;
 

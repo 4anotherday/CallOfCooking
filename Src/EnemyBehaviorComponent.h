@@ -52,8 +52,8 @@ protected:
 
 	float _attackSpeed;		
 	float _damagePerSecond;
-private:
 	bool _isAttacking;
+private:
 
 };
 #endif // !ENEMYBEHAVIORCOMPONENT_H

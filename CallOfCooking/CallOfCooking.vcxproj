@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\EnemyBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\EnemyHealthComponent.cpp" />
+    <ClCompile Include="..\Src\LemonBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\PlayerAttackComponent.cpp" />
     <ClCompile Include="..\Src\PlayerHealth.cpp" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
     <ClInclude Include="..\Src\EnemyHealthComponent.h" />
+    <ClInclude Include="..\Src\LemonBehaviorComponent.h" />
     <ClInclude Include="..\Src\PlayerAttackComponent.h" />
     <ClInclude Include="..\Src\PlayerHealth.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
