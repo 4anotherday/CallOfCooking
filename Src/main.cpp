@@ -13,8 +13,10 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 #endif
 
 	try {
+		Engine::CreateInstance();
 		Engine* prueba = Engine::getInstance();
-		prueba->init();
+		
+		prueba->init("prueba.cfg");
 		prueba->run();
 	}
 	catch (const ExcepcionTAD& e) {

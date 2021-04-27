@@ -126,7 +126,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;liblua.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>call "$(ProjectDir)compile_x86.bat"
@@ -149,7 +149,7 @@ call "$(ProjectDir)compilePhysx_x86_DEBUG.bat"</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;liblua.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>call "$(ProjectDir)compile_x86.bat"
@@ -167,8 +167,8 @@ call "$(ProjectDir)compilePhysx_x86.bat"</Command>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);$(SolutionDir)Motor\dependencies\Lua\Buildx64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;liblua.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>call "$(ProjectDir)compile_x64.bat"
@@ -190,8 +190,8 @@ call "$(ProjectDir)compilePhysx_x64_DEBUG.bat"</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);$(SolutionDir)Motor\dependencies\Lua\Buildx64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;liblua.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>call "$(ProjectDir)compile_x64.bat"

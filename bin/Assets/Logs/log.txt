@@ -1,0 +1,15 @@
+10:17:05 -> INFO: Transform inserted
+10:17:05 -> INFO: ImageRenderer inserted
+10:17:05 -> INFO: LightComponent inserted
+10:17:05 -> INFO: RenderObject inserted
+10:17:05 -> INFO: Listener inserted
+10:17:05 -> INFO: AudioSource inserted
+10:17:05 -> INFO: RigidBody inserted
+10:17:05 -> INFO: BoxCollider inserted
+10:17:05 -> INFO: SphereCollider inserted
+10:17:05 -> INFO: CapsuleCollider inserted
+10:17:05 -> INFO: Camera inserted
+10:17:05 -> INFO: Animator inserted
+10:17:05 -> INFO: ParticleSystem inserted
+10:17:05 -> INFO: ButtonComponent inserted
+10:17:05 -> INFO: OverlayComponent inserted
