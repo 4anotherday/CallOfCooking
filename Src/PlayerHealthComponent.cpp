@@ -1,7 +1,11 @@
 #include "PlayerHealthComponent.h"
 #include "UserComponentIDs.h"
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives) :Component(UserComponentId::Health), _maxLife(nLives), _lives(nLives)
+PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::Health), _maxLife(0), _lives(0)
+{
+}
+
+PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::Health), _maxLife(nLives), _lives(nLives)
 {
 }
 
@@ -21,18 +25,14 @@ void PlayerHealthComponent::addLife(int n)
 		if (n + _lives <= _maxLife)
 			_lives += n;
 		else _lives = _maxLife;
-
 }
 
 void PlayerHealthComponent::loseLife(int n)
 {
-
 	if (n > 0)
 		if (_lives - n > 0)
 			_lives -= n;
 		else reset();
-
-
 }
 
 void PlayerHealthComponent::reset()

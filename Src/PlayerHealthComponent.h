@@ -4,9 +4,14 @@
 #ifndef PLAYERHEALTHCOMPONENT_H
 #define PLAYERHEALTHCOMPONENT_H
 
-class PlayerHealthComponent : public Component	
+class PlayerHealthComponent : public Component
 {
 public:
+
+	/// <summary>
+	/// Default component constructor
+	/// </summary>
+	PlayerHealthComponent();
 	/// <summary>
 	/// initialize the player with "lives" lives
 	/// </summary>
@@ -40,4 +45,3 @@ private:
 	int _maxLife;
 };
 #endif // !PLAYERHEALTHCOMPONENT_H
-

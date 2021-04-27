@@ -12,7 +12,7 @@ class EngineTime;
 class KeyBoardInput;
 class MouseInput;
 
-class PlayerMovementComponent : public Component	
+class PlayerMovementComponent : public Component
 {
 public:
 
@@ -22,7 +22,7 @@ public:
 
 	virtual void awake(luabridge::LuaRef& data) override;
 	virtual void update() override;
-	
+
 private:
 
 	/// <summary>
