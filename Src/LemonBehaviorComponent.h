@@ -38,6 +38,10 @@ public:
 	virtual void update();
 
 	/// <summary>
+	/// Disables the particle effect if lemon is walking
+	/// </summary>
+	virtual void walk();
+	/// <summary>
 	/// Deals damage to player 
 	/// </summary>
 	virtual void attack() override;

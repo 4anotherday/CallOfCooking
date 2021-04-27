@@ -32,6 +32,11 @@ void LemonBehaviorComponent::update()
 	(distance <= _range) ? _isAttacking = true : _isAttacking = false;
 }
 
+void LemonBehaviorComponent::walk()
+{
+	_pSystem->setEnabled(false);
+}
+
 void LemonBehaviorComponent::attack()
 {
 	_pSystem->setEnabled(true);
