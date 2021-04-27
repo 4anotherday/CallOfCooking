@@ -11,20 +11,19 @@ class Transform;
 class EngineTime;
 class MouseInput;
 
-class PlayerAttackComponent : public Component
+class PlayerShootComponent : public Component
 {
 public:
 
 	/// <summary>
 	/// Default component constructor
 	/// </summary>
-	PlayerAttackComponent();
-	PlayerAttackComponent(GameObject* gameObject);
+	PlayerShootComponent();
 
 	/// <summary>
-	/// Destructor of the component
+	/// Default component constructor
 	/// </summary>
-	virtual ~PlayerAttackComponent();
+	virtual ~PlayerShootComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
 	virtual void start() override;
@@ -34,22 +33,15 @@ public:
 private:
 
 	/// <summary>
-	/// Rotates the hitbox of the players attack so that it matches the direction he is aiming
+	/// Used to track where the player is aiming and shoot
 	/// </summary>
-	void rotateAttackHitBox();
-
-	/// <summary>
-	/// Determines which enemies are in range and if the mouse specified INPUT is pressed
-	/// the attackRate is checked to see if the attack must be done
-	/// </summary>
-	void attack(float deltaTime);
+	void shoot();
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
-	const GameObject* _parent;
 
-	float _damage, _lastAttack, _attackRate, _attackHitBoxDistance;
+	float _damage, _lastShot, _shotRate, _cadence;
 };
 #endif // !PLAYERATTACKCOMPONENT_H

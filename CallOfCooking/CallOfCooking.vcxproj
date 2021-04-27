@@ -26,6 +26,7 @@
     <ClCompile Include="..\Src\PlayerAttackComponent.cpp" />
     <ClCompile Include="..\Src\PlayerHealthComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerShootComponent.cpp" />
     <ClCompile Include="..\Src\ScoreManagerComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +36,7 @@
     <ClInclude Include="..\Src\PlayerAttackComponent.h" />
     <ClInclude Include="..\Src\PlayerHealthComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
+    <ClInclude Include="..\Src\PlayerShootComponent.h" />
     <ClInclude Include="..\Src\ScoreManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentIDs.h" />
   </ItemGroup>
