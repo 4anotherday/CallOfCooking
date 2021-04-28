@@ -28,6 +28,7 @@
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\PlayerShootComponent.cpp" />
     <ClCompile Include="..\Src\ScoreManagerComponent.cpp" />
+    <ClCompile Include="..\Src\WatermelonBehaviorComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\Src\PlayerShootComponent.h" />
     <ClInclude Include="..\Src\ScoreManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentIDs.h" />
+    <ClInclude Include="..\Src\WatermelonBehaviorComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

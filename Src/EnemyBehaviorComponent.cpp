@@ -13,8 +13,6 @@ EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::En
 
 EnemyBehaviorComponent::~EnemyBehaviorComponent()
 {
-	delete _rigidbody; _rigidbody = nullptr;
-	delete _playerPos; _playerPos = nullptr;
 }
 
 void EnemyBehaviorComponent::awake(luabridge::LuaRef& data)
