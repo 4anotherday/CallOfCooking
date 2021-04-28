@@ -3,6 +3,7 @@
 #define SCOREMANAGERCOMPONENT_H
 
 #include "Component.h"
+class EngineTime;
 
 class ScoreManagerComponent : public Component	
 {
@@ -13,11 +14,24 @@ public:
 
 	virtual void awake(luabridge::LuaRef& data);
 
+	virtual void update() override;
+
 	/// <summary>
 	/// Adds amount points to the current score
 	/// </summary>
 	/// <param name="amount">The amount we add to the score</param>
 	inline void addScore(int amount) { _score += amount; }
+
+	/// <summary>
+	/// Adds a combo point for for hitting an enemy
+	/// </summary>
+	inline void addComboHitPoint();
+
+	/// <summary>
+	/// Adds combo points for for killing an enemy
+	/// </summary>
+	/// <param name="deathPoints">How many combo points for getting a kill</param>
+	inline void addComboDeathPoint(int deathPoints);
 
 	/// <summary>
 	/// Retuns the current score
@@ -36,6 +50,12 @@ public:
 	inline void setScore(int newScore) { _score = newScore; }
 
 	/// <summary>
+	/// Sets how long the combo sequence will last
+	/// </summary>
+	/// <param name="cT">New comboTime value</param>
+	inline void setComboTime(float cT) { _comboTime = cT; }
+
+	/// <summary>
 	/// Sets the maxScore
 	/// </summary>
 	/// <param name="maxScore">New maxScore value</param>
@@ -48,8 +68,30 @@ public:
 
 private:
 
+	/// <summary>
+	/// Performs the calculation of points related to the active combo sequence
+	/// </summary>
+	void calculateTotalComboPoints();
+
+	/// </summary>
+	/// Renews or start the timing of the current combo sequence
+	/// </summary>
+	void startOrRenewComboTime();
+
+
+	/// </summary>
+	/// Reset the attributes related to the combo sequence
+	/// </summary>
+	void clearComboSequence();
+
 	int _score;
 	int _maxScore;	
+
+	EngineTime* _engineTime;
+	bool _isComboSequence;
+	int _comboPoints;
+	float _comboTime;
+	float _actualComboSequenceTime;
 };
 #endif // !SCOREMANAGERCOMPONENT_H
 

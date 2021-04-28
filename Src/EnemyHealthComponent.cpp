@@ -18,6 +18,7 @@ void EnemyHealthComponent::awake(luabridge::LuaRef& data)
 {
 	_points = data["Points"].cast<int>();
 	_hitPoints = data["HitPoints"].cast<int>();
+	//_deathComboPoints = data["DeathComboPoints"].cast<int>();
 }
 
 void EnemyHealthComponent::start()

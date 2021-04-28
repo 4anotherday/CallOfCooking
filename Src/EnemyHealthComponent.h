@@ -30,6 +30,12 @@ public:
 	/// </summary>
 	virtual void start() override;
 
+
+	/// <summary>
+	/// Sets the value of combo points the enemy grants for dying
+	/// </summary>
+	inline void setDeathComboPoints(int dP) { _deathComboPoints = dP; }
+
 	/// <summary>
 	/// Reduce hit points
 	/// </summary>
@@ -39,6 +45,6 @@ private:
 	ScoreManagerComponent* _scoreManager;
 	int _points;
 	int _hitPoints;
-	
+	int _deathComboPoints;
 };
 #endif // !ENEMYHEALTHCOMPONENT_H
