@@ -1,9 +1,14 @@
 #include "ScoreManagerComponent.h"
 #include "UserComponentIDs.h"
+#include "GameObject.h"
+#include "Engine.h"
 #include "EngineTime.h"
+#include "LevelManagerComponent.h"
+
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
-	_score(0),_maxScore(0), _comboPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), _engineTime(EngineTime::getInstance()), _isComboSequence(false)
+	_score(0),_maxScore(0), _comboPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
+	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager()
 {
 }
 
@@ -22,8 +27,13 @@ void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 void ScoreManagerComponent::update() 
 {
 	if (_actualComboSequenceTime + _comboTime <= _engineTime->deltaTime()) {
-		calculateTotalComboPoints();
+		addTotalComboScore();
 	}
+}
+
+void ScoreManagerComponent::start()
+{
+	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 }
 
 inline void ScoreManagerComponent::addComboHitPoint()
@@ -38,9 +48,10 @@ inline void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 	startOrRenewComboTime();
 }
 
-void ScoreManagerComponent::calculateTotalComboPoints()
+void ScoreManagerComponent::addTotalComboScore()
 {
-	
+	//PONER BIEN LA FUNCIÓN DE CÁLCULO -> REVISAR GDD O PREGUNTAR SI NO ESTÁ CLARO
+	_score += (_comboPoints * _lvlManager->getCurrentLevel());
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()

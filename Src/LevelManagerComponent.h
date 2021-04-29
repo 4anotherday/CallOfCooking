@@ -1,18 +1,21 @@
 #pragma once
-#include "F:\CS UNIVERSIDAD\z.PROYECTOS\3 Ingenieria\P3\COC\Motor\Src\MotorUnitario\Component.h"
+#ifndef LEVELMANAGERCOMPONENT_H
+#define LEVELMANAGERCOMPONENT_H
+#include "Component.h"
 #include "Vector3.h"
 
-//Consultar si ponerlo con ints para evitar hacer conversiones en el awake
-enum class EnemyType{ A, B, C};
+class EngineTime;
 
 struct Enemy {
-	EnemyType type;
+	int type;
 	int howManyEnemies;
 	Vector3 respawnPosition;
 };
 
 struct Wave {
-	int waveNumber;	
+	int enemyTypes;
+	int waveNumber;
+	int enemiesLeft;
 	float waveTime;
 	float spawnEnemyTime;
 	std::vector<Enemy> enemies;
@@ -33,8 +36,12 @@ public:
 	inline int getCurrentLevel() const { return _currentLevel; }
 
 private:
-	std::vector<Wave>*_levelsInfo;
-	int _currentLevel;
-	float _waveControlTime;
-};
+	void enemiesSpawn();
 
+	EngineTime* _engineTime;
+	std::vector<Wave>* _levelsInfo;
+	int _currentLevel;
+	float _waveStartTime;
+	bool _newWave;
+};
+#endif // !LEVELMANAGERCOMPONENT_H

@@ -4,6 +4,7 @@
 
 #include "Component.h"
 class EngineTime;
+class LevelManagerComponent;
 
 class ScoreManagerComponent : public Component	
 {
@@ -15,6 +16,8 @@ public:
 	virtual void awake(luabridge::LuaRef& data);
 
 	virtual void update() override;
+
+	virtual void start() override;
 
 	/// <summary>
 	/// Adds amount points to the current score
@@ -71,7 +74,7 @@ private:
 	/// <summary>
 	/// Performs the calculation of points related to the active combo sequence
 	/// </summary>
-	void calculateTotalComboPoints();
+	void addTotalComboScore();
 
 	/// </summary>
 	/// Renews or start the timing of the current combo sequence
@@ -83,6 +86,8 @@ private:
 	/// Reset the attributes related to the combo sequence
 	/// </summary>
 	void clearComboSequence();
+
+	LevelManagerComponent* _lvlManager;
 
 	int _score;
 	int _maxScore;	
