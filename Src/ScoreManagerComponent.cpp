@@ -22,7 +22,7 @@ void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 void ScoreManagerComponent::update() 
 {
 	if (_actualComboSequenceTime + _comboTime <= _engineTime->deltaTime()) {
-
+		calculateTotalComboPoints();
 	}
 }
 
