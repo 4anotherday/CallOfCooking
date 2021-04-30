@@ -7,6 +7,8 @@
 #include "RigidBodyComponent.h"
 #include "EngineTime.h"
 #include <math.h>
+#include "includeLUA.h"
+
 
 PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::PlayerMovementComponent),
 _tr(nullptr), _rb(nullptr),

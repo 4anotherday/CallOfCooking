@@ -16,7 +16,7 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		Engine::CreateInstance();
 		Engine* prueba = Engine::getInstance();
 		
-		prueba->init("prueba.cfg");
+		prueba->init("prueba.cfg", "Assets/Levels");
 		prueba->run();
 	}
 	catch (const ExcepcionTAD& e) {

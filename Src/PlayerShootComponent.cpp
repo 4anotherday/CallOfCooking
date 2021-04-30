@@ -5,6 +5,8 @@
 #include "EngineTime.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
+#include "includeLUA.h"
+
 
 PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::PlayerShootComponent),
 _tr(nullptr), _rb(nullptr), _damage(5),

@@ -3,6 +3,7 @@
 #define LEVELMANAGERCOMPONENT_H
 #include "Component.h"
 #include "Vector3.h"
+#include <vector>
 
 class EngineTime;
 

@@ -4,7 +4,7 @@
 #include "Transform.h"
 #include "RigidBodyComponent.h"
 #include "Engine.h"
-
+#include "includeLUA.h"
 
 EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::EnemyBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr), 
  _attackSpeed(), _isAttacking(),_damagePerSecond()

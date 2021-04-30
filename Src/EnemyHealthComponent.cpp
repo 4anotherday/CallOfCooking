@@ -4,6 +4,8 @@
 #include "ScoreManagerComponent.h"
 #include "Transform.h"
 #include "Engine.h"
+#include "includeLUA.h"
+
 
 
 EnemyHealthComponent::EnemyHealthComponent() : Component(UserComponentId::EnemyHealthComponent), _scoreManager(nullptr), _points(), _hitPoints()

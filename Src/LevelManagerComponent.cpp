@@ -1,6 +1,8 @@
 #include "LevelManagerComponent.h"
 #include "UserComponentIDs.h"
 #include "EngineTime.h"
+#include "includeLUA.h"
+
 
 
 LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::EnemyHealthComponent), 

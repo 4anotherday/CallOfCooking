@@ -5,6 +5,7 @@
 #include "EngineTime.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
+#include "includeLUA.h"
 
 PlayerAttackComponent::PlayerAttackComponent() : Component(UserComponentId::PlayerAttackComponent),
 _tr(nullptr), _rb(nullptr), _damage(5),

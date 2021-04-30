@@ -5,6 +5,8 @@
 #include "GameObject.h"
 #include "Transform.h"
 #include "Engine.h"
+#include "includeLUA.h"
+
 
 WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr), _range()
 {

@@ -4,6 +4,8 @@
 #include "Engine.h"
 #include "EngineTime.h"
 #include "LevelManagerComponent.h"
+#include "includeLUA.h"
+
 
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
