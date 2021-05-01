@@ -37,6 +37,8 @@ private:
 	/// </summary>
 	void shoot();
 
+	GameObject* createBullet();
+
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
