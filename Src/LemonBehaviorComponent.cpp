@@ -9,7 +9,7 @@
 #include "includeLUA.h"
 
 ADD_COMPONENT(LemonBehaviorComponent);
-LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr), _range()
+LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr)
 {
 }
 

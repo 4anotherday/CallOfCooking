@@ -8,10 +8,9 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-
 ADD_COMPONENT(WatermelonBehaviorComponent);
 
-WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr), _range()
+WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr)
 {
 }
 
