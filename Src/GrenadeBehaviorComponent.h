@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WATERMELONBEHAVIORCOMPONENT_H
-#define WATERMELONBEHAVIORCOMPONENT_H
+#ifndef GRANADEBEHAVIORCOMPONENT_H
+#define GRANADEBEHAVIORCOMPONENT_H
 
 #include "EnemyBehaviorComponent.h"
 
@@ -54,4 +54,4 @@ private:
 	float _movementSpeed;
 	float _lastShot;
 };
-#endif // !WATERMELONBEHAVIORCOMPONENT_H
+#endif // !GRANADEBEHAVIORCOMPONENT_H

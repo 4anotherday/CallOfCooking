@@ -21,25 +21,34 @@
   <ItemGroup>
     <ClCompile Include="..\Src\EnemyBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\EnemyHealthComponent.cpp" />
+    <ClCompile Include="..\Src\GranadeBulletPoolComponent.cpp" />
+    <ClCompile Include="..\Src\GranadePoolComponent.cpp" />
     <ClCompile Include="..\Src\GrenadeBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\LemonBehaviorComponent.cpp" />
+    <ClCompile Include="..\Src\LemonPoolComponent.cpp" />
     <ClCompile Include="..\Src\LevelManagerComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\PlayerAttackComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerBulletPoolComponent.cpp" />
     <ClCompile Include="..\Src\PlayerHealthComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\PlayerShootComponent.cpp" />
     <ClCompile Include="..\Src\PoolComponent.cpp" />
     <ClCompile Include="..\Src\ScoreManagerComponent.cpp" />
     <ClCompile Include="..\Src\WatermelonBehaviorComponent.cpp" />
+    <ClCompile Include="..\Src\WatermelonPoolComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
     <ClInclude Include="..\Src\EnemyHealthComponent.h" />
+    <ClInclude Include="..\Src\GranadeBulletPoolComponent.h" />
+    <ClInclude Include="..\Src\GranadePoolComponent.h" />
     <ClInclude Include="..\Src\GrenadeBehaviorComponent.h" />
     <ClInclude Include="..\Src\LemonBehaviorComponent.h" />
+    <ClInclude Include="..\Src\LemonPoolComponent.h" />
     <ClInclude Include="..\Src\LevelManagerComponent.h" />
     <ClInclude Include="..\Src\PlayerAttackComponent.h" />
+    <ClInclude Include="..\Src\PlayerBulletPoolComponent.h" />
     <ClInclude Include="..\Src\PlayerHealthComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
     <ClInclude Include="..\Src\PlayerShootComponent.h" />
@@ -47,6 +56,7 @@
     <ClInclude Include="..\Src\ScoreManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentIDs.h" />
     <ClInclude Include="..\Src\WatermelonBehaviorComponent.h" />
+    <ClInclude Include="..\Src\WatermelonPoolComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
