@@ -29,6 +29,7 @@
     <ClCompile Include="..\Src\PlayerHealthComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\PlayerShootComponent.cpp" />
+    <ClCompile Include="..\Src\PoolComponent.cpp" />
     <ClCompile Include="..\Src\ScoreManagerComponent.cpp" />
     <ClCompile Include="..\Src\WatermelonBehaviorComponent.cpp" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <ClInclude Include="..\Src\PlayerHealthComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
     <ClInclude Include="..\Src\PlayerShootComponent.h" />
+    <ClInclude Include="..\Src\PoolComponent.h" />
     <ClInclude Include="..\Src\ScoreManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentIDs.h" />
     <ClInclude Include="..\Src\WatermelonBehaviorComponent.h" />

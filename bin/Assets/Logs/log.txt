@@ -1,1 +1,1 @@
-13:43:00 -> FATAl: Archivo de carga de escena de lua no encontrado
+13:51:23 -> FATAl: Archivo de carga de escena de lua no encontrado

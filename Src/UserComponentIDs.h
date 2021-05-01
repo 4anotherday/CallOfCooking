@@ -19,8 +19,9 @@ namespace UserComponentId {
 		PlayerMovementComponent,
 		PlayerAttackComponent,
 		PlayerShootComponent,
-		ScoreManagerComponent,
 		LevelManagerComponent,
+		ScoreManagerComponent,
+		PoolComponent,
 		EnemyBehaviorComponent,
 		EnemyHealthComponent
 	};
