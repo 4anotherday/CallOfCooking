@@ -3,7 +3,6 @@
 #include "includeLUA.h"
 #include "PoolComponent.h"
 
-
 PoolComponent::PoolComponent(UserComponentId::UserComponentId id): Component(id)
 {
 }
@@ -22,11 +21,11 @@ GameObject* PoolComponent::getInactiveGO()
 {
 	if (_inactivePool.empty()) {
 		createGos(10);
-	}	
+	}
 	GameObject* go = _inactivePool.back();
 	_inactivePool.pop_back();
 	go->setEnabled(true);
-	return go;	
+	return go;
 }
 
 void PoolComponent::setInactiveGO(GameObject* go)

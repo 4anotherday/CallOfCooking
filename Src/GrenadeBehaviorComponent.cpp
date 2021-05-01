@@ -8,7 +8,7 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 
-GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent(), _range(), _cadence(), _movementSpeed()
+GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent()
 {
 }
 
@@ -19,7 +19,7 @@ GrenadeBehaviorComponent::~GrenadeBehaviorComponent()
 void GrenadeBehaviorComponent::awake(luabridge::LuaRef& data)
 {
 	_range = data["Range"].cast<float>();
-	_cadence = data["Cadence"].cast<float>();
+	_attackSpeed = data["AttackSpeed"].cast<float>();
 	_movementSpeed = data["MovementSpeed"].cast<float>();
 }
 
@@ -34,10 +34,16 @@ void GrenadeBehaviorComponent::update()
 	double distance = (_playerPos->getPosition() - _tr->getPosition()).magnitude();
 	//(distance <= _range) ? _isAttacking = true : _isAttacking = false;
 
-	if (distance <= _range /* && cadence...*/)
+	float deltaTime = EngineTime::getInstance()->deltaTime();
+	_timeToShoot -= deltaTime;
+
+	if (distance <= _range && _timeToShoot <= 0) {
 		attack();
-	else
+		_timeToShoot = _attackSpeed;
+	}
+	else {
 		walk();
+	}
 }
 
 void GrenadeBehaviorComponent::walk()
@@ -56,8 +62,10 @@ void GrenadeBehaviorComponent::walk()
 
 void GrenadeBehaviorComponent::attack()
 {
-	//_lastShot = EngineTime::getInstance()->getDate  Get TimeStamp of the last time a shot was made
 	//Shoot an enemy bullet
 	Vector3 playerPos = _playerPos->getPosition();
 	Vector3 dir = playerPos - _tr->getPosition();
+
+	//Get pool of enemy bullets
+	//Create a new Bullet
 }

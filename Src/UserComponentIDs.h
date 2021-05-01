@@ -27,6 +27,7 @@ namespace UserComponentId {
 		LemonPoolComponent,
 		WatermelonPoolComponent,
 		GranadeBulletPoolComponent,
+		BulletsManagerComponent,
 		EnemyBehaviorComponent,
 		EnemyHealthComponent
 	};

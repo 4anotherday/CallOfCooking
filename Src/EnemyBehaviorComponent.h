@@ -8,7 +8,7 @@
 class Transform;
 class RigidBodyComponent;
 
-class EnemyBehaviorComponent : public Component	
+class EnemyBehaviorComponent : public Component
 {
 public:
 	/// <summary>
@@ -22,7 +22,7 @@ public:
 	virtual ~EnemyBehaviorComponent();
 
 	/// <summary>
-	/// Awake class, initializes the local variables 
+	/// Awake class, initializes the local variables
 	/// </summary>
 	/// <param name="data">Luaref with the data</param>
 	virtual void awake(luabridge::LuaRef& data) override;
@@ -46,14 +46,15 @@ protected:
 	/// </summary>
 	virtual void attack();
 
-
 	RigidBodyComponent* _rigidbody;
 	Transform* _playerPos;
 
-	float _attackSpeed;		
+	float _attackSpeed;
 	float _damagePerSecond;
 	bool _isAttacking;
-private:
+	float _range;
+	float _movementSpeed;
 
+private:
 };
 #endif // !ENEMYBEHAVIORCOMPONENT_H

@@ -28,7 +28,7 @@ public:
 	virtual void awake(luabridge::LuaRef& data);
 
 	/// <summary>
-	/// Initialise the particle system,transform and player health
+	///
 	/// </summary>
 	virtual void start();
 
@@ -48,10 +48,6 @@ public:
 private:
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
-
-	float _range;
-	float _cadence;
-	float _movementSpeed;
-	float _lastShot;
+	float _timeToShoot;
 };
 #endif // !GRANADEBEHAVIORCOMPONENT_H

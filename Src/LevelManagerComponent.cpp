@@ -8,18 +8,15 @@
 #include "LemonPoolComponent.h"
 #include "WatermelonPoolComponent.h"
 
-
 ADD_COMPONENT(LevelManagerComponent);
 
 LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::LevelManagerComponent), 
 	_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
 {
-
 }
 
 LevelManagerComponent::~LevelManagerComponent()
 {
-
 }
 
 void LevelManagerComponent::awake(luabridge::LuaRef& data)
@@ -55,5 +52,4 @@ void LevelManagerComponent::enemiesSpawn()
 	else {
 		//TODO: RESETEAR Y ACTIVAR ENEMIGOS INACTIVOS DE LA POOL
 	}
-
 }

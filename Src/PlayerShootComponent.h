@@ -37,13 +37,11 @@ private:
 	/// </summary>
 	void shoot();
 
-	GameObject* createBullet();
-
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
 
-	float _damage, _lastShot, _shotRate, _cadence;
+	float _damage, _timeToShoot, _cadence;
 };
 #endif // !PLAYERATTACKCOMPONENT_H
