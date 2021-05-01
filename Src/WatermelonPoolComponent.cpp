@@ -4,7 +4,7 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-WatermelonPoolComponent::WatermelonPoolComponent()
+WatermelonPoolComponent::WatermelonPoolComponent():PoolComponent(UserComponentId::WatermelonPoolComponent)
 {
 }
 

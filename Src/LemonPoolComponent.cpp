@@ -4,7 +4,7 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-LemonPoolComponent::LemonPoolComponent()
+LemonPoolComponent::LemonPoolComponent():PoolComponent(UserComponentId::LemonPoolComponent)
 {
 }
 
