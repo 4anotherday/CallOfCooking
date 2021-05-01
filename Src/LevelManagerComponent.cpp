@@ -10,8 +10,8 @@
 
 ADD_COMPONENT(LevelManagerComponent);
 
-LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::LevelManagerComponent), 
-	_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
+LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
+_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
 {
 }
 
@@ -39,14 +39,13 @@ void LevelManagerComponent::update()
 
 void LevelManagerComponent::start()
 {
-	_granadePool = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
 }
 
 void LevelManagerComponent::enemiesSpawn()
 {
 	if (_currentLevel == 0) {
 		for (auto x = 0; x <= _levelsInfo->at(_currentLevel).enemyTypes; ++x) {
-			
 		}
 	}
 	else {

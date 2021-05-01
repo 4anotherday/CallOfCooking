@@ -10,7 +10,7 @@ class RigidBodyComponent;
 class Transform;
 class EngineTime;
 class MouseInput;
-class BulletsManagerComponent;
+class PlayerBulletPoolComponent;
 
 class PlayerShootComponent : public Component
 {
@@ -43,7 +43,7 @@ private:
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
 	GameObject* _gameManager;
-	BulletsManagerComponent* _bulletsManager;
+	PlayerBulletPoolComponent* _bulletsManager;
 
 	float _damage, _timeToShoot, _cadence;
 };

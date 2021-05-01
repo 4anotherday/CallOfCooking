@@ -1,7 +1,7 @@
 #include "GranadePoolComponent.h"
 #include "UserComponentIDs.h"
 
-GranadePoolComponent::GranadePoolComponent() : PoolComponent(UserComponentId::GrenadePoolComponent)
+GranadePoolComponent::GranadePoolComponent() : PoolComponent(UserComponentId::GranadePoolComponent)
 {
 }
 

@@ -8,8 +8,8 @@
 
 ADD_COMPONENT(EnemyBehaviorComponent);
 
-EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::EnemyBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr), 
- _attackSpeed(), _isAttacking(),_damagePerSecond()
+EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::EnemyBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr),
+_attackSpeed(), _isAttacking(), _damagePerSecond()
 {
 }
 
