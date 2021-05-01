@@ -4,7 +4,7 @@
 #include "includeLUA.h"
 #include "PoolComponent.h"
 
-PoolComponent::PoolComponent() :Component(UserComponentId::PoolComponent), _mainPool(), _inactivePool()
+PoolComponent::PoolComponent(UserComponentId::UserComponentId id) :Component(id), _mainPool(), _inactivePool()
 {
 }
 

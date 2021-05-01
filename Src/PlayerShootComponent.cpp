@@ -8,6 +8,7 @@
 #include "Transform.h"
 #include "RenderObjectComponent.h"
 #include "RigidBodyComponent.h"
+#include "BulletsManagerComponent.h"
 #include "includeLUA.h"
 
 ADD_COMPONENT(PlayerShootComponent);
@@ -32,6 +33,8 @@ void PlayerShootComponent::awake(luabridge::LuaRef& data)
 
 void PlayerShootComponent::start()
 {
+	_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	_bulletsManager = static_cast<BulletsManagerComponent*>(_gameManager->getComponent(UserComponentId::GrenadePoolComponent));
 }
 
 void PlayerShootComponent::update()

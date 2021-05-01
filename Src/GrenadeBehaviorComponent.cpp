@@ -8,6 +8,8 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 
+ADD_COMPONENT(GrenadeBehaviorComponent);
+
 GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent()
 {
 }
