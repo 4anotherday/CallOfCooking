@@ -2,6 +2,7 @@
 #ifndef POOLCOMPONENT_H
 #define POOLCOMPONENT_H
 
+#include "UserComponentIDs.h"
 #include "Component.h"
 #include <vector>
 #include "UserComponentIDs.h"

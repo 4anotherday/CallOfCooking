@@ -1,10 +1,9 @@
 #include "GameObject.h"
-#include "UserComponentIDs.h"
 #include "Engine.h"
 #include "includeLUA.h"
 #include "PoolComponent.h"
 
-PoolComponent::PoolComponent(UserComponentId::UserComponentId id) :Component(id), _mainPool(), _inactivePool()
+PoolComponent::PoolComponent(UserComponentId::UserComponentId id): Component(id)
 {
 }
 

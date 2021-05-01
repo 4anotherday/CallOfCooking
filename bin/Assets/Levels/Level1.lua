@@ -54,6 +54,13 @@ go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=20,Depth=20,Height=100}
 
+go_4={}
+go_4[0] = {Name="GameManager", HowManyCmps=X, Persist = true}
+go_4[1] = { Component = "LevelManager"}
+go_4[2] = { Component = "ScoreManager" }
+go_4[1] = { Component = "LemonPoolComponent", HowMany= {Round1=10, Round2 = 20, Round3= 30}, Width= 20, Height= 20, HpPoints= 5}
+go_4[2] = { Component = "WatermelonPoolComponent", HowMany= {Round1=20, Round2 = 30, Round3= 40}, Width= 10, Height= 10, HpPoints= 3}
+go_4[3] = { Component = "GranadePoolComponent", HowMany= {Round1=30, Round2 = 50, Round3= 10}, Width= 30, Height= 30, HpPoints= 4}
 -- go_3 = {}
 -- go_3[0] = { Name = "ImageR", HowManyCmps = 2, Persist = false}
 -- go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0}}
