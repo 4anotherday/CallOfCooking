@@ -22,6 +22,7 @@ namespace UserComponentId {
 		LevelManagerComponent,
 		ScoreManagerComponent,
 		PoolComponent,
+		BulletsManagerComponent,
 		EnemyBehaviorComponent,
 		EnemyHealthComponent
 	};

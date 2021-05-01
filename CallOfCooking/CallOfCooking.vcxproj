@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\BulletsManagerComponent.cpp" />
     <ClCompile Include="..\Src\EnemyBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\EnemyHealthComponent.cpp" />
     <ClCompile Include="..\Src\GrenadeBehaviorComponent.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="..\Src\WatermelonBehaviorComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\BulletsManagerComponent.h" />
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
     <ClInclude Include="..\Src\EnemyHealthComponent.h" />
     <ClInclude Include="..\Src\GrenadeBehaviorComponent.h" />

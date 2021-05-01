@@ -22,7 +22,7 @@ public:
 	virtual ~LemonBehaviorComponent();
 
 	/// <summary>
-	/// Awake class, initializes the local variables 
+	/// Awake class, initializes the local variables
 	/// </summary>
 	/// <param name="data">Luaref with the data</param>
 	virtual void awake(luabridge::LuaRef& data);
@@ -42,14 +42,12 @@ public:
 	/// </summary>
 	virtual void walk();
 	/// <summary>
-	/// Deals damage to player 
+	/// Deals damage to player
 	/// </summary>
 	virtual void attack() override;
 private:
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
-
-	float _range;
 };
 #endif // !LEMONBEHAVIORCOMPONENT_H
