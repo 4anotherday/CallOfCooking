@@ -17,9 +17,7 @@ PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::P
 _tr(nullptr), _rb(nullptr),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
-{
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+{	
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
@@ -27,20 +25,22 @@ _tr(nullptr), _rb(nullptr),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
 {
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }
 
 PlayerMovementComponent::~PlayerMovementComponent()
 {
-	delete _tr; _tr = nullptr;
-	delete _rb; _rb = nullptr;
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	_speed = data["Speed"].cast<float>();
 	_rotationSpeed = data["RotationSpeed"].cast<float>();
+}
+
+void PlayerMovementComponent::start()
+{
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }
 
 void PlayerMovementComponent::update()
@@ -72,16 +72,15 @@ void PlayerMovementComponent::move(const float deltaTime)
 	if (_keyboard->isKeyDown(_keyLeft))
 	{
 		//Move player to the left
-		velocity = velocity + (right * _speed * -1.0);
+		velocity = velocity + (right * _speed);
 	}
 	else if (_keyboard->isKeyDown(_keyRight))
 	{
 		//Move player to the right
-		velocity = velocity + (right * _speed);
+		velocity = velocity + (right * _speed*-1);
 	}
 
 	velocity = velocity * deltaTime;
-
 	_rb->addForce(velocity);
 }
 

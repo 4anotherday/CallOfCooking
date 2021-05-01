@@ -21,6 +21,7 @@ public:
 	virtual ~PlayerMovementComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
+	virtual void start() override;
 	virtual void update() override;
 
 private:
