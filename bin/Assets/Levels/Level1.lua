@@ -16,19 +16,19 @@ HowManyGameObjects = 4
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -80, Z = -300}}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = -600},Rotation = {X=0,Y=1,Z=0},Scale = {X=6,Y=3.3,Z=.1}}
 go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=5, Y=.1, Z=5}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_0[3] = { Component = "BoxCollider", Type="Box",Width=1000,Height=10,Depth=1000,IsTrigger=true}
+			RotateAngle = 90, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 9999}
+go_0[3] = { Component = "BoxCollider", Type="Box",Width=1000,Height=1,Depth=1000,IsTrigger=false}
 
 go_1 = {}
 go_1[0] = { Name = "Camara", HowManyCmps = 2, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 400, Y = -300, Z = 10}}
-go_1[2] = { Component = "Camera", Orientation = {X = 0, Y = 0, Z = -1}, Plane = {Near = 1, Far = 9999},
-			Projection = true, Fovy = 6, Frustrum = {Left = 4, Right = 3, Top = 2, Bot = 1}, 
+go_1[1] = { Component = "Transform", Coord = {X =0, Y = 0, Z = 0}}
+go_1[2] = { Component = "Camera", Orientation = {X = 0, Y = 0, Z = 0}, Plane = {Near = 1, Far = 9999},
+			Projection = true, Fovy = 60, Frustrum = {Left = 50, Right = 50, Top = 50, Bot = 50}, 
 			OrthoWindow = {W = 8, H = 9}, Viewport = {Left = 0, Top = 0, W = 1, H = 1},
-			DisplayOverlays= true, zOrder = 1}
+			DisplayOverlays= true, zOrder = 1,Pitch=0,Yaw=0,Roll=0}
 
 -- go_2 = {}
 -- go_2[0] = { Name = "DarkLight", HowManyCmps = 2}
@@ -47,10 +47,10 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 			SpotLightRange = {InnerAngle = 1, OuterAngle = 1, FallOf = 1}}
 
 go_3={}
-go_3[0] ={Name ="AverSiPeta" , HowManyCmps=3,Persist=false}
-go_3[1]={ Component = "Transform", Coord = {X = 0, Y = 0, Z = -300}}
+go_3[0] ={Name ="Jugador" , HowManyCmps=3,Persist=false}
+go_3[1]={ Component = "Transform", Coord = {X = 0, Y = 0, Z = -350},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
 go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=20,Depth=20,Height=100}
 
@@ -61,6 +61,7 @@ go_4[2] = { Component = "ScoreManager" }
 go_4[1] = { Component = "LemonPoolComponent", HowMany= {Round1=10, Round2 = 20, Round3= 30}, Width= 20, Height= 20, HpPoints= 5}
 go_4[2] = { Component = "WatermelonPoolComponent", HowMany= {Round1=20, Round2 = 30, Round3= 40}, Width= 10, Height= 10, HpPoints= 3}
 go_4[3] = { Component = "GranadePoolComponent", HowMany= {Round1=30, Round2 = 50, Round3= 10}, Width= 30, Height= 30, HpPoints= 4}
+
 -- go_3 = {}
 -- go_3[0] = { Name = "ImageR", HowManyCmps = 2, Persist = false}
 -- go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0}}
