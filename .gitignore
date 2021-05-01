@@ -19,3 +19,5 @@ bin/MotorUnitario_x64.exe
 bin/MotorUnitario_x64_DEBUG.exe
 bin/MotorUnitario_x86.exe
 bin/MotorUnitario_x86_DEBUG.exe
+bin/Assets/Logs/*
+bin/Assets/ShaderCache/*
