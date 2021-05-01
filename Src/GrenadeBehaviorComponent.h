@@ -7,6 +7,7 @@
 class ParticleSystemComponent;
 class Transform;
 class PlayerHealthComponent;
+class GranadeBulletPoolComponent;
 
 class GrenadeBehaviorComponent : public EnemyBehaviorComponent
 {
@@ -48,6 +49,9 @@ public:
 private:
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
+	GranadeBulletPoolComponent* _bulletsManager;
+	GameObject* _gameManager;
+
 	float _timeToShoot;
 };
 #endif // !GRANADEBEHAVIORCOMPONENT_H

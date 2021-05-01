@@ -29,7 +29,9 @@ namespace UserComponentId {
 		GranadeBulletPoolComponent,
 		EnemyBehaviorComponent,
 		EnemyHealthComponent,
-		PlayerBulletsManagerComponent
+		PlayerBulletsManagerComponent,
+		PlayerBulletBehaviourComponent,
+		GrenadeBulletBehaviourComponent
 	};
 }
 

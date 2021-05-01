@@ -59,6 +59,6 @@ void PlayerShootComponent::shoot()
 	Vector3 position = _tr->getPosition() + direction.normalize() * 5; //Me coloco un poco m�s alante que el player
 
 	//Instanciar la bala
-	///Conseguir la pool de balas
-	//Generar otra bala
+	GameObject* bala = _bulletsManager->getInactiveGO();
+	//BulletBehaviour
 }

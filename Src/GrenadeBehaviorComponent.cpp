@@ -7,6 +7,7 @@
 #include "Engine.h"
 #include "EngineTime.h"
 #include "includeLUA.h"
+#include "GranadeBulletPoolComponent.h"
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
 
@@ -29,6 +30,8 @@ void GrenadeBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));
+	_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
 }
 
 void GrenadeBehaviorComponent::update()
@@ -68,6 +71,6 @@ void GrenadeBehaviorComponent::attack()
 	Vector3 playerPos = _playerPos->getPosition();
 	Vector3 dir = playerPos - _tr->getPosition();
 
-	//Get pool of enemy bullets
-	//Create a new Bullet
+	GameObject* newBullet = _bulletsManager->getInactiveGO();
+	//BulletBehaviour
 }
