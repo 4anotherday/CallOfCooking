@@ -4,6 +4,7 @@
 #include "includeLUA.h"
 
 
+ADD_COMPONENT(LevelManagerComponent);
 
 LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::EnemyHealthComponent), 
 	_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)

@@ -4,10 +4,13 @@
 #include "MouseInput.h"
 #include "EngineTime.h"
 #include "Engine.h"
+#include "includeLUA.h"
 #include "Transform.h"
 #include "RenderObjectComponent.h"
 #include "RigidBodyComponent.h"
 #include "includeLUA.h"
+
+ADD_COMPONENT(PlayerShootComponent);
 
 PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::PlayerShootComponent),
 _tr(nullptr), _rb(nullptr), _damage(5),
@@ -49,9 +52,9 @@ void PlayerShootComponent::onTrigger(GameObject* other)
 
 void PlayerShootComponent::shoot()
 {
-	//Me quedo con la dirección a la que dispara el player
+	//Me quedo con la direcciï¿½n a la que dispara el player
 	Vector3 direction = _tr->getForward();
-	Vector3 position = _tr->getPosition() + direction.normalize() * 5;
+	Vector3 position = _tr->getPosition() + direction.normalize() * 5; //Me coloco un poco mï¿½s alante que el player
 
 	//Instanciar la bala
 }
@@ -59,7 +62,7 @@ void PlayerShootComponent::shoot()
 GameObject* PlayerShootComponent::createBullet()
 {
 	//GameObject* newBullet = Engine::getInstance()->addGameObject();
-	//newBullet->addComponent();  añadir bala behaviour
+	//newBullet->addComponent();  aï¿½adir bala behaviour
 	//Transform* tr = new Transform();
 	//tr->setPosition(Vector3(0, 0, 0));
 	//tr->setRotation(_tr->getRotation());
@@ -68,8 +71,8 @@ GameObject* PlayerShootComponent::createBullet()
 	////renderObject->setMesh();  //Para ponerle algo visual que ver
 
 	//RigidBodyComponent* rb = new RigidBodyComponent();
-	////rb->setType();   //Hace falta decirle qué tipo de colision tiene
-	//rb->setMass(0);   //Haría falta poner constrains
+	////rb->setType();   //Hace falta decirle quï¿½ tipo de colision tiene
+	//rb->setMass(0);   //Harï¿½a falta poner constrains
 
 	////BulletComponent
 

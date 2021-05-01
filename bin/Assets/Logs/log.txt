@@ -1,15 +1,1 @@
-21:48:25 -> INFO: Transform inserted
-21:48:25 -> INFO: ImageRenderer inserted
-21:48:25 -> INFO: LightComponent inserted
-21:48:25 -> INFO: RenderObject inserted
-21:48:25 -> INFO: Listener inserted
-21:48:25 -> INFO: AudioSource inserted
-21:48:25 -> INFO: RigidBody inserted
-21:48:25 -> INFO: BoxCollider inserted
-21:48:25 -> INFO: SphereCollider inserted
-21:48:25 -> INFO: CapsuleCollider inserted
-21:48:25 -> INFO: Camera inserted
-21:48:25 -> INFO: Animator inserted
-21:48:25 -> INFO: ParticleSystem inserted
-21:48:25 -> INFO: ButtonComponent inserted
-21:48:25 -> INFO: OverlayComponent inserted
+13:43:00 -> FATAl: Archivo de carga de escena de lua no encontrado

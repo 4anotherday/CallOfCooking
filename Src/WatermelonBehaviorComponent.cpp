@@ -4,9 +4,12 @@
 #include "PlayerHealthComponent.h"
 #include "GameObject.h"
 #include "Transform.h"
+#include "includeLUA.h"
 #include "Engine.h"
 #include "includeLUA.h"
 
+
+ADD_COMPONENT(WatermelonBehaviorComponent);
 
 WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr), _range()
 {

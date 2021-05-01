@@ -3,9 +3,12 @@
 #include "UserComponentIDs.h"
 #include "MouseInput.h"
 #include "EngineTime.h"
+#include "includeLUA.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
 #include "includeLUA.h"
+
+ADD_COMPONENT(PlayerAttackComponent);
 
 PlayerAttackComponent::PlayerAttackComponent() : Component(UserComponentId::PlayerAttackComponent),
 _tr(nullptr), _rb(nullptr), _damage(5),

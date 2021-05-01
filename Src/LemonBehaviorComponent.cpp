@@ -4,9 +4,11 @@
 #include "PlayerHealthComponent.h"
 #include "GameObject.h"
 #include "Transform.h"
+#include "includeLUA.h"
 #include "Engine.h"
 #include "includeLUA.h"
 
+ADD_COMPONENT(LemonBehaviorComponent);
 LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr), _range()
 {
 }

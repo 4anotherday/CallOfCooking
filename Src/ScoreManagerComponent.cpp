@@ -1,12 +1,14 @@
 #include "ScoreManagerComponent.h"
 #include "UserComponentIDs.h"
 #include "GameObject.h"
+#include "includeLUA.h"
 #include "Engine.h"
 #include "EngineTime.h"
 #include "LevelManagerComponent.h"
 #include "includeLUA.h"
 
 
+ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
 	_score(0),_maxScore(0), _comboPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
@@ -52,7 +54,7 @@ inline void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 
 void ScoreManagerComponent::addTotalComboScore()
 {
-	//PONER BIEN LA FUNCIÓN DE CÁLCULO -> REVISAR GDD O PREGUNTAR SI NO ESTÁ CLARO
+	//PONER BIEN LA FUNCIï¿½N DE Cï¿½LCULO -> REVISAR GDD O PREGUNTAR SI NO ESTï¿½ CLARO
 	_score += (_comboPoints * _lvlManager->getCurrentLevel());
 }
 

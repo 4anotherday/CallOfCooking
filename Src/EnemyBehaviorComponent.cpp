@@ -6,6 +6,8 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
+ADD_COMPONENT(EnemyBehaviorComponent);
+
 EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::EnemyBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr), 
  _attackSpeed(), _isAttacking(),_damagePerSecond()
 {

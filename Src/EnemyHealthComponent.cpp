@@ -6,7 +6,7 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-
+ADD_COMPONENT(EnemyHealthComponent);
 
 EnemyHealthComponent::EnemyHealthComponent() : Component(UserComponentId::EnemyHealthComponent), _scoreManager(nullptr), _points(), _hitPoints()
 {
