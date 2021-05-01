@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WATERMELONBEHAVIORCOMPONENT_H
-#define WATERMELONBEHAVIORCOMPONENT_H
+#ifndef GRANADEBEHAVIORCOMPONENT_H
+#define GRANADEBEHAVIORCOMPONENT_H
 
 #include "EnemyBehaviorComponent.h"
 
@@ -50,4 +50,4 @@ private:
 	PlayerHealthComponent* _healthPlayer;
 	float _timeToShoot;
 };
-#endif // !WATERMELONBEHAVIORCOMPONENT_H
+#endif // !GRANADEBEHAVIORCOMPONENT_H
