@@ -2,6 +2,7 @@
 #ifndef POOLCOMPONENT_H
 #define POOLCOMPONENT_H
 
+#include "UserComponentIDs.h"
 #include "Component.h"
 #include <vector>
 
@@ -11,7 +12,7 @@ public:
 	/// <summary>
 	/// Constructor of the class
 	/// </summary>
-	PoolComponent();
+	PoolComponent(UserComponentId::UserComponentId id);
 
 	/// <summary>
 	/// Destructor of the class

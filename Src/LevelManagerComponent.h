@@ -5,6 +5,10 @@
 #include "Vector3.h"
 #include <vector>
 
+class GranadePoolComponent;
+class LemonPoolComponent;
+class WatermelonPoolComponent;
+
 class EngineTime;
 
 struct Enemy {
@@ -28,9 +32,11 @@ public:
 	LevelManagerComponent();
 	~LevelManagerComponent();
 
-	void awake(luabridge::LuaRef& data) override;
+	virtual void awake(luabridge::LuaRef& data) override;
 
-	void update() override;
+	virtual void update() override;
+
+	virtual void start() override;
 
 	inline std::vector<Wave>* getLevelInfo() const { return _levelsInfo; }
 
@@ -41,6 +47,10 @@ private:
 
 	EngineTime* _engineTime;
 	std::vector<Wave>* _levelsInfo;
+	GranadePoolComponent* _granadePool;
+	LemonPoolComponent* _lemonPool;
+	WatermelonPoolComponent* _watermelonPool;
+
 	int _currentLevel;
 	float _waveStartTime;
 	bool _newWave;

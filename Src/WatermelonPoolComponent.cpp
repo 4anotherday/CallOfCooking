@@ -14,6 +14,11 @@ WatermelonPoolComponent::~WatermelonPoolComponent()
 
 void WatermelonPoolComponent::awake(luabridge::LuaRef& data)
 {
+	//TODO: PEDIR A FACTORIA
+	// TR
+	// Rigidbody
+	// EnemyHealth
+	// Beahviour
 }
 
 void WatermelonPoolComponent::start()

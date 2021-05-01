@@ -4,7 +4,7 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-GranadeBulletPoolComponent::GranadeBulletPoolComponent()
+GranadeBulletPoolComponent::GranadeBulletPoolComponent():Component(Usercom)
 {
 }
 

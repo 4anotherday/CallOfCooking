@@ -1,12 +1,17 @@
 #include "LevelManagerComponent.h"
 #include "UserComponentIDs.h"
+#include "GameObject.h"
+#include "Engine.h"
 #include "EngineTime.h"
 #include "includeLUA.h"
+#include "GranadePoolComponent.h"
+#include "LemonPoolComponent.h"
+#include "WatermelonPoolComponent.h"
 
 
 ADD_COMPONENT(LevelManagerComponent);
 
-LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::EnemyHealthComponent), 
+LevelManagerComponent::LevelManagerComponent(): Component(UserComponentId::LevelManagerComponent), 
 	_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
 {
 
@@ -35,13 +40,16 @@ void LevelManagerComponent::update()
 	}
 }
 
+void LevelManagerComponent::start()
+{
+	_granadePool = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+}
+
 void LevelManagerComponent::enemiesSpawn()
 {
 	if (_currentLevel == 0) {
 		for (auto x = 0; x <= _levelsInfo->at(_currentLevel).enemyTypes; ++x) {
-			for (auto j = 0; j <= _levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies; ++j) {
-				//TODO: PUSHEAR ENEMIGO EN POOL
-			}
+			
 		}
 	}
 	else {

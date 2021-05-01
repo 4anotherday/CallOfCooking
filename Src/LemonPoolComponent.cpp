@@ -14,10 +14,17 @@ LemonPoolComponent::~LemonPoolComponent()
 
 void LemonPoolComponent::awake(luabridge::LuaRef& data)
 {
+	
+	//TODO: PEDIR A FACTORIA
+	// TR
+	// Rigidbody
+	// EnemyHealth
+	// Beahviour
 }
 
 void LemonPoolComponent::start()
 {
+
 }
 
 void LemonPoolComponent::update()
