@@ -16,9 +16,9 @@ HowManyGameObjects = 4
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -400, Z = 0},Rotation = {X=0,Y=1,Z=0},Scale = {X=5,Y=3,Z=.1}}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -300, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=4,Y=.1,Z=2.3}}
 go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", 
-			RotateAngle = 90, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 9999}
 go_0[3] = { Component = "BoxCollider", Type="Box",Width=1000,Height=1,Depth=1000,IsTrigger=false}
 
@@ -49,11 +49,11 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_3={}
 go_3[0] ={Name ="Jugador" , HowManyCmps=4,Persist=false}
-go_3[1]={ Component = "Transform", Coord = {X = 0, Y = -340, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.3,Y=.3,Z=.3}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+go_3[1]={ Component = "Transform", Coord = {X = 0, Y = -200, Z = 0},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
+go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=20,Depth=20,Height=100}
+go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=100}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=4000,RotationSpeed=2000}
 
 go_4={}

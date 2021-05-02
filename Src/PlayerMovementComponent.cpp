@@ -41,6 +41,9 @@ void PlayerMovementComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	/*_rb->constrainZ(true, false);
+	_rb->constrainX(true, false);
+	_rb->constrainY(true, false);*/
 }
 
 void PlayerMovementComponent::update()
@@ -86,10 +89,10 @@ void PlayerMovementComponent::move(const float deltaTime)
 
 void PlayerMovementComponent::rotate(const float deltaTime)
 {
-	float mousePosX = _mouseInput->getMousePos().at(0) - _tr->getPosition().getX();
+	/*float mousePosX = _mouseInput->getMousePos().at(0) - _tr->getPosition().getX();
 	float mousePosY = _mouseInput->getMousePos().at(1) - _tr->getPosition().getY();
 
 	float angle = atan2(mousePosX, mousePosY) * 3.141592653589793 / 180.0;
 
-	_rb->setRotation(Vector3(0, 0, angle) * _rotationSpeed * deltaTime);
+	_rb->setRotation(Vector3(0, 0, angle) * _rotationSpeed * deltaTime);*/
 }
