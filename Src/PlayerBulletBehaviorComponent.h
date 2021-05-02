@@ -43,11 +43,11 @@ public:
 protected:
 
 	RigidBodyComponent* _rigidbody;
-	Transform* _playerPos;
+	Transform* _position;
 
 	float _movementSpeed;
 	Vector3 _direction;
-	float damage;
+	float _damage;
 
 private:
 };

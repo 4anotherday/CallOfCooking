@@ -8,8 +8,9 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-ADD_COMPONENT(LemonBehaviorComponent);
-LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(), _pSystem(nullptr)
+//ADD_COMPONENT(LemonBehaviorComponent);
+
+LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::LemonBehaviorComponent), _pSystem(nullptr)
 {
 }
 

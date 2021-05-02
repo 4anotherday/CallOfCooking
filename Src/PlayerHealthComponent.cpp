@@ -2,8 +2,8 @@
 #include "UserComponentIDs.h"
 #include "includeLUA.h"
 
-
 ADD_COMPONENT(PlayerHealthComponent);
+
 PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::Health), _maxLife(0), _lives(0)
 {
 }

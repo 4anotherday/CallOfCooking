@@ -10,7 +10,7 @@
 
 ADD_COMPONENT(GrenadeBulletBehaviorComponent);
 
-GrenadeBulletBehaviorComponent::GrenadeBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviourComponent), _rigidbody(nullptr), _playerPos(nullptr)
+GrenadeBulletBehaviorComponent::GrenadeBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr)
 {
 }
 

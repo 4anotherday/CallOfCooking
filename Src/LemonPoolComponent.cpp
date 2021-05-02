@@ -4,7 +4,9 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
-LemonPoolComponent::LemonPoolComponent():PoolComponent(UserComponentId::LemonPoolComponent)
+ADD_COMPONENT(LemonPoolComponent);
+
+LemonPoolComponent::LemonPoolComponent() :PoolComponent(UserComponentId::LemonPoolComponent)
 {
 }
 
@@ -14,7 +16,6 @@ LemonPoolComponent::~LemonPoolComponent()
 
 void LemonPoolComponent::awake(luabridge::LuaRef& data)
 {
-	
 	//TODO: PEDIR A FACTORIA
 	// TR
 	// Rigidbody
@@ -24,7 +25,6 @@ void LemonPoolComponent::awake(luabridge::LuaRef& data)
 
 void LemonPoolComponent::start()
 {
-
 }
 
 void LemonPoolComponent::update()

@@ -1,14 +1,11 @@
 #include "EnemyBehaviorComponent.h"
 #include "GameObject.h"
-#include "UserComponentIDs.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
 #include "Engine.h"
 #include "includeLUA.h"
 
-ADD_COMPONENT(EnemyBehaviorComponent);
-
-EnemyBehaviorComponent::EnemyBehaviorComponent() : Component(UserComponentId::EnemyBehaviorComponent), _rigidbody(nullptr), _playerPos(nullptr),
+EnemyBehaviorComponent::EnemyBehaviorComponent(UserComponentId::UserComponentId id) : Component(id), _rigidbody(nullptr), _playerPos(nullptr),
 _attackSpeed(), _isAttacking(), _damagePerSecond()
 {
 }

@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 4
+HowManyGameObjects = 6
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -57,12 +57,43 @@ go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=
 go_3[4] = { Component = "PlayerMovementComponent", Speed=4000,RotationSpeed=2000}
 
 go_4={}
-go_4[0] = {Name="GameManager", HowManyCmps=X, Persist = true}
-go_4[1] = { Component = "LevelManager"}
-go_4[2] = { Component = "ScoreManager" }
-go_4[1] = { Component = "LemonPoolComponent", HowMany= {Round1=10, Round2 = 20, Round3= 30}, Width= 20, Height= 20, HpPoints= 5}
-go_4[2] = { Component = "WatermelonPoolComponent", HowMany= {Round1=20, Round2 = 30, Round3= 40}, Width= 10, Height= 10, HpPoints= 3}
-go_4[3] = { Component = "GranadePoolComponent", HowMany= {Round1=30, Round2 = 50, Round3= 10}, Width= 30, Height= 30, HpPoints= 4}
+go_4[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
+go_4[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = 0},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
+go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_4[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=100}
+go_4[4] = { Component = "GrenadeBehaviorComponent", Range=100,AttackSpeed=2, MovementSpeed = 1}
+go_4[5] = { Component = "EnemyHealthComponent", Points=100,HitPoints=2}
+
+
+go_5={}
+go_5[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
+go_5[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = -100},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
+go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_5[3] = { Component = "RigidBody", Type="Box",Mass=0,Width=40,Depth=40,Height=100}
+go_5[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 20}
+
+-- go_4={}
+-- go_4[0] = {Name="GameManager", HowManyCmps=5, Persist = true}
+-- go_4[1] = { Component = "LevelManager"}
+-- go_4[2] = { Component = "ScoreManager" }
+-- go_4[1] = { Component = "LemonPoolComponent", HowMany= {Round1=10, Round2 = 20, Round3= 30}, Width= 20, Height= 20, HpPoints= 5}
+-- go_4[2] = { Component = "WatermelonPoolComponent", HowMany= {Round1=20, Round2 = 30, Round3= 40}, Width= 10, Height= 10, HpPoints= 3}
+-- go_4[3] = { Component = "GranadePoolComponent", HowMany= {Round1=30, Round2 = 50, Round3= 10}, Width= 30, Height= 30, HpPoints= 4, MovementSpeed= 3}
+
+
+
+-- go_5={}
+-- go_5[0] ={Name ="Granato" , HowManyCmps=4,Persist=false}
+-- go_5[1]={ Component = "Transform", Coord = {X = 300, Y = -200, Z = 150},Rotation = {X=0,Y=0,Z=0},Scale = {X=.3,Y=.3,Z=.3}}
+-- go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+-- 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+-- 			Visible=true, Shadows=true, RenderingDistance = 1000}
+-- go_5[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=100}
+-- go_5[4] = { Component = "GrenadeBehaviorComponent", Range=2,AttackSpeed=2, MovementSpeed = 1}
 
 -- go_3 = {}
 -- go_3[0] = { Name = "ImageR", HowManyCmps = 2, Persist = false}

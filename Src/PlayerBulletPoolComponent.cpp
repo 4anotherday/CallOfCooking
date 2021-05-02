@@ -4,6 +4,8 @@
 #include "Engine.h"
 #include "includeLUA.h"
 
+ADD_COMPONENT(PlayerBulletPoolComponent);
+
 PlayerBulletPoolComponent::PlayerBulletPoolComponent() :PoolComponent(UserComponentId::PlayerBulletsManagerComponent)
 {
 }

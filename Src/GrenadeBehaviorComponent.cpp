@@ -8,10 +8,11 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 #include "GranadeBulletPoolComponent.h"
+#include "RigidBodyComponent.h"
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
 
-GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent()
+GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::GrenadeBehaviorComponent)
 {
 }
 
@@ -30,8 +31,11 @@ void GrenadeBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));
-	_gameManager = Engine::getInstance()->findGameObject("GameManager");
-	_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
+	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Jugador")->getComponent(ComponentId::Transform));
+	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+
+	//_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	//_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
 }
 
 void GrenadeBehaviorComponent::update()
@@ -42,7 +46,7 @@ void GrenadeBehaviorComponent::update()
 	float deltaTime = EngineTime::getInstance()->deltaTime();
 	_timeToShoot -= deltaTime;
 
-	if (distance <= _range && _timeToShoot <= 0) {
+	if (distance <= _range /*&& _timeToShoot <= 0*/) {
 		attack();
 		_timeToShoot = _attackSpeed;
 	}
@@ -61,8 +65,14 @@ void GrenadeBehaviorComponent::walk()
 
 	//Move towards the player
 	Vector3 dir = playerPos - _tr->getPosition();
-	Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
-	_tr->setPosition(newPos);
+
+	//Cinematic
+	//Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
+	//_tr->setPosition(newPos);
+
+	//With Physx
+	dir = dir * _movementSpeed;
+	_rigidbody->addForce(dir);
 }
 
 void GrenadeBehaviorComponent::attack()
@@ -71,6 +81,6 @@ void GrenadeBehaviorComponent::attack()
 	Vector3 playerPos = _playerPos->getPosition();
 	Vector3 dir = playerPos - _tr->getPosition();
 
-	GameObject* newBullet = _bulletsManager->getInactiveGO();
+	//GameObject* newBullet = _bulletsManager->getInactiveGO();
 	//BulletBehaviour
 }

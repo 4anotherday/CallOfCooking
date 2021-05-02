@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include "KeyCodes.h"
+#include "UserComponentIDs.h"
 
 class Transform;
 class RigidBodyComponent;
@@ -14,7 +15,7 @@ public:
 	/// <summary>
 	/// Constructor of the class
 	/// </summary>
-	EnemyBehaviorComponent();
+	EnemyBehaviorComponent(UserComponentId::UserComponentId id);
 
 	/// <summary>
 	/// Destructor of the class
