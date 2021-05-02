@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include "KeyCodes.h"
+#include "Vector3.h"
 
 class GameObject;
 class RigidBodyComponent;
@@ -23,14 +24,9 @@ public:
 	virtual void awake(luabridge::LuaRef& data) override;
 	virtual void start() override;
 	virtual void update() override;
+	virtual void fixedUpdate() override;
 
 private:
-
-	/// <summary>
-	/// Moves the player
-	/// </summary>
-	/// <param name="deltaTime">The current delta time</param>
-	void move(const float deltaTime);
 
 	/// <summary>
 	/// Rotates the player
@@ -45,7 +41,7 @@ private:
 	EngineTime* _engineTime;
 
 	KeyCode _keyUp, _keyLeft, _keyRight, _keyDown;
-
+	Vector3 _velocity;
 	float _speed, _rotationSpeed;
 };
 #endif // !PLAYERMOVEMENTCOMPONENT_H

@@ -14,14 +14,14 @@
 ADD_COMPONENT(PlayerMovementComponent);
 
 PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::PlayerMovementComponent),
-_tr(nullptr), _rb(nullptr),
+_tr(nullptr), _rb(nullptr),_velocity(),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
 {	
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
-_tr(nullptr), _rb(nullptr),
+_tr(nullptr), _rb(nullptr), _velocity(),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
 {
@@ -50,49 +50,43 @@ void PlayerMovementComponent::update()
 {
 	float deltaTime = _engineTime->deltaTime();
 
-	move(deltaTime);
-	rotate(deltaTime);
-}
+	_velocity = _tr->getForward(); _velocity.normalize();
+	Vector3 right(_velocity.getZ(), 0, -_velocity.getX());
 
-void PlayerMovementComponent::move(const float deltaTime)
-{
-	Vector3 velocity = _tr->getForward(); velocity.normalize();
-	Vector3 right = { velocity.getZ(), 0, -velocity.getX() };
-
-	//Front and back movement
 	if (_keyboard->isKeyDown(_keyUp))
 	{
-		//Move player forward
-		velocity = velocity * _speed;
+		_velocity = _velocity * _speed;
 	}
 	else if (_keyboard->isKeyDown(_keyDown))
 	{
-		//Move player backwards
-		velocity = velocity * (-1.0 * _speed);
+		_velocity = _velocity * (-1.0 * _speed);
 	}
 
-	//Sideways movement
-	if (_keyboard->isKeyDown(_keyLeft))
+	if (_keyboard->isKeyDown(_keyRight))
 	{
-		//Move player to the left
-		velocity = velocity + (right * _speed);
+		_velocity = _velocity + (right * _speed * -1);
 	}
-	else if (_keyboard->isKeyDown(_keyRight))
+	else if (_keyboard->isKeyDown(_keyLeft))
 	{
-		//Move player to the right
-		velocity = velocity + (right * _speed*-1);
+		_velocity = _velocity + (right * _speed );
 	}
 
-	velocity = velocity * deltaTime;
-	_rb->addForce(velocity);
+	_velocity = _velocity * deltaTime;
+}
+
+void PlayerMovementComponent::fixedUpdate()
+{
+	_rb->addForce(_velocity);
+	float deltaTime = _engineTime->deltaTime();
+	rotate(deltaTime);
 }
 
 void PlayerMovementComponent::rotate(const float deltaTime)
 {
-	/*float mousePosX = _mouseInput->getMousePos().at(0) - _tr->getPosition().getX();
+	float mousePosX = _mouseInput->getMousePos().at(0) - _tr->getPosition().getX();
 	float mousePosY = _mouseInput->getMousePos().at(1) - _tr->getPosition().getY();
 
 	float angle = atan2(mousePosX, mousePosY) * 3.141592653589793 / 180.0;
 
-	_rb->setRotation(Vector3(0, 0, angle) * _rotationSpeed * deltaTime);*/
+	_rb->setRotation(Vector3(0, 0, angle) * _rotationSpeed * deltaTime);
 }
