@@ -87,6 +87,6 @@ void PlayerMovementComponent::rotate(const float deltaTime)
 	float mousePosY = _mouseInput->getMousePos().at(1) - _tr->getPosition().getY();
 
 	float angle = atan2(mousePosX, mousePosY) * 3.141592653589793 / 180.0;
-
-	_rb->setRotation(Vector3(0, 0, angle) * _rotationSpeed * deltaTime);
+	//*_rotationSpeed* deltaTime
+	//_rb->setRotation(angle,Vector3(0, 0, 1) );
 }
