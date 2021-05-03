@@ -5,6 +5,7 @@
 
 PoolComponent::PoolComponent(UserComponentId::UserComponentId id): Component(id)
 {
+	
 }
 
 PoolComponent::~PoolComponent()
@@ -12,6 +13,9 @@ PoolComponent::~PoolComponent()
 	for (auto go : _mainPool) {
 		delete go;
 		go = nullptr;
+
+		//PREGUNTAR SI HAY QUE CAMBIAR ESTO POR ALGUNA LLAMADA A LA LINEA DE ABAJO 
+		//Engine::getInstance()->remGameObject(_gameObject);
 	}
 	_mainPool.clear();
 	_inactivePool.clear();

@@ -26,15 +26,17 @@ public:
 	inline void addScore(int amount) { _score += amount; }
 
 	/// <summary>
-	/// Adds a combo point for for hitting an enemy
+	/// Adds a combo point for for hitting an enemy	
+	//  Eevery 20 hits, player will receive 5 extra points
 	/// </summary>
-	inline void addComboHitPoint();
+	void addComboHitPoint();
 
 	/// <summary>
 	/// Adds combo points for for killing an enemy
+	//  Each fruit will give the same number of points as the lives it has.Every 10 rounds, increase the points each fruit gives by the sum of itself.
 	/// </summary>
 	/// <param name="deathPoints">How many combo points for getting a kill</param>
-	inline void addComboDeathPoint(int deathPoints);
+	void addComboDeathPoint(int deathPoints);
 
 	/// <summary>
 	/// Retuns the current score
@@ -73,6 +75,7 @@ private:
 
 	/// <summary>
 	/// Performs the calculation of points related to the active combo sequence
+	/// Every 10x combo, a multiplier will be added that will increase the points the player has made in the duration of his combo
 	/// </summary>
 	void addTotalComboScore();
 
@@ -94,7 +97,8 @@ private:
 
 	EngineTime* _engineTime;
 	bool _isComboSequence;
-	int _comboPoints;
+	int _comboDeathPoints;
+	int _comboHitPoints;
 	float _comboTime;
 	float _actualComboSequenceTime;
 };

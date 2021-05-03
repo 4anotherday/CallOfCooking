@@ -2,8 +2,7 @@
 #ifndef ENEMYHEALTHCOMPONENT_H
 #define ENEMYHEALTHCOMPONENT_H
 
-#include "Component.h"
-
+#include "LevelManagerComponent.h"
 class ScoreManagerComponent;
 
 class EnemyHealthComponent : public Component	
@@ -40,11 +39,19 @@ public:
 	/// Reduce hit points
 	/// </summary>
 	/// <param name="damage">Damage points</param>
-	void reduceHitPoints(int damage);
+	void reduceLivesPoints(int damage);
+
+	/// <summary>
+	/// Restart the lives of the enemy
+	/// </summary>
+	void restartLives();
 private:
 	ScoreManagerComponent* _scoreManager;
-	int _points;
-	int _hitPoints;
+	LevelManagerComponent* _lvlManager;
+	EnemyType _enemyType;
+
+	int _totalLives;
+	int _remainingLives;
 	int _deathComboPoints;
 };
 #endif // !ENEMYHEALTHCOMPONENT_H

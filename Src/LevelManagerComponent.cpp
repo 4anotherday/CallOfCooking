@@ -42,13 +42,29 @@ void LevelManagerComponent::start()
 	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
 }
 
-void LevelManagerComponent::enemiesSpawn()
+void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 {
-	if (_currentLevel == 0) {
-		for (auto x = 0; x <= _levelsInfo->at(_currentLevel).enemyTypes; ++x) {
+	switch (type) {
+		case EnemyType::GRANADE: {
+			_granadePool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::LEMON: {
+			_lemonPool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::WATERMELON: {
+			_watermelonPool->setInactiveGO(go);
+			break;
+		}
+		default: {
+			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+			break;
 		}
 	}
-	else {
-		//TODO: RESETEAR Y ACTIVAR ENEMIGOS INACTIVOS DE LA POOL
-	}
+}
+
+void LevelManagerComponent::enemiesSpawn()
+{
+
 }

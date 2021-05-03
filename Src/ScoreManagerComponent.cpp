@@ -11,7 +11,7 @@
 ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
-	_score(0),_maxScore(0), _comboPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
+	_score(0),_maxScore(0), _comboHitPoints(0), _comboDeathPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
 	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager()
 {
 }
@@ -23,8 +23,7 @@ ScoreManagerComponent::~ScoreManagerComponent()
 void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 {
 	_score = data["Score"].cast<int>();
-	_maxScore = data["MaxScore"].cast<int>();
-	_comboPoints = data["ComboPoints"].cast<int>();
+	_maxScore = data["MaxScore"].cast<int>();	
 	_comboTime = data["ComboTime"].cast<float>();
 }
 
@@ -40,22 +39,31 @@ void ScoreManagerComponent::start()
 	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 }
 
-inline void ScoreManagerComponent::addComboHitPoint()
+void ScoreManagerComponent::addComboHitPoint()
 {
-	++_comboPoints;
+	++_comboHitPoints;
 	startOrRenewComboTime();
 }
 
-inline void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
+void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 {
-	_comboPoints += deathPoints;
+	_comboDeathPoints += deathPoints * (_lvlManager->getCurrentLevel() / 10);
 	startOrRenewComboTime();
 }
 
 void ScoreManagerComponent::addTotalComboScore()
 {
-	//PONER BIEN LA FUNCI�N DE C�LCULO -> REVISAR GDD O PREGUNTAR SI NO EST� CLARO
-	_score += (_comboPoints * _lvlManager->getCurrentLevel());
+	//Adding combo hit extra points
+	int totalPoints = (_comboHitPoints / 20) * 5;
+
+	//Adding combo death extra points
+	totalPoints += _comboDeathPoints;
+
+	//Adding multiplier extra points
+	float multiplier = 0.1f * ((_comboHitPoints + _comboDeathPoints) / 10);
+	float multiplierExtraPoints = totalPoints * multiplier;
+
+	totalPoints += int(multiplierExtraPoints);
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()
@@ -66,7 +74,8 @@ void ScoreManagerComponent::startOrRenewComboTime()
 
 void ScoreManagerComponent::clearComboSequence()
 {
-	_comboPoints = 0;
+	_comboHitPoints = 0;
+	_comboDeathPoints = 0;
 	_isComboSequence = false;
 }
 

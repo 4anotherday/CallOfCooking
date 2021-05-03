@@ -8,7 +8,8 @@
 
 ADD_COMPONENT(EnemyHealthComponent);
 
-EnemyHealthComponent::EnemyHealthComponent() : Component(UserComponentId::EnemyHealthComponent), _scoreManager(nullptr), _points(), _hitPoints()
+EnemyHealthComponent::EnemyHealthComponent() : Component(UserComponentId::EnemyHealthComponent),
+_scoreManager(nullptr),_lvlManager(nullptr), _enemyType(EnemyType::UNKNOW), _totalLives(0), _remainingLives(0), _deathComboPoints(0)
 {
 }
 
@@ -18,23 +19,28 @@ EnemyHealthComponent::~EnemyHealthComponent()
 
 void EnemyHealthComponent::awake(luabridge::LuaRef& data)
 {
-	_points = data["Points"].cast<int>();
-	_hitPoints = data["HitPoints"].cast<int>();
-	//_deathComboPoints = data["DeathComboPoints"].cast<int>();
+	_deathComboPoints = _totalLives = data["Points"].cast<int>();
+	_remainingLives = data["HitPoints"].cast<int>();
 }
 
 void EnemyHealthComponent::start()
 {
 	//_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+	//_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 }
 
-void EnemyHealthComponent::reduceHitPoints(int damage)
+void EnemyHealthComponent::reduceLivesPoints(int damage)
 {
-	_hitPoints -= damage;
-	if (_hitPoints <= 0 && _gameObject->getEnabled()) {
-		//TBD
-		//_scoreManager->addScore(_points);
-		_gameObject->setEnabled(false);   //Esto debería de bastar
-		Engine::getInstance()->remGameObject(_gameObject);
+	_remainingLives -= damage;
+	_scoreManager->addComboHitPoint();
+
+	if (_remainingLives <= 0 && _gameObject->getEnabled()) {
+		_scoreManager->addComboDeathPoint(_deathComboPoints);
+		_lvlManager->enemyDeath(_gameObject, _enemyType);
 	}
+}
+
+void EnemyHealthComponent::restartLives()
+{
+	_remainingLives = _totalLives;
 }

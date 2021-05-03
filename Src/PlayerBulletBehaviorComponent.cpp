@@ -44,7 +44,7 @@ void PlayerBulletBehaviorComponent::onCollision(GameObject* other)
 	//Buscar el componente de vida de enemigo, y en caso de que lo tenga es un enemigo
 	EnemyHealthComponent* health = dynamic_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
 	if (health != nullptr) {
-		health->reduceHitPoints(_damage);
+		health->reduceLivesPoints(_damage);
 	}
 	//Ponerse desactivado en la pool
 }

@@ -11,8 +11,10 @@ class WatermelonPoolComponent;
 
 class EngineTime;
 
+enum class EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
+
 struct Enemy {
-	int type;
+	EnemyType type;
 	int howManyEnemies;
 	Vector3 respawnPosition;
 };
@@ -41,6 +43,8 @@ public:
 	inline std::vector<Wave>* getLevelInfo() const { return _levelsInfo; }
 
 	inline int getCurrentLevel() const { return _currentLevel; }
+
+	void enemyDeath(GameObject* go, EnemyType type);
 
 private:
 	void enemiesSpawn();
