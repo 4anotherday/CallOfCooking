@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 6
+HowManyGameObjects = 10
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -54,7 +54,7 @@ go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_3[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=100,Bounciness=1}
-go_3[4] = { Component = "PlayerMovementComponent", Speed=10000,RotationSpeed=2000}
+go_3[4] = { Component = "PlayerMovementComponent", Speed=10000,RotationSpeed=1000}
 
 go_4={}
 go_4[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
@@ -75,6 +75,39 @@ go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_5[3] = { Component = "RigidBody", Type="Box",Mass=0,Width=40,Depth=40,Height=100}
 go_5[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 20}
+
+
+go_6={}
+go_6[0] ={Name ="ParedIzq" , HowManyCmps=3,Persist=false}
+go_6[1]={ Component = "Transform", Coord = {X = -133.6, Y = -205, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.01,Z=1.45}}
+go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_6[3] = { Component = "RigidBody", Type="Box",Static=true,Width=50,Depth=1,Height=100}
+
+go_7={}
+go_7[0] ={Name ="ParedDer" , HowManyCmps=3,Persist=false}
+go_7[1]={ Component = "Transform", Coord = {X = 133.6, Y = -205, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.01,Z=1.45}}
+go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=50,Depth=1,Height=2000}
+
+go_8={}
+go_8[0] ={Name ="ParedArr" , HowManyCmps=3,Persist=false}
+go_8[1]={ Component = "Transform", Coord = {X = 0, Y = -205, Z = -74.75},Rotation = {X=0,Y=0,Z=0},Scale = {X=2.77,Y=.01,Z=.09}}
+go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_8[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1000,Depth=20,Height=100}
+
+go_9={}
+go_9[0] ={Name ="ParedAb" , HowManyCmps=3,Persist=false}
+go_9[1]={ Component = "Transform", Coord = {X = 0, Y = -205, Z = 74.75},Rotation = {X=0,Y=0,Z=0},Scale = {X=2.77,Y=.01,Z=.09}}
+go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_9[3] = { Component = "RigidBody", Type="Box",Static=true,Width=10,Depth=20,Height=100}
 
 -- go_4={}
 -- go_4[0] = {Name="GameManager", HowManyCmps=5, Persist = true}
