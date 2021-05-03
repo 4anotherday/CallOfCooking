@@ -37,6 +37,9 @@ void EnemyHealthComponent::reduceLivesPoints(int damage)
 	if (_remainingLives <= 0 && _gameObject->getEnabled()) {
 		_scoreManager->addComboDeathPoint(_deathComboPoints);
 		_lvlManager->enemyDeath(_gameObject, _enemyType);
+
+		//Lives are reset so they are ready when the enemy reactivates
+		restartLives(); 
 	}
 }
 

@@ -11,7 +11,7 @@
 ADD_COMPONENT(LevelManagerComponent);
 
 LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
-_engineTime(EngineTime::getInstance()), _levelsInfo(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
+_engineTime(EngineTime::getInstance()), _levelsInfo(), _granadePool(), _lemonPool(), _watermelonPool(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
 {
 }
 
@@ -28,6 +28,7 @@ void LevelManagerComponent::update()
 {
 	if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo->at(_currentLevel).waveTime) {
 		enemiesSpawn();
+		_newWave = false;
 	}
 
 	if (_levelsInfo->at(_currentLevel).enemiesLeft == 0) {
@@ -40,6 +41,8 @@ void LevelManagerComponent::update()
 void LevelManagerComponent::start()
 {
 	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
+	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
+	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
@@ -66,5 +69,12 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 
 void LevelManagerComponent::enemiesSpawn()
 {
-
+	for (int x = EnemyType::GRANADE; x != EnemyType::WATERMELON; x++) {
+		if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::GRANADE)
+			_granadePool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies);
+		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::LEMON)
+			_lemonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies);
+		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::WATERMELON)
+			_watermelonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies);
+	}	
 }

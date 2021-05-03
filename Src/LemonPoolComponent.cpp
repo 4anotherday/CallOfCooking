@@ -8,10 +8,12 @@ ADD_COMPONENT(LemonPoolComponent);
 
 LemonPoolComponent::LemonPoolComponent() :PoolComponent(UserComponentId::LemonPoolComponent)
 {
+
 }
 
 LemonPoolComponent::~LemonPoolComponent()
 {
+
 }
 
 void LemonPoolComponent::awake(luabridge::LuaRef& data)
@@ -23,14 +25,7 @@ void LemonPoolComponent::awake(luabridge::LuaRef& data)
 	// Beahviour
 }
 
-void LemonPoolComponent::start()
-{
-}
-
-void LemonPoolComponent::update()
-{
-}
-
 void LemonPoolComponent::createGos(int howMany)
 {
+
 }

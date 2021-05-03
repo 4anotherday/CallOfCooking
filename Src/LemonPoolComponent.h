@@ -18,8 +18,6 @@ public:
 	virtual ~LemonPoolComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
-	virtual void start() override;
-	virtual void update() override;
 
 protected:
 	/// <summary>

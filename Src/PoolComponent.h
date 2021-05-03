@@ -2,10 +2,14 @@
 #ifndef POOLCOMPONENT_H
 #define POOLCOMPONENT_H
 
+#include <stdlib.h> 
+#include <time.h>       /* time -> ver si se puede cambiar el random por uno que use los delta times de EngineTime*/
 #include "UserComponentIDs.h"
 #include "Component.h"
 #include <vector>
+#include "Vector3.h"
 #include "UserComponentIDs.h"
+class LevelManagerComponent;
 
 class PoolComponent : public Component
 {
@@ -19,6 +23,10 @@ public:
 	/// Destructor of the class
 	/// </summary>
 	virtual ~PoolComponent();
+
+	virtual void start() override;
+
+	virtual void update() override;
 
 	/// <summary>
 	/// Returns the entire group of game objects
@@ -40,6 +48,11 @@ public:
 	/// </summary>
 	virtual void setInactiveGO(GameObject* go);
 
+	/// <summary>
+	///	Wake up the requested number of enemies, it is a process similar to resetting them
+	/// </summary>
+	virtual void wakeUpEnemies(int howMany);
+
 protected:
 	/// <summary>
 	///	Creates a specified number of inactive game objects and includes them in both groups
@@ -47,7 +60,19 @@ protected:
 	/// </summary>
 	virtual void createGos(int howMany) {};
 
+
+	bool isTimeToSpawn();
+
+	LevelManagerComponent* _lvlManager;
+
 	std::vector<GameObject*> _mainPool;
-	std::vector<GameObject*> _inactivePool;
+	std::vector<GameObject*> _inactivePool;	
+	std::vector<Vector3> _respawnsPositions;	
+
+	bool _isSpawnTime;
+	int _howManyEnemiesSpawn;
+	int _totalEnemiesSpawned;
+	float _spawnEnemyTime;
+	float _lastSpawnEnemyTime;
 };
 #endif // !POOLCOMPONENT_H

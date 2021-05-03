@@ -8,23 +8,21 @@
 class GranadePoolComponent;
 class LemonPoolComponent;
 class WatermelonPoolComponent;
-
 class EngineTime;
 
-enum class EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
+enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
 struct Enemy {
 	EnemyType type;
 	int howManyEnemies;
-	Vector3 respawnPosition;
 };
 
 struct Wave {
-	int enemyTypes;
 	int waveNumber;
 	int enemiesLeft;
+	int totalEnemies;
+	// Time between the end of one waveand the beginning of the next
 	float waveTime;
-	float spawnEnemyTime;
 	std::vector<Enemy> enemies;
 };
 
