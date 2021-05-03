@@ -23,14 +23,9 @@ public:
 	/// <summary>
 	///	Wake up the requested number of enemies, it is a process similar to resetting them
 	/// </summary>
-	virtual void wakeUpEnemies(int howMany);
+	virtual void wakeUpEnemies(int howMany, float spawnEnemyTime);
 
 protected:
-	/// <summary>
-	///	Creates a specified number of inactive game objects and includes them in both groups
-	/// </summary>		
-	virtual void createGos(int howMany);
-
 	/// <summary>
 	///	Check if it's time to spawn an enemy
 	/// </summary>	

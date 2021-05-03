@@ -8,9 +8,8 @@
 #include <stdlib.h> 
 #include <time.h>       /* time -> ver si se puede cambiar el random por uno que use los delta times de EngineTime*/
 
-
-
-EnemyPoolComponent::EnemyPoolComponent(UserComponentId::UserComponentId id):PoolComponent(id)
+EnemyPoolComponent::EnemyPoolComponent(UserComponentId::UserComponentId id):PoolComponent(id),
+_respawnsPositions(), _isSpawnTime(false), _howManyEnemiesSpawn(0), _totalEnemiesSpawned(0()), _spawnEnemyTime(0.0f), _lastSpawnEnemyTime(0.0f)
 {
 	srand(time(NULL));
 }
@@ -30,9 +29,10 @@ void EnemyPoolComponent::update()
 	}
 }
 
-void EnemyPoolComponent::wakeUpEnemies(int howMany)
+void EnemyPoolComponent::wakeUpEnemies(int howMany, float spawnEnemyTime)
 {
 	_howManyEnemiesSpawn = howMany;
+	_spawnEnemyTime = spawnEnemyTime;
 	_isSpawnTime = true;
 	_totalEnemiesSpawned = 0;
 }
@@ -40,15 +40,9 @@ void EnemyPoolComponent::wakeUpEnemies(int howMany)
 
 bool EnemyPoolComponent::isTimeToSpawn()
 {
-	bool spawn = false;
-
 	if (EngineTime::getInstance()->deltaTime() <= _lastSpawnEnemyTime + _spawnEnemyTime) {
 		_lastSpawnEnemyTime = EngineTime::getInstance()->deltaTime();
-		spawn = true;
+		return true;
 	}
-	return spawn;
-}
-
-void EnemyPoolComponent::createGos(int howMany)
-{
+	return false;
 }

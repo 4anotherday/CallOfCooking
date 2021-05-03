@@ -15,10 +15,10 @@ enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 struct Enemy {
 	EnemyType type;
 	int howManyEnemies;
+	float spawnEnemyTime;
 };
 
 struct Wave {
-	int waveNumber;
 	int enemiesLeft;
 	int totalEnemies;
 	// Time between the end of one waveand the beginning of the next
