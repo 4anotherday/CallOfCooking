@@ -31,10 +31,6 @@ void LemonPoolComponent::update()
 {
 }
 
-void LemonPoolComponent::wakeUpInactiveGroup(int howMany)
-{
-}
-
 void LemonPoolComponent::createGos(int howMany)
 {
 }

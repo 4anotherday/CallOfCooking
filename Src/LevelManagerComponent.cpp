@@ -28,10 +28,9 @@ void LevelManagerComponent::update()
 {
 	if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo->at(_currentLevel).waveTime) {
 		enemiesSpawn();
-		_newWave = false;
 	}
 
-	if (_levelsInfo->at(_currentLevel).totalEnemiesLeft == 0) {
+	if (_levelsInfo->at(_currentLevel).enemiesLeft == 0) {
 		++_currentLevel;
 		_newWave = true;
 		_waveStartTime = _engineTime->deltaTime();
@@ -41,39 +40,15 @@ void LevelManagerComponent::update()
 void LevelManagerComponent::start()
 {
 	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
-	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
-	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
-}
-
-void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type, int id)
-{
-	switch (type) {
-		case EnemyType::Granade:{
-
-			break;
-		}
-		case EnemyType::Lemon: {
-			break;
-		}
-		case EnemyType::Watermelon: {
-			break;
-		}
-		default: {
-			//TODO: EXCEPCIÓN DE TIPO DE ENEMIGO INVÁLIDO
-			break;
-		}
-	}
-	
 }
 
 void LevelManagerComponent::enemiesSpawn()
 {
-	for (auto x = 0; x < _levelsInfo->at(_currentLevel).enemies.size(); ++x) {
-		if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::Granade) {
-			//_granadePool.
+	if (_currentLevel == 0) {
+		for (auto x = 0; x <= _levelsInfo->at(_currentLevel).enemyTypes; ++x) {
 		}
-		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::Lemon) {
-		}
-		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::Watermelon) {}
+	}
+	else {
+		//TODO: RESETEAR Y ACTIVAR ENEMIGOS INACTIVOS DE LA POOL
 	}
 }

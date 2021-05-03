@@ -5,7 +5,6 @@
 #include "Component.h"
 
 class ScoreManagerComponent;
-class LevelManagerComponent;
 
 class EnemyHealthComponent : public Component	
 {
@@ -38,23 +37,14 @@ public:
 	inline void setDeathComboPoints(int dP) { _deathComboPoints = dP; }
 
 	/// <summary>
-	/// Reduce hit points on the enemy
+	/// Reduce hit points
 	/// </summary>
 	/// <param name="damage">Damage points</param>
-	void reduceLivesPoints(int damage);
-
-	/// <summary>
-	/// Reset the number of lives
-	/// </summary>
-	void restartLives();
-
+	void reduceHitPoints(int damage);
 private:
-	ScoreManagerComponent* _scoreManager;	
-	LevelManagerComponent* _lvlManager;
-	EnemyType _enemyType;
-
-	int _totalLives;
-	int _remainingLives;
+	ScoreManagerComponent* _scoreManager;
+	int _points;
+	int _hitPoints;
 	int _deathComboPoints;
 };
 #endif // !ENEMYHEALTHCOMPONENT_H

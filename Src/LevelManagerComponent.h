@@ -11,15 +11,14 @@ class WatermelonPoolComponent;
 
 class EngineTime;
 
-enum enemyType{ Granade, Lemon, Watermelon };
-
 struct Enemy {
-	std::string type;
+	int type;
 	int howManyEnemies;
 	Vector3 respawnPosition;
 };
 
 struct Wave {
+	int enemyTypes;
 	int waveNumber;
 	int enemiesLeft;
 	float waveTime;
