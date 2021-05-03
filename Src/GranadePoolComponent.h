@@ -21,6 +21,11 @@ public:
 	virtual void start() override;
 	virtual void update() override;
 
+	/// <summary>
+	/// Awaken a group of inactive enemies
+	/// </summary>
+	virtual void wakeUpInactiveGroup(int howMany);
+
 protected:
 	/// <summary>
 	///	Creates a specified number of inactive game objects and includes them in both groups

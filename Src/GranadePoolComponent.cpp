@@ -53,6 +53,10 @@ void GranadePoolComponent::update()
 {
 }
 
+void GranadePoolComponent::wakeUpInactiveGroup(int howMany)
+{
+}
+
 void GranadePoolComponent::createGos(int howMany)
 {
 }

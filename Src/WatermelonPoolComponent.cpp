@@ -31,6 +31,10 @@ void WatermelonPoolComponent::update()
 {
 }
 
+void WatermelonPoolComponent::wakeUpInactiveGroup(int howMany)
+{
+}
+
 void WatermelonPoolComponent::createGos(int howMany)
 {
 }
