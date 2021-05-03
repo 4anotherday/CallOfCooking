@@ -6,7 +6,7 @@
 
 ADD_COMPONENT(LemonPoolComponent);
 
-LemonPoolComponent::LemonPoolComponent() :PoolComponent(UserComponentId::LemonPoolComponent)
+LemonPoolComponent::LemonPoolComponent() :EnemyPoolComponent(UserComponentId::LemonPoolComponent)
 {
 
 }

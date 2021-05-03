@@ -2,9 +2,9 @@
 #ifndef GRANADEPOOLCOMPONENT_H
 #define GRANADEPOOLCOMPONENT_H
 
-#include "PoolComponent.h"
+#include "EnemyPoolComponent.h"
 
-class GranadePoolComponent : public PoolComponent
+class GranadePoolComponent : public EnemyPoolComponent
 {
 public:
 	/// <summary>

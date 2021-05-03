@@ -2,9 +2,9 @@
 #ifndef LEMONPOOLCOMPONENT_H
 #define LEMONPOOLCOMPONENT_H
 
-#include "PoolComponent.h"
+#include "EnemyPoolComponent.h"
 
-class LemonPoolComponent : public PoolComponent	
+class LemonPoolComponent : public EnemyPoolComponent	
 {
 public:
 	/// <summary>

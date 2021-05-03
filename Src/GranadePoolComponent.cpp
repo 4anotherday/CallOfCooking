@@ -10,7 +10,7 @@
 
 ADD_COMPONENT(GranadePoolComponent);
 
-GranadePoolComponent::GranadePoolComponent() : PoolComponent(UserComponentId::GranadePoolComponent)
+GranadePoolComponent::GranadePoolComponent() : EnemyPoolComponent(UserComponentId::GranadePoolComponent)
 {
 }
 

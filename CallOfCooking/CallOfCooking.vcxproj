@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\EnemyBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\EnemyHealthComponent.cpp" />
+    <ClCompile Include="..\Src\EnemyPoolComponent.cpp" />
     <ClCompile Include="..\Src\GranadeBulletPoolComponent.cpp" />
     <ClCompile Include="..\Src\GranadePoolComponent.cpp" />
     <ClCompile Include="..\Src\GrenadeBehaviorComponent.cpp" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
     <ClInclude Include="..\Src\EnemyHealthComponent.h" />
+    <ClInclude Include="..\Src\EnemyPoolComponent.h" />
     <ClInclude Include="..\Src\GranadeBulletPoolComponent.h" />
     <ClInclude Include="..\Src\GranadePoolComponent.h" />
     <ClInclude Include="..\Src\GrenadeBehaviorComponent.h" />

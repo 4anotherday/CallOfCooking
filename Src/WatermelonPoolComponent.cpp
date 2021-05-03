@@ -6,7 +6,7 @@
 
 ADD_COMPONENT(WatermelonPoolComponent);
 
-WatermelonPoolComponent::WatermelonPoolComponent() :PoolComponent(UserComponentId::WatermelonPoolComponent)
+WatermelonPoolComponent::WatermelonPoolComponent() :EnemyPoolComponent(UserComponentId::WatermelonPoolComponent)
 {
 }
 
