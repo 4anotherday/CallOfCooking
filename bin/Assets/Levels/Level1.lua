@@ -41,8 +41,8 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_3 = {}
 go_3[0] = { Name = "Jugador", HowManyCmps = 4, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = -250, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.3, Y = 0.3, Z = 0.3}}
-go_3[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1}
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = -290, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.3, Y = 0.3, Z = 0.3}}
+go_3[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
 go_3[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}

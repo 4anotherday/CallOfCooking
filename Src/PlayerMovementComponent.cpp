@@ -76,7 +76,7 @@ void PlayerMovementComponent::update()
 
 void PlayerMovementComponent::fixedUpdate()
 {
-	_rb->addForce(_velocity);
+	_rb->setLinearVelocity(_velocity);
 	float deltaTime = _engineTime->deltaTime();
 	rotate(deltaTime);
 }
