@@ -26,6 +26,8 @@ public:
 	virtual void update() override;
 	virtual void fixedUpdate() override;
 
+	void increaseSpeed(float extraSpeed);
+
 private:
 
 	/// <summary>

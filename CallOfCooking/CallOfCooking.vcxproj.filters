@@ -64,6 +64,11 @@
     <ClCompile Include="..\Src\PoolComponent.cpp">
       <Filter>Archivos de origen\Others</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\CardComponent.cpp" />
+    <ClCompile Include="..\Src\CardSystemComponent.cpp" />
+    <ClCompile Include="..\Src\LifeCardComponent.cpp" />
+    <ClCompile Include="..\Src\MovementSpeedCardComponent.cpp" />
+    <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h">
@@ -129,6 +134,11 @@
     <ClInclude Include="..\Src\EnemyPoolComponent.h">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\CardComponent.h" />
+    <ClInclude Include="..\Src\CardSystemComponent.h" />
+    <ClInclude Include="..\Src\LifeCardComponent.h" />
+    <ClInclude Include="..\Src\MovementSpeedCardComponent.h" />
+    <ClInclude Include="..\Src\AttackSpeedCardComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Archivos de encabezado">
