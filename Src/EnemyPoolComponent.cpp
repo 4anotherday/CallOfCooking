@@ -5,10 +5,10 @@
 #include "UserComponentIDs.h"
 #include "Engine.h"
 #include "includeLUA.h"
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <time.h>       /* time -> ver si se puede cambiar el random por uno que use los delta times de EngineTime*/
 
-EnemyPoolComponent::EnemyPoolComponent(UserComponentId::UserComponentId id):PoolComponent(id),
+EnemyPoolComponent::EnemyPoolComponent(UserComponentId::UserComponentId id) :PoolComponent(id),
 _respawnsPositions(), _isSpawnTime(false), _howManyEnemiesSpawn(0), _totalEnemiesSpawned(0()), _spawnEnemyTime(0.0f), _lastSpawnEnemyTime(0.0f)
 {
 	srand(time(NULL));
@@ -36,7 +36,6 @@ void EnemyPoolComponent::wakeUpEnemies(int howMany, float spawnEnemyTime)
 	_isSpawnTime = true;
 	_totalEnemiesSpawned = 0;
 }
-
 
 bool EnemyPoolComponent::isTimeToSpawn()
 {

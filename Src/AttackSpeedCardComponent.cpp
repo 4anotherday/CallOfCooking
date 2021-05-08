@@ -4,6 +4,8 @@
 #include "Engine.h"
 #include "GameObject.h"
 
+ADD_COMPONENT(AttackSpeedCardComponent);
+
 float AttackSpeedCardComponent::_attackRate = 3;
 
 AttackSpeedCardComponent::AttackSpeedCardComponent() : CardComponent(UserComponentId::UserComponentId::MovementSpeedCardComponent), _player(nullptr) {

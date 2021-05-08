@@ -5,6 +5,8 @@
 #include "PlayerHealthComponent.h"
 #include "includeLUA.h"
 
+ADD_COMPONENT(LifeCardComponent);
+
 int LifeCardComponent::_extraLife = 3;
 
 LifeCardComponent::LifeCardComponent() : CardComponent(UserComponentId::UserComponentId::LifeCardComponent), _player(nullptr) {

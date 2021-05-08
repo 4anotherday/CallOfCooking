@@ -4,6 +4,8 @@
 #include "CardSystemComponent.h"
 #include "UserComponentIDs.h"
 
+ADD_COMPONENT(CardSystemComponent);
+
 CardSystemComponent::CardSystemComponent() : Component(UserComponentId::UserComponentId::CardSystemComponent)
 {
 }

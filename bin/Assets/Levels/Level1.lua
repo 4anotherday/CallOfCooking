@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 8
+HowManyGameObjects = 9
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -80,6 +80,16 @@ go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1000,Depth=10,Height=1000}
 
+
+go_8={}
+go_8[0] ={Name ="WaterMelon" , HowManyCmps=5,Persist=false}
+go_8[1]={ Component = "Transform", Coord = {X = 150, Y = -290, Z = 100},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.3,Y=0.3,Z=0.3}}
+go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_8[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
+go_8[4] = { Component = "WatermelonBehaviorComponent", Range =100, MovementSpeed = 1, TimeToExplode= 2}
+go_8[5] = { Component = "ParticleSystem", Path ="Examples/Ejemplo"}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}

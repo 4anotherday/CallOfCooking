@@ -7,6 +7,8 @@
 
 int MovementSpeedCardComponent::_extraMovementSpeed = 3;
 
+ADD_COMPONENT(MovementSpeedCardComponent);
+
 MovementSpeedCardComponent::MovementSpeedCardComponent() : CardComponent(UserComponentId::UserComponentId::MovementSpeedCardComponent), _player(nullptr) {
 }
 

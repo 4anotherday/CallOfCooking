@@ -1,1 +1,2 @@
-09:06:04 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:15:13 -> INFO: Creacion
+18:15:14 -> INFO: Archivo de carga de escena de lua correctamente inicializado
