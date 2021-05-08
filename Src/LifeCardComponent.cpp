@@ -17,12 +17,8 @@ LifeCardComponent::~LifeCardComponent()
 void LifeCardComponent::start()
 {
 	_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
-}
-
-void LifeCardComponent::awake(luabridge::LuaRef& data)
-{
-	setCallBack(operate);
 	setCallBackParam(_player);
+	setCallBack(operate);
 }
 
 void LifeCardComponent::operate(void* player)

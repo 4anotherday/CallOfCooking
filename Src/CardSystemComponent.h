@@ -5,8 +5,6 @@
 #include "Component.h"
 #include <vector>
 
-class CardComponent;
-
 class CardSystemComponent : public Component
 {
 public:
@@ -23,6 +21,6 @@ public:
 	virtual void start() override;
 
 private:
-	std::vector<CardComponent*> _carts;
+	std::vector<GameObject*> _carts;
 };
 #endif // !CARDSYSTEMCOMPONENT_H

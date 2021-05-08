@@ -19,8 +19,6 @@ public:
 	/// </summary>
 	virtual ~LifeCardComponent();
 
-	virtual void awake(luabridge::LuaRef& data) override;
-
 	virtual void start() override;
 
 	static void operate(void* player);

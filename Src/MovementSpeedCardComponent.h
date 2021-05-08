@@ -21,7 +21,7 @@ public:
 
 	virtual void start() override;
 
-	void operate();
+	static void operate(void* player);
 
 protected:
 	PlayerMovementComponent* _player;

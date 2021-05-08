@@ -17,10 +17,12 @@ MovementSpeedCardComponent::~MovementSpeedCardComponent()
 void MovementSpeedCardComponent::start()
 {
 	_player = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
+	setCallBackParam(_player);
+	setCallBack(operate);
 }
 
-void MovementSpeedCardComponent::operate()
+void MovementSpeedCardComponent::operate(void* player)
 {
 	//Do something with the players movementSpeed
-	_player->increaseSpeed(_extraMovementSpeed);
+	static_cast<PlayerMovementComponent*>(player)->increaseSpeed(_extraMovementSpeed);
 }

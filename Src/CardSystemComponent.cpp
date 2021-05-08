@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "includeLUA.h"
 #include "CardSystemComponent.h"
-#include "LevelManagerComponent.h"
 #include "UserComponentIDs.h"
 
 CardSystemComponent::CardSystemComponent() : Component(UserComponentId::UserComponentId::CardSystemComponent)

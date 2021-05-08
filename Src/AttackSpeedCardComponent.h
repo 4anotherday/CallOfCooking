@@ -20,9 +20,10 @@ public:
 
 	virtual void start() override;
 
-	virtual void operate();
+	static void operate(void* player);
 
 protected:
 	PlayerAttackComponent* _player;
+	static float _attackRate;
 };
 #endif // !ATTACKSPEEDCARDCOMPONENT_H
