@@ -8,6 +8,7 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 #include "GranadeBulletPoolComponent.h"
+#include "GrenadeBulletBehaviorComponent.h"
 #include "RigidBodyComponent.h"
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
@@ -46,9 +47,11 @@ void GrenadeBehaviorComponent::update()
 	float deltaTime = EngineTime::getInstance()->deltaTime();
 	_timeToShoot -= deltaTime;
 
-	if (distance <= _range /*&& _timeToShoot <= 0*/) {
-		attack();
-		_timeToShoot = _attackSpeed;
+	if (distance <= _range) {
+		if (_timeToShoot <= 0) {
+			attack();
+			_timeToShoot = _attackSpeed;
+		}
 	}
 	else {
 		walk();
@@ -80,7 +83,12 @@ void GrenadeBehaviorComponent::attack()
 	//Shoot an enemy bullet
 	Vector3 playerPos = _playerPos->getPosition();
 	Vector3 dir = playerPos - _tr->getPosition();
+	dir = dir.normalize();
+	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
 
-	//GameObject* newBullet = _bulletsManager->getInactiveGO();
-	//BulletBehaviour
+	GameObject* newBullet = Engine::getInstance()->findGameObject("Bala");//_bulletsManager->getInactiveGO();
+	GrenadeBulletBehaviorComponent* c = static_cast<GrenadeBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::GrenadeBulletBehaviourComponent));
+	Vector3 myPos = _tr->getPosition();
+	Vector3 bulletPos = myPos + (dir * 40);
+	c->beShot(bulletPos, dir);
 }

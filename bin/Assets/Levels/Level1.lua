@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 9
+HowManyGameObjects = 11
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -40,13 +40,17 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 			LightDirection = {X=0,Y=-1,Z=0}}
 
 go_3 = {}
-go_3[0] = { Name = "Jugador", HowManyCmps = 4, Persist = false}
+go_3[0] = { Name = "Jugador", HowManyCmps = 6, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = -290, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.3, Y = 0.3, Z = 0.3}}
 go_3[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
 go_3[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=20000,RotationSpeed=1000}
+go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
+go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
+
+
 
 go_4={}
 go_4[0] ={Name ="ParedIzq" , HowManyCmps=3,Persist=false}
@@ -82,15 +86,33 @@ go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1000,Depth=10,
 
 
 go_8={}
-go_8[0] ={Name ="WaterMelon" , HowManyCmps=5,Persist=false}
+go_8[0] ={Name ="Lemon" , HowManyCmps=4,Persist=false}
 go_8[1]={ Component = "Transform", Coord = {X = 150, Y = -290, Z = 100},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.3,Y=0.3,Z=0.3}}
-go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
+go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Orange", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_8[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
-go_8[4] = { Component = "WatermelonBehaviorComponent", Range =100, MovementSpeed = 1, TimeToExplode= 2}
-go_8[5] = { Component = "ParticleSystem", Path ="Examples/Ejemplo"}
+go_8[4] = { Component = "GrenadeBehaviorComponent", Range =100, MovementSpeed = 1, AttackSpeed=2}
 
+
+go_9={}
+go_9[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
+go_9[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.1,Z=.1}}
+go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_9[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
+go_9[4] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
+
+
+go_10={}
+go_10[0] ={Name ="BalaJugador" , HowManyCmps=4,Persist=false}
+go_10[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.1,Z=.1}}
+go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_10[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
+go_10[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
 --go_8[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = 0},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
@@ -102,14 +124,7 @@ go_8[5] = { Component = "ParticleSystem", Path ="Examples/Ejemplo"}
 --go_8[5] = { Component = "EnemyHealthComponent", Points=100,HitPoints=2}
 
 
---go_9={}
---go_9[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
---go_9[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = -100},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
---go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
---			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
---			Visible=true, Shadows=true, RenderingDistance = 1000}
---go_9[3] = { Component = "RigidBody", Type="Box",Mass=0,Width=40,Depth=40,Height=100}
---go_9[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 20}
+
 
 
 -- go_10={}

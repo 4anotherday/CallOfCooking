@@ -9,7 +9,7 @@
 ADD_COMPONENT(EnemyHealthComponent);
 
 EnemyHealthComponent::EnemyHealthComponent() : Component(UserComponentId::EnemyHealthComponent),
-_scoreManager(nullptr),_lvlManager(nullptr), _enemyType(EnemyType::UNKNOW), _totalLives(0), _remainingLives(0), _deathComboPoints(0)
+_scoreManager(nullptr), _lvlManager(nullptr), _enemyType(EnemyType::UNKNOW), _totalLives(0), _remainingLives(0), _deathComboPoints(0)
 {
 }
 
@@ -39,7 +39,7 @@ void EnemyHealthComponent::reduceLivesPoints(int damage)
 		_lvlManager->enemyDeath(_gameObject, _enemyType);
 
 		//Lives are reset so they are ready when the enemy reactivates
-		restartLives(); 
+		restartLives();
 	}
 }
 

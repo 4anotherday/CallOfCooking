@@ -10,7 +10,7 @@
 
 ADD_COMPONENT(PlayerBulletBehaviorComponent);
 
-PlayerBulletBehaviorComponent::PlayerBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviorComponent), _rigidbody(nullptr), _position(nullptr), _damage()
+PlayerBulletBehaviorComponent::PlayerBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviorComponent), _rigidbody(nullptr), _tr(nullptr), _damage()
 {
 }
 
@@ -26,7 +26,7 @@ void PlayerBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void PlayerBulletBehaviorComponent::start()
 {
-	_position = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_direction = Vector3(0, 0, 1);
 }
@@ -47,4 +47,14 @@ void PlayerBulletBehaviorComponent::onCollision(GameObject* other)
 		health->reduceLivesPoints(_damage);
 	}
 	//Ponerse desactivado en la pool
+}
+
+void PlayerBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
+{
+	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
+	_rigidbody->setAngularVelocity(Vector3(0, 0, 0));
+	Vector3 impulse = (dir * _movementSpeed);
+	_rigidbody->addImpulse(impulse);
+	_tr->setPosition(pos);
+	_direction = dir;
 }

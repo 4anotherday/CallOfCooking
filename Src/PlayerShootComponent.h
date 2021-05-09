@@ -38,6 +38,8 @@ private:
 	/// </summary>
 	void shoot();
 
+	void getDirectionOfShot();
+
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
