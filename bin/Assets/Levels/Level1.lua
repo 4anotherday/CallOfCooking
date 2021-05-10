@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 8
+HowManyGameObjects = 9
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -81,15 +81,16 @@ go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1000,Depth=10,Height=1000}
 
 
---go_10={}
---go_10[0] = {Name="GameManager", HowManyCmps=5, Persist = false}
---go_10[1] = { Component = "LevelManager"}
---go_10[2] = { Component = "ScoreManager", Score = 0, MaxScore = 0, ComboTime = 2 }
---go_10[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "prefabTest.lua",
+
+go_8={}
+go_8[0] = {Name="GameManager", HowManyCmps=1, Persist = false}
+--go_8[1] = { Component = "LevelManager"}
+--go_8[2] = { Component = "ScoreManager", Score = 0, MaxScore = 0, ComboTime = 2 }
+--go_8[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "prefabTest.lua",
 --				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
---go_10[4] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "prefabTest.lua",
---				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
---go_10[5] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "prefabTest.lua",
+go_8[1] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabTest.lua",
+				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+--go_8[5] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "prefabTest.lua",
 --				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 

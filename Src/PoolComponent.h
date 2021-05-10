@@ -50,6 +50,8 @@ protected:
 	/// </summary>
 	virtual void createGos(int howMany) {};
 
+	void loadPrefab(std::string path, int howMany);
+
 	LevelManagerComponent* _lvlManager;
 
 	std::vector<GameObject*> _mainPool;
