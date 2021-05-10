@@ -4,6 +4,7 @@
 #include "MouseInput.h"
 #include "EngineTime.h"
 #include "Engine.h"
+
 #include "includeLUA.h"
 #include "Transform.h"
 #include "RenderObjectComponent.h"
@@ -22,6 +23,7 @@ _mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _time
 
 PlayerShootComponent::~PlayerShootComponent()
 {
+	if (shotDirection != nullptr)delete shotDirection;
 }
 
 void PlayerShootComponent::awake(luabridge::LuaRef& data)
@@ -35,6 +37,10 @@ void PlayerShootComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	_puntero = static_cast<Transform*>(Engine::getInstance()->findGameObject("Puntero")->getComponent(ComponentId::Transform));
+	_offsetX = 40;
+	_offsetZ = 40;
+	shotDirection = new Vector3(0, 0, 1);
 	//_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::PlayerBulletsManagerComponent));
 }
 
@@ -46,6 +52,17 @@ void PlayerShootComponent::update()
 	{
 		_timeToShoot = _cadence;
 		shoot();
+	}
+	auto delta = _mouse->getMouseDelta();
+	//Mouse was moved
+	if (delta[0] != 0 && delta[1] != 0) {
+		shotDirection->setX(delta[0]);
+		shotDirection->setZ(delta[1]);
+		shotDirection->set(shotDirection->normalize());
+		Vector3 punteroPos = (*shotDirection);
+		punteroPos = punteroPos * 30;
+		punteroPos = punteroPos + _tr->getPosition();
+		_puntero->setPosition(punteroPos);
 	}
 }
 
@@ -64,15 +81,17 @@ void PlayerShootComponent::shoot()
 	GameObject* nuevaBala = Engine::getInstance()->findGameObject("BalaJugador");
 	PlayerBulletBehaviorComponent* c = static_cast<PlayerBulletBehaviorComponent*>(nuevaBala->getComponent(UserComponentId::PlayerBulletBehaviorComponent));
 
-	float mousePosX = MouseInput::getInstance()->getMousePos()[0];
-	float mousePosY = MouseInput::getInstance()->getMousePos()[1];
-	MouseInput::getInstance()->getMousePos();
+	float mousePosX = MouseInput::getInstance()->getMousePos()[0] - 0.5;
+	float mousePosY = MouseInput::getInstance()->getMousePos()[1] - 0.5;
 
 	std::cout << "Mouse X =" << mousePosX << "Mouse Y =" << mousePosY << std::endl;
 	Vector3 dir = Vector3(mousePosX, 0, mousePosY);
 
 	Vector3 myPos = _tr->getPosition();
-	Vector3 bulletPos = myPos + (dir * 40);
+	Vector3 bulletPos = myPos + (dir * 200);
+	//Con la dirección del cursor
+	//c->beShot(bulletPos, *shotDirection);
+	//Con la direccion segun el cursor en la pantalla
 	c->beShot(bulletPos, dir);
 	//BulletBehaviour
 }

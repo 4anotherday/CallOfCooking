@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 11
+HowManyGameObjects = 12
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -23,12 +23,14 @@ go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_0[3] = { Component = "BoxCollider", Type="Box",Width=1000,Height=1,Depth=1000,IsTrigger=false}
 
 go_1 = {}
-go_1[0] = { Name = "Camara", HowManyCmps = 2, Persist = false}
+go_1[0] = { Name = "Camara", HowManyCmps = 3, Persist = false}
 go_1[1] = { Component = "Transform", Coord = {X =0, Y = 50, Z = 0}}
 go_1[2] = { Component = "Camera", Orientation = {X = 0, Y = 0, Z = 0}, Plane = {Near = 1, Far = 9999},
 			Projection = true, Fovy = 90, Frustrum = {Left = 50, Right = 50, Top = 50, Bot = 50}, 
 			OrthoWindow = {W = 8, H = 9}, Viewport = {Left = 0, Top = 0, W = 1, H = 1},
 			DisplayOverlays= true, zOrder = 1,Pitch=-90,Yaw=0,Roll=0}
+go_1[3] = { Component = "CameraControllerComponent",Target="Jugador", Offset = {X =0, Y = 400, Z = 0}}
+
 
 go_2 = {}
 go_2[0] = { Name = "Luz", HowManyCmps = 2, Persist = false}
@@ -49,7 +51,6 @@ go_3[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_3[4] = { Component = "PlayerMovementComponent", Speed=20000,RotationSpeed=1000}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
 go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
-
 
 
 go_4={}
@@ -111,17 +112,16 @@ go_10[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotat
 go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_10[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
+go_10[3] = { Component = "RigidBody", Type="Box", Mass=1, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
 go_10[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
---go_8={}
---go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
---go_8[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = 0},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
---go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
---			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
---			Visible=true, Shadows=true, RenderingDistance = 1000}
---go_8[3] = { Component = "RigidBody", Type="Box",Mass=9,Width=40,Depth=40,Height=100}
---go_8[4] = { Component = "GrenadeBehaviorComponent", Range=100,AttackSpeed=2, MovementSpeed = 1}
---go_8[5] = { Component = "EnemyHealthComponent", Points=100,HitPoints=2}
+
+go_11={}
+go_11[0] ={Name ="Puntero" , HowManyCmps=2,Persist=false}
+go_11[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.05,Y=.05,Z=.05}}
+go_11[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+
 
 
 
