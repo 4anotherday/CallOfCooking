@@ -42,7 +42,6 @@ private:
 	void getDirectionOfShot();
 
 	Transform* _tr;
-	Transform* _puntero;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
@@ -50,6 +49,7 @@ private:
 	PlayerBulletPoolComponent* _bulletsManager;
 	Vector3* shotDirection;
 
+	float _windowSizeX, _windowSizeY;
 	float _offsetX, _offsetZ;
 	float _damage, _timeToShoot, _cadence;
 };

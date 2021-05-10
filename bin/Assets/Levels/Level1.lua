@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 12
+HowManyGameObjects = 11
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -114,14 +114,6 @@ go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practic
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_10[3] = { Component = "RigidBody", Type="Box", Mass=1, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
 go_10[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
-
-go_11={}
-go_11[0] ={Name ="Puntero" , HowManyCmps=2,Persist=false}
-go_11[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.05,Y=.05,Z=.05}}
-go_11[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-
 
 
 

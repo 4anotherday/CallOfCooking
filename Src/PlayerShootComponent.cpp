@@ -19,6 +19,7 @@ PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::Player
 _tr(nullptr), _rb(nullptr), _damage(5),
 _mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _timeToShoot(_engineTime->deltaTime()), _cadence(0.5)
 {
+	//_mouse->setMouseRelativeMode(true);
 }
 
 PlayerShootComponent::~PlayerShootComponent()
@@ -37,10 +38,12 @@ void PlayerShootComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
-	_puntero = static_cast<Transform*>(Engine::getInstance()->findGameObject("Puntero")->getComponent(ComponentId::Transform));
 	_offsetX = 40;
 	_offsetZ = 40;
 	shotDirection = new Vector3(0, 0, 1);
+	std::pair<int, int> size = Engine::getInstance()->getWindowSize();
+	_windowSizeX = size.first;
+	_windowSizeY = size.second;
 	//_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::PlayerBulletsManagerComponent));
 }
 
@@ -53,17 +56,6 @@ void PlayerShootComponent::update()
 		_timeToShoot = _cadence;
 		shoot();
 	}
-	auto delta = _mouse->getMouseDelta();
-	//Mouse was moved
-	if (delta[0] != 0 && delta[1] != 0) {
-		shotDirection->setX(delta[0]);
-		shotDirection->setZ(delta[1]);
-		shotDirection->set(shotDirection->normalize());
-		Vector3 punteroPos = (*shotDirection);
-		punteroPos = punteroPos * 30;
-		punteroPos = punteroPos + _tr->getPosition();
-		_puntero->setPosition(punteroPos);
-	}
 }
 
 void PlayerShootComponent::onTrigger(GameObject* other)
@@ -72,28 +64,27 @@ void PlayerShootComponent::onTrigger(GameObject* other)
 
 void PlayerShootComponent::shoot()
 {
-	//Me quedo con la direcci�n a la que dispara el player
-	Vector3 direction = _tr->getForward();
-	Vector3 position = _tr->getPosition() + direction.normalize() * 5; //Me coloco un poco m�s alante que el player
-
 	//Instanciar la bala
 	//GameObject* bala = _bulletsManager->getInactiveGO();
 	GameObject* nuevaBala = Engine::getInstance()->findGameObject("BalaJugador");
 	PlayerBulletBehaviorComponent* c = static_cast<PlayerBulletBehaviorComponent*>(nuevaBala->getComponent(UserComponentId::PlayerBulletBehaviorComponent));
 
-	float mousePosX = MouseInput::getInstance()->getMousePos()[0] - 0.5;
-	float mousePosY = MouseInput::getInstance()->getMousePos()[1] - 0.5;
+	//Get the mouse position in window sizes, considering the origin the windows center
+	float mousePosX = MouseInput::getInstance()->getMousePos()[0];
+	mousePosX = mousePosX * _windowSizeX;
+	mousePosX = mousePosX - (_windowSizeX / 2);
+	float mousePosY = MouseInput::getInstance()->getMousePos()[1];
+	mousePosY = mousePosY * _windowSizeY;
+	mousePosY = mousePosY - (_windowSizeY / 2);
 
-	std::cout << "Mouse X =" << mousePosX << "Mouse Y =" << mousePosY << std::endl;
+	//Prepare the info for the bullet
 	Vector3 dir = Vector3(mousePosX, 0, mousePosY);
-
+	dir = dir.normalize();
 	Vector3 myPos = _tr->getPosition();
-	Vector3 bulletPos = myPos + (dir * 200);
-	//Con la dirección del cursor
-	//c->beShot(bulletPos, *shotDirection);
-	//Con la direccion segun el cursor en la pantalla
+	Vector3 bulletPos = myPos + (dir * 40);
+
+	//Shot
 	c->beShot(bulletPos, dir);
-	//BulletBehaviour
 }
 
 void PlayerShootComponent::getDirectionOfShot()
