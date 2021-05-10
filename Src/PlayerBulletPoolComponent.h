@@ -22,11 +22,5 @@ public:
 	virtual void update() override;
 
 	GameObject* instantiate();
-
-private:
-	/// <summary>
-	///	Creates a specified number of inactive game objects and includes them in both groups
-	/// </summary>
-	virtual void createGos(int howMany);
 };
 #endif // !PLAYERBULLETPOOLCOMPONENT_H

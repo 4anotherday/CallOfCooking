@@ -33,7 +33,3 @@ void WatermelonPoolComponent::start()
 void WatermelonPoolComponent::update()
 {
 }
-
-void WatermelonPoolComponent::createGos(int howMany)
-{
-}

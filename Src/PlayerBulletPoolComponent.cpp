@@ -30,7 +30,3 @@ GameObject* PlayerBulletPoolComponent::instantiate()
 {
 	return getInactiveGO();
 }
-
-void PlayerBulletPoolComponent::createGos(int howMany)
-{
-}

@@ -28,5 +28,3 @@ void LemonPoolComponent::awake(luabridge::LuaRef& data)
 
 	loadPrefab(path, maxPoolItems);
 }
-
-void LemonPoolComponent::createGos(int howMany){}

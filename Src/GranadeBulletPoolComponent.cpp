@@ -25,7 +25,3 @@ void GranadeBulletPoolComponent::start()
 void GranadeBulletPoolComponent::update()
 {
 }
-
-void GranadeBulletPoolComponent::createGos(int howMany)
-{
-}

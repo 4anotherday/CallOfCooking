@@ -1,3 +1,3 @@
-20:46:37 -> INFO: Creacion
-20:46:39 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-20:46:39 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+21:01:11 -> INFO: Creacion
+21:01:13 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+21:01:13 -> INFO: Archivo de carga de escena de lua correctamente inicializado

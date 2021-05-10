@@ -48,7 +48,3 @@ void GranadePoolComponent::start()
 void GranadePoolComponent::update()
 {
 }
-
-void GranadePoolComponent::createGos(int howMany)
-{
-}

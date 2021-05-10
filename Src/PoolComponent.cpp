@@ -23,7 +23,7 @@ void PoolComponent::start()
 GameObject* PoolComponent::getInactiveGO()
 {
 	if (_inactivePool.empty()) {
-		createGos(10);
+		//EXCEPCIÓN
 	}
 	GameObject* go = _inactivePool.back();
 	_inactivePool.pop_back();
@@ -39,9 +39,6 @@ void PoolComponent::setInactiveGO(GameObject* go)
 
 void PoolComponent::loadPrefab(std::string path, int howMany)
 {
-	//#if (defined _DEBUG)
-	//#pragma comment (lib, "liblua.a")
-	//#endif
 	lua_State* LuaVM;
 	LuaVM = luaL_newstate();
 	luaL_openlibs(LuaVM);
@@ -55,8 +52,8 @@ void PoolComponent::loadPrefab(std::string path, int howMany)
 	else {
 		luabridge::getGlobalNamespace(LuaVM);
 
-		std::string prefabName = "go_0";
-		luabridge::LuaRef itemPool = luabridge::getGlobal(LuaVM, prefabName.c_str());
+		std::string prefabLua = "prefab";
+		luabridge::LuaRef itemPool = luabridge::getGlobal(LuaVM, prefabLua.c_str());
 
 		std::string itemBaseName = itemPool[0]["Name"];
 
