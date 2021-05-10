@@ -44,11 +44,7 @@ public:
 	virtual void setInactiveGO(GameObject* go);
 
 protected:
-	/// <summary>
-	///	Creates a specified number of inactive game objects and includes them in both groups
-	// 	Each subclass must define how to do this process
-	/// </summary>
-	virtual void createGos(int howMany) {};
+	void loadPrefab(std::string path, int howMany);
 
 	LevelManagerComponent* _lvlManager;
 

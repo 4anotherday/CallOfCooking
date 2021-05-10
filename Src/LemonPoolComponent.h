@@ -18,11 +18,5 @@ public:
 	virtual ~LemonPoolComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
-
-protected:
-	/// <summary>
-	///	Creates a specified number of inactive game objects and includes them in both groups
-	/// </summary>		
-	virtual void createGos(int howMany);
 };
 #endif // !LEMONPOOLCOMPONENT_H

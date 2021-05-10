@@ -16,11 +16,14 @@ WatermelonPoolComponent::~WatermelonPoolComponent()
 
 void WatermelonPoolComponent::awake(luabridge::LuaRef& data)
 {
-	//TODO: PEDIR A FACTORIA
-	// TR
-	// Rigidbody
-	// EnemyHealth
-	// Beahviour
+	int maxPoolItems = 0;
+	if (LUAFIELDEXIST(MaxPool)) maxPoolItems = GETLUAFIELD(MaxPool, int);
+	//POSICIONES DE RESPAWN
+
+	std::string path = "";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
+
+	loadPrefab(path, maxPoolItems);
 }
 
 void WatermelonPoolComponent::start()
@@ -28,9 +31,5 @@ void WatermelonPoolComponent::start()
 }
 
 void WatermelonPoolComponent::update()
-{
-}
-
-void WatermelonPoolComponent::createGos(int howMany)
 {
 }

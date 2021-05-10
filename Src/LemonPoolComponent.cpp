@@ -16,13 +16,13 @@ LemonPoolComponent::~LemonPoolComponent()
 
 void LemonPoolComponent::awake(luabridge::LuaRef& data)
 {
-	//TODO: PEDIR A FACTORIA
-	// TR
-	// Rigidbody
-	// EnemyHealth
-	// Beahviour
-}
+	int maxPoolItems = 0;
+	if (LUAFIELDEXIST(MaxPool)) maxPoolItems =	GETLUAFIELD(MaxPool, int);
 
-void LemonPoolComponent::createGos(int howMany)
-{
+	//POSICIONES DE RESPAWN
+
+	std::string path ="";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
+
+	loadPrefab(path, maxPoolItems);
 }

@@ -20,11 +20,5 @@ public:
 	virtual void awake(luabridge::LuaRef& data) override;
 	virtual void start() override;
 	virtual void update() override;
-
-protected:
-	/// <summary>
-	///	Creates a specified number of inactive game objects and includes them in both groups
-	/// </summary>		
-	virtual void createGos(int howMany);
 };
 #endif // !WATERMELONPOOLCOMPONENT_H

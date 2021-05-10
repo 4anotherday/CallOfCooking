@@ -38,11 +38,7 @@ void GranadePoolComponent::awake(luabridge::LuaRef& data)
 		nuevo->addComponent(behaviour);
 	}
 
-	//TODO: PEDIR A FACTORIA
-	// TR
-	// Rigidbody
-	// EnemyHealth
-	// Beahviour
+	//loadPrefab(path, maxPoolItems);
 }
 
 void GranadePoolComponent::start()
@@ -50,9 +46,5 @@ void GranadePoolComponent::start()
 }
 
 void GranadePoolComponent::update()
-{
-}
-
-void GranadePoolComponent::createGos(int howMany)
 {
 }
