@@ -126,6 +126,11 @@ RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 go_10[5] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
 RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
+go_12={}
+go_12[0] = {Name="UIManager", HowManyCmps=3, Persist = false}
+go_12[1]=  {Component = "Transform"}
+go_12[2] = {Component = "UIManagerComponent"}
+go_12[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
 
 
 --go_8={}

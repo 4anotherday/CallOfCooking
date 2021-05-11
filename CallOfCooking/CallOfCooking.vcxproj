@@ -43,7 +43,9 @@
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\PlayerShootComponent.cpp" />
     <ClCompile Include="..\Src\PoolComponent.cpp" />
+    <ClCompile Include="..\Src\PrefabLoader.cpp" />
     <ClCompile Include="..\Src\ScoreManagerComponent.cpp" />
+    <ClCompile Include="..\Src\UIManagerComponent.cpp" />
     <ClCompile Include="..\Src\WatermelonBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\WatermelonPoolComponent.cpp" />
   </ItemGroup>
@@ -71,7 +73,9 @@
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
     <ClInclude Include="..\Src\PlayerShootComponent.h" />
     <ClInclude Include="..\Src\PoolComponent.h" />
+    <ClInclude Include="..\Src\PrefabLoader.h" />
     <ClInclude Include="..\Src\ScoreManagerComponent.h" />
+    <ClInclude Include="..\Src\UIManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentIDs.h" />
     <ClInclude Include="..\Src\WatermelonBehaviorComponent.h" />
     <ClInclude Include="..\Src\WatermelonPoolComponent.h" />

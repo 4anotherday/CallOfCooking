@@ -6,6 +6,31 @@ material Practica1/Red{
 	}
 }
 
+material Rifle{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				texture rifle.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material OverlayNegro{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				colour_op_ex source1 src_manual src_current 0 0 0
+			}
+		}
+	}
+}
+
 material Practica1/Yellow{
 	technique{
 		pass{

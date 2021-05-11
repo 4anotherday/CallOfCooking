@@ -38,7 +38,8 @@ namespace UserComponentId {
 		LifeCardComponent,
 		DamageCardComponent,
 		MovementSpeedCardComponent,
-		CardSystemComponent
+		CardSystemComponent,
+		UIManagerComponent
 	};
 }
 
