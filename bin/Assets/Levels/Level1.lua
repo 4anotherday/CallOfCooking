@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 12
+HowManyGameObjects = 13
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -133,6 +133,11 @@ RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 go_11[6] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
 RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
+go_12={}
+go_12[0] = {Name="UIManager", HowManyCmps=3, Persist = false}
+go_12[1]=  {Component = "Transform"}
+go_12[2] = {Component = "UIManagerComponent"}
+go_12[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
