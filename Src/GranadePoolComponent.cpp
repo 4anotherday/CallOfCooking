@@ -1,12 +1,7 @@
 #include "GranadePoolComponent.h"
 #include "UserComponentIDs.h"
-#include "GameObject.h"
 #include "Engine.h"
-#include "EnemyHealthComponent.h"
-#include "GrenadeBehaviorComponent.h"
-#include "RenderObjectComponent.h"
-#include "Transform.h"
-#include "includeLUA.h"
+#include "PrefabLoader.h"
 
 ADD_COMPONENT(GranadePoolComponent);
 
@@ -28,5 +23,5 @@ void GranadePoolComponent::awake(luabridge::LuaRef& data)
 	std::string path = "";
 	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
 
-	loadPrefab(path, maxPoolItems);
+	PrefabLoader::getInstance()->loadPoolPrefab(path, maxPoolItems, _mainPool, _inactivePool);
 }

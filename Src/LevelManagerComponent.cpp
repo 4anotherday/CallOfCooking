@@ -51,22 +51,22 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 
 	if (_levelsInfo->at(_currentLevel).enemiesLeft >= 0)
 		switch (type) {
-		case EnemyType::GRANADE: {
-			_granadePool->setInactiveGO(go);
-			break;
-		}
-		case EnemyType::LEMON: {
-			_lemonPool->setInactiveGO(go);
-			break;
-		}
-		case EnemyType::WATERMELON: {
-			_watermelonPool->setInactiveGO(go);
-			break;
-		}
-		default: {
-			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
-			break;
-		}
+			case EnemyType::GRANADE: {
+				_granadePool->setInactiveGO(go);
+				break;
+			}
+			case EnemyType::LEMON: {
+				_lemonPool->setInactiveGO(go);
+				break;
+			}
+			case EnemyType::WATERMELON: {
+				_watermelonPool->setInactiveGO(go);
+				break;
+			}
+			default: {
+				//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+				break;
+			}
 		}
 }
 

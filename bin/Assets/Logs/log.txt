@@ -1,7 +1,7 @@
-19:43:34 -> INFO: Creacion
-19:43:35 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-19:43:35 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-19:43:35 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-19:43:35 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-19:43:35 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
-19:43:35 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:59:56 -> INFO: Creacion
+20:00:01 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+20:00:01 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+20:00:01 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+20:00:01 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+20:00:01 -> INFO: Archivo de carga de prefab de Lemons correctamente inicializado
+20:00:01 -> INFO: Archivo de carga de escena de lua correctamente inicializado
