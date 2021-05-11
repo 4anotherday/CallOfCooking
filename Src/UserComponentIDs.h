@@ -32,7 +32,6 @@ namespace UserComponentId {
 		LemonBehaviorComponent,
 		WatermelonBehaviorComponent,
 		EnemyHealthComponent,
-		PlayerBulletsManagerComponent,
 		PlayerBulletBehaviorComponent,
 		GrenadeBulletBehaviourComponent,
 		CardComponent,

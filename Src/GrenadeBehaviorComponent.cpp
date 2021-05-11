@@ -35,8 +35,8 @@ void GrenadeBehaviorComponent::start()
 	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Jugador")->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 
-	//_gameManager = Engine::getInstance()->findGameObject("GameManager");
-	//_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
+	_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
 }
 
 void GrenadeBehaviorComponent::update()
@@ -86,7 +86,7 @@ void GrenadeBehaviorComponent::attack()
 	dir = dir.normalize();
 	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
 
-	GameObject* newBullet = Engine::getInstance()->findGameObject("Bala");//_bulletsManager->getInactiveGO();
+	GameObject* newBullet = _bulletsManager->getInactiveGO();
 	GrenadeBulletBehaviorComponent* c = static_cast<GrenadeBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::GrenadeBulletBehaviourComponent));
 	Vector3 myPos = _tr->getPosition();
 	Vector3 bulletPos = myPos + (dir * 40);

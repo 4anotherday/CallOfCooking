@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 12
+HowManyGameObjects = 11
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -42,7 +42,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 			LightDirection = {X=0,Y=-1,Z=0}}
 
 go_3 = {}
-go_3[0] = { Name = "Jugador", HowManyCmps = 6, Persist = false}
+go_3[0] = { Name = "Jugador", HowManyCmps = 7, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = -290, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.3, Y = 0.3, Z = 0.3}}
 go_3[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
 go_3[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
@@ -51,6 +51,8 @@ go_3[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_3[4] = { Component = "PlayerMovementComponent", Speed=20000,RotationSpeed=1000}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
 go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
+go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 
 go_4={}
@@ -106,32 +108,24 @@ go_9[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, He
 go_9[4] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
 
 
+
+
+
+
+
 go_10={}
-go_10[0] ={Name ="BalaJugador" , HowManyCmps=4,Persist=false}
-go_10[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.1,Z=.1}}
-go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_10[3] = { Component = "RigidBody", Type="Box", Mass=1, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
-go_10[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
+go_10[0] = {Name="GameManager", HowManyCmps=5, Persist = false}
+--go_10[1] = { Component = "LevelManagerComponent",CurrentLevel=1}
+go_10[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
+go_10[2] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabLemon.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_10[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenade.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_10[4] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabWatermelon.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_10[5] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
-
-
-
-go_11={}
-go_11[0] = {Name="GameManager", HowManyCmps=6, Persist = false}
---go_11[1] = { Component = "LevelManagerComponent",CurrentLevel=1}
-go_11[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
-go_11[2] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabLemon.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_11[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenade.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_11[4] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabWatermelon.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_11[5] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_11[6] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 
 --go_8={}

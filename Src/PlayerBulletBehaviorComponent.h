@@ -8,6 +8,7 @@
 
 class Transform;
 class RigidBodyComponent;
+class PlayerBulletPoolComponent;
 
 class PlayerBulletBehaviorComponent : public Component
 {
@@ -44,12 +45,17 @@ public:
 
 protected:
 
+	void deactivate();
+
 	RigidBodyComponent* _rigidbody;
 	Transform* _tr;
+	PlayerBulletPoolComponent* _pool;
 
-	float _movementSpeed;
 	Vector3 _direction;
+	float _movementSpeed;
 	float _damage;
+	float _lifeTime;
+	float _timeToDie;
 
 private:
 };

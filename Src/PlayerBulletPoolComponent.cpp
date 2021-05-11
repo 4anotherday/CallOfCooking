@@ -6,7 +6,7 @@
 
 ADD_COMPONENT(PlayerBulletPoolComponent);
 
-PlayerBulletPoolComponent::PlayerBulletPoolComponent() :PoolComponent(UserComponentId::PlayerBulletsManagerComponent)
+PlayerBulletPoolComponent::PlayerBulletPoolComponent() :PoolComponent(UserComponentId::PlayerBulletPoolComponent)
 {
 }
 

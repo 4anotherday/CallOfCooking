@@ -8,6 +8,7 @@
 
 class Transform;
 class RigidBodyComponent;
+class GrenadeBulletPoolComponent;
 
 class GrenadeBulletBehaviorComponent : public Component
 {
@@ -44,12 +45,17 @@ public:
 
 protected:
 
+	void deactivate();
+
 	RigidBodyComponent* _rigidbody;
 	Transform* _tr;
+	GrenadeBulletPoolComponent* _pool;
 
 	float _movementSpeed;
 	Vector3 _direction;
 	float _damage;
+	float _lifeTime;
+	float _timeToDie;
 
 private:
 };

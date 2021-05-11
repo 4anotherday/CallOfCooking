@@ -38,13 +38,13 @@ void PlayerShootComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
+	_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_offsetX = 40;
 	_offsetZ = 40;
 	shotDirection = new Vector3(0, 0, 1);
 	std::pair<int, int> size = Engine::getInstance()->getWindowSize();
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
-	//_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::PlayerBulletsManagerComponent));
 }
 
 void PlayerShootComponent::update()
@@ -65,8 +65,7 @@ void PlayerShootComponent::onTrigger(GameObject* other)
 void PlayerShootComponent::shoot()
 {
 	//Instanciar la bala
-	//GameObject* bala = _bulletsManager->getInactiveGO();
-	GameObject* nuevaBala = Engine::getInstance()->findGameObject("BalaJugador");
+	GameObject* nuevaBala = _bulletsManager->getInactiveGO();
 	PlayerBulletBehaviorComponent* c = static_cast<PlayerBulletBehaviorComponent*>(nuevaBala->getComponent(UserComponentId::PlayerBulletBehaviorComponent));
 
 	//Get the mouse position in window sizes, considering the origin the windows center

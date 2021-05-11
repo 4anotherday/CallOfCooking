@@ -56,3 +56,9 @@ void GrenadeBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
 	_tr->setPosition(pos);
 	_direction = dir;
 }
+
+void GrenadeBulletBehaviorComponent::deactivate()
+{
+	_timeToDie = _lifeTime;
+	//_pool->setInactiveGO(_gameObject);
+}
