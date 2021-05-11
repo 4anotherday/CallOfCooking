@@ -16,12 +16,13 @@ GranadeBulletPoolComponent::~GranadeBulletPoolComponent()
 
 void GranadeBulletPoolComponent::awake(luabridge::LuaRef& data)
 {
-}
+	int maxPoolItems = 0;
+	if (LUAFIELDEXIST(MaxPool)) maxPoolItems = GETLUAFIELD(MaxPool, int);
 
-void GranadeBulletPoolComponent::start()
-{
-}
+	//POSICIONES DE RESPAWN
 
-void GranadeBulletPoolComponent::update()
-{
+	std::string path = "";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
+
+	loadPrefab(path, maxPoolItems);
 }

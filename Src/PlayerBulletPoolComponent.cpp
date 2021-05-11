@@ -16,17 +16,12 @@ PlayerBulletPoolComponent::~PlayerBulletPoolComponent()
 
 void PlayerBulletPoolComponent::awake(luabridge::LuaRef& data)
 {
-}
+	int maxPoolItems = 0;
+	if (LUAFIELDEXIST(MaxPool)) maxPoolItems = GETLUAFIELD(MaxPool, int);
+	//POSICIONES DE RESPAWN
 
-void PlayerBulletPoolComponent::start()
-{
-}
+	std::string path = "";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
 
-void PlayerBulletPoolComponent::update()
-{
-}
-
-GameObject* PlayerBulletPoolComponent::instantiate()
-{
-	return getInactiveGO();
+	loadPrefab(path, maxPoolItems);
 }

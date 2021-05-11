@@ -18,7 +18,5 @@ public:
 	virtual ~GranadeBulletPoolComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
-	virtual void start() override;
-	virtual void update() override;
 };
 #endif // !GRANADEBULLETPOOLCOMPONENT_H

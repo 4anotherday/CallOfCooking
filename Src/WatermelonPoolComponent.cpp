@@ -25,11 +25,3 @@ void WatermelonPoolComponent::awake(luabridge::LuaRef& data)
 
 	loadPrefab(path, maxPoolItems);
 }
-
-void WatermelonPoolComponent::start()
-{
-}
-
-void WatermelonPoolComponent::update()
-{
-}

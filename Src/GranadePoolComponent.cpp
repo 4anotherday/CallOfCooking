@@ -20,31 +20,13 @@ GranadePoolComponent::~GranadePoolComponent()
 
 void GranadePoolComponent::awake(luabridge::LuaRef& data)
 {
-	int cuantos = data["HowMany"]["Round1"].cast<int>();
-	float width = data["Width"].cast<int>();
-	float heigh = data["Height"].cast<int>();
-	float healthPoint = data["HpPoints"].cast<int>();
-	float movementSpeed = data["MovementSpeed"].cast<int>();
+	int maxPoolItems = 0;
+	if (LUAFIELDEXIST(MaxPool)) maxPoolItems = GETLUAFIELD(MaxPool, int);
 
-	GameObject* nuevo;
-	for (int i = 0; i < cuantos; i++) {
-		nuevo = Engine::getInstance()->addGameObject();
+	//POSICIONES DE RESPAWN
 
-		GrenadeBehaviorComponent* behaviour = new GrenadeBehaviorComponent();
-		EnemyHealthComponent* health = new EnemyHealthComponent();
+	std::string path = "";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
 
-		nuevo->addComponent(behaviour);
-		nuevo->addComponent(health);
-		nuevo->addComponent(behaviour);
-	}
-
-	//loadPrefab(path, maxPoolItems);
-}
-
-void GranadePoolComponent::start()
-{
-}
-
-void GranadePoolComponent::update()
-{
+	loadPrefab(path, maxPoolItems);
 }

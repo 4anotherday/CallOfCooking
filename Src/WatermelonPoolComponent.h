@@ -18,7 +18,5 @@ public:
 	virtual ~WatermelonPoolComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
-	virtual void start() override;
-	virtual void update() override;
 };
 #endif // !WATERMELONPOOLCOMPONENT_H

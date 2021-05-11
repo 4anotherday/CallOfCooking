@@ -49,24 +49,24 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 {
 	--_levelsInfo->at(_currentLevel).enemiesLeft;
 
-	if(_levelsInfo->at(_currentLevel).enemiesLeft >= 0)
+	if (_levelsInfo->at(_currentLevel).enemiesLeft >= 0)
 		switch (type) {
-			case EnemyType::GRANADE: {
-				_granadePool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::LEMON: {
-				_lemonPool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::WATERMELON: {
-				_watermelonPool->setInactiveGO(go);
-				break;
-			}
-			default: {
-				//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
-				break;
-			}
+		case EnemyType::GRANADE: {
+			_granadePool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::LEMON: {
+			_lemonPool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::WATERMELON: {
+			_watermelonPool->setInactiveGO(go);
+			break;
+		}
+		default: {
+			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+			break;
+		}
 		}
 }
 
@@ -79,5 +79,5 @@ void LevelManagerComponent::enemiesSpawn()
 			_lemonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo->at(_currentLevel).enemies.at(x).spawnEnemyTime);
 		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::WATERMELON)
 			_watermelonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo->at(_currentLevel).enemies.at(x).spawnEnemyTime);
-	}	
+	}
 }

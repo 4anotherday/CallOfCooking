@@ -119,15 +119,19 @@ go_10[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed
 
 
 go_11={}
-go_11[0] = {Name="GameManager", HowManyCmps=1, Persist = false}
---go_11[1] = { Component = "LevelManager"}
---go_11[2] = { Component = "ScoreManager", Score = 0, MaxScore = 0, ComboTime = 2 }
---go_11[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "prefabTest.lua",
---				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_11[1] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabTest.lua",
-				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
---go_11[5] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "prefabTest.lua",
---				RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_11[0] = {Name="GameManager", HowManyCmps=6, Persist = false}
+--go_11[1] = { Component = "LevelManagerComponent",CurrentLevel=1}
+go_11[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
+go_11[2] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabLemon.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_11[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenade.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_11[4] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabWatermelon.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_11[5] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_11[6] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 
 --go_8={}

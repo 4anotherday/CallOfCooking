@@ -18,9 +18,5 @@ public:
 	virtual ~PlayerBulletPoolComponent();
 
 	virtual void awake(luabridge::LuaRef& data) override;
-	virtual void start() override;
-	virtual void update() override;
-
-	GameObject* instantiate();
 };
 #endif // !PLAYERBULLETPOOLCOMPONENT_H
