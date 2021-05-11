@@ -82,6 +82,9 @@
     <ClCompile Include="..\Src\CameraControllerComponent.cpp">
       <Filter>Archivos de origen\Others</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\UIManagerComponent.cpp">
+      <Filter>Archivos de origen\Others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h">
@@ -163,6 +166,9 @@
       <Filter>Archivos de origen\Cards</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\CameraControllerComponent.h">
+      <Filter>Archivos de encabezado\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\UIManagerComponent.h">
       <Filter>Archivos de encabezado\Others</Filter>
     </ClInclude>
   </ItemGroup>

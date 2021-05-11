@@ -1,0 +1,58 @@
+// The name of the overlay comes first
+overlay PruebaUI
+{
+    zorder 200
+    overlay_element PruebaUI/PanelRounds Panel
+    {
+        // Center it horizontally, put it at the top
+        left 0.45
+        top 0
+        width 0.1
+        height 0.1
+        material OverlayNegro
+
+        overlay_element PruebaUI/Bullets TextArea
+        {
+            left 0.05
+            top 0.025
+            char_height 0.08
+            colour_top 1 0 0
+            colour_bottom 1 0.9 0
+            caption 1
+            font_name ariaFont
+            alignment center
+        }
+    }
+
+    overlay_element PruebaUI/PanelScore Panel
+    {
+        // Center it horizontally, put it at the top
+        left 0
+        top 0
+        width 0.15
+        height 0.09
+        material OverlayNegro
+
+        overlay_element PruebaUI/Points TextArea
+        {
+            top 0.01
+            horz_align center
+            vert_align top
+            char_height 0.08
+            colour 1 0.9 0
+            caption 0
+            font_name ariaFont
+            alignment center
+        }
+    }
+
+    overlay_element PruebaUI/Arma Panel
+    {
+        // Center it horizontally, put it at the top
+        left 0
+        top 0.8
+        width 0.1
+        height 0.2
+        material Rifle
+    }
+}
