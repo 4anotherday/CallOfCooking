@@ -59,6 +59,11 @@ void PlayerAttackComponent::onTrigger(GameObject* other)
 	//static_cast<Enemy*>(other)->setInPlayerRange(true);
 }
 
+void PlayerAttackComponent::increaseAttackRate(float extraAttackRate)
+{
+	_attackRate += extraAttackRate;
+}
+
 void PlayerAttackComponent::rotateAttackHitBox()
 {
 	Vector3 attackDir = Vector3(_mouse->getMousePos().at(0) - _tr->getPosition().getX(), _mouse->getMousePos().at(1) - _tr->getPosition().getY(), 0.0f).normalize();

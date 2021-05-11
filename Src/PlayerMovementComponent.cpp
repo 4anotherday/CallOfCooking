@@ -10,14 +10,13 @@
 #include <math.h>
 #include "includeLUA.h"
 
-
 ADD_COMPONENT(PlayerMovementComponent);
 
 PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::PlayerMovementComponent),
-_tr(nullptr), _rb(nullptr),_velocity(),
+_tr(nullptr), _rb(nullptr), _velocity(),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance())
-{	
+{
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
@@ -68,7 +67,7 @@ void PlayerMovementComponent::update()
 	}
 	else if (_keyboard->isKeyDown(_keyLeft))
 	{
-		_velocity = _velocity + (right * _speed );
+		_velocity = _velocity + (right * _speed);
 	}
 
 	_velocity = _velocity * deltaTime;
@@ -79,6 +78,11 @@ void PlayerMovementComponent::fixedUpdate()
 	_rb->setLinearVelocity(_velocity);
 	float deltaTime = _engineTime->deltaTime();
 	rotate(deltaTime);
+}
+
+void PlayerMovementComponent::increaseSpeed(float extraSpeed)
+{
+	_speed += extraSpeed;
 }
 
 void PlayerMovementComponent::rotate(const float deltaTime)

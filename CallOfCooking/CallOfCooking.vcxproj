@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp" />
+    <ClCompile Include="..\Src\CameraControllerComponent.cpp" />
+    <ClCompile Include="..\Src\CardComponent.cpp" />
+    <ClCompile Include="..\Src\CardSystemComponent.cpp" />
     <ClCompile Include="..\Src\EnemyBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\EnemyHealthComponent.cpp" />
     <ClCompile Include="..\Src\EnemyPoolComponent.cpp" />
@@ -29,7 +33,9 @@
     <ClCompile Include="..\Src\LemonBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\LemonPoolComponent.cpp" />
     <ClCompile Include="..\Src\LevelManagerComponent.cpp" />
+    <ClCompile Include="..\Src\LifeCardComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\MovementSpeedCardComponent.cpp" />
     <ClCompile Include="..\Src\PlayerAttackComponent.cpp" />
     <ClCompile Include="..\Src\PlayerBulletBehaviorComponent.cpp" />
     <ClCompile Include="..\Src\PlayerBulletPoolComponent.cpp" />
@@ -42,6 +48,10 @@
     <ClCompile Include="..\Src\WatermelonPoolComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\AttackSpeedCardComponent.h" />
+    <ClInclude Include="..\Src\CameraControllerComponent.h" />
+    <ClInclude Include="..\Src\CardComponent.h" />
+    <ClInclude Include="..\Src\CardSystemComponent.h" />
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h" />
     <ClInclude Include="..\Src\EnemyHealthComponent.h" />
     <ClInclude Include="..\Src\EnemyPoolComponent.h" />
@@ -52,6 +62,8 @@
     <ClInclude Include="..\Src\LemonBehaviorComponent.h" />
     <ClInclude Include="..\Src\LemonPoolComponent.h" />
     <ClInclude Include="..\Src\LevelManagerComponent.h" />
+    <ClInclude Include="..\Src\LifeCardComponent.h" />
+    <ClInclude Include="..\Src\MovementSpeedCardComponent.h" />
     <ClInclude Include="..\Src\PlayerAttackComponent.h" />
     <ClInclude Include="..\Src\PlayerBulletBehaviorComponent.h" />
     <ClInclude Include="..\Src\PlayerBulletPoolComponent.h" />

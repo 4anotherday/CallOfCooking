@@ -64,6 +64,24 @@
     <ClCompile Include="..\Src\PoolComponent.cpp">
       <Filter>Archivos de origen\Others</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CardComponent.cpp">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CardSystemComponent.cpp">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LifeCardComponent.cpp">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MovementSpeedCardComponent.cpp">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CameraControllerComponent.cpp">
+      <Filter>Archivos de origen\Others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\EnemyBehaviorComponent.h">
@@ -129,6 +147,24 @@
     <ClInclude Include="..\Src\EnemyPoolComponent.h">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\AttackSpeedCardComponent.h">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CardComponent.h">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CardSystemComponent.h">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LifeCardComponent.h">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MovementSpeedCardComponent.h">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CameraControllerComponent.h">
+      <Filter>Archivos de encabezado\Others</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Archivos de encabezado">
@@ -178,6 +214,12 @@
     </Filter>
     <Filter Include="Archivos de origen\Enemies\Watermelon">
       <UniqueIdentifier>{3e2416e3-8726-4b90-9d4e-71f756f0f3c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Cards">
+      <UniqueIdentifier>{05088911-7e15-4d15-a8bd-f9817e5aa04c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Cards">
+      <UniqueIdentifier>{7c07ceb1-a9bd-4e2b-8df9-2e05941e4fd8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

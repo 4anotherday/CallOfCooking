@@ -40,14 +40,16 @@ public:
 
 	virtual void onCollision(GameObject* other);
 
+	void beShot(Vector3 pos, Vector3 dir);
+
 protected:
 
 	RigidBodyComponent* _rigidbody;
-	Transform* _playerPos;
+	Transform* _tr;
 
 	float _movementSpeed;
 	Vector3 _direction;
-	float damage;
+	float _damage;
 
 private:
 };

@@ -34,7 +34,12 @@ namespace UserComponentId {
 		EnemyHealthComponent,
 		PlayerBulletsManagerComponent,
 		PlayerBulletBehaviorComponent,
-		GrenadeBulletBehaviourComponent
+		GrenadeBulletBehaviourComponent,
+		CardComponent,
+		LifeCardComponent,
+		DamageCardComponent,
+		MovementSpeedCardComponent,
+		CardSystemComponent
 	};
 }
 

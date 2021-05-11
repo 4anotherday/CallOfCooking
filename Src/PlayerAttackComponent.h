@@ -31,6 +31,8 @@ public:
 	virtual void update() override;
 	virtual void onTrigger(GameObject* other) override;
 
+	void increaseAttackRate(float extraAttackRate);
+
 private:
 
 	/// <summary>

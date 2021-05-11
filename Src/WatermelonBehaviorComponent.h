@@ -49,5 +49,8 @@ private:
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
+	float _timeToExplode;
+	bool _exploding;
+	float _explosionCountDown;
 };
 #endif // !WATERMELONBEHAVIORCOMPONENT_H

@@ -9,6 +9,7 @@ class GameObject;
 class RigidBodyComponent;
 class Transform;
 class EngineTime;
+class Vector3;
 class MouseInput;
 class PlayerBulletPoolComponent;
 
@@ -38,13 +39,18 @@ private:
 	/// </summary>
 	void shoot();
 
+	void getDirectionOfShot();
+
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
 	GameObject* _gameManager;
 	PlayerBulletPoolComponent* _bulletsManager;
+	Vector3* shotDirection;
 
+	float _windowSizeX, _windowSizeY;
+	float _offsetX, _offsetZ;
 	float _damage, _timeToShoot, _cadence;
 };
 #endif // !PLAYERATTACKCOMPONENT_H

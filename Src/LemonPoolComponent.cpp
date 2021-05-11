@@ -8,12 +8,10 @@ ADD_COMPONENT(LemonPoolComponent);
 
 LemonPoolComponent::LemonPoolComponent() :EnemyPoolComponent(UserComponentId::LemonPoolComponent)
 {
-
 }
 
 LemonPoolComponent::~LemonPoolComponent()
 {
-
 }
 
 void LemonPoolComponent::awake(luabridge::LuaRef& data)

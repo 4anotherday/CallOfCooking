@@ -18,6 +18,14 @@ material Practica1/Yellow{
 	}
 }
 
+material Practica1/Green{
+	technique{
+		pass{
+			diffuse 0.0 1.0 0.0
+		}
+	}
+}
+
 material Practica1/Brown{
 	technique{
 		pass{
