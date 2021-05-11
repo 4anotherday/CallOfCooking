@@ -5,5 +5,4 @@ prefab[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practi
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 prefab[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
-prefab[4] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
-prefab[5] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
+prefab[4] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200, LifeTime= 5.0}

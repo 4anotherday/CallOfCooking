@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "Exceptions.h"
 #include "Logger.h"
+#include "PrefabLoader.h"
 
 #if (defined _DEBUG) || !(defined _WIN32)
 int main() {
@@ -15,8 +16,9 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 	try {
 		Engine::CreateInstance();
 		Engine* prueba = Engine::getInstance();
-		
-		prueba->init("Assets/prueba.cfg","Assets/Levels");
+		PrefabLoader::CreateInstance();
+
+		prueba->init("Assets/prueba.cfg", "Assets/Levels");
 		prueba->changeScene("Level1.lua");
 		prueba->run();
 	}

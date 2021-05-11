@@ -8,7 +8,7 @@
 
 class Transform;
 class RigidBodyComponent;
-class GrenadeBulletPoolComponent;
+class GranadeBulletPoolComponent;
 
 class GrenadeBulletBehaviorComponent : public Component
 {
@@ -49,7 +49,7 @@ protected:
 
 	RigidBodyComponent* _rigidbody;
 	Transform* _tr;
-	GrenadeBulletPoolComponent* _pool;
+	GranadeBulletPoolComponent* _pool;
 
 	float _movementSpeed;
 	Vector3 _direction;

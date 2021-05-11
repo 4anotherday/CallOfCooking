@@ -1,2 +1,5 @@
-21:31:51 -> INFO: Creacion
-21:31:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+22:00:10 -> INFO: Creacion
+22:00:12 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+22:00:12 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+22:00:12 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+22:00:12 -> INFO: Archivo de carga de escena de lua correctamente inicializado

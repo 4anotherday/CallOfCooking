@@ -1,9 +1,11 @@
 #include "GrenadeBulletBehaviorComponent.h"
+#include "GranadeBulletPoolComponent.h"
 #include "GameObject.h"
 #include "UserComponentIDs.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
 #include "Engine.h"
+#include "EngineTime.h"
 #include "includeLUA.h"
 #include "EnemyHealthComponent.h"
 #include "PlayerHealthComponent.h"
@@ -22,6 +24,8 @@ void GrenadeBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 {
 	_movementSpeed = data["MovementSpeed"].cast<float>();
 	_damage = data["Damage"].cast<float>();
+	_lifeTime = data["LifeTime"].cast<float>();
+	_timeToDie = _lifeTime;
 }
 
 void GrenadeBulletBehaviorComponent::start()
@@ -29,12 +33,19 @@ void GrenadeBulletBehaviorComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_direction = Vector3(1, 0, 0);
+	_pool = static_cast<GranadeBulletPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadeBulletPoolComponent));
 }
 
 void GrenadeBulletBehaviorComponent::update()
 {
+	float deltaTime = EngineTime::getInstance()->deltaTime();
 	Vector3 move = _direction * _movementSpeed;
 	_rigidbody->addForce(move);
+
+	_timeToDie -= deltaTime;
+	if (_timeToDie <= 0) {
+		deactivate();
+	}
 }
 
 void GrenadeBulletBehaviorComponent::onCollision(GameObject* other)
@@ -42,9 +53,8 @@ void GrenadeBulletBehaviorComponent::onCollision(GameObject* other)
 	if (other->getName() == "Jugador") {
 		PlayerHealthComponent* vida = static_cast<PlayerHealthComponent*>(other->getComponent(UserComponentId::Health));
 		vida->loseLife(1);
-		_tr->setPosition(Vector3(-150, -290, 100));
+		deactivate();
 	}
-	//Ponerse desactivado en la pool
 }
 
 void GrenadeBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
@@ -60,5 +70,5 @@ void GrenadeBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
 void GrenadeBulletBehaviorComponent::deactivate()
 {
 	_timeToDie = _lifeTime;
-	//_pool->setInactiveGO(_gameObject);
+	_pool->setInactiveGO(_gameObject);
 }

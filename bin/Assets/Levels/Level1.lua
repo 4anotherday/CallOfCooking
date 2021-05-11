@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 11
+HowManyGameObjects = 10
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -89,48 +89,23 @@ go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1000,Depth=10,
 
 
 go_8={}
-go_8[0] ={Name ="Lemon" , HowManyCmps=4,Persist=false}
-go_8[1]={ Component = "Transform", Coord = {X = 150, Y = -290, Z = 100},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.3,Y=0.3,Z=0.3}}
-go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Orange", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_8[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
-go_8[4] = { Component = "GrenadeBehaviorComponent", Range =100, MovementSpeed = 1, AttackSpeed=2}
-
+go_8[0] = {Name="GameManager", HowManyCmps=3, Persist = false}
+--go_8[1] = { Component = "LevelManagerComponent",CurrentLevel=1}
+go_8[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
+go_8[2] = { Component = "GranadePoolComponent", MaxPool = 1, Path = "Assets/Levels/prefabGrenade.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_8[3] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
+RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+-- go_8[4] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabLemon.lua",
+-- RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+-- go_8[5] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabWatermelon.lua",
+-- RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 go_9={}
-go_9[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
-go_9[1]={ Component = "Transform", Coord = {X = -150, Y = -290, Z = -100},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=.1,Z=.1}}
-go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_9[3] = { Component = "RigidBody", Type="Box", Mass=30, Width=40, Depth=40, Height=40, ConstrainAngle = true,Bounciness=1,kinematic=false,IsTrigger=false}
-go_9[4] = { Component = "GrenadeBulletBehaviorComponent",Damage=5, MovementSpeed = 200}
-
-
-
-
-
-
-
-go_10={}
-go_10[0] = {Name="GameManager", HowManyCmps=5, Persist = false}
---go_10[1] = { Component = "LevelManagerComponent",CurrentLevel=1}
-go_10[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
-go_10[2] = { Component = "LemonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabLemon.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_10[3] = { Component = "GranadePoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenade.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_10[4] = { Component = "WatermelonPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabWatermelon.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_10[5] = { Component = "GranadeBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabGrenadeBullet.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-
-go_12={}
-go_12[0] = {Name="UIManager", HowManyCmps=3, Persist = false}
-go_12[1]=  {Component = "Transform"}
-go_12[2] = {Component = "UIManagerComponent"}
-go_12[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
+go_9[0] = {Name="UIManager", HowManyCmps=3, Persist = false}
+go_9[1]=  {Component = "Transform"}
+go_9[2] = {Component = "UIManagerComponent"}
+go_9[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
 
 
 --go_8={}
@@ -144,14 +119,14 @@ go_12[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
 --go_8[5] = { Component = "EnemyHealthComponent", Points=100,HitPoints=2}
 
 
---go_9={}
---go_9[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
---go_9[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = -100},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
---go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+--go_8={}
+--go_8[0] ={Name ="Bala" , HowManyCmps=4,Persist=false}
+--go_8[1]={ Component = "Transform", Coord = {X = 100, Y = -200, Z = -100},Rotation = {X=1,Y=1,Z=1},Scale = {X=.3,Y=.3,Z=.3}}
+--go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
 --			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=0, Y=0, Z=0}, LookAt ={X=1, Y=1, Z=1},
 --			Visible=true, Shadows=true, RenderingDistance = 1000}
---go_9[3] = { Component = "RigidBody", Type="Box",Mass=0,Width=40,Depth=40,Height=100}
---go_9[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 20}
+--go_8[3] = { Component = "RigidBody", Type="Box",Mass=0,Width=40,Depth=40,Height=100}
+--go_8[4] = { Component = "PlayerBulletBehaviorComponent",Damage=5, MovementSpeed = 20}
 
 
 -- go_5={}
