@@ -18,9 +18,17 @@ public:
 	/// </summary>
 	virtual ~CardSystemComponent();
 
-	virtual void start() override;
+	/// <summary>
+	/// Default component constructor
+	/// </summary>
+	virtual void awake(luabridge::LuaRef& data) override;
+	
+	/// <summary>
+	/// Set the cards visible or not visible
+	/// </summary>
+	void setCardsUp(bool enable);
 
 private:
-	std::vector<GameObject*> _carts;
+	std::vector<GameObject*> _cards;
 };
 #endif // !CARDSYSTEMCOMPONENT_H
