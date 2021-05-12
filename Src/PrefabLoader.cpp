@@ -68,9 +68,16 @@ void PrefabLoader::loadPoolPrefab(std::string path, int howMany, std::vector<Gam
 	}
 }
 
-PrefabLoader::PrefabLoader() {
-	_LuaVM = luaL_newstate();
-	luaL_openlibs(_LuaVM);
+luabridge::LuaRef PrefabLoader::getDataPrefab(std::string path)
+{
+	_filePath = path;
+
+	if (loadPrefabFile()) {
+		std::string prefabLua = "prefab";
+		luabridge::LuaRef dataRef = luabridge::getGlobal(_LuaVM, prefabLua.c_str());
+
+		return dataRef;
+	}
 }
 
 bool PrefabLoader::loadPrefabFile()
@@ -89,6 +96,11 @@ bool PrefabLoader::loadPrefabFile()
 		Logger::getInstance()->log("Fichero de prefab en ruta " + _filePath + " correctamente inicializado");
 		return true;
 	}	
+}
+
+PrefabLoader::PrefabLoader() {
+	_LuaVM = luaL_newstate();
+	luaL_openlibs(_LuaVM);
 }
 
 PrefabLoader::~PrefabLoader()

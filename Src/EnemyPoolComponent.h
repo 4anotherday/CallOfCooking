@@ -25,6 +25,11 @@ public:
 	/// </summary>
 	virtual void wakeUpEnemies(int howMany, float spawnEnemyTime);
 
+	/// <summary>
+	///	Set the differents respawn enemy positions
+	/// </summary>
+	void setRespawnPositions(std::vector<Vector3> &rP) { _respawnsPositions = rP; };
+
 protected:
 	/// <summary>
 	///	Check if it's time to spawn an enemy
