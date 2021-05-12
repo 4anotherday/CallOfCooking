@@ -31,6 +31,9 @@ public:
 	GameObject* loadPrefab(std::string path, int howMany);
 
 	void loadPoolPrefab(std::string path, int howMany, std::vector<GameObject*> &mainPool, std::vector<GameObject*> &inactivePool);
+
+	luabridge::LuaRef getDataPrefab(std::string path);
+
 private:
 	/// <summary>
 	/// Contructor of the class

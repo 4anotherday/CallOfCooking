@@ -7,6 +7,7 @@
 #include "GranadePoolComponent.h"
 #include "LemonPoolComponent.h"
 #include "WatermelonPoolComponent.h"
+#include "PrefabLoader.h"
 
 ADD_COMPONENT(LevelManagerComponent);
 
@@ -21,12 +22,58 @@ LevelManagerComponent::~LevelManagerComponent()
 
 void LevelManagerComponent::awake(luabridge::LuaRef& data)
 {
-	_currentLevel = data["CurrentLevel"].cast<int>();
+	//bool loaded = true;
+
+	if (LUAFIELDEXIST(CurrentLevel)) _currentLevel = GETLUAFIELD(CurrentLevel, int);
+
+	std::string path = "";
+	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
+
+
+	luabridge::LuaRef configData = PrefabLoader::getInstance()->getDataPrefab(path);
+
+
+	int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
+
+	std::vector<Vector3> respawns;
+	for (int j = 1; j <= howManyRespawns; ++j) {
+		float x = configData[0]["RespawnPositions"][j]["X"].cast<float>();
+		float y = configData[0]["RespawnPositions"][j]["Y"].cast<float>();
+		float z = configData[0]["RespawnPositions"][j]["Z"].cast<float>();
+		respawns.push_back(Vector3(x, y, z));
+	}
+
+	for (int x = 1; x <= configData.length(); ++x) {
+		Wave wave;
+		wave.enemiesLeft = wave.totalEnemies = configData[x]["TotalEnemies"].cast<int>();
+		wave.waveTime = configData[x]["WaveTime"].cast<float>();
+		
+		Enemy granade;
+		granade.type == EnemyType::GRANADE;
+		granade.howManyEnemies = configData[x]["Granade"]["HowMany"].cast<int>();
+		granade.spawnEnemyTime = configData[x]["Granade"]["RespawnTime"].cast<float>();
+		wave.enemies.push_back(granade);
+
+		Enemy lemon;
+		lemon.type = EnemyType::LEMON;
+		lemon.howManyEnemies = configData[x]["Lemon"]["HowMany"].cast<int>();
+		lemon.spawnEnemyTime = configData[x]["Lemon"]["RespawnTime"].cast<float>();
+		wave.enemies.push_back(lemon);
+		
+		Enemy watermelon;
+		watermelon.type = EnemyType::WATERMELON;
+		watermelon.howManyEnemies = configData[x]["Watermelon"]["HowMany"].cast<int>();
+		watermelon.spawnEnemyTime = configData[x]["Watermelon"]["RespawnTime"].cast<float>();
+		wave.enemies.push_back(watermelon);
+
+		_levelsInfo->push_back(wave);
+	}
+
 }
 
 void LevelManagerComponent::update()
 {
-	if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo->at(_currentLevel).waveTime) {
+	/*if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo->at(_currentLevel).waveTime) {
 		enemiesSpawn();
 		_newWave = false;
 	}
@@ -35,7 +82,7 @@ void LevelManagerComponent::update()
 		++_currentLevel;
 		_newWave = true;
 		_waveStartTime = _engineTime->deltaTime();
-	}
+	}*/
 }
 
 void LevelManagerComponent::start()

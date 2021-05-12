@@ -19,6 +19,7 @@ void WatermelonPoolComponent::awake(luabridge::LuaRef& data)
 {
 	int maxPoolItems = 0;
 	if (LUAFIELDEXIST(MaxPool)) maxPoolItems = GETLUAFIELD(MaxPool, int);
+
 	//POSICIONES DE RESPAWN
 
 	std::string path = "";
