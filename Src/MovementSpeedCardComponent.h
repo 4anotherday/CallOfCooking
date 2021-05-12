@@ -21,6 +21,9 @@ public:
 
 	virtual void start() override;
 
+	/// <summary>
+	/// Static function for the button
+	/// </summary>
 	static void operate(void* player);
 
 protected:
