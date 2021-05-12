@@ -23,13 +23,13 @@ go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_0[3] = { Component = "BoxCollider",IsTrigger=false}
 
 go_1 = {}
-go_1[0] = { Name = "Camara", HowManyCmps = 2, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = 0}, Rotation={X=-90, Y=0, Z=0}}
-go_1[2] = { Component = "Camera", SlaveRotation = false, Plane = {Near = 1, Far = 9999},
+go_1[0] = { Name = "Camara", HowManyCmps = 3, Persist = false}
+go_1[1] = { Component = "Transform", Coord = {X = 0, Y = 6, Z = 0}, Rotation={X=-90, Y=0, Z=0}}
+go_1[2] = { Component = "Camera", SlaveRotation = true, Plane = {Near = 1, Far = 9999},
 			Projection = true, Fovy = 60, Frustrum = {Left = 1, Right = 1, Top = 1, Bot = 1}, 
 			OrthoWindow = {W = 100, H = 100}, Viewport = {Left = 0, Top = 0, W = 1, H = 1},
 			DisplayOverlays= true, zOrder = 1}
-go_1[3] = { Component = "CameraControllerComponent",Target="Jugador", Offset = {X =0, Y = 7, Z = 0}}
+go_1[3] = { Component = "CameraControllerComponent",Target="Jugador", Offset = {X =0, Y = 4, Z = 0}}
 
 
 go_2 = {}
@@ -48,7 +48,7 @@ go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
-go_3[4] = { Component = "PlayerMovementComponent", Speed=50,RotationSpeed=30}
+go_3[4] = { Component = "PlayerMovementComponent", Speed=80,RotationSpeed=30}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
 go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
 go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
