@@ -10,17 +10,16 @@
 #include "Engine.h"
 #include "includeLUA.h"
 #include <math.h>
-#include "includeLUA.h"
 
 ADD_COMPONENT(CameraControllerComponent);
 
 CameraControllerComponent::CameraControllerComponent() :Component(UserComponentId::PlayerMovementComponent),
-_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr), _offsetX(), _offsetY(), _offsetZ()
+_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr),_myCam(nullptr) ,_offsetX(), _offsetY(), _offsetZ()
 {
 }
 
 CameraControllerComponent::CameraControllerComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
-_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr), _offsetX(), _offsetY(), _offsetZ()
+_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr),_myCam(nullptr) ,_offsetX(), _offsetY(), _offsetZ()
 {
 }
 
