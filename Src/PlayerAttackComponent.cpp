@@ -42,7 +42,7 @@ void PlayerAttackComponent::awake(luabridge::LuaRef& data)
 
 void PlayerAttackComponent::start()
 {
-	_parent = _gameObject->getParent();
+	//_parent = _gameObject->getParent();
 }
 
 void PlayerAttackComponent::update()
