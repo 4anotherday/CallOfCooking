@@ -8,6 +8,7 @@
 #include "LemonPoolComponent.h"
 #include "WatermelonPoolComponent.h"
 #include "PrefabLoader.h"
+#include "CardSystemComponent.h"
 
 ADD_COMPONENT(LevelManagerComponent);
 
@@ -66,23 +67,25 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 		watermelon.spawnEnemyTime = configData[x]["Watermelon"]["RespawnTime"].cast<float>();
 		wave.enemies.push_back(watermelon);
 
-		_levelsInfo->push_back(wave);
+		_levelsInfo.push_back(wave);
 	}
 
 }
 
 void LevelManagerComponent::update()
 {
-	/*if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo->at(_currentLevel).waveTime) {
+	if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo.at(_currentLevel).waveTime) {
+		_cardSystem->setCardsUp(false);
 		enemiesSpawn();
 		_newWave = false;
 	}
 
-	if (_levelsInfo->at(_currentLevel).enemiesLeft == 0) {
+	if (_levelsInfo.at(_currentLevel).enemiesLeft == 0) {
+		_cardSystem->setCardsUp(true);
 		++_currentLevel;
 		_newWave = true;
 		_waveStartTime = _engineTime->deltaTime();
-	}*/
+	}
 }
 
 void LevelManagerComponent::start()
@@ -90,13 +93,14 @@ void LevelManagerComponent::start()
 	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
 	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
 	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
+	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 {
-	--_levelsInfo->at(_currentLevel).enemiesLeft;
+	--_levelsInfo.at(_currentLevel).enemiesLeft;
 
-	if (_levelsInfo->at(_currentLevel).enemiesLeft >= 0)
+	if (_levelsInfo.at(_currentLevel).enemiesLeft >= 0)
 		switch (type) {
 			case EnemyType::GRANADE: {
 				_granadePool->setInactiveGO(go);
@@ -120,11 +124,11 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 void LevelManagerComponent::enemiesSpawn()
 {
 	for (int x = EnemyType::GRANADE; x != EnemyType::WATERMELON; x++) {
-		if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::GRANADE)
-			_granadePool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo->at(_currentLevel).enemies.at(x).spawnEnemyTime);
-		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::LEMON)
-			_lemonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo->at(_currentLevel).enemies.at(x).spawnEnemyTime);
-		else if (_levelsInfo->at(_currentLevel).enemies.at(x).type == EnemyType::WATERMELON)
-			_watermelonPool->wakeUpEnemies(_levelsInfo->at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo->at(_currentLevel).enemies.at(x).spawnEnemyTime);
+		if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::GRANADE)
+			_granadePool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
+		else if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::LEMON)
+			_lemonPool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
+		else if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::WATERMELON)
+			_watermelonPool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
 	}
 }

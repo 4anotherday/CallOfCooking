@@ -85,13 +85,13 @@ go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Heig
 
 
 go_8={}
-go_8[0] = { Name="GameManager", HowManyCmps=5, Persist = false}
---go_8[1] = { Component = "LevelManagerComponent", CurrentLevel=1, Path = "Assets/Levels/prefabLevelManager.lua"}
-go_8[1] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
-go_8[2] = { Component = "GranadePoolComponent", MaxPool = 1, Path = "Assets/Levels/prefabGrenade.lua"}
-go_8[3] = { Component = "GranadeBulletPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabGrenadeBullet.lua"}
-go_8[4] = { Component = "LemonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabLemon.lua"}
-go_8[5] = { Component = "WatermelonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabWatermelon.lua"}
+go_8[0] = { Name="GameManager", HowManyCmps=6, Persist = false}
+go_8[1] = { Component = "LevelManagerComponent", CurrentLevel=1, Path = "Assets/Levels/prefabLevelManager.lua"}
+go_8[2] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
+go_8[3] = { Component = "GranadePoolComponent", MaxPool = 1, Path = "Assets/Levels/prefabGrenade.lua"}
+go_8[4] = { Component = "GranadeBulletPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabGrenadeBullet.lua"}
+go_8[5] = { Component = "LemonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabLemon.lua"}
+go_8[6] = { Component = "WatermelonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabWatermelon.lua"}
 
 go_9={}
 go_9[0] = {Name="UIManager", HowManyCmps=3, Persist = false}

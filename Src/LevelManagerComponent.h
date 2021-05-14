@@ -9,6 +9,7 @@ class GranadePoolComponent;
 class LemonPoolComponent;
 class WatermelonPoolComponent;
 class EngineTime;
+class CardSystemComponent;
 
 enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
@@ -38,7 +39,7 @@ public:
 
 	virtual void start() override;
 
-	inline std::vector<Wave>* getLevelInfo() const { return _levelsInfo; }
+	inline std::vector<Wave> getLevelInfo() const { return _levelsInfo; }
 
 	inline int getCurrentLevel() const { return _currentLevel; }
 
@@ -48,7 +49,8 @@ private:
 	void enemiesSpawn();
 
 	EngineTime* _engineTime;
-	std::vector<Wave>* _levelsInfo;
+	std::vector<Wave> _levelsInfo;
+	CardSystemComponent* _cardSystem;
 	GranadePoolComponent* _granadePool;
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
