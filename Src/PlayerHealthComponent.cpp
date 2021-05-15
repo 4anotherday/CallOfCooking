@@ -1,5 +1,8 @@
 #include "PlayerHealthComponent.h"
+#include "Engine.h"
+#include "GameObject.h"
 #include "UserComponentIDs.h"
+#include "UIManagerComponent.h"
 #include "includeLUA.h"
 
 ADD_COMPONENT(PlayerHealthComponent);
@@ -22,12 +25,19 @@ void PlayerHealthComponent::awake(luabridge::LuaRef& data)
 	_maxLife = data["MaxLife"].cast<int>();
 }
 
+void PlayerHealthComponent::start()
+{
+	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uimanager->setPlayerLife(_maxLife);
+}
+
 void PlayerHealthComponent::addLife(int n)
 {
 	if (n > 0)
 		if (n + _lives <= _maxLife)
 			_lives += n;
 		else _lives = _maxLife;
+	updateUIlifes();
 }
 
 void PlayerHealthComponent::loseLife(int n)
@@ -36,9 +46,16 @@ void PlayerHealthComponent::loseLife(int n)
 		if (_lives - n > 0)
 			_lives -= n;
 		else reset();
+	updateUIlifes();
 }
 
 void PlayerHealthComponent::reset()
 {
 	_lives = _maxLife;
+	updateUIlifes();
+}
+
+void PlayerHealthComponent::updateUIlifes()
+{
+	_uimanager->setPlayerLife(_lives);
 }

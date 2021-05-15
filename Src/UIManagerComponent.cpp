@@ -15,20 +15,24 @@ UIManagerComponent::~UIManagerComponent()
 {
 }
 
-void UIManagerComponent::start()
+void UIManagerComponent::awake(luabridge::LuaRef& data)
 {
 	_textRounds = new TextManagerElement("GameUI/Rounds");
 	_textScore = new TextManagerElement("GameUI/Points");
 	_weaponPanel = new OverlayElementMngr("GameUI/Arma");
-	
+
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
 }
 
+void UIManagerComponent::start()
+{
+}
+
 void UIManagerComponent::setRoundsText(int round)
 {
-	_textRounds->setText("ROUND " + std::to_string(round));
+	_textRounds->setText("RONDA " + std::to_string(round));
 }
 
 void UIManagerComponent::setPlayerScore(int score)
@@ -38,6 +42,8 @@ void UIManagerComponent::setPlayerScore(int score)
 
 void UIManagerComponent::setPlayerLife(int life)
 {
+	if (life >= _lifes.size()) life = _lifes.size();
+
 	for (auto& life : _lifes) {
 		life->setEnabled(false);
 	}

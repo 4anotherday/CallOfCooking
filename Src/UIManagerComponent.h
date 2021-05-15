@@ -13,6 +13,8 @@ class UIManagerComponent : public Component {
 		UIManagerComponent();
 		~UIManagerComponent();
 
+		void awake(luabridge::LuaRef& data) override;
+
 		void start() override;
 
 		/// <summary>

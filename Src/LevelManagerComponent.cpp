@@ -8,6 +8,7 @@
 #include "LemonPoolComponent.h"
 #include "WatermelonPoolComponent.h"
 #include "PrefabLoader.h"
+#include "UIManagerComponent.h"
 #include "CardSystemComponent.h"
 
 ADD_COMPONENT(LevelManagerComponent);
@@ -85,6 +86,7 @@ void LevelManagerComponent::update()
 		++_currentLevel;
 		_newWave = true;
 		_waveStartTime = _engineTime->deltaTime();
+		_uimanager->setRoundsText(_currentLevel);
 	}
 }
 
@@ -94,6 +96,8 @@ void LevelManagerComponent::start()
 	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
 	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
+	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uimanager->setRoundsText(_currentLevel);
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)

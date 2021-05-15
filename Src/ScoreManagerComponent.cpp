@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "EngineTime.h"
 #include "LevelManagerComponent.h"
+#include "UIManagerComponent.h"
 #include "includeLUA.h"
 
 
@@ -37,6 +38,8 @@ void ScoreManagerComponent::update()
 void ScoreManagerComponent::start()
 {
 	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uimanager->setPlayerScore(_score);
 }
 
 void ScoreManagerComponent::addComboHitPoint()
@@ -64,6 +67,9 @@ void ScoreManagerComponent::addTotalComboScore()
 	float multiplierExtraPoints = totalPoints * multiplier;
 
 	totalPoints += int(multiplierExtraPoints);
+
+	_score += totalPoints;
+	_uimanager->setPlayerScore(_score);
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()

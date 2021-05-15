@@ -5,6 +5,7 @@
 #include "Component.h"
 class EngineTime;
 class LevelManagerComponent;
+class UIManagerComponent;
 
 class ScoreManagerComponent : public Component	
 {
@@ -91,6 +92,7 @@ private:
 	void clearComboSequence();
 
 	LevelManagerComponent* _lvlManager;
+	UIManagerComponent* _uimanager;
 
 	int _score;
 	int _maxScore;	
