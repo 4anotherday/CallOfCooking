@@ -1,58 +1,88 @@
 // The name of the overlay comes first
-overlay PruebaUI
+overlay GameUI
 {
     zorder 200
-    overlay_element PruebaUI/PanelRounds Panel
+    overlay_element GameUI/PanelRounds Panel
     {
-        // Center it horizontally, put it at the top
         left 0.45
         top 0
         width 0.1
         height 0.1
-        material OverlayNegro
+        transparent true
 
-        overlay_element PruebaUI/Bullets TextArea
+        overlay_element GameUI/Rounds TextArea
         {
             left 0.05
             top 0.025
             char_height 0.08
             colour_top 1 0 0
             colour_bottom 1 0.9 0
-            caption 1
-            font_name ariaFont
+            caption ROUND 1
+            font_name publicSecretFont
             alignment center
         }
     }
 
-    overlay_element PruebaUI/PanelScore Panel
+    overlay_element GameUI/PanelScore Panel
     {
-        // Center it horizontally, put it at the top
-        left 0
+        left 0.8
         top 0
-        width 0.15
+        width 0.2
         height 0.09
-        material OverlayNegro
+        transparent true
 
-        overlay_element PruebaUI/Points TextArea
+        overlay_element GameUI/Points TextArea
         {
             top 0.01
             horz_align center
             vert_align top
             char_height 0.08
-            colour 1 0.9 0
+            colour 1 0.7 0
             caption 0
-            font_name ariaFont
+            font_name publicSecretFont
             alignment center
         }
     }
 
-    overlay_element PruebaUI/Arma Panel
+    overlay_element GameUI/Arma Panel
     {
         // Center it horizontally, put it at the top
         left 0
-        top 0.8
-        width 0.1
-        height 0.2
-        material Rifle
+        top 0.75
+        width 0.15
+        height 0.25
+        material CallOfCooking/Rifle
+    }
+
+    overlay_element GameUI/Vidas Panel{
+        overlay_element GameUI/Corazon1 Panel
+        {
+            // Center it horizontally, put it at the top
+            left 0
+            top 0.018
+            width 0.044
+            height 0.07
+            material CallOfCooking/Corazon
+        }
+
+        overlay_element GameUI/Corazon2 Panel
+        {
+            // Center it horizontally, put it at the top
+            left 0.053
+            top 0.018
+            width 0.044
+            height 0.07
+            material CallOfCooking/Corazon
+        }
+
+        overlay_element GameUI/Corazon3 Panel
+        {
+            // Center it horizontally, put it at the top
+            left 0.104
+            top 0.018
+            width 0.044
+            height 0.07
+            material CallOfCooking/Corazon
+        }
     }
 }

@@ -3,6 +3,7 @@
 #define UIMANAGERCOMPONENT_H
 
 #include "Component.h"
+#include <vector>
 
 class TextManagerElement;
 class OverlayElementMngr;
@@ -27,6 +28,12 @@ class UIManagerComponent : public Component {
 		void setPlayerScore(int score);
 
 		/// <summary>
+		/// Sets the current life of the player in the GUI
+		/// </summary>
+		/// <param name="round"></param>
+		void setPlayerLife(int life);
+
+		/// <summary>
 		/// Changes the weapon GUI sprite
 		/// </summary>
 		/// <param name="weaponNumber"></param>
@@ -37,7 +44,7 @@ class UIManagerComponent : public Component {
 		TextManagerElement* _textRounds;
 		TextManagerElement* _textScore;
 		OverlayElementMngr* _weaponPanel;
-		OverlayElementMngr* _lifesPanel;
+		std::vector<OverlayElementMngr*> _lifes;
 };
 
 #endif // !UIMANAGERCOMPONENT_H

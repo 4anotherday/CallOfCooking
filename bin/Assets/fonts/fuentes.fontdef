@@ -4,3 +4,10 @@ font ariaFont {
     size 40
     resolution 72
 }
+
+font publicSecretFont {
+    type truetype
+    source Public-Secret.ttf
+    size 40
+    resolution 72
+}

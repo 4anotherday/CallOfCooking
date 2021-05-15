@@ -7,7 +7,7 @@
 
 ADD_COMPONENT(UIManagerComponent);
 
-UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr), _lifesPanel(nullptr)
+UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr)
 {
 }
 
@@ -17,14 +17,18 @@ UIManagerComponent::~UIManagerComponent()
 
 void UIManagerComponent::start()
 {
-	_textRounds = new TextManagerElement("PruebaUI/Bullets");
-	_textScore = new TextManagerElement("PruebaUI/Points");
-	_weaponPanel = new OverlayElementMngr("PruebaUI/Arma");
+	_textRounds = new TextManagerElement("GameUI/Rounds");
+	_textScore = new TextManagerElement("GameUI/Points");
+	_weaponPanel = new OverlayElementMngr("GameUI/Arma");
+	
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
 }
 
 void UIManagerComponent::setRoundsText(int round)
 {
-	_textRounds->setText(std::to_string(round));
+	_textRounds->setText("ROUND " + std::to_string(round));
 }
 
 void UIManagerComponent::setPlayerScore(int score)
@@ -32,7 +36,21 @@ void UIManagerComponent::setPlayerScore(int score)
 	_textScore->setText(std::to_string(score));
 }
 
+void UIManagerComponent::setPlayerLife(int life)
+{
+	for (auto& life : _lifes) {
+		life->setEnabled(false);
+	}
+	for (int i = 0; i < life; i++) {
+		_lifes[i]->setEnabled(true);
+	}
+}
+
 void UIManagerComponent::changeWeapon(int weaponNumber)
 {
-	//WIP
+	if (weaponNumber == 0)
+		_weaponPanel->setMaterial("CallOfCooking/Rifle");
+	else
+		_weaponPanel->setMaterial("CallOfCooking/Cuchillo");
+
 }

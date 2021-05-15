@@ -97,7 +97,7 @@ go_9={}
 go_9[0] = {Name="UIManager", HowManyCmps=3, Persist = false}
 go_9[1]=  {Component = "Transform"}
 go_9[2] = {Component = "UIManagerComponent"}
-go_9[3] = {Component = "OverlayComponent", Name = "PruebaUI", Hide = false}
+go_9[3] = {Component = "OverlayComponent", Name = "GameUI", Hide = false}
 
 
 --go_8={}
