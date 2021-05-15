@@ -10,6 +10,10 @@ class RigidBodyComponent;
 class Transform;
 class EngineTime;
 class MouseInput;
+class EnemyHealthComponent;
+class GranadePoolComponent;
+class LemonPoolComponent;
+class WatermelonPoolComponent;
 
 class PlayerAttackComponent : public Component
 {
@@ -46,12 +50,16 @@ private:
 	/// </summary>
 	void attack(float deltaTime);
 
+	Transform* _trPlayer;
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	EngineTime* _engineTime;
 	MouseInput* _mouse;
-	const GameObject* _parent;
+	LemonPoolComponent* _lemonPool;
+	GranadePoolComponent* _grenadePool;
+	WatermelonPoolComponent* _watermelonPool;
 
-	float _damage, _lastAttack, _attackRate, _attackHitBoxDistance;
+	float _damage, _lastAttack, _attackRate, _attackHitBoxDistance,_playerRange;
+	int _windowSizeX, _windowSizeY;
 };
 #endif // !PLAYERATTACKCOMPONENT_H

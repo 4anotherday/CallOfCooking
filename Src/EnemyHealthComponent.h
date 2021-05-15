@@ -45,6 +45,11 @@ public:
 	/// Restart the lives of the enemy
 	/// </summary>
 	void restartLives();
+
+	inline bool inPlayerRange() const { return _inPlayerRange; }
+
+	inline void setInPlayerRange(bool b) { _inPlayerRange = b; }
+
 private:
 	ScoreManagerComponent* _scoreManager;
 	LevelManagerComponent* _lvlManager;
@@ -53,5 +58,6 @@ private:
 	int _totalLives;
 	int _remainingLives;
 	int _deathComboPoints;
+	bool _inPlayerRange;
 };
 #endif // !ENEMYHEALTHCOMPONENT_H

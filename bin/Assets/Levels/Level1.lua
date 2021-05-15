@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 10
+HowManyGameObjects = 11
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -44,9 +44,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 go_3 = {}
 go_3[0] = { Name = "Jugador", HowManyCmps = 7, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.2}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=200,RotationSpeed=1}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
@@ -99,6 +97,13 @@ go_9[1]=  {Component = "Transform"}
 go_9[2] = {Component = "UIManagerComponent"}
 go_9[3] = {Component = "OverlayComponent", Name = "GameUI", Hide = false}
 
+go_10 = {}
+go_10[0] = {Name = "PlayerAttackHitBox", HowManyCmps = 4, Persist = false}
+go_10[1] = {Component = "Transform", Coord = {X = 0.5, Y = 2, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.12,Y=0.01,Z=0.12}}
+go_10[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+			Visible=true, Shadows=true, RenderingDistance = 9999}
+go_10[3] = {Component = "BoxCollider",IsTrigger=true}
+go_10[4] = {Component = "PlayerAttackComponent", Damage = 5,AtackRate = 0.5,AttackHitBoxDistance = 0.25, PlayerRange = 3}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
