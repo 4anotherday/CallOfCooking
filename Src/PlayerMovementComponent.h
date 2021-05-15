@@ -21,20 +21,34 @@ public:
 	PlayerMovementComponent(GameObject* gameObject);
 	virtual ~PlayerMovementComponent();
 
+	/// <summary>
+	/// Awake class, initializes the local variables
+	/// </summary>
+	/// <param name="data">Luaref with the data</param>
 	virtual void awake(luabridge::LuaRef& data) override;
+
+	/// <summary>
+	/// Initialise the rigidbody and transform and store the window size
+	/// </summary>
 	virtual void start() override;
+
+	/// <summary>
+	/// Calculates the velocity of the player and rotates the player
+	/// </summary>
 	virtual void update() override;
+
+	/// <summary>
+	/// Apply a velocity to the player
+	/// </summary>
 	virtual void fixedUpdate() override;
 
+	/// <summary>
+	/// Increases the current speed of the player
+	/// </summary>
+	/// <param name="extraSpeed">Amount of speed</param>
 	void increaseSpeed(float extraSpeed);
 
 private:
-
-	/// <summary>
-	/// Rotates the player
-	/// </summary>
-	/// <param name="deltaTime">The current delta time</param>
-	void rotate(const float deltaTime);
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
@@ -45,5 +59,6 @@ private:
 	KeyCode _keyUp, _keyLeft, _keyRight, _keyDown;
 	Vector3 _velocity;
 	float _speed, _rotationSpeed;
+	int _windowSizeX, _windowSizeY;
 };
 #endif // !PLAYERMOVEMENTCOMPONENT_H
