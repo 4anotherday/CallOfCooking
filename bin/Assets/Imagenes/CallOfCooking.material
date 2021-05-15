@@ -39,5 +39,120 @@ material CallOfCooking/Cuchillo{
 	}
 }
 //////////////////////////////////////////////////////////////////////
+//                     MATERIALES CARDS                             //
+//////////////////////////////////////////////////////////////////////
+//----------------Roja------------------------------------------------
+material CallOfCooking/attackBase{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture attackBase.png
+			}
+		}
+	}
+}
+material CallOfCooking/attackHover{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture attackHover.png
+			}
+		}
+	}
+}
+material CallOfCooking/attackPress{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture attackPress.png
+			}
+		}
+	}
+}
+//---------------Verde------------------------------------------------
+material CallOfCooking/healthBase{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture healthBase.png
+			}
+		}
+	}
+}
+material CallOfCooking/healthHover{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture healthHover.png
+			}
+		}
+	}
+}
+material CallOfCooking/healthPress{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture healthPress.png
+			}
+		}
+	}
+}
+//---------------Azul--------------------------------------------------
+material CallOfCooking/speedBase{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture speedBase.png
+			}
+		}
+	}
+}
+material CallOfCooking/speedHover{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture speedHover.png
+			}
+		}
+	}
+}
+material CallOfCooking/speedPress{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture speedPress.png
+			}
+		}
+	}
+}
+
+//////////////////////////////////////////////////////////////////////
 //                     MATERIALES MODELS                            //
 //////////////////////////////////////////////////////////////////////

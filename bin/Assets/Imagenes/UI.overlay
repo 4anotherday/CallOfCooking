@@ -15,8 +15,7 @@ overlay GameUI
             left 0.05
             top 0.025
             char_height 0.08
-            colour_top 1 0 0
-            colour_bottom 1 0.9 0
+            colour 1 1 1
             caption ROUND 1
             font_name publicSecretFont
             alignment center
@@ -37,7 +36,7 @@ overlay GameUI
             horz_align center
             vert_align top
             char_height 0.08
-            colour 1 0.7 0
+            colour 1 0.3 0.3
             caption 0
             font_name publicSecretFont
             alignment center
@@ -48,9 +47,9 @@ overlay GameUI
     {
         // Center it horizontally, put it at the top
         left 0
-        top 0.75
-        width 0.15
-        height 0.25
+        top 0.70
+        width 0.2
+        height 0.3
         material CallOfCooking/Rifle
     }
 
@@ -85,4 +84,30 @@ overlay GameUI
             material CallOfCooking/Corazon
         }
     }
+    //CARDS///////////////////////////////////////////
+    overlay_element GameUI/RedCard Panel
+    {
+        left 0.15
+        top 0.2
+        width 0.22
+        height 0.6
+        material CallOfCooking/attackBase
+    }
+    overlay_element GameUI/GreenCard Panel
+    {
+        left 0.40
+        top 0.2
+        width 0.22
+        height 0.6
+        material CallOfCooking/healthBase
+    }
+    overlay_element GameUI/BlueCard Panel
+    {
+        left 0.66
+        top 0.2
+        width 0.22
+        height 0.6
+        material CallOfCooking/speedBase
+    }
+    ///////////////////////////////////////////////////////
 }
