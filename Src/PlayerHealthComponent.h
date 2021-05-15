@@ -4,6 +4,8 @@
 #ifndef PLAYERHEALTHCOMPONENT_H
 #define PLAYERHEALTHCOMPONENT_H
 
+class UIManagerComponent;
+
 class PlayerHealthComponent : public Component
 {
 public:
@@ -27,6 +29,8 @@ public:
 
 	virtual void awake(luabridge::LuaRef& data);
 
+	virtual void start() override;
+
 	/// <summary>
 	/// add n life points to the player
 	/// </summary>
@@ -40,8 +44,15 @@ public:
 	/// reset the player life points
 	/// </summary>
 	void reset();
+
+	/// <summary>
+	/// Called when GUI needs to be updated
+	/// </summary>
+	void updateUIlifes();
 private:
 	int _lives;
 	int _maxLife;
+
+	UIManagerComponent* _uimanager;
 };
 #endif // !PLAYERHEALTHCOMPONENT_H

@@ -10,6 +10,7 @@ class LemonPoolComponent;
 class WatermelonPoolComponent;
 class EngineTime;
 class CardSystemComponent;
+class UIManagerComponent;
 
 enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
@@ -54,6 +55,7 @@ private:
 	GranadePoolComponent* _granadePool;
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
+	UIManagerComponent* _uimanager;
 
 	int _currentLevel;
 	float _waveStartTime;
