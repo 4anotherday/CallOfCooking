@@ -69,7 +69,8 @@ void PlayerAttackComponent::update()
 void PlayerAttackComponent::onTrigger(GameObject* other)
 {
 	//The enemy is in player range
-	//static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent))->setInPlayerRange(true);
+	/*EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
+	if(h != nullptr) h->setInPlayerRange(true);*/
 }
 
 void PlayerAttackComponent::increaseAttackRate(float extraAttackRate)
@@ -97,6 +98,19 @@ void PlayerAttackComponent::rotateAttackHitBox()
 void PlayerAttackComponent::attack(float deltaTime)
 {
 	//Enemies are not in player range
+	EnemiesNotInPlayerRange();
+
+	//Here we attack
+	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
+	{
+		_lastAttack = deltaTime;
+
+		AttackEnemies();
+	}
+}
+
+void PlayerAttackComponent::EnemiesNotInPlayerRange()
+{
 	for (auto& e : _lemonPool->getPool())
 	{
 		Transform* enemyTr = static_cast<Transform*>(e->getComponent(ComponentId::Transform));
@@ -132,40 +146,37 @@ void PlayerAttackComponent::attack(float deltaTime)
 			h->setInPlayerRange(false);
 		}
 	}
+}
 
-	//Here we attack
-	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
+void PlayerAttackComponent::AttackEnemies()
+{
+	for (auto& e : _lemonPool->getPool())
 	{
-		_lastAttack = deltaTime;
+		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 
-		for (auto& e : _lemonPool->getPool())
+		if (h->inPlayerRange())
 		{
-			EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
-
-			if (h->inPlayerRange())
-			{
-				h->reduceLivesPoints(_damage);
-			}
+			h->reduceLivesPoints(_damage);
 		}
+	}
 
-		for (auto& e : _grenadePool->getPool())
+	for (auto& e : _grenadePool->getPool())
+	{
+		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
+
+		if (h->inPlayerRange())
 		{
-			EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
-
-			if (h->inPlayerRange())
-			{
-				h->reduceLivesPoints(_damage);
-			}
+			h->reduceLivesPoints(_damage);
 		}
+	}
 
-		for (auto& e : _watermelonPool->getPool())
+	for (auto& e : _watermelonPool->getPool())
+	{
+		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
+
+		if (h->inPlayerRange())
 		{
-			EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
-
-			if (h->inPlayerRange())
-			{
-				h->reduceLivesPoints(_damage);
-			}
+			h->reduceLivesPoints(_damage);
 		}
 	}
 }

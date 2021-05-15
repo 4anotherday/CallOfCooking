@@ -50,6 +50,16 @@ private:
 	/// </summary>
 	void attack(float deltaTime);
 
+	/// <summary>
+	/// Puts enemies outside the player's range
+	/// </summary>
+	void EnemiesNotInPlayerRange();
+
+	/// <summary>
+	/// Damages the enemies which are in player range
+	/// </summary>
+	void AttackEnemies();
+
 	Transform* _trPlayer;
 	Transform* _tr;
 	RigidBodyComponent* _rb;
