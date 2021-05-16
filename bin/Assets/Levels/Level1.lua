@@ -42,7 +42,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 			LightDirection = {X=0,Y=-1,Z=0}}
 
 go_3 = {}
-go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
+go_3[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.2}}
 go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
@@ -51,7 +51,6 @@ go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
 go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
 go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
 RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
-go_3[8] = {Component = "PlayerAttackComponent", Damage = 5,AtackRate = 0.5,AttackHitBoxDistance = 0.25, PlayerRange = 3}
 
 
 go_4={}

@@ -20,7 +20,7 @@ void AttackSpeedCardComponent::start()
 {
 	CardComponent::start();
 	//_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
-	_player = static_cast<PlayerAttackComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerAttackComponent));
+	_player = static_cast<PlayerAttackComponent*>(Engine::getInstance()->findGameObject("PlayerAttackHitBox")->getComponent(UserComponentId::PlayerAttackComponent));
 	setCallBackParam(_player);
 	setCallBack(operate);
 }
