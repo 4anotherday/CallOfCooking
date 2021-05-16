@@ -37,12 +37,11 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 	int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
 
-	std::vector<Vector3> respawns;
 	for (int j = 1; j <= howManyRespawns; ++j) {
 		float x = configData[0]["RespawnPositions"][j]["X"].cast<float>();
 		float y = configData[0]["RespawnPositions"][j]["Y"].cast<float>();
 		float z = configData[0]["RespawnPositions"][j]["Z"].cast<float>();
-		respawns.push_back(Vector3(x, y, z));
+		_respawnPositions.push_back(Vector3(x, y, z));
 	}
 
 	for (int x = 1; x <= configData.length(); ++x) {
@@ -95,6 +94,11 @@ void LevelManagerComponent::start()
 	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
 	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
 	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
+
+	if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+	if (_lemonPool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+	if (_watermelonPool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
 	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
 	_uimanager->setRoundsText(_currentLevel);

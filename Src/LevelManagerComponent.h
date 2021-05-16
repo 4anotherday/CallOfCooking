@@ -51,6 +51,7 @@ private:
 
 	EngineTime* _engineTime;
 	std::vector<Wave> _levelsInfo;
+	std::vector<Vector3> _respawnPositions;
 	CardSystemComponent* _cardSystem;
 	GranadePoolComponent* _granadePool;
 	LemonPoolComponent* _lemonPool;
