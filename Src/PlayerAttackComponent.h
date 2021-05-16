@@ -53,12 +53,12 @@ private:
 	/// <summary>
 	/// Puts enemies outside the player's range
 	/// </summary>
-	void EnemiesNotInPlayerRange();
+	void enemiesNotInPlayerRange();
 
 	/// <summary>
 	/// Damages the enemies which are in player range
 	/// </summary>
-	void AttackEnemies();
+	void attackEnemies();
 
 	Transform* _trPlayer;
 	Transform* _tr;

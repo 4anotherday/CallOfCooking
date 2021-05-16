@@ -98,18 +98,18 @@ void PlayerAttackComponent::rotateAttackHitBox()
 void PlayerAttackComponent::attack(float deltaTime)
 {
 	//Enemies are not in player range
-	EnemiesNotInPlayerRange();
+	enemiesNotInPlayerRange();
 
 	//Here we attack
 	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
 	{
 		_lastAttack = deltaTime;
 
-		AttackEnemies();
+		attackEnemies();
 	}
 }
 
-void PlayerAttackComponent::EnemiesNotInPlayerRange()
+void PlayerAttackComponent::enemiesNotInPlayerRange()
 {
 	for (auto& e : _lemonPool->getPool())
 	{
@@ -148,7 +148,7 @@ void PlayerAttackComponent::EnemiesNotInPlayerRange()
 	}
 }
 
-void PlayerAttackComponent::AttackEnemies()
+void PlayerAttackComponent::attackEnemies()
 {
 	for (auto& e : _lemonPool->getPool())
 	{
