@@ -80,7 +80,7 @@ void PlayerShootComponent::shoot()
 	Vector3 dir = Vector3(mousePosX, 0, mousePosY);
 	dir = dir.normalize();
 	Vector3 myPos = _tr->getPosition();
-	Vector3 bulletPos = myPos + (dir * 40);
+	Vector3 bulletPos = myPos + (dir*0.25f);
 
 	//Shot
 	c->beShot(bulletPos, dir);

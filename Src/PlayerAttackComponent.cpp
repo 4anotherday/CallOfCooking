@@ -63,14 +63,14 @@ void PlayerAttackComponent::update()
 	float currentDeltaTime = _engineTime->deltaTime();
 
 	rotateAttackHitBox();
-	//attack(currentDeltaTime);
+	attack(currentDeltaTime);
 }
 
 void PlayerAttackComponent::onTrigger(GameObject* other)
 {
 	//The enemy is in player range
-	/*EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
-	if(h != nullptr) h->setInPlayerRange(true);*/
+	EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
+	if(h != nullptr) h->setInPlayerRange(true);
 }
 
 void PlayerAttackComponent::increaseAttackRate(float extraAttackRate)
@@ -99,11 +99,12 @@ void PlayerAttackComponent::attack(float deltaTime)
 {
 	//Enemies are not in player range
 	enemiesNotInPlayerRange();
+	_lastAttack -= deltaTime;
 
 	//Here we attack
-	if (_mouse->isMouseButtonJustDown(MouseButton::LEFT) && deltaTime > _lastAttack + _attackRate)
+	if (_lastAttack <=0 && _mouse->isMouseButtonJustDown(MouseButton::LEFT))
 	{
-		_lastAttack = deltaTime;
+		_lastAttack = _attackRate;
 
 		attackEnemies();
 	}
