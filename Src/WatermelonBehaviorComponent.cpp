@@ -29,7 +29,7 @@ void WatermelonBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void WatermelonBehaviorComponent::start()
 {
-	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Jugador")->getComponent(ComponentId::Transform));
+	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));

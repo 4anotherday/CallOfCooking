@@ -29,7 +29,7 @@ go_1[2] = { Component = "Camera", SlaveRotation = true, Plane = {Near = 1, Far =
 			Projection = true, Fovy = 60, Frustrum = {Left = 1, Right = 1, Top = 1, Bot = 1}, 
 			OrthoWindow = {W = 100, H = 100}, Viewport = {Left = 0, Top = 0, W = 1, H = 1},
 			DisplayOverlays= true, zOrder = 1}
-go_1[3] = { Component = "CameraControllerComponent",Target="Jugador", Offset = {X =0, Y = 4, Z = 0}}
+go_1[3] = { Component = "CameraControllerComponent",Target="Player", Offset = {X =0, Y = 4, Z = 0}}
 
 
 go_2 = {}
@@ -42,7 +42,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 			LightDirection = {X=0,Y=-1,Z=0}}
 
 go_3 = {}
-go_3[0] = { Name = "Jugador", HowManyCmps = 7, Persist = false}
+go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.2}}
 go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1,kinematic=true,IsTrigger=false}
@@ -51,6 +51,7 @@ go_3[5] = { Component = "PlayerHealthComponent", Lives=5,MaxLife=5}
 go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
 go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
 RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+go_3[8] = {Component = "PlayerAttackComponent", Damage = 5,AtackRate = 0.5,AttackHitBoxDistance = 0.25, PlayerRange = 3}
 
 
 go_4={}
@@ -83,13 +84,15 @@ go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Heig
 
 
 go_8={}
-go_8[0] = { Name="GameManager", HowManyCmps=6, Persist = false}
+go_8[0] = { Name="GameManager", HowManyCmps=7, Persist = false}
 go_8[1] = { Component = "LevelManagerComponent", CurrentLevel=1, Path = "Assets/Levels/prefabLevelManager.lua"}
 go_8[2] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
 go_8[3] = { Component = "GranadePoolComponent", MaxPool = 1, Path = "Assets/Levels/prefabGrenade.lua"}
 go_8[4] = { Component = "GranadeBulletPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabGrenadeBullet.lua"}
 go_8[5] = { Component = "LemonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabLemon.lua"}
 go_8[6] = { Component = "WatermelonPoolComponent", MaxPool = 5, Path = "Assets/Levels/prefabWatermelon.lua"}
+go_8[7] = { Component = "CardSystemComponent", MaxPool = 5, AttackCardPrefab = "Assets/Levels/prefabCardAttack.lua",  LifeCardPrefab = "Assets/Levels/prefabCardLife.lua", 
+			MovSpeedCardPrefab = "Assets/Levels/prefabCardSpeedMov.lua"}
 
 go_9={}
 go_9[0] = {Name="UIManager", HowManyCmps=3, Persist = false}

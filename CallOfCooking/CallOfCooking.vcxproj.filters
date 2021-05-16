@@ -64,21 +64,6 @@
     <ClCompile Include="..\Src\PoolComponent.cpp">
       <Filter>Archivos de origen\Others</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp">
-      <Filter>Archivos de encabezado\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\CardComponent.cpp">
-      <Filter>Archivos de encabezado\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\CardSystemComponent.cpp">
-      <Filter>Archivos de encabezado\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\LifeCardComponent.cpp">
-      <Filter>Archivos de encabezado\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\MovementSpeedCardComponent.cpp">
-      <Filter>Archivos de encabezado\Cards</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\CameraControllerComponent.cpp">
       <Filter>Archivos de origen\Others</Filter>
     </ClCompile>
@@ -87,6 +72,21 @@
     </ClCompile>
     <ClCompile Include="..\Src\PrefabLoader.cpp">
       <Filter>Archivos de origen\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CardComponent.cpp">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CardSystemComponent.cpp">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LifeCardComponent.cpp">
+      <Filter>Archivos de origen\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MovementSpeedCardComponent.cpp">
+      <Filter>Archivos de origen\Cards</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,21 +153,6 @@
     <ClInclude Include="..\Src\EnemyPoolComponent.h">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\AttackSpeedCardComponent.h">
-      <Filter>Archivos de origen\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\CardComponent.h">
-      <Filter>Archivos de origen\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\CardSystemComponent.h">
-      <Filter>Archivos de origen\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\LifeCardComponent.h">
-      <Filter>Archivos de origen\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\MovementSpeedCardComponent.h">
-      <Filter>Archivos de origen\Cards</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\CameraControllerComponent.h">
       <Filter>Archivos de encabezado\Others</Filter>
     </ClInclude>
@@ -176,6 +161,21 @@
     </ClInclude>
     <ClInclude Include="..\Src\PrefabLoader.h">
       <Filter>Archivos de encabezado\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackSpeedCardComponent.h">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CardComponent.h">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CardSystemComponent.h">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LifeCardComponent.h">
+      <Filter>Archivos de encabezado\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MovementSpeedCardComponent.h">
+      <Filter>Archivos de encabezado\Cards</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

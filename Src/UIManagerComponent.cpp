@@ -19,7 +19,6 @@ void UIManagerComponent::awake(luabridge::LuaRef& data)
 {
 	_textRounds = new TextManagerElement("GameUI/Rounds");
 	_textScore = new TextManagerElement("GameUI/Points");
-	_weaponPanel = new OverlayElementMngr("GameUI/Arma");
 
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));

@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "includeLUA.h"
 
-CardComponent::CardComponent(UserComponentId::UserComponentId id) : Component(id)
+CardComponent::CardComponent(UserComponentId::UserComponentId id) : Component(id), _button(nullptr)
 {
 }
 
@@ -14,7 +14,7 @@ CardComponent::~CardComponent()
 
 void CardComponent::start()
 {
-	_button = static_cast<ButtonComponent*>(Engine::getInstance()->findGameObject(_gameObject->getName())->getComponent(UserComponentId::Health));
+	_button = static_cast<ButtonComponent*>(Engine::getInstance()->findGameObject(_gameObject->getName())->getComponent(ComponentId::ButtonComponent));
 }
 
 void CardComponent::setOverlayName(std::string& const name)

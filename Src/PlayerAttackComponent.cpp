@@ -47,7 +47,7 @@ void PlayerAttackComponent::start()
 	_windowSizeY = size.second;
 
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Jugador")->getComponent(ComponentId::Transform));
+	_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	//_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 
 	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));

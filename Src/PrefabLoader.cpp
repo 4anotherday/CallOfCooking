@@ -25,6 +25,7 @@ GameObject* PrefabLoader::loadPrefab(std::string path, int howMany)
 
 			luabridge::LuaRef componentData = dataRef[x];
 
+			go->addComponent(co);
 			co->awake(componentData);
 		}		
 	}

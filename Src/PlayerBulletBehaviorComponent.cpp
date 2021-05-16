@@ -31,7 +31,7 @@ void PlayerBulletBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_pool = static_cast<PlayerBulletPoolComponent*>(Engine::getInstance()->findGameObject("Jugador")->getComponent(UserComponentId::PlayerBulletPoolComponent));
+	_pool = static_cast<PlayerBulletPoolComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_direction = Vector3(0, 0, 1);
 }
 

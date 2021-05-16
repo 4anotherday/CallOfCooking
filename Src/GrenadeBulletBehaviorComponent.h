@@ -39,7 +39,7 @@ public:
 	/// </summary>
 	virtual void update() override;
 
-	virtual void onCollision(GameObject* other);
+	virtual void onTrigger(GameObject* other);
 
 	void beShot(Vector3 pos, Vector3 dir);
 

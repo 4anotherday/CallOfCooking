@@ -48,9 +48,9 @@ void GrenadeBulletBehaviorComponent::update()
 	}
 }
 
-void GrenadeBulletBehaviorComponent::onCollision(GameObject* other)
+void GrenadeBulletBehaviorComponent::onTrigger(GameObject* other)
 {
-	if (other->getName() == "Jugador") {
+	if (other->getName() == "Player") {
 		PlayerHealthComponent* vida = static_cast<PlayerHealthComponent*>(other->getComponent(UserComponentId::Health));
 		vida->loseLife(1);
 		deactivate();

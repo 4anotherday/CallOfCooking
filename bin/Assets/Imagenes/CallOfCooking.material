@@ -14,30 +14,7 @@ material CallOfCooking/Corazon{
 		}
 	}
 }
-material CallOfCooking/Rifle{
-	technique{
-		pass{
-			lighting off
-			depth_check off
-            scene_blend alpha_blend
-			texture_unit{
-				texture rifle.png
-			}
-		}
-	}
-}
-material CallOfCooking/Cuchillo{
-	technique{
-		pass{
-			lighting off
-			depth_check off
-            scene_blend alpha_blend
-			texture_unit{
-				texture cuchillo.png
-			}
-		}
-	}
-}
+
 //////////////////////////////////////////////////////////////////////
 //                     MATERIALES CARDS                             //
 //////////////////////////////////////////////////////////////////////

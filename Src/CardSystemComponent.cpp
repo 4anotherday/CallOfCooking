@@ -21,19 +21,19 @@ void CardSystemComponent::awake(luabridge::LuaRef& data)
 	if (LUAFIELDEXIST(AttackCardPrefab)) nameAttack = GETLUAFIELD(AttackCardPrefab, std::string);
 	GameObject* o = PrefabLoader::getInstance()->loadPrefab(nameAttack, 1);
 	_cards.push_back(o);
-	o->setEnabled(false);
+	o->setEnabled(true);
 
 	std::string nameLife;
 	if (LUAFIELDEXIST(LifeCardPrefab)) nameLife = GETLUAFIELD(LifeCardPrefab, std::string);
 	o = PrefabLoader::getInstance()->loadPrefab(nameLife, 1);
 	_cards.push_back(o);
-	o->setEnabled(false);
+	o->setEnabled(true);
 
 	std::string nameMovSpeed;
 	if (LUAFIELDEXIST(MovSpeedCardPrefab)) nameMovSpeed = GETLUAFIELD(MovSpeedCardPrefab, std::string);
 	o = PrefabLoader::getInstance()->loadPrefab(nameMovSpeed, 1);
 	_cards.push_back(o);
-	o->setEnabled(false);
+	o->setEnabled(true);
 
 }
 

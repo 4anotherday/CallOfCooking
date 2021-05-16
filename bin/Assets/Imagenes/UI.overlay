@@ -43,16 +43,6 @@ overlay GameUI
         }
     }
 
-    overlay_element GameUI/Arma Panel
-    {
-        // Center it horizontally, put it at the top
-        left 0
-        top 0.70
-        width 0.2
-        height 0.3
-        material CallOfCooking/Rifle
-    }
-
     overlay_element GameUI/Vidas Panel{
         overlay_element GameUI/Corazon1 Panel
         {
