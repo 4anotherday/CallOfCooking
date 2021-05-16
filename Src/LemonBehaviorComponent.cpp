@@ -22,15 +22,17 @@ LemonBehaviorComponent::~LemonBehaviorComponent()
 
 void LemonBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_range = data["Range"].cast<float>();
-	_movementSpeed = data["MovementSpeed"].cast<float>();
+	if (LUAFIELDEXIST(Range))
+		_range = data["Range"].cast<float>();
+	if (LUAFIELDEXIST(MovementSpeed))
+		_movementSpeed = data["MovementSpeed"].cast<float>();
 }
 
 void LemonBehaviorComponent::start()
 {
 	_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));
+	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
 	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }
@@ -65,7 +67,7 @@ void LemonBehaviorComponent::walk()
 
 	//With Physx
 	dir = dir * _movementSpeed;
-	_rigidbody->addForce(dir);
+	_rigidbody->setLinearVelocity(dir);
 }
 
 void LemonBehaviorComponent::attack()

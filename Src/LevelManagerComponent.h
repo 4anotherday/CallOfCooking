@@ -56,10 +56,11 @@ private:
 	GranadePoolComponent* _granadePool;
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
-	UIManagerComponent* _uimanager;
+	UIManagerComponent* _uiManager;
 
 	int _currentLevel;
 	float _waveStartTime;
+	float _time;
 	bool _newWave;
 };
 #endif // !LEVELMANAGERCOMPONENT_H

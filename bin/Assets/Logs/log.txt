@@ -1,11 +1,170 @@
-14:48:29 -> INFO: Creacion
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLevelManager.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
-14:48:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
-14:48:30 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLevelManager.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to constrain a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> WARN: trying to move a constrain rigidBody will result in nothig
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
+19:25:30 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
+19:25:30 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:30 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:32 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:34 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:36 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:38 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:40 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:42 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:44 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:46 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:48 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:50 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:52 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig
+19:25:54 -> WARN: trying to set the linear velocity of a static rigidBody will result in nothig

@@ -14,7 +14,9 @@
 ADD_COMPONENT(LevelManagerComponent);
 
 LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
-_engineTime(EngineTime::getInstance()), _levelsInfo(), _granadePool(), _lemonPool(), _watermelonPool(), _currentLevel(0), _waveStartTime(0.0f), _newWave(false)
+_engineTime(EngineTime::getInstance()), _levelsInfo(), _respawnPositions(), _cardSystem(nullptr),
+_granadePool(), _lemonPool(), _watermelonPool(), _uiManager(nullptr),
+_currentLevel(0), _waveStartTime(0.0f), _time(), _newWave(true)
 {
 }
 
@@ -74,7 +76,8 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 void LevelManagerComponent::update()
 {
-	if (_newWave && _engineTime->deltaTime() >= _waveStartTime + _levelsInfo.at(_currentLevel).waveTime) {
+	_time += _engineTime->deltaTime();
+	if (_newWave && _time >= _waveStartTime + _levelsInfo.at(_currentLevel).waveTime) {
 		_cardSystem->setCardsUp(false);
 		enemiesSpawn();
 		_newWave = false;
@@ -84,8 +87,8 @@ void LevelManagerComponent::update()
 		_cardSystem->setCardsUp(true);
 		++_currentLevel;
 		_newWave = true;
-		_waveStartTime = _engineTime->deltaTime();
-		_uimanager->setRoundsText(_currentLevel);
+		_waveStartTime = _time;
+		_uiManager->setRoundsText(_currentLevel);
 	}
 }
 
@@ -96,12 +99,12 @@ void LevelManagerComponent::start()
 	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 
 	if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
-	if (_lemonPool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
-	if (_watermelonPool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+	if (_lemonPool != nullptr) _lemonPool->setRespawnPositions(_respawnPositions);
+	if (_watermelonPool != nullptr) _watermelonPool->setRespawnPositions(_respawnPositions);
 
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
-	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-	_uimanager->setRoundsText(_currentLevel);
+	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uiManager->setRoundsText(_currentLevel);
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)

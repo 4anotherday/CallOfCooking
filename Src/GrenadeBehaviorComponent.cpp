@@ -31,7 +31,7 @@ void GrenadeBehaviorComponent::awake(luabridge::LuaRef& data)
 void GrenadeBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_healthPlayer = static_cast<PlayerHealthComponent*>(_gameObject->getComponent(UserComponentId::Health));
+	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
 	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 
@@ -75,7 +75,7 @@ void GrenadeBehaviorComponent::walk()
 
 	//With Physx
 	dir = dir * _movementSpeed;
-	_rigidbody->addForce(dir);
+	_rigidbody->setLinearVelocity(dir);
 }
 
 void GrenadeBehaviorComponent::attack()
@@ -87,8 +87,10 @@ void GrenadeBehaviorComponent::attack()
 	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
 
 	GameObject* newBullet = _bulletsManager->getInactiveGO();
-	GrenadeBulletBehaviorComponent* c = static_cast<GrenadeBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::GrenadeBulletBehaviourComponent));
-	Vector3 myPos = _tr->getPosition();
-	Vector3 bulletPos = myPos + (dir * 40);
-	c->beShot(bulletPos, dir);
+	if (newBullet != nullptr) {
+		GrenadeBulletBehaviorComponent* c = static_cast<GrenadeBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::GrenadeBulletBehaviourComponent));
+		Vector3 myPos = _tr->getPosition();
+		Vector3 bulletPos = myPos + (dir * 4);
+		c->beShot(bulletPos, dir);
+	}
 }

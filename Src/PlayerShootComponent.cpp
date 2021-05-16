@@ -65,25 +65,27 @@ void PlayerShootComponent::onTrigger(GameObject* other)
 void PlayerShootComponent::shoot()
 {
 	//Instanciar la bala
-	GameObject* nuevaBala = _bulletsManager->getInactiveGO();
-	PlayerBulletBehaviorComponent* c = static_cast<PlayerBulletBehaviorComponent*>(nuevaBala->getComponent(UserComponentId::PlayerBulletBehaviorComponent));
+	GameObject* newBullet = _bulletsManager->getInactiveGO();
+	if (newBullet != nullptr) {
+		PlayerBulletBehaviorComponent* c = static_cast<PlayerBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::PlayerBulletBehaviorComponent));
 
-	//Get the mouse position in window sizes, considering the origin the windows center
-	float mousePosX = MouseInput::getInstance()->getMousePos()[0];
-	mousePosX = mousePosX * _windowSizeX;
-	mousePosX = mousePosX - (_windowSizeX / 2);
-	float mousePosY = MouseInput::getInstance()->getMousePos()[1];
-	mousePosY = mousePosY * _windowSizeY;
-	mousePosY = mousePosY - (_windowSizeY / 2);
+		//Get the mouse position in window sizes, considering the origin the windows center
+		float mousePosX = MouseInput::getInstance()->getMousePos()[0];
+		mousePosX = mousePosX * _windowSizeX;
+		mousePosX = mousePosX - (_windowSizeX / 2);
+		float mousePosY = MouseInput::getInstance()->getMousePos()[1];
+		mousePosY = mousePosY * _windowSizeY;
+		mousePosY = mousePosY - (_windowSizeY / 2);
 
-	//Prepare the info for the bullet
-	Vector3 dir = Vector3(mousePosX, 0, mousePosY);
-	dir = dir.normalize();
-	Vector3 myPos = _tr->getPosition();
-	Vector3 bulletPos = myPos + (dir*0.25f);
+		//Prepare the info for the bullet
+		Vector3 dir = Vector3(mousePosX, 0, mousePosY);
+		dir = dir.normalize();
+		Vector3 myPos = _tr->getPosition();
+		Vector3 bulletPos = myPos + (dir*0.25f);
 
-	//Shot
-	c->beShot(bulletPos, dir);
+		//Shot
+		c->beShot(bulletPos, dir);
+	}
 }
 
 void PlayerShootComponent::getDirectionOfShot()

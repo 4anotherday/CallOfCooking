@@ -40,7 +40,7 @@ public:
 	/// <summary>
 	/// Disables the particle effect if lemon is walking
 	/// </summary>
-	virtual void walk();
+	virtual void walk() override;
 	/// <summary>
 	/// Deals damage to player
 	/// </summary>

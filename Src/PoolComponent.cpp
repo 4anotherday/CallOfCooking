@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "PoolComponent.h"
 #include "LevelManagerComponent.h"
+#include "Exceptions.h"
 
 PoolComponent::PoolComponent(UserComponentId::UserComponentId id): Component(id), _lvlManager(), _mainPool(), _inactivePool()
 {
@@ -22,7 +23,7 @@ void PoolComponent::start()
 GameObject* PoolComponent::getInactiveGO()
 {
 	if (_inactivePool.empty()) {
-		//EXCEPCIÓN
+		return nullptr;
 	}
 	GameObject* go = _inactivePool.back();
 	_inactivePool.pop_back();

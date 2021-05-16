@@ -97,13 +97,13 @@ void PlayerAttackComponent::rotateAttackHitBox()
 
 void PlayerAttackComponent::attack(float deltaTime)
 {
-	//Enemies are not in player range
-	enemiesNotInPlayerRange();
 	_lastAttack -= deltaTime;
 
 	//Here we attack
 	if (_lastAttack <=0 && _mouse->isMouseButtonJustDown(MouseButton::LEFT))
 	{
+		//Enemies are not in player range
+		enemiesNotInPlayerRange();
 		_lastAttack = _attackRate;
 
 		attackEnemies();
