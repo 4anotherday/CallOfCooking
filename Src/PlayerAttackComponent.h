@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include "KeyCodes.h"
+#include <vector>
 
 class GameObject;
 class RigidBodyComponent;
@@ -69,7 +70,9 @@ private:
 	GranadePoolComponent* _grenadePool;
 	WatermelonPoolComponent* _watermelonPool;
 
-	float _damage, _lastAttack, _attackRate, _attackHitBoxDistance,_playerRange;
+	std::vector<GameObject*> prueba;
+
+	float _damage, _lastAttack, _attackRate, _attackHitBoxDistance, _playerRange;
 	int _windowSizeX, _windowSizeY;
 };
 #endif // !PLAYERATTACKCOMPONENT_H

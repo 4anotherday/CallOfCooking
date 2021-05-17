@@ -6,4 +6,4 @@ prefab[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practi
 				Visible=true, Shadows=true, RenderingDistance = 9999}
 prefab[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1,Kinematic=true}
 prefab[4] = { Component = "EnemyHealthComponent", Points =5, HitPoints = 5}
-prefab[5] = { Component = "WatermelonBehaviorComponent", Range =5, MovementSpeed = 1, AttackSpeed=2, TimeToExplode= 1}
+prefab[5] = { Component = "WatermelonBehaviorComponent", Range =1, MovementSpeed = 1, AttackSpeed=2, TimeToExplode= 1}

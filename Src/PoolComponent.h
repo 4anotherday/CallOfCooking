@@ -26,7 +26,7 @@ public:
 	/// <summary>
 	/// Returns the entire group of game objects
 	/// </summary>
-	std::vector<GameObject*> getPool() const { return _mainPool; }
+	const std::vector<GameObject*>& getPool() { return _mainPool; }
 
 	/// <summary>
 	/// Returns the group of inactive game objects
@@ -49,6 +49,6 @@ protected:
 	LevelManagerComponent* _lvlManager;
 
 	std::vector<GameObject*> _mainPool;
-	std::vector<GameObject*> _inactivePool;	
+	std::vector<GameObject*> _inactivePool;
 };
 #endif // !POOLCOMPONENT_H

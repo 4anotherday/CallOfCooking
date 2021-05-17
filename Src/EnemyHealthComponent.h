@@ -5,7 +5,7 @@
 #include "LevelManagerComponent.h"
 class ScoreManagerComponent;
 
-class EnemyHealthComponent : public Component	
+class EnemyHealthComponent : public Component
 {
 public:
 	/// <summary>
@@ -19,7 +19,7 @@ public:
 	virtual ~EnemyHealthComponent();
 
 	/// <summary>
-	/// Awake class, initializes the local variables 
+	/// Awake class, initializes the local variables
 	/// </summary>
 	/// <param name="data">Luaref with the data</param>
 	virtual void awake(luabridge::LuaRef& data) override;
@@ -28,7 +28,6 @@ public:
 	/// Initialise the score manager
 	/// </summary>
 	virtual void start() override;
-
 
 	/// <summary>
 	/// Sets the value of combo points the enemy grants for dying
@@ -46,9 +45,13 @@ public:
 	/// </summary>
 	void restartLives();
 
+	inline int getLives() { return _remainingLives; }
+
 	inline bool inPlayerRange() const { return _inPlayerRange; }
 
 	inline void setInPlayerRange(bool b) { _inPlayerRange = b; }
+
+	inline void setMyEnemyType(int type) { _enemyType = (EnemyType)type; }
 
 private:
 	ScoreManagerComponent* _scoreManager;

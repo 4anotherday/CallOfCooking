@@ -33,9 +33,7 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 	std::string path = "";
 	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
 
-
 	luabridge::LuaRef configData = PrefabLoader::getInstance()->getDataPrefab(path);
-
 
 	int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
 
@@ -50,9 +48,9 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 		Wave wave;
 		wave.enemiesLeft = wave.totalEnemies = configData[x]["TotalEnemies"].cast<int>();
 		wave.waveTime = configData[x]["WaveTime"].cast<float>();
-		
-		Enemy granade;
-		granade.type == EnemyType::GRANADE;
+
+		Enemy granade = Enemy();
+		granade.type = EnemyType::GRANADE;
 		granade.howManyEnemies = configData[x]["Granade"]["HowMany"].cast<int>();
 		granade.spawnEnemyTime = configData[x]["Granade"]["RespawnTime"].cast<float>();
 		wave.enemies.push_back(granade);
@@ -62,7 +60,7 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 		lemon.howManyEnemies = configData[x]["Lemon"]["HowMany"].cast<int>();
 		lemon.spawnEnemyTime = configData[x]["Lemon"]["RespawnTime"].cast<float>();
 		wave.enemies.push_back(lemon);
-		
+
 		Enemy watermelon;
 		watermelon.type = EnemyType::WATERMELON;
 		watermelon.howManyEnemies = configData[x]["Watermelon"]["HowMany"].cast<int>();
@@ -71,7 +69,6 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 		_levelsInfo.push_back(wave);
 	}
-
 }
 
 void LevelManagerComponent::update()
@@ -113,28 +110,29 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 
 	if (_levelsInfo.at(_currentLevel).enemiesLeft >= 0)
 		switch (type) {
-			case EnemyType::GRANADE: {
-				_granadePool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::LEMON: {
-				_lemonPool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::WATERMELON: {
-				_watermelonPool->setInactiveGO(go);
-				break;
-			}
-			default: {
-				//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
-				break;
-			}
+		case EnemyType::GRANADE: {
+			_granadePool->setInactiveGO(go);
+			break;
 		}
+		case EnemyType::LEMON: {
+			_lemonPool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::WATERMELON: {
+			_watermelonPool->setInactiveGO(go);
+			break;
+		}
+		default: {
+			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+			break;
+		}
+		}
+	std::cout << "Enemigo muere " << _levelsInfo.at(_currentLevel).enemiesLeft << std::endl;
 }
 
 void LevelManagerComponent::enemiesSpawn()
 {
-	for (int x = EnemyType::GRANADE; x != EnemyType::WATERMELON; x++) {
+	for (int x = EnemyType::GRANADE; x != EnemyType::UNKNOW; x++) {
 		if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::GRANADE)
 			_granadePool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
 		else if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::LEMON)

@@ -7,7 +7,7 @@
 std::unique_ptr<PrefabLoader> PrefabLoader::instance = nullptr;
 
 GameObject* PrefabLoader::loadPrefab(std::string path, int howMany)
-{	
+{
 	_filePath = path;
 	GameObject* go = Engine::getInstance()->addGameObject();
 
@@ -27,7 +27,7 @@ GameObject* PrefabLoader::loadPrefab(std::string path, int howMany)
 
 			go->addComponent(co);
 			co->awake(componentData);
-		}		
+		}
 	}
 	return go;
 }
@@ -36,7 +36,7 @@ void PrefabLoader::loadPoolPrefab(std::string path, int howMany, std::vector<Gam
 {
 	_filePath = path;
 
-	if(loadPrefabFile()){	
+	if (loadPrefabFile()) {
 		std::string prefabLua = "prefab";
 		luabridge::LuaRef itemPool = luabridge::getGlobal(_LuaVM, prefabLua.c_str());
 
@@ -64,8 +64,9 @@ void PrefabLoader::loadPoolPrefab(std::string path, int howMany, std::vector<Gam
 
 				co->awake(componentData);
 				mainPool.at(x)->addComponent(co);
+				//co->setEnabled(false);
 			}
-		}		
+		}
 	}
 }
 
@@ -96,7 +97,7 @@ bool PrefabLoader::loadPrefabFile()
 
 		Logger::getInstance()->log("Fichero de prefab en ruta " + _filePath + " correctamente inicializado");
 		return true;
-	}	
+	}
 }
 
 PrefabLoader::PrefabLoader() {
@@ -123,4 +124,3 @@ void PrefabLoader::CreateInstance()
 		Logger::getInstance()->log("Trying to create PrefafLoader instance and it already exist", Logger::Level::WARN);
 	}
 }
-

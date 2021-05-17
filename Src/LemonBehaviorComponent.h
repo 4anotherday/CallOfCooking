@@ -7,6 +7,7 @@
 class ParticleSystemComponent;
 class Transform;
 class PlayerHealthComponent;
+class EnemyHealthComponent;
 
 class LemonBehaviorComponent : public EnemyBehaviorComponent
 {
@@ -49,5 +50,6 @@ private:
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
+	EnemyHealthComponent* _myHealth;
 };
 #endif // !LEMONBEHAVIORCOMPONENT_H

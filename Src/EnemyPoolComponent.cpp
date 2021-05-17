@@ -20,17 +20,18 @@ EnemyPoolComponent::~EnemyPoolComponent()
 
 void EnemyPoolComponent::update()
 {
-	if (_isSpawnTime && _totalEnemiesSpawned <= _howManyEnemiesSpawn && isTimeToSpawn()) {
+	if (_isSpawnTime && _totalEnemiesSpawned < _howManyEnemiesSpawn && isTimeToSpawn()) {
 		GameObject* go = getInactiveGO();
 
 		if (go != nullptr) {
 			Transform* tr = static_cast<Transform*>(Engine::getInstance()->findGameObject(go->getName())->getComponent(ComponentId::Transform));
-			if(_respawnsPositions.size() == 1)
+			if (_respawnsPositions.size() == 1)
 				tr->setPosition(_respawnsPositions[0]);
 			else {
-				int rnd = rand() % (_respawnsPositions.size() - 1) + 0;
+				int rnd = rand() % _respawnsPositions.size();
 				tr->setPosition(_respawnsPositions[rnd]);
 			}
+			_totalEnemiesSpawned++;
 		}
 	}
 }

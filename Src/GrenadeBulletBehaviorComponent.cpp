@@ -9,6 +9,7 @@
 #include "includeLUA.h"
 #include "EnemyHealthComponent.h"
 #include "PlayerHealthComponent.h"
+#include "ColliderComponent.h"
 
 ADD_COMPONENT(GrenadeBulletBehaviorComponent);
 
@@ -31,7 +32,8 @@ void GrenadeBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 void GrenadeBulletBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	//_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_myCollider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
 	_direction = Vector3(1, 0, 0);
 	_pool = static_cast<GranadeBulletPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadeBulletPoolComponent));
 }
@@ -39,8 +41,8 @@ void GrenadeBulletBehaviorComponent::start()
 void GrenadeBulletBehaviorComponent::update()
 {
 	float deltaTime = EngineTime::getInstance()->deltaTime();
-	Vector3 move = _direction * _movementSpeed;
-	_rigidbody->addForce(move);
+	Vector3 move = _direction * _movementSpeed * deltaTime;
+	_tr->setPosition(_tr->getPosition() + move);
 
 	_timeToDie -= deltaTime;
 	if (_timeToDie <= 0) {
@@ -52,17 +54,17 @@ void GrenadeBulletBehaviorComponent::onTrigger(GameObject* other)
 {
 	if (other->getName() == "Player") {
 		PlayerHealthComponent* vida = static_cast<PlayerHealthComponent*>(other->getComponent(UserComponentId::Health));
-		vida->loseLife(1);
-		deactivate();
+		vida->loseLife(_damage);
 	}
+	deactivate();
 }
 
 void GrenadeBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
 {
-	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
-	_rigidbody->setAngularVelocity(Vector3(0, 0, 0));
+	//_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
+	//_rigidbody->setAngularVelocity(Vector3(0, 0, 0));
 	Vector3 impulse = (dir * _movementSpeed);
-	_rigidbody->addImpulse(impulse);
+	//_rigidbody->addImpulse(impulse);
 	_tr->setPosition(pos);
 	_direction = dir;
 }

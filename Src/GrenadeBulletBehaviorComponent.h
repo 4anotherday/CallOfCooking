@@ -9,6 +9,7 @@
 class Transform;
 class RigidBodyComponent;
 class GranadeBulletPoolComponent;
+class BoxColliderComponent;
 
 class GrenadeBulletBehaviorComponent : public Component
 {
@@ -48,6 +49,7 @@ protected:
 	void deactivate();
 
 	RigidBodyComponent* _rigidbody;
+	BoxColliderComponent* _myCollider;
 	Transform* _tr;
 	GranadeBulletPoolComponent* _pool;
 

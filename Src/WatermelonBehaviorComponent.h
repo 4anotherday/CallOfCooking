@@ -7,6 +7,7 @@
 class ParticleSystemComponent;
 class Transform;
 class PlayerHealthComponent;
+class EnemyHealthComponent;
 
 class WatermelonBehaviorComponent : public EnemyBehaviorComponent
 {
@@ -30,7 +31,7 @@ public:
 	/// <summary>
 	/// Initialise the particle system,transform and player health
 	/// </summary>
-	virtual void start();
+	virtual void start() override;
 
 	/// <summary>
 	/// Checks the distance between the player and the enemy to change the state
@@ -49,6 +50,8 @@ private:
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
+	EnemyHealthComponent* _myHealth;
+
 	float _timeToExplode;
 	bool _exploding;
 	float _explosionCountDown;

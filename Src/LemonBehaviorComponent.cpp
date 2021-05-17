@@ -9,6 +9,8 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 #include "RigidBodyComponent.h"
+#include "LemonPoolComponent.h"
+#include "EnemyHealthComponent.h"
 
 ADD_COMPONENT(LemonBehaviorComponent);
 
@@ -35,6 +37,8 @@ void LemonBehaviorComponent::start()
 	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
 	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+	_myHealth->setMyEnemyType(1);
 }
 
 void LemonBehaviorComponent::update()
@@ -62,12 +66,12 @@ void LemonBehaviorComponent::walk()
 	Vector3 dir = playerPos - _tr->getPosition();
 
 	//Cinematic
-	//Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
-	//_tr->setPosition(newPos);
+	Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
+	_tr->setPosition(newPos);
 
-	//With Physx
-	dir = dir * _movementSpeed;
-	_rigidbody->setLinearVelocity(dir);
+	////With Physx
+	//dir = dir * _movementSpeed;
+	//_rigidbody->setLinearVelocity(dir);
 }
 
 void LemonBehaviorComponent::attack()

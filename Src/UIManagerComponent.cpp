@@ -57,5 +57,4 @@ void UIManagerComponent::changeWeapon(int weaponNumber)
 		_weaponPanel->setMaterial("CallOfCooking/Rifle");
 	else
 		_weaponPanel->setMaterial("CallOfCooking/Cuchillo");
-
 }

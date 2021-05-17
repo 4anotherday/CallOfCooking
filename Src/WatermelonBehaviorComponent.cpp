@@ -9,6 +9,8 @@
 #include "includeLUA.h"
 #include "RigidBodyComponent.h"
 #include "EngineTime.h"
+#include "WatermelonPoolComponent.h"
+#include "EnemyHealthComponent.h"
 
 ADD_COMPONENT(WatermelonBehaviorComponent);
 
@@ -34,6 +36,8 @@ void WatermelonBehaviorComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+	_myHealth->setMyEnemyType(2);
 }
 
 void WatermelonBehaviorComponent::update()
@@ -54,7 +58,8 @@ void WatermelonBehaviorComponent::update()
 		_explosionCountDown -= deltaTime;
 		if (_explosionCountDown <= 0) {
 			//Die or something like that
-			Engine::getInstance()->remGameObject(_gameObject);
+			_myHealth->reduceLivesPoints(_myHealth->getLives());
+
 			//If player is reachable damage him
 			if (distance <= _range) {
 				_healthPlayer->loseLife(_damagePerSecond);
@@ -75,13 +80,13 @@ void WatermelonBehaviorComponent::walk()
 	Vector3 dir = playerPos - _tr->getPosition();
 
 	//Cinematic
-	//Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
-	//_tr->setPosition(newPos);
+	Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
+	_tr->setPosition(newPos);
 
 	//With Physx
-	dir = dir * _movementSpeed;
-	_rigidbody->setLinearVelocity(dir);
-	if (_pSystem != nullptr)_pSystem->setEnabled(false);
+	//dir = dir * _movementSpeed;
+	//_rigidbody->setLinearVelocity(dir);
+	//if (_pSystem != nullptr)_pSystem->setEnabled(false);
 }
 
 void WatermelonBehaviorComponent::attack()

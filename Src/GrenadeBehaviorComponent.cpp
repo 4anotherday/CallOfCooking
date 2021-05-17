@@ -10,6 +10,7 @@
 #include "GranadeBulletPoolComponent.h"
 #include "GrenadeBulletBehaviorComponent.h"
 #include "RigidBodyComponent.h"
+#include "EnemyHealthComponent.h"
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
 
@@ -37,6 +38,8 @@ void GrenadeBehaviorComponent::start()
 
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
 	_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
+	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+	_myHealth->setMyEnemyType(0);
 }
 
 void GrenadeBehaviorComponent::update()
@@ -70,12 +73,12 @@ void GrenadeBehaviorComponent::walk()
 	Vector3 dir = playerPos - _tr->getPosition();
 
 	//Cinematic
-	//Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
-	//_tr->setPosition(newPos);
+	Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
+	_tr->setPosition(newPos);
 
 	//With Physx
-	dir = dir * _movementSpeed;
-	_rigidbody->setLinearVelocity(dir);
+	//dir = dir * _movementSpeed;
+	//_rigidbody->setLinearVelocity(dir);
 }
 
 void GrenadeBehaviorComponent::attack()
@@ -90,7 +93,7 @@ void GrenadeBehaviorComponent::attack()
 	if (newBullet != nullptr) {
 		GrenadeBulletBehaviorComponent* c = static_cast<GrenadeBulletBehaviorComponent*>(newBullet->getComponent(UserComponentId::GrenadeBulletBehaviourComponent));
 		Vector3 myPos = _tr->getPosition();
-		Vector3 bulletPos = myPos + (dir * 4);
+		Vector3 bulletPos = myPos + (dir * 0.25f);
 		c->beShot(bulletPos, dir);
 	}
 }

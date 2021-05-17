@@ -8,6 +8,7 @@
 
 class Transform;
 class RigidBodyComponent;
+class BoxColliderComponent;
 class PlayerBulletPoolComponent;
 
 class PlayerBulletBehaviorComponent : public Component
@@ -39,7 +40,7 @@ public:
 	/// </summary>
 	virtual void update() override;
 
-	virtual void onCollision(GameObject* other);
+	virtual void onTrigger(GameObject* other);
 
 	void beShot(Vector3 pos, Vector3 dir);
 
@@ -48,6 +49,7 @@ protected:
 	void deactivate();
 
 	RigidBodyComponent* _rigidbody;
+	BoxColliderComponent* _collider;
 	Transform* _tr;
 	PlayerBulletPoolComponent* _pool;
 

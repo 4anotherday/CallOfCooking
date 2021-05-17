@@ -8,6 +8,7 @@
 #include "includeLUA.h"
 #include "EnemyHealthComponent.h"
 #include "EngineTime.h"
+#include "ColliderComponent.h"
 
 ADD_COMPONENT(PlayerBulletBehaviorComponent);
 
@@ -30,7 +31,9 @@ void PlayerBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 void PlayerBulletBehaviorComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	//_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_collider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
+
 	_pool = static_cast<PlayerBulletPoolComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_direction = Vector3(0, 0, 1);
 }
@@ -39,8 +42,8 @@ void PlayerBulletBehaviorComponent::update()
 {
 	float deltaTime = EngineTime::getInstance()->deltaTime();
 
-	Vector3 dir = _direction * _movementSpeed;
-	_rigidbody->addForce(dir);
+	Vector3 dir = _direction * _movementSpeed * deltaTime;
+	_tr->setPosition(_tr->getPosition() + dir);
 	_timeToDie -= deltaTime;
 
 	if (_timeToDie <= 0) {
@@ -48,22 +51,23 @@ void PlayerBulletBehaviorComponent::update()
 	}
 }
 
-void PlayerBulletBehaviorComponent::onCollision(GameObject* other)
+void PlayerBulletBehaviorComponent::onTrigger(GameObject* other)
 {
 	//Buscar el componente de vida de enemigo, y en caso de que lo tenga es un enemigo
 	EnemyHealthComponent* health = dynamic_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
 	if (health != nullptr) {
 		health->reduceLivesPoints(_damage);
-		deactivate();
+		std::cout << "OUCH" << std::endl;
 	}
+	deactivate();
 }
 
 void PlayerBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
 {
-	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
-	_rigidbody->setAngularVelocity(Vector3(0, 0, 0));
+	//_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
+	//_rigidbody->setAngularVelocity(Vector3(0, 0, 0));
 	Vector3 impulse = (dir * _movementSpeed);
-	_rigidbody->addImpulse(impulse);
+	//_rigidbody->addImpulse(impulse);
 	_tr->setPosition(pos);
 	_direction = dir;
 }
