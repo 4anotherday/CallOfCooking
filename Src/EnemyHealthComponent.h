@@ -45,12 +45,27 @@ public:
 	/// </summary>
 	void restartLives();
 
+	/// <summary>
+	/// Return the current lives of the player
+	/// </summary>
+	/// <returns></returns>
 	inline int getLives() { return _remainingLives; }
 
+	/// <summary>
+	/// Returns if the enemy is in player range
+	/// </summary>
 	inline bool inPlayerRange() const { return _inPlayerRange; }
 
+	/// <summary>
+	/// Sets if the enemy is in player range
+	/// </summary>
+	/// <param name="b">If it´s in player range or not</param>
 	inline void setInPlayerRange(bool b) { _inPlayerRange = b; }
 
+	/// <summary>
+	/// Sets the enemy type
+	/// </summary>
+	/// <param name="type">Enemy type</param>
 	inline void setMyEnemyType(int type) { _enemyType = (EnemyType)type; }
 
 private:

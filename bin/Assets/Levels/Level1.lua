@@ -19,7 +19,7 @@ go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=7,Y=.1,Z=4}}
 go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
 			LookAt ={X=1, Y=1, Z=1},
-			Visible=false, Shadows=true, RenderingDistance = 9999}
+			Visible=true, Shadows=true, RenderingDistance = 9999}
 go_0[3] = { Component = "BoxCollider",IsTrigger=false}
 
 go_1 = {}
@@ -104,8 +104,8 @@ go_10[0] = {Name = "PlayerAttackHitBox", HowManyCmps = 4, Persist = false}
 go_10[1] = {Component = "Transform", Coord = {X = 0.5, Y = 2, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.12,Y=0.01,Z=0.12}}
 go_10[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			Visible=true, Shadows=true, RenderingDistance = 9999}
-go_10[3] = {Component = "BoxCollider",IsTrigger=true,Width=1,Depth=1,Height=1}
-go_10[4] = {Component = "PlayerAttackComponent", Damage = 1,AtackRate = 5,AttackHitBoxDistance = 0.25, PlayerRange = 6}
+go_10[3] = {Component = "SphereCollider", Radius=0.3, IsTrigger=true}
+go_10[4] = {Component = "PlayerAttackComponent", Damage = 1,AtackRate = 2,AttackHitBoxDistance = 0.35, PlayerRange = 1}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
