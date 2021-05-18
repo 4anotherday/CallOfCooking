@@ -42,11 +42,10 @@ public:
 	/// Disables the particle effect if lemon is walking
 	/// </summary>
 	virtual void walk() override;
-	/// <summary>
-	/// Deals damage to player
-	/// </summary>
-	virtual void attack() override;
+
 private:
+	void resetBehavior();
+
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;
