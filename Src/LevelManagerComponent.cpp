@@ -87,6 +87,10 @@ void LevelManagerComponent::update()
 		_waveStartTime = _time;
 		_uiManager->setRoundsText(_currentLevel);
 	}
+	Engine::getInstance()->setViewportColour(0.4, 0.2, 0.5);
+	Engine::getInstance()->setShadowColour(0.8, 0.75, 0.75);
+	Engine::getInstance()->setAmbientLight(0.5, 0.4, 0.4);
+
 }
 
 void LevelManagerComponent::start()

@@ -33,13 +33,13 @@ go_1[3] = { Component = "CameraControllerComponent",Target="Player", Offset = {X
 
 
 go_2 = {}
-go_2[0] = { Name = "Luz", HowManyCmps = 2, Persist = false}
-go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}}
-go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true, Diffuse = {Red = 1, Green= 1, Blue = 1}, 
-	   		Specular = {Red = 1, Green= 1, Blue = 1},
-			Attenuation = {Range = 1, Constant = 1, Linear = 1, Quadratic = 1},
-			SpotLightRange = {InnerAngle = 1, OuterAngle = 1, FallOf = 1},
-			LightDirection = {X=0,Y=-1,Z=0}}
+go_2[0] = { Name = "LuzDireccional", HowManyCmps = 2, Persist = false}
+go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}}
+go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+ 			Diffuse = {Red = 1, Green= 1, Blue =1}, 
+ 			Specular = {Red = 1, Green= 1, Blue = 1},
+ 			LightDirection = {X = 0, Y = -1,Z = 0},
+			Intensity = 20}
 
 go_3 = {}
 go_3[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
