@@ -41,7 +41,9 @@ namespace UserComponentId {
 		CardSystemComponent,
 		UIManagerComponent,
 		PlayButtonComponent,
-		QuitButtonComponent
+		QuitButtonComponent,
+		RestartGameButtonComponent,
+		QuitEndgameButtonComponent
 	};
 }
 

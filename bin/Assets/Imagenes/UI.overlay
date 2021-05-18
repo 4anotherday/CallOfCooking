@@ -102,6 +102,7 @@ overlay GameUI
     ///////////////////////////////////////////////////////
 
     //Final Score Panel///////////////////////////////////
+
     overlay_element GameUI/FinalPanel Panel
     {
         left 0.05
@@ -131,6 +132,46 @@ overlay GameUI
             colour 1 0.3 0.3
             caption 10000
             font_name publicSecretFont
+            alignment center
+        }
+    }
+
+    overlay_element GameUI/RestartGame Panel
+    {
+        left 0.1
+        top 0.6
+        width 0.2
+        height 0.15
+        material CallOfCooking/Button
+
+        overlay_element GameUI/RestartGame/Restarttext TextArea
+        {
+            caption RESTART
+            colour 1. .1 .1
+            font_name publicSecretFont
+            char_height	0.1
+            horz_align center
+            top 0.02            
+            alignment center
+        }
+    }
+
+    overlay_element GameUI/QuitGame Panel
+    {
+        left 0.6
+        top 0.6
+        width 0.2
+        height 0.15
+        material CallOfCooking/Button
+        
+        overlay_element GameUI/RestartGame/QuitText TextArea
+        {
+            caption QUIT
+            colour 1. .1 .1
+            font_name publicSecretFont
+            char_height	0.1
+            horz_align center
+            top 0.02            
             alignment center
         }
     }

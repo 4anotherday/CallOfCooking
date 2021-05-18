@@ -11,6 +11,7 @@
 #include "UIManagerComponent.h"
 #include "ScoreManagerComponent.h"
 #include "PlayerMovementComponent.h"
+#include "Buttons.h"
 #include "CardSystemComponent.h"
 
 ADD_COMPONENT(LevelManagerComponent);
@@ -165,6 +166,8 @@ void LevelManagerComponent::gameOver()
 	_scoreManager->gameOver();
 	_uiManager->showFinalPanel();
 
+	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(true);
+	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(true);
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
 }
 
@@ -174,7 +177,8 @@ void LevelManagerComponent::restartGame()
 	_uiManager->hideFinalPanel();
 
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
-
+	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(false);
+	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(false);
 }
 
 void LevelManagerComponent::enemiesSpawn()

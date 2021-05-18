@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 11
+HowManyGameObjects = 13
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
@@ -106,6 +106,20 @@ go_10[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 9999}
 go_10[3] = {Component = "SphereCollider", Radius=0.3, IsTrigger=true}
 go_10[4] = {Component = "PlayerAttackComponent", Damage = 1,AtackRate = 2,AttackHitBoxDistance = 0.35, PlayerRange = 1}
+
+go_11 = {}
+go_11[0] = { Name = "RestartButton", HowManyCmps = 3, Persist = false}
+go_11[1] = { Component = "Transform"}
+go_11[2] = { Component = "ButtonComponent", Active = true, OverLayName="GameUI", ContainerName= "GameUI/RestartGame", 
+			DefaultMaterial = "CallOfCooking/Button", HoverMaterial = "CallOfCooking/ButtonHover", PressMaterial = "CallOfCooking/ButtonPress"}
+go_11[3] = { Component = "RestartGameButtonComponent"}
+
+go_12 = {}
+go_12[0] = { Name = "QuitButton", HowManyCmps = 3, Persist = false}
+go_12[1] = { Component = "Transform"}
+go_12[2] = { Component = "ButtonComponent", Active = true, OverLayName="GameUI", ContainerName= "GameUI/QuitGame", 
+			DefaultMaterial = "CallOfCooking/Button", HoverMaterial = "CallOfCooking/ButtonHover", PressMaterial = "CallOfCooking/ButtonPress"}
+go_12[3] = { Component = "QuitEndGameButtonComponent"}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
