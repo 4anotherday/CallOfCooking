@@ -47,8 +47,7 @@ void GrenadeBehaviorComponent::update()
 	double distance = (_playerPos->getPosition() - _tr->getPosition()).magnitude();
 	//(distance <= _range) ? _isAttacking = true : _isAttacking = false;
 
-	float deltaTime = EngineTime::getInstance()->deltaTime();
-	_timeToShoot -= deltaTime;
+	_timeToShoot -= EngineTime::getInstance()->deltaTime();
 
 	if (distance <= _range) {
 		if (_timeToShoot <= 0) {

@@ -32,20 +32,21 @@ public:
 	/// Initialise the rigidbody and transform
 	/// </summary>
 	virtual void start() override;
+
 	/// <summary>
 	/// Checks the state and calls the corresponding method
 	/// </summary>
-	virtual void update() override;
+	virtual void update() {}
 protected:
 	/// <summary>
 	/// The enemy walks towards the player
 	/// </summary>
-	virtual void walk();
+	virtual void walk() {}
 
 	/// <summary>
 	/// The enemy attacks the player if it is close enough
 	/// </summary>
-	virtual void attack();
+	virtual void attack() {}
 
 	RigidBodyComponent* _rigidbody;
 	Transform* _playerPos;
@@ -55,7 +56,5 @@ protected:
 	bool _isAttacking;
 	float _range;
 	float _movementSpeed;
-
-private:
 };
 #endif // !ENEMYBEHAVIORCOMPONENT_H

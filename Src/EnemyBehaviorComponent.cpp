@@ -26,22 +26,3 @@ void EnemyBehaviorComponent::start()
 	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }
-
-void EnemyBehaviorComponent::update()
-{
-	if (_isAttacking)
-		attack();
-	else
-		walk();
-}
-
-void EnemyBehaviorComponent::walk()
-{
-	Vector3 dir = _playerPos->getPosition();
-	_rigidbody->moveTo(dir);
-}
-
-void EnemyBehaviorComponent::attack()
-{
-	//TODO
-}
