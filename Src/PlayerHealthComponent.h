@@ -6,6 +6,7 @@
 
 class UIManagerComponent;
 class LevelManagerComponent;
+class AudioSourceComponent;
 
 class PlayerHealthComponent : public Component
 {
@@ -51,10 +52,13 @@ public:
 	/// </summary>
 	void updateUIlifes();
 private:
+	UIManagerComponent* _uimanager;
+	LevelManagerComponent* _lvlManager;
+	AudioSourceComponent* _audio;
+
 	int _lives;
 	int _maxLife;
 
-	UIManagerComponent* _uimanager;
-	LevelManagerComponent* _lvlManager;
+
 };
 #endif // !PLAYERHEALTHCOMPONENT_H

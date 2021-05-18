@@ -12,6 +12,7 @@ class EngineTime;
 class Vector3;
 class MouseInput;
 class PlayerBulletPoolComponent;
+class AudioSourceComponent;
 
 class PlayerShootComponent : public Component
 {
@@ -43,11 +44,12 @@ private:
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
-	EngineTime* _engineTime;
 	MouseInput* _mouse;
+	EngineTime* _engineTime;
 	GameObject* _gameManager;
 	PlayerBulletPoolComponent* _bulletsManager;
 	Vector3* _shotDirection;
+	AudioSourceComponent* _audio;
 
 	float _windowSizeX, _windowSizeY;
 	float _offsetX, _offsetZ;

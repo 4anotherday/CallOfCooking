@@ -11,12 +11,23 @@
 #include "RigidBodyComponent.h"
 #include "PlayerBulletPoolComponent.h"
 #include "PlayerBulletBehaviorComponent.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(PlayerShootComponent);
 
 PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::PlayerShootComponent),
-_tr(nullptr), _rb(nullptr), _damage(5.0f),_windowSizeX(),_windowSizeY(),_offsetX(),_offsetZ(),_bulletsManager(nullptr),_gameManager(nullptr),
-_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _timeToShoot(_engineTime->deltaTime()), _cadence(1.0f),_shotDirection(nullptr)
+_tr(nullptr), 
+_rb(nullptr), 
+_mouse(MouseInput::getInstance()), 
+_engineTime(EngineTime::getInstance()),
+_gameManager(nullptr),
+_bulletsManager(nullptr),
+_shotDirection(),
+_audio(nullptr),
+_windowSizeX(), _windowSizeY(),
+_offsetX(), _offsetZ(),
+_cadence(0.5), _damage(5),
+_timeToShoot(_engineTime->deltaTime())
 {
 	//_mouse->setMouseRelativeMode(true);
 }
@@ -36,6 +47,7 @@ void PlayerShootComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
 	_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_offsetX = 40;
@@ -84,6 +96,7 @@ void PlayerShootComponent::shoot()
 
 		//Shot
 		c->beShot(bulletPos, dir);
+		_audio->playAudio(1);
 	}
 }
 

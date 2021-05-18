@@ -5,18 +5,23 @@
 #include "UIManagerComponent.h"
 #include "LevelManagerComponent.h"
 #include "includeLUA.h"
+#include "AudioSourceComponent.h"
+#include "GameObject.h"
 
 ADD_COMPONENT(PlayerHealthComponent);
 
-PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::PlayerHealthComponent), _maxLife(3), _lives(3),_lvlManager(nullptr),_uimanager(nullptr)
+PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::PlayerHealthComponent), _uimanager(nullptr), _lvlManager(nullptr),
+_audio(nullptr), _maxLife(0), _lives(0)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::PlayerHealthComponent), _maxLife(nLives), _lives(nLives), _lvlManager(nullptr), _uimanager(nullptr)
+PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::PlayerHealthComponent), _uimanager(nullptr), _lvlManager(nullptr),
+_audio(nullptr), _maxLife(nLives), _lives(nLives)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::PlayerHealthComponent, go), _maxLife(nLives), _lives(nLives), _lvlManager(nullptr), _uimanager(nullptr)
+PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::PlayerHealthComponent, go), _uimanager(nullptr), _lvlManager(nullptr),
+_audio(nullptr), _maxLife(nLives), _lives(nLives)
 {
 }
 
@@ -32,6 +37,7 @@ void PlayerHealthComponent::start()
 	_uimanager->setPlayerLife(_maxLife);
 
 	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 }
 
 void PlayerHealthComponent::addLife(int n)
@@ -46,10 +52,10 @@ void PlayerHealthComponent::addLife(int n)
 void PlayerHealthComponent::loseLife(int n)
 {
 	if (n > 0) {
+		_audio->playAudio(0);
 		_lives -= n;
 		if (_lives <= 0)
 			_lvlManager->gameOver();
-
 		updateUIlifes();
 	}	
 }
