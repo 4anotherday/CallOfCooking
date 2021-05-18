@@ -7,7 +7,7 @@ font ariaFont {
 
 font publicSecretFont {
     type truetype
-    source ARIAL.ttf
+    source BearAndBunny.ttf
     size 40
     resolution 72
 }

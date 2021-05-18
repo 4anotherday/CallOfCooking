@@ -2,22 +2,44 @@
 overlay MenuUI
 {
     zorder 200
+    overlay_element Menu/Background Panel
+    {
+        width 1
+        height 1
+        material CallOfCooking/FondoMenu
+    }
+    overlay_element Menu/CallOfCooking Panel
+    {
+        left 0.2
+        top 0.1
+        width 0.6
+        height 0.3
+        material CallOfCooking/LogoCoC
+    }
+    overlay_element Menu/4AnotherDay Panel
+    {
+        left 0.02
+        top 0.78
+        width 0.2
+        height 0.2
+        material CallOfCooking/Logo4AnotherDay
+    }
     overlay_element Menu/PlayButton Panel
     {
         // Center it horizontally, put it at the top
-        left 0.25
-        top 0.25
-        width 0.5
-        height 0.1
+        left 0.4
+        top 0.45
+        width 0.2
+        height 0.15
         //alignment center
         material CallOfCooking/Button
         // Another panel nested in this one
         overlay_element PlayButton/Texto TextArea
         {
             caption PLAY
-            colour 1. .1 .1
+            colour 1 1 1
             font_name publicSecretFont
-            char_height	0.1
+            char_height	0.09
             horz_align center
             top 0.02
             alignment center
@@ -26,18 +48,18 @@ overlay MenuUI
     overlay_element Menu/QuitButton Panel
     {
         // Center it horizontally, put it at the top
-        left 0.25
-        top 0.5
-        width 0.5
-        height 0.1
+        left 0.4
+        top 0.6
+        width 0.2
+        height 0.15
         material CallOfCooking/Button
         // Another panel nested in this one
         overlay_element QuitButton/Texto TextArea
         {
             caption QUIT
-            colour 1. .1 .1
+            colour 1 1 1
             font_name publicSecretFont
-            char_height	0.1
+            char_height	0.09
             horz_align center
             top 0.02            
             alignment center
