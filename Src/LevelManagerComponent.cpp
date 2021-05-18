@@ -81,7 +81,7 @@ void LevelManagerComponent::update()
 	_time += _engineTime->deltaTime();
 	if (!_infiniteRound && (_newWave && _time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
 		_cardSystem->setCardsUp(false);
-		enemiesSpawn();				
+		enemiesSpawn();
 		_newWave = false;
 	}
 
@@ -91,20 +91,22 @@ void LevelManagerComponent::update()
 		++_currentRound;
 		if (_currentRound >= _howManyRounds) {
 			_infiniteRound = true;
-			startInfiniteRound();
+			//startInfiniteRound();
 
 			//One round is subtracted to use the wave time of the previous round
-			--_currentRound; 
+			--_currentRound;
 		}
-		
+
 		_newWave = true;
 		_waveStartTime = _time;
 		_uiManager->setRoundsText(_currentRound);
 	}
-	Engine::getInstance()->setViewportColour(0.4, 0.2, 0.5);
-	Engine::getInstance()->setShadowColour(0.8, 0.75, 0.75);
-	Engine::getInstance()->setAmbientLight(0.5, 0.4, 0.4);
 
+	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)){
+		_newWave = false;
+		startInfiniteRound();
+		_cardSystem->setCardsUp(false);
+	}
 }
 
 void LevelManagerComponent::start()
@@ -122,6 +124,10 @@ void LevelManagerComponent::start()
 	_uiManager->setRoundsText(_currentRound);
 
 	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+
+	Engine::getInstance()->setViewportColour(0.4, 0.2, 0.5);
+	Engine::getInstance()->setShadowColour(0.8, 0.75, 0.75);
+	Engine::getInstance()->setAmbientLight(0.5, 0.4, 0.4);
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
