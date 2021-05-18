@@ -85,6 +85,13 @@ void LevelManagerComponent::update()
 		_newWave = false;
 	}
 
+	//One round is subtracted to use the wave time of the previous round
+	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
+		_newWave = false;
+		startInfiniteRound();
+		_cardSystem->setCardsUp(false);
+	}
+
 	if (!_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
 		_scoreManager->addTotalComboScore();
 		_cardSystem->setCardsUp(true);
@@ -94,19 +101,11 @@ void LevelManagerComponent::update()
 
 		if (_currentRound >= _howManyRounds) {
 			_infiniteRound = true;
-			//One round is subtracted to use the wave time of the previous round
-			--_currentRound;
 		}
 
 		_newWave = true;
 		_waveStartTime = _time;
-	}
-
-	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)){
-		_newWave = false;
-		startInfiniteRound();
-		_cardSystem->setCardsUp(false);
-	}
+	}	
 }
 
 void LevelManagerComponent::start()

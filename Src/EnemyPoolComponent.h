@@ -53,7 +53,6 @@ protected:
 
 	std::vector<Vector3> _respawnsPositions;
 
-	bool _isSpawnTime;
 	int _howManyEnemiesSpawn;
 	int _totalEnemiesSpawned;
 	float _spawnEnemyTime;
