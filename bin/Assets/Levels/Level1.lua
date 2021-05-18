@@ -16,7 +16,7 @@ HowManyGameObjects = 11
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=7,Y=.1,Z=4}}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=7,Y=2,Z=4}}
 go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
 			LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 9999}
@@ -34,7 +34,7 @@ go_1[3] = { Component = "CameraControllerComponent",Target="Player", Offset = {X
 
 go_2 = {}
 go_2[0] = { Name = "Luz", HowManyCmps = 2, Persist = false}
-go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 700, Z = 0}}
+go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}}
 go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true, Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 	   		Specular = {Red = 1, Green= 1, Blue = 1},
 			Attenuation = {Range = 1, Constant = 1, Linear = 1, Quadratic = 1},
@@ -44,13 +44,13 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 go_3 = {}
 go_3[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.2}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
-go_3[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true,Bounciness=1}
-go_3[4] = { Component = "PlayerMovementComponent", Speed=200,RotationSpeed=1}
-go_3[5] = { Component = "PlayerHealthComponent", Lives=3,MaxLife=3}
-go_3[6] = { Component = "PlayerShootComponent", Damage=5,Cadence=1}
+go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material= "Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
+go_3[3] = { Component = "RigidBody", Type="Box", Mass=1, ConstrainAngle = true, Bounciness = 1}
+go_3[4] = { Component = "PlayerMovementComponent", Speed=100, RotationSpeed=1}
+go_3[5] = { Component = "PlayerHealthComponent", Lives=3, MaxLife=3}
+go_3[6] = { Component = "PlayerShootComponent", Damage=5, Cadence=1}
 go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
-RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
+			RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 
 
 go_4={}
