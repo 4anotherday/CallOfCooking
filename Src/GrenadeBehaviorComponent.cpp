@@ -14,7 +14,8 @@
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
 
-GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::GrenadeBehaviorComponent)
+GrenadeBehaviorComponent::GrenadeBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::GrenadeBehaviorComponent),_timeToShoot(0.0f),_bulletsManager(nullptr),
+_gameManager(nullptr),_healthPlayer(nullptr),_myHealth(nullptr),_tr(nullptr)
 {
 }
 
@@ -24,9 +25,9 @@ GrenadeBehaviorComponent::~GrenadeBehaviorComponent()
 
 void GrenadeBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_range = data["Range"].cast<float>();
-	_attackSpeed = data["AttackSpeed"].cast<float>();
-	_movementSpeed = data["MovementSpeed"].cast<float>();
+	if(LUAFIELDEXIST(Range)) _range = data["Range"].cast<float>();
+	if (LUAFIELDEXIST(AttackSpeed)) _attackSpeed = data["AttackSpeed"].cast<float>();
+	if (LUAFIELDEXIST(MovementSpeed)) _movementSpeed = data["MovementSpeed"].cast<float>();
 }
 
 void GrenadeBehaviorComponent::start()

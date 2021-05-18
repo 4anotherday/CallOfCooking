@@ -15,7 +15,7 @@
 ADD_COMPONENT(WatermelonBehaviorComponent);
 
 WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::WatermelonBehaviorComponent), 
-_pSystem(nullptr), _tr(nullptr), _healthPlayer(nullptr), _myHealth(nullptr), _timeToExplode(0.0f), _exploding(false), _explosionCountDown(0.0f)
+_pSystem(nullptr), _tr(nullptr), _healthPlayer(nullptr), _myHealth(nullptr), _timeToExplode(2.0f), _exploding(false), _explosionCountDown(2.0f)
 {
 }
 
@@ -25,10 +25,10 @@ WatermelonBehaviorComponent::~WatermelonBehaviorComponent()
 
 void WatermelonBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_range = data["Range"].cast<float>();
-	_movementSpeed = data["MovementSpeed"].cast<float>();
-	_explosionCountDown = _timeToExplode = data["TimeToExplode"].cast<float>(); 
-	_damagePerSecond = data["Damage"].cast<float>();
+	if(LUAFIELDEXIST(Range)) _range = data["Range"].cast<float>();
+	if(LUAFIELDEXIST(MovementSpeed)) _movementSpeed = data["MovementSpeed"].cast<float>();
+	if(LUAFIELDEXIST(TimeToExplode)) _explosionCountDown = _timeToExplode = data["TimeToExplode"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damagePerSecond = data["Damage"].cast<float>();
 }
 
 void WatermelonBehaviorComponent::start()

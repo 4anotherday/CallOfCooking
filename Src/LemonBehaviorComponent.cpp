@@ -14,7 +14,8 @@
 
 ADD_COMPONENT(LemonBehaviorComponent);
 
-LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::LemonBehaviorComponent), _pSystem(nullptr)
+LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::LemonBehaviorComponent), _pSystem(nullptr),
+_healthPlayer(nullptr),_myHealth(nullptr),_tr(nullptr)
 {
 }
 

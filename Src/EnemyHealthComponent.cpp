@@ -19,8 +19,8 @@ EnemyHealthComponent::~EnemyHealthComponent()
 
 void EnemyHealthComponent::awake(luabridge::LuaRef& data)
 {
-	_deathComboPoints = _totalLives = data["Points"].cast<int>();
-	_remainingLives = data["HitPoints"].cast<int>();
+	if(LUAFIELDEXIST(Points)) _deathComboPoints = _totalLives = data["Points"].cast<int>();
+	if(LUAFIELDEXIST(HitPoints)) _remainingLives = data["HitPoints"].cast<int>();
 }
 
 void EnemyHealthComponent::start()
