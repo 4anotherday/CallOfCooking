@@ -21,7 +21,7 @@ void LifeCardComponent::start()
 {
 	CardComponent::start();
 
-	_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::Health));
+	_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
 	setCallBackParam(_player);
 	setCallBack(operate);
 }

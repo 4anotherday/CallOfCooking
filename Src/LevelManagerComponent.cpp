@@ -11,6 +11,7 @@
 #include "UIManagerComponent.h"
 #include "ScoreManagerComponent.h"
 #include "PlayerMovementComponent.h"
+#include "PlayerHealthComponent.h"
 #include "Buttons.h"
 #include "CardSystemComponent.h"
 
@@ -80,17 +81,26 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 void LevelManagerComponent::update()
 {
 	_time += _engineTime->deltaTime();
-	if (!_infiniteRound && (_newWave && _time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
-		_cardSystem->setCardsUp(false);
-		enemiesSpawn();
+	//if (!_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
+	//	_cardSystem->setCardsUp(false);
+	//	enemiesSpawn();
+	//	_newWave = false;
+	//}
+
+	//if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
+	//	_cardSystem->setCardsUp(false);		
+	//	startInfiniteRound();
+	//	_newWave = false;
+
+	//}
+
+	if (_newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
+		_cardSystem->setCardsUp(false);		
 		_newWave = false;
+		if (_infiniteRound) startInfiniteRound();
+		else enemiesSpawn();
 	}
 
-	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
-		_newWave = false;
-		startInfiniteRound();
-		_cardSystem->setCardsUp(false);
-	}
 
 	if (!_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
 		_scoreManager->addTotalComboScore();
@@ -166,6 +176,16 @@ void LevelManagerComponent::gameOver()
 	_scoreManager->gameOver();
 	_uiManager->showFinalPanel();
 
+	_granadePool->setPause(true);
+	_granadePool->reset();
+
+	_lemonPool->setPause(true);
+	_lemonPool->reset();
+
+	_watermelonPool->setPause(true);
+	_watermelonPool->reset();
+
+
 	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(true);
 	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(true);
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
@@ -173,12 +193,28 @@ void LevelManagerComponent::gameOver()
 
 void LevelManagerComponent::restartGame()
 {
-	_scoreManager->resetScore();
+	_scoreManager->reset();
 	_uiManager->hideFinalPanel();
+	
 
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
+	static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent))->reset();
 	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(false);
 	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(false);
+
+	for (int x = 0; x < _levelsInfo.size(); ++x) {
+		_levelsInfo.at(x).enemiesLeft = _levelsInfo.at(x).totalEnemies;
+	}
+
+	_granadePool->setPause(false);
+	_lemonPool->setPause(false);
+	_watermelonPool->setPause(false);
+
+	_currentRound = 0;
+	_uiManager->setRoundsText(_currentRound);
+	_infiniteRound = false;
+	_newWave = true;
+	_waveStartTime = _time;
 }
 
 void LevelManagerComponent::enemiesSpawn()

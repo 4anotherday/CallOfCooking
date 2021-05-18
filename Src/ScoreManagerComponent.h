@@ -49,14 +49,14 @@ public:
 	void gameOver();
 
 	/// <summary>
+	/// Sets the score to 0 and reset the score manager
+	/// </summary>
+	void reset();
+
+	/// <summary>
 	/// Retuns the current score
 	/// </summary>
 	inline int getScore() const { return _score; }
-
-	/// <summary>
-	/// Sets the score to 0
-	/// </summary>
-	inline void resetScore() { _score = 0; }
 
 	/// <summary>
 	/// Sets the score to a new value

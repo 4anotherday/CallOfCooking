@@ -8,15 +8,15 @@
 
 ADD_COMPONENT(PlayerHealthComponent);
 
-PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::Health), _maxLife(0), _lives(0)
+PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::PlayerHealthComponent), _maxLife(0), _lives(0)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::Health), _maxLife(nLives), _lives(nLives)
+PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::PlayerHealthComponent), _maxLife(nLives), _lives(nLives)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::Health, go), _maxLife(nLives), _lives(nLives)
+PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::PlayerHealthComponent, go), _maxLife(nLives), _lives(nLives)
 {
 }
 

@@ -4,7 +4,7 @@
 #include "LevelManagerComponent.h"
 #include "Exceptions.h"
 
-PoolComponent::PoolComponent(UserComponentId::UserComponentId id) : Component(id), _lvlManager(), _mainPool(), _inactivePool()
+PoolComponent::PoolComponent(UserComponentId::UserComponentId id) : Component(id), _lvlManager(), _mainPool(), _inactivePool(), _isPause(false)
 {
 }
 

@@ -40,6 +40,12 @@ public:
 	/// </summary>
 	void spawnEnemyTime(float sT) { _spawnEnemyTime = sT; }
 
+
+	/// <summary>
+	///	Reset the group of enemies to their default values
+	/// </summary>
+	void reset();
+
 protected:
 	/// <summary>
 	///	Check if it's time to spawn an enemy

@@ -43,6 +43,8 @@ public:
 	/// </summary>
 	virtual void setInactiveGO(GameObject* go);
 
+	inline void setPause(bool p) { _isPause = p; }
+
 protected:
 	void loadPrefab(std::string path, int howMany);
 
@@ -50,5 +52,7 @@ protected:
 
 	std::vector<GameObject*> _mainPool;
 	std::vector<GameObject*> _inactivePool;
+
+	bool _isPause;
 };
 #endif // !POOLCOMPONENT_H

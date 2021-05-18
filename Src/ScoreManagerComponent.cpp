@@ -61,6 +61,12 @@ void ScoreManagerComponent::gameOver()
 	addTotalComboScore();
 }
 
+void ScoreManagerComponent::reset()
+{
+	_score = 0;
+	clearComboSequence();
+}
+
 void ScoreManagerComponent::addTotalComboScore()
 {
 	//Adding combo hit extra points

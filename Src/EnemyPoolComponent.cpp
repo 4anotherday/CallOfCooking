@@ -3,6 +3,7 @@
 #include "EngineTime.h"
 #include "Transform.h"
 #include "UserComponentIDs.h"
+#include "EnemyHealthComponent.h"
 #include "Engine.h"
 #include "includeLUA.h"
 #include <stdlib.h>
@@ -41,6 +42,18 @@ void EnemyPoolComponent::setInfinityRound(bool iR)
 	_totalEnemiesSpawned = 0;
 }
 
+void EnemyPoolComponent::reset()
+{
+	_infiniteRound = false;
+	_totalEnemiesSpawned = 0;
+
+	_inactivePool.clear();
+	for (int x = 0; x < _mainPool.size(); ++x) {
+		static_cast<EnemyHealthComponent*>(_mainPool.at(x)->getComponent(UserComponentId::EnemyHealthComponent))->restartLives();
+		PoolComponent::setInactiveGO(_mainPool.at(x));			
+	}
+}
+
 bool EnemyPoolComponent::isTimeToSpawn()
 {	
 	if (_lastSpawnEnemyTime + _spawnEnemyTime <= _time) {
@@ -52,16 +65,18 @@ bool EnemyPoolComponent::isTimeToSpawn()
 
 void EnemyPoolComponent::enemySpawn()
 {
-	GameObject* go = getInactiveGO();
+	if (!_isPause) {
+		GameObject* go = getInactiveGO();
 
-	if (go != nullptr) {
-		Transform* tr = static_cast<Transform*>(Engine::getInstance()->findGameObject(go->getName())->getComponent(ComponentId::Transform));
-		if (_respawnsPositions.size() == 1)
-			tr->setPosition(_respawnsPositions[0]);
-		else {
-			int rnd = rand() % _respawnsPositions.size();
-			tr->setPosition(_respawnsPositions[rnd]);
+		if (go != nullptr) {
+			Transform* tr = static_cast<Transform*>(Engine::getInstance()->findGameObject(go->getName())->getComponent(ComponentId::Transform));
+			if (_respawnsPositions.size() == 1)
+				tr->setPosition(_respawnsPositions[0]);
+			else {
+				int rnd = rand() % _respawnsPositions.size();
+				tr->setPosition(_respawnsPositions[rnd]);
+			}
+			_totalEnemiesSpawned++;
 		}
-		_totalEnemiesSpawned++;
-	}
+	}	
 }
