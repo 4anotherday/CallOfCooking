@@ -20,7 +20,7 @@ ADD_COMPONENT(LevelManagerComponent);
 LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
 _engineTime(EngineTime::getInstance()), _levelsInfo(), _respawnPositions(), _cardSystem(nullptr),
 _granadePool(), _lemonPool(), _watermelonPool(), _uiManager(nullptr),
-_currentRound(0), _waveStartTime(0.0f), _time(), _newWave(true), _howManyRounds(false), _infiniteRound(false)
+_currentRound(0), _waveStartTime(0.0f), _time(), _newWave(true), _howManyRounds(false), _infiniteRound(false), _gameOver(false)
 {
 }
 
@@ -37,7 +37,9 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 	luabridge::LuaRef configData = PrefabLoader::getInstance()->getDataPrefab(path);
 
-	int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
+	int howManyRespawns = 0;
+	if (LUAFIELDEXIST(HowManyRespawnPositions)) howManyRespawns = GETLUAFIELD(HowManyRespawnPositions, int);
+	//int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
 
 	for (int j = 1; j <= howManyRespawns; ++j) {
 		float x = configData[0]["RespawnPositions"][j]["X"].cast<float>();
@@ -101,7 +103,7 @@ void LevelManagerComponent::update()
 {
 	_time += _engineTime->deltaTime();
 
-	if (_newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
+	if (!_gameOver && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
 		_cardSystem->setCardsUp(false);		
 		_newWave = false;
 		if (_infiniteRound) startInfiniteRound();
@@ -109,7 +111,7 @@ void LevelManagerComponent::update()
 	}
 
 
-	if (!_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
+	if (!_gameOver && !_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
 		_scoreManager->addTotalComboScore();
 		_cardSystem->setCardsUp(true);
 
@@ -159,6 +161,7 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 
 void LevelManagerComponent::gameOver()
 {
+	_gameOver = true;
 	_scoreManager->gameOver();
 	
 
@@ -175,7 +178,10 @@ void LevelManagerComponent::gameOver()
 	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(true);
 	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(true);
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
+
 	_uiManager->showFinalPanel();
+	std::cout << "GAME OVER" << std::endl;
+	_uiManager->setGameOver(true);
 }
 
 void LevelManagerComponent::restartGame()
@@ -203,6 +209,7 @@ void LevelManagerComponent::restartGame()
 	_infiniteRound = false;
 	_newWave = true;
 	_waveStartTime = _time;
+	_cardSystem->setCardsUp(true);
 }
 
 void LevelManagerComponent::enemiesSpawn()

@@ -13,7 +13,7 @@ ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
 	_score(0),_maxScore(0), _comboHitPoints(0), _comboDeathPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
-	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f), _uimanager(nullptr)
+	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f), _uimanager(nullptr), _gameOver(false)
 {
 }
 
@@ -59,6 +59,7 @@ void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 void ScoreManagerComponent::gameOver()
 {
 	addTotalComboScore();
+	_gameOver = true;
 }
 
 void ScoreManagerComponent::reset()
@@ -69,25 +70,27 @@ void ScoreManagerComponent::reset()
 
 void ScoreManagerComponent::addTotalComboScore()
 {
-	_isComboSequence = false;
+	if (!_gameOver) {
+		_isComboSequence = false;
 
-	//Adding combo hit extra points
-	int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
+		//Adding combo hit extra points
+		int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
 
-	//Adding combo death extra points
-	totalPoints += _comboDeathPoints;
+		//Adding combo death extra points
+		totalPoints += _comboDeathPoints;
 
-	//Adding multiplier extra points
-	float multiplier = 0.1f * ((_comboHitPoints + _comboDeathPoints) / 10);
-	float multiplierExtraPoints = totalPoints * multiplier;
+		//Adding multiplier extra points
+		float multiplier = 0.1f * ((_comboHitPoints + _comboDeathPoints) / 10);
+		float multiplierExtraPoints = totalPoints * multiplier;
 
-	totalPoints += int(multiplierExtraPoints);
+		totalPoints += int(multiplierExtraPoints);
 
-	_score += totalPoints;
-	_uimanager->setPlayerScore(_score);
-	_uimanager->setFinalPanelScore(_score);
-	
-	clearComboSequence();
+		_score += totalPoints;
+		_uimanager->setPlayerScore(_score);
+		_uimanager->setFinalPanelScore(_score);
+
+		clearComboSequence();
+	}
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()

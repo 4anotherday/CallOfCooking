@@ -72,5 +72,6 @@ private:
 	float _waveStartTime;
 	float _time;
 	bool _newWave;
+	bool _gameOver;
 };
 #endif // !LEVELMANAGERCOMPONENT_H
