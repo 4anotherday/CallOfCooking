@@ -14,7 +14,8 @@
 
 ADD_COMPONENT(WatermelonBehaviorComponent);
 
-WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::WatermelonBehaviorComponent), _pSystem(nullptr)
+WatermelonBehaviorComponent::WatermelonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::WatermelonBehaviorComponent), 
+_pSystem(nullptr), _tr(nullptr), _healthPlayer(nullptr), _myHealth(nullptr), _timeToExplode(0.0f), _exploding(false), _explosionCountDown(0.0f)
 {
 }
 
@@ -26,7 +27,7 @@ void WatermelonBehaviorComponent::awake(luabridge::LuaRef& data)
 {
 	_range = data["Range"].cast<float>();
 	_movementSpeed = data["MovementSpeed"].cast<float>();
-	_timeToExplode = data["TimeToExplode"].cast<float>();
+	_explosionCountDown = _timeToExplode = data["TimeToExplode"].cast<float>(); 
 }
 
 void WatermelonBehaviorComponent::start()
@@ -43,27 +44,29 @@ void WatermelonBehaviorComponent::start()
 void WatermelonBehaviorComponent::update()
 {
 	double distance = (_playerPos->getPosition() - _tr->getPosition()).magnitude();
-	(distance <= _range) ? _isAttacking = true : _isAttacking = false;
+
 	//If player is far go for him, if not start exploding
 	if (!_exploding) {
 		if (_range <= distance) {
 			walk();
 		}
 		else {
-			attack();
+			if (_pSystem != nullptr)_pSystem->setEnabled(true);
+			_exploding = true;
 		}
 	}
 	else {
-		float deltaTime = EngineTime::getInstance()->deltaTime();
-		_explosionCountDown -= deltaTime;
-		if (_explosionCountDown <= 0) {
-			//Die or something like that
-			_myHealth->reduceLivesPoints(_myHealth->getLives());
-
+		_explosionCountDown -= EngineTime::getInstance()->deltaTime();;
+		if (_explosionCountDown <= 0) {	
 			//If player is reachable damage him
 			if (distance <= _range) {
 				_healthPlayer->loseLife(_damagePerSecond);
 			}
+
+			//Die or something like that
+			resetBehavior();
+			if (_pSystem != nullptr)_pSystem->setEnabled(false);
+			_myHealth->reduceLivesPoints(_myHealth->getLives());
 		}
 	}
 }
@@ -89,10 +92,8 @@ void WatermelonBehaviorComponent::walk()
 	//if (_pSystem != nullptr)_pSystem->setEnabled(false);
 }
 
-void WatermelonBehaviorComponent::attack()
+void WatermelonBehaviorComponent::resetBehavior()
 {
-	if (_pSystem != nullptr)_pSystem->setEnabled(true);
-	_healthPlayer->loseLife(_damagePerSecond);
-	_exploding = true;
+	_exploding = false;
 	_explosionCountDown = _timeToExplode;
 }
