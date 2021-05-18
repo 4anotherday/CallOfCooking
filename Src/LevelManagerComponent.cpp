@@ -85,7 +85,6 @@ void LevelManagerComponent::update()
 		_newWave = false;
 	}
 
-	//One round is subtracted to use the wave time of the previous round
 	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
 		_newWave = false;
 		startInfiniteRound();
@@ -101,6 +100,9 @@ void LevelManagerComponent::update()
 
 		if (_currentRound >= _howManyRounds) {
 			_infiniteRound = true;
+
+			//One round is subtracted to use the wave time of the previous round
+			--_currentRound;
 		}
 
 		_newWave = true;
@@ -131,27 +133,30 @@ void LevelManagerComponent::start()
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 {
-	--_levelsInfo.at(_currentRound).enemiesLeft;
+	//Only remove one enemy from the remaining total if he is not in infinite round
+	if(_currentRound < _howManyRounds)
+		--_levelsInfo.at(_currentRound).enemiesLeft;
 
-	if (_levelsInfo.at(_currentRound).enemiesLeft >= 0)
-		switch (type) {
-			case EnemyType::GRANADE: {
-				_granadePool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::LEMON: {
-				_lemonPool->setInactiveGO(go);
-				break;
-			}
-			case EnemyType::WATERMELON: {
-				_watermelonPool->setInactiveGO(go);
-				break;
-			}
-			default: {
-				//LANZAR EXCEPCI�N DE ENEMIGO DESCONOCIDO
-				break;
-			}
+
+	switch (type) {
+		case EnemyType::GRANADE: {
+			_granadePool->setInactiveGO(go);
+			break;
 		}
+		case EnemyType::LEMON: {
+			_lemonPool->setInactiveGO(go);
+			break;
+		}
+		case EnemyType::WATERMELON: {
+			_watermelonPool->setInactiveGO(go);
+			break;
+		}
+		default: {
+			//LANZAR EXCEPCI�N DE ENEMIGO DESCONOCIDO
+			break;
+		}
+	}
+		
 	std::cout << "Enemigo muere " << _levelsInfo.at(_currentRound).enemiesLeft << std::endl;
 }
 
