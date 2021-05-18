@@ -37,9 +37,9 @@ public:
 
 	virtual void awake(luabridge::LuaRef& data) override;
 
-	virtual void update() override;
-
 	virtual void start() override;
+
+	virtual void update() override;
 
 	inline std::vector<Wave> getLevelInfo() const { return _levelsInfo; }
 

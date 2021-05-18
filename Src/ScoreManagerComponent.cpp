@@ -69,6 +69,8 @@ void ScoreManagerComponent::reset()
 
 void ScoreManagerComponent::addTotalComboScore()
 {
+	_isComboSequence = false;
+
 	//Adding combo hit extra points
 	int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
 
