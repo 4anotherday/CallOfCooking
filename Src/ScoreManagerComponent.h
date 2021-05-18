@@ -39,6 +39,13 @@ public:
 	/// <param name="deathPoints">How many combo points for getting a kill</param>
 	void addComboDeathPoint(int deathPoints);
 
+	/// <summary>
+	/// Performs the calculation of points related to the active combo sequence
+	/// Every 10x combo, a multiplier will be added that will increase the points the player has made in the duration of his combo
+	/// </summary>
+	void addTotalComboScore();
+
+
 	void gameOver();
 
 	/// <summary>
@@ -75,13 +82,6 @@ public:
 	inline int getMaxScore() const { return _maxScore; }
 
 private:
-
-	/// <summary>
-	/// Performs the calculation of points related to the active combo sequence
-	/// Every 10x combo, a multiplier will be added that will increase the points the player has made in the duration of his combo
-	/// </summary>
-	void addTotalComboScore();
-
 	/// </summary>
 	/// Renews or start the timing of the current combo sequence
 	/// </summary>

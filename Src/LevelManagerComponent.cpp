@@ -86,20 +86,20 @@ void LevelManagerComponent::update()
 	}
 
 	if (!_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
+		_scoreManager->addTotalComboScore();
 		_cardSystem->setCardsUp(true);
 
 		++_currentRound;
+		_uiManager->setRoundsText(_currentRound);
+
 		if (_currentRound >= _howManyRounds) {
 			_infiniteRound = true;
-			//startInfiniteRound();
-
 			//One round is subtracted to use the wave time of the previous round
 			--_currentRound;
 		}
 
 		_newWave = true;
 		_waveStartTime = _time;
-		_uiManager->setRoundsText(_currentRound);
 	}
 
 	if (_infiniteRound && _newWave && (_time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)){
@@ -136,22 +136,22 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 
 	if (_levelsInfo.at(_currentRound).enemiesLeft >= 0)
 		switch (type) {
-		case EnemyType::GRANADE: {
-			_granadePool->setInactiveGO(go);
-			break;
-		}
-		case EnemyType::LEMON: {
-			_lemonPool->setInactiveGO(go);
-			break;
-		}
-		case EnemyType::WATERMELON: {
-			_watermelonPool->setInactiveGO(go);
-			break;
-		}
-		default: {
-			//LANZAR EXCEPCI�N DE ENEMIGO DESCONOCIDO
-			break;
-		}
+			case EnemyType::GRANADE: {
+				_granadePool->setInactiveGO(go);
+				break;
+			}
+			case EnemyType::LEMON: {
+				_lemonPool->setInactiveGO(go);
+				break;
+			}
+			case EnemyType::WATERMELON: {
+				_watermelonPool->setInactiveGO(go);
+				break;
+			}
+			default: {
+				//LANZAR EXCEPCI�N DE ENEMIGO DESCONOCIDO
+				break;
+			}
 		}
 	std::cout << "Enemigo muere " << _levelsInfo.at(_currentRound).enemiesLeft << std::endl;
 }

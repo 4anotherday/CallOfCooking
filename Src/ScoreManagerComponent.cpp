@@ -78,7 +78,8 @@ void ScoreManagerComponent::addTotalComboScore()
 	_score += totalPoints;
 	_uimanager->setPlayerScore(_score);
 	_uimanager->setFinalPanelScore(_score);
-	_isComboSequence = false;
+	
+	clearComboSequence();
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()
