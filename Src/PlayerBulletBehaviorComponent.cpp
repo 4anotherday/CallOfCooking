@@ -53,13 +53,19 @@ void PlayerBulletBehaviorComponent::update()
 
 void PlayerBulletBehaviorComponent::onTrigger(GameObject* other)
 {
-	//Buscar el componente de vida de enemigo, y en caso de que lo tenga es un enemigo
+	//Find the EnemyHealthComponent
 	EnemyHealthComponent* health = dynamic_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
 	if (health != nullptr) {
 		health->reduceLivesPoints(_damage);
 		std::cout << "OUCH" << std::endl;
 	}
-	deactivate();
+
+	//We deactivate the bullet if it collides with something that is not the player,his attackHitbox ot the ground
+	if (other->getName() != "Player" || other->getName() != "PlayerAttackHitBox" || other->getName() != "Suelo")
+	{
+		deactivate();
+	}
+	
 }
 
 void PlayerBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)
