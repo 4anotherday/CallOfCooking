@@ -198,6 +198,7 @@ void LevelManagerComponent::restartGame()
 	
 
 	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
+	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->resetPosition();
 	static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent))->reset();
 	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(false);
 	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(false);

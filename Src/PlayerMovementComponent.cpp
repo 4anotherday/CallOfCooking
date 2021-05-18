@@ -98,10 +98,17 @@ void PlayerMovementComponent::update()
 
 void PlayerMovementComponent::fixedUpdate()
 {
+	if (_gameOver) return;
+
 	_rb->setLinearVelocity(_velocity);
 }
 
 void PlayerMovementComponent::increaseSpeed(float extraSpeed)
 {
 	_speed += extraSpeed;
+}
+
+void PlayerMovementComponent::resetPosition()
+{
+	_tr->setPosition(Vector3(0, 0, 0));
 }

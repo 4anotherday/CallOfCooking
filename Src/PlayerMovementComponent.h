@@ -48,6 +48,8 @@ public:
 	/// <param name="extraSpeed">Amount of speed</param>
 	void increaseSpeed(float extraSpeed);
 
+	void resetPosition();
+
 	inline void gameOver(bool b) { _gameOver = b; };
 
 private:
