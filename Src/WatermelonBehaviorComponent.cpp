@@ -28,6 +28,7 @@ void WatermelonBehaviorComponent::awake(luabridge::LuaRef& data)
 	_range = data["Range"].cast<float>();
 	_movementSpeed = data["MovementSpeed"].cast<float>();
 	_explosionCountDown = _timeToExplode = data["TimeToExplode"].cast<float>(); 
+	_damagePerSecond = data["Damage"].cast<float>();
 }
 
 void WatermelonBehaviorComponent::start()
