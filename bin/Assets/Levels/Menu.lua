@@ -19,22 +19,26 @@ go_0[0] = { Name = "Camera", HowManyCmps = 4, Persist = false}
 go_0[1] = { Component = "Transform"}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, SlaveRotation=false}
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
-go_0[4] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
+go_0[4] = { Component = "AudioSource", Route = {"Assets/Audio/Menu.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = -1, Stereo = false, Play = true}
 
 go_1 = {}
-go_1[0] = { Name = "PlayButton", HowManyCmps = 3, Persist = false}
+go_1[0] = { Name = "PlayButton", HowManyCmps = 4, Persist = false}
 go_1[1] = { Component = "Transform"}
 go_1[2] = { Component = "ButtonComponent", Active = true, OverLayName="MenuUI", ContainerName= "Menu/PlayButton", 
 			DefaultMaterial = "CallOfCooking/Button", HoverMaterial = "CallOfCooking/ButtonHover", PressMaterial = "CallOfCooking/ButtonPress"}
 go_1[3] = { Component = "PlayButtonComponent"}
+go_1[4] = { Component = "AudioSource", Route = {"Assets/Audio/button.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = 0, Stereo = false, Play = false}
 
 go_2 = {}
-go_2[0] = { Name = "QuitButton", HowManyCmps = 3, Persist = false}
+go_2[0] = { Name = "QuitButton", HowManyCmps = 4, Persist = false}
 go_2[1] = { Component = "Transform"}
 go_2[2] = { Component = "ButtonComponent", Active = true, OverLayName="MenuUI", ContainerName= "Menu/QuitButton", 
 			DefaultMaterial = "CallOfCooking/Button", HoverMaterial = "CallOfCooking/ButtonHover", PressMaterial = "CallOfCooking/ButtonPress"}
 go_2[3] = { Component = "QuitButtonComponent"}
+go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/button.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = 0, Stereo = false, Play = false}
 
 
 -- COMPONENT EXAMPLES

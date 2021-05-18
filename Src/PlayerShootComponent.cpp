@@ -11,20 +11,31 @@
 #include "RigidBodyComponent.h"
 #include "PlayerBulletPoolComponent.h"
 #include "PlayerBulletBehaviorComponent.h"
+#include "AudioSourceComponent.h"
 #include "includeLUA.h"
 
 ADD_COMPONENT(PlayerShootComponent);
 
 PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::PlayerShootComponent),
-_tr(nullptr), _rb(nullptr), _damage(5),
-_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _timeToShoot(_engineTime->deltaTime()), _cadence(0.5)
+_tr(nullptr), 
+_rb(nullptr), 
+_mouse(MouseInput::getInstance()), 
+_engineTime(EngineTime::getInstance()),
+_gameManager(nullptr),
+_bulletsManager(nullptr),
+_shotDirection(),
+_audio(nullptr),
+_windowSizeX(), _windowSizeY(),
+_offsetX(), _offsetZ(),
+_cadence(0.5), _damage(5),
+_timeToShoot(_engineTime->deltaTime())
 {
 	//_mouse->setMouseRelativeMode(true);
 }
 
 PlayerShootComponent::~PlayerShootComponent()
 {
-	if (shotDirection != nullptr)delete shotDirection;
+	if (_shotDirection != nullptr)delete _shotDirection;
 }
 
 void PlayerShootComponent::awake(luabridge::LuaRef& data)
@@ -37,11 +48,12 @@ void PlayerShootComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 	_gameManager = Engine::getInstance()->findGameObject("GameManager");
 	_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_offsetX = 40;
 	_offsetZ = 40;
-	shotDirection = new Vector3(0, 0, 1);
+	_shotDirection = new Vector3(0, 0, 1);
 	std::pair<int, int> size = Engine::getInstance()->getWindowSize();
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
@@ -85,6 +97,7 @@ void PlayerShootComponent::shoot()
 
 		//Shot
 		c->beShot(bulletPos, dir);
+		_audio->playAudio(1);
 	}
 }
 
