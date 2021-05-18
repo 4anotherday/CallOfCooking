@@ -9,7 +9,7 @@
 #include <time.h>       /* time -> ver si se puede cambiar el random por uno que use los delta times de EngineTime*/
 
 EnemyPoolComponent::EnemyPoolComponent(UserComponentId::UserComponentId id) :PoolComponent(id),
-_respawnsPositions(), _isSpawnTime(false), _howManyEnemiesSpawn(0), _totalEnemiesSpawned(0()), _spawnEnemyTime(0.0f), _lastSpawnEnemyTime(0.0f)
+_respawnsPositions(), _isSpawnTime(false), _howManyEnemiesSpawn(0), _totalEnemiesSpawned(0()), _spawnEnemyTime(0.0f), _lastSpawnEnemyTime(0.0f), _infiniteRound(false), _time(0.0f)
 {
 	srand(time(NULL));
 }
@@ -20,20 +20,10 @@ EnemyPoolComponent::~EnemyPoolComponent()
 
 void EnemyPoolComponent::update()
 {
-	if (_isSpawnTime && _totalEnemiesSpawned < _howManyEnemiesSpawn && isTimeToSpawn()) {
-		GameObject* go = getInactiveGO();
-
-		if (go != nullptr) {
-			Transform* tr = static_cast<Transform*>(Engine::getInstance()->findGameObject(go->getName())->getComponent(ComponentId::Transform));
-			if (_respawnsPositions.size() == 1)
-				tr->setPosition(_respawnsPositions[0]);
-			else {
-				int rnd = rand() % _respawnsPositions.size();
-				tr->setPosition(_respawnsPositions[rnd]);
-			}
-			_totalEnemiesSpawned++;
-		}
-	}
+	if (!_infiniteRound && _isSpawnTime && _totalEnemiesSpawned < _howManyEnemiesSpawn && isTimeToSpawn()) 
+		enemySpawn();
+	else if (_infiniteRound && isTimeToSpawn()) 
+		enemySpawn();
 }
 
 void EnemyPoolComponent::wakeUpEnemies(int howMany, float spawnEnemyTime)
@@ -44,11 +34,36 @@ void EnemyPoolComponent::wakeUpEnemies(int howMany, float spawnEnemyTime)
 	_totalEnemiesSpawned = 0;
 }
 
+void EnemyPoolComponent::setInfinityRound(bool iR)
+{
+	_infiniteRound = iR;
+	_totalEnemiesSpawned = 0;
+	_isSpawnTime = true;
+}
+
 bool EnemyPoolComponent::isTimeToSpawn()
 {
-	if (EngineTime::getInstance()->deltaTime() <= _lastSpawnEnemyTime + _spawnEnemyTime) {
-		_lastSpawnEnemyTime = EngineTime::getInstance()->deltaTime();
+	_time += EngineTime::getInstance()->deltaTime();
+
+	if (_lastSpawnEnemyTime + _spawnEnemyTime <= _time) {
+		_lastSpawnEnemyTime = _time;
 		return true;
 	}
 	return false;
+}
+
+void EnemyPoolComponent::enemySpawn()
+{
+	GameObject* go = getInactiveGO();
+
+	if (go != nullptr) {
+		Transform* tr = static_cast<Transform*>(Engine::getInstance()->findGameObject(go->getName())->getComponent(ComponentId::Transform));
+		if (_respawnsPositions.size() == 1)
+			tr->setPosition(_respawnsPositions[0]);
+		else {
+			int rnd = rand() % _respawnsPositions.size();
+			tr->setPosition(_respawnsPositions[rnd]);
+		}
+		_totalEnemiesSpawned++;
+	}
 }
