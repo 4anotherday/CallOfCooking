@@ -38,6 +38,8 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 	luabridge::LuaRef configData = PrefabLoader::getInstance()->getDataPrefab(path);
 
 	int howManyRespawns = configData[0]["HowManyRespawnPositions"].cast<int>();
+	//if (LUASUBFIELDEXIST(0, HowManyRespawnPositions)) howManyRespawns = GETLUASUBFIELD(0, HowManyRespawnPositions, int);
+
 
 	for (int j = 1; j <= howManyRespawns; ++j) {
 		float x = configData[0]["RespawnPositions"][j]["X"].cast<float>();

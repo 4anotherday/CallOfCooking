@@ -5,6 +5,9 @@
 #include "Vector3.h"
 #include <vector>
 
+#define LUASUBFIELDEXIST(pos, name) !data[pos][#name].isNil();
+#define GETLUASUBFIELD(pos, name, type) data[pos][#name].cast<type>()
+
 class GranadePoolComponent;
 class LemonPoolComponent;
 class WatermelonPoolComponent;

@@ -1,4 +1,4 @@
-21:01:20 -> INFO: Creacion
-21:01:23 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-21:01:25 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
-21:01:25 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
+21:46:34 -> INFO: Creacion
+21:46:37 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+21:46:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+21:46:40 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
