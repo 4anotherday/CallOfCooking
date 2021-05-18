@@ -39,7 +39,9 @@ namespace UserComponentId {
 		DamageCardComponent,
 		MovementSpeedCardComponent,
 		CardSystemComponent,
-		UIManagerComponent
+		UIManagerComponent,
+		PlayButtonComponent,
+		QuitButtonComponent
 	};
 }
 
