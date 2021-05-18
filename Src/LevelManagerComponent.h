@@ -11,6 +11,7 @@ class WatermelonPoolComponent;
 class EngineTime;
 class CardSystemComponent;
 class UIManagerComponent;
+class ScoreManagerComponent;
 
 enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
@@ -46,6 +47,10 @@ public:
 
 	void enemyDeath(GameObject* go, EnemyType type);
 
+	void gameOver();
+
+	void restartGame();
+
 private:
 	void enemiesSpawn();
 
@@ -59,6 +64,7 @@ private:
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
 	UIManagerComponent* _uiManager;
+	ScoreManagerComponent* _scoreManager;
 
 	int _howManyRounds;
 	bool _infiniteRound;

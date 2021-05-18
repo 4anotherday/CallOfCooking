@@ -41,6 +41,7 @@ void ScoreManagerComponent::start()
 	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
 	_uimanager->setPlayerScore(_score);
+	_uimanager->setFinalPanelScore(_score);
 }
 
 void ScoreManagerComponent::addComboHitPoint()
@@ -53,6 +54,11 @@ void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 {
 	_comboDeathPoints += deathPoints * ((_lvlManager->getCurrentLevel() / 10) + 1);
 	startOrRenewComboTime();
+}
+
+void ScoreManagerComponent::gameOver()
+{
+	addTotalComboScore();
 }
 
 void ScoreManagerComponent::addTotalComboScore()
@@ -71,6 +77,7 @@ void ScoreManagerComponent::addTotalComboScore()
 
 	_score += totalPoints;
 	_uimanager->setPlayerScore(_score);
+	_uimanager->setFinalPanelScore(_score);
 	_isComboSequence = false;
 }
 

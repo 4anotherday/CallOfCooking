@@ -100,4 +100,39 @@ overlay GameUI
         material CallOfCooking/speedBase
     }
     ///////////////////////////////////////////////////////
+
+    //Final Score Panel///////////////////////////////////
+    overlay_element GameUI/FinalPanel Panel
+    {
+        left 0.05
+        top 0.05
+        width 0.9
+        height 0.9
+        material OverlayNegro
+
+        overlay_element GameUI/PlayerFinalScoreText TextArea
+        {
+            top 0.3
+            horz_align center
+            vert_align top
+            char_height 0.08
+            colour 1 0.3 0.3
+            caption FINAL SCORE
+            font_name publicSecretFont
+            alignment center
+        }
+
+        overlay_element GameUI/PlayerFinalScore TextArea
+        {
+            top 0.4
+            horz_align center
+            vert_align top
+            char_height 0.08
+            colour 1 0.3 0.3
+            caption 10000
+            font_name publicSecretFont
+            alignment center
+        }
+    }
+    //////////////////////////////////////////////////////
 }

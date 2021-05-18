@@ -41,12 +41,27 @@ class UIManagerComponent : public Component {
 		/// <param name="weaponNumber"></param>
 		void changeWeapon(int weaponNumber);
 
+		/// <summary>
+		/// Shows the final game panel
+		/// </summary>
+		void showFinalPanel();
+
+		/// <summary>
+		/// Hides the final game panel
+		/// </summary>
+		void hideFinalPanel();
+
+		void setFinalPanelScore(int score);
+
 		//lifesPanel method (WIP)
 	private:
 		TextManagerElement* _textRounds;
 		TextManagerElement* _textScore;
 		OverlayElementMngr* _weaponPanel;
 		std::vector<OverlayElementMngr*> _lifes;
+
+		OverlayElementMngr* _finalPanel;
+		TextManagerElement* _textFinalScore;
 };
 
 #endif // !UIMANAGERCOMPONENT_H

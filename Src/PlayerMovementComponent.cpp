@@ -16,14 +16,14 @@ ADD_COMPONENT(PlayerMovementComponent);
 PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::PlayerMovementComponent),
 _tr(nullptr), _rb(nullptr), _velocity(),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
-_keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()),_windowSizeX(),_windowSizeY()
+_keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()),_windowSizeX(),_windowSizeY(), _gameOver(false)
 {
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
 _tr(nullptr), _rb(nullptr), _velocity(),
 _keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
-_keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _windowSizeX(), _windowSizeY()
+_keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _windowSizeX(), _windowSizeY(), _gameOver(false)
 {
 }
 
@@ -49,6 +49,8 @@ void PlayerMovementComponent::start()
 
 void PlayerMovementComponent::update()
 {
+	if (_gameOver) return;
+
 	float deltaTime = _engineTime->deltaTime();
 
 	//Here se set the velocity of the player

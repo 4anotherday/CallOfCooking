@@ -9,6 +9,8 @@
 #include "WatermelonPoolComponent.h"
 #include "PrefabLoader.h"
 #include "UIManagerComponent.h"
+#include "ScoreManagerComponent.h"
+#include "PlayerMovementComponent.h"
 #include "CardSystemComponent.h"
 
 ADD_COMPONENT(LevelManagerComponent);
@@ -115,7 +117,9 @@ void LevelManagerComponent::start()
 
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
 	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-	_uiManager->setRoundsText(_currentRound);
+	_uiManager->setRoundsText(_currentLevel);
+
+	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
@@ -137,11 +141,28 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 			break;
 		}
 		default: {
-			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+			//LANZAR EXCEPCIï¿½N DE ENEMIGO DESCONOCIDO
 			break;
 		}
 		}
 	std::cout << "Enemigo muere " << _levelsInfo.at(_currentRound).enemiesLeft << std::endl;
+}
+
+void LevelManagerComponent::gameOver()
+{
+	_scoreManager->gameOver();
+	_uiManager->showFinalPanel();
+
+	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
+}
+
+void LevelManagerComponent::restartGame()
+{
+	_scoreManager->resetScore();
+	_uiManager->hideFinalPanel();
+
+	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
+
 }
 
 void LevelManagerComponent::enemiesSpawn()

@@ -39,6 +39,8 @@ public:
 	/// <param name="deathPoints">How many combo points for getting a kill</param>
 	void addComboDeathPoint(int deathPoints);
 
+	void gameOver();
+
 	/// <summary>
 	/// Retuns the current score
 	/// </summary>
