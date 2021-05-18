@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\AttackSpeedCardComponent.cpp" />
+    <ClCompile Include="..\Src\Buttons.cpp" />
     <ClCompile Include="..\Src\CameraControllerComponent.cpp" />
     <ClCompile Include="..\Src\CardComponent.cpp" />
     <ClCompile Include="..\Src\CardSystemComponent.cpp" />
@@ -51,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\AttackSpeedCardComponent.h" />
+    <ClInclude Include="..\Src\Buttons.h" />
     <ClInclude Include="..\Src\CameraControllerComponent.h" />
     <ClInclude Include="..\Src\CardComponent.h" />
     <ClInclude Include="..\Src\CardSystemComponent.h" />

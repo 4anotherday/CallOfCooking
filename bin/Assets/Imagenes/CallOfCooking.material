@@ -14,6 +14,44 @@ material CallOfCooking/Corazon{
 		}
 	}
 }
+//Botones Menu...................................
+material CallOfCooking/Button{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture ButtonBase.png
+			}
+		}
+	}
+}
+material CallOfCooking/ButtonHover{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture ButtonHover.png
+			}
+		}
+	}
+}
+material CallOfCooking/ButtonPress{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture ButtonPress.png
+			}
+		}
+	}
+}
+//..................................................
 
 //////////////////////////////////////////////////////////////////////
 //                     MATERIALES CARDS                             //

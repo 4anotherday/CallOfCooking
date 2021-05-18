@@ -19,7 +19,7 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		PrefabLoader::CreateInstance();
 
 		prueba->init("Assets/prueba.cfg", "Assets/Levels");
-		prueba->changeScene("Level1.lua");
+		prueba->changeScene("Menu.lua");
 		prueba->run();
 	}
 	catch (const ExcepcionTAD& e) {
