@@ -12,7 +12,6 @@
 #include "PlayerBulletPoolComponent.h"
 #include "PlayerBulletBehaviorComponent.h"
 #include "AudioSourceComponent.h"
-#include "includeLUA.h"
 
 ADD_COMPONENT(PlayerShootComponent);
 
@@ -40,8 +39,8 @@ PlayerShootComponent::~PlayerShootComponent()
 
 void PlayerShootComponent::awake(luabridge::LuaRef& data)
 {
-	_damage = data["Damage"].cast<float>();
-	_cadence = data["Cadence"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damage = data["Damage"].cast<float>();
+	if (LUAFIELDEXIST(Cadence)) _cadence = data["Cadence"].cast<float>();
 }
 
 void PlayerShootComponent::start()

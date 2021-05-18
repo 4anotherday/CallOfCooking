@@ -27,8 +27,8 @@ _audio(nullptr), _maxLife(nLives), _lives(nLives)
 
 void PlayerHealthComponent::awake(luabridge::LuaRef& data)
 {
-	_lives = data["Lives"].cast<int>();
-	_maxLife = data["MaxLife"].cast<int>();
+	if(LUAFIELDEXIST(Lives)) _lives = data["Lives"].cast<int>();
+	if(LUAFIELDEXIST(MaxLife)) _maxLife = data["MaxLife"].cast<int>();
 }
 
 void PlayerHealthComponent::start()

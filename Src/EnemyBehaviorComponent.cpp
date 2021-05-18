@@ -6,7 +6,7 @@
 #include "includeLUA.h"
 
 EnemyBehaviorComponent::EnemyBehaviorComponent(UserComponentId::UserComponentId id) : Component(id), _rigidbody(nullptr), _playerPos(nullptr),
-_attackSpeed(), _isAttacking(), _damagePerSecond()
+_attackSpeed(2.0f), _isAttacking(), _damagePerSecond(1.0f),_movementSpeed(1.0f),_range(1.0f)
 {
 }
 
@@ -16,9 +16,9 @@ EnemyBehaviorComponent::~EnemyBehaviorComponent()
 
 void EnemyBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_attackSpeed = data["AttackSpeed"].cast<float>();
-	_isAttacking = data["isAttacking"].cast<bool>();
-	_damagePerSecond = data["DamagePerSecond"].cast<float>();
+	if (LUAFIELDEXIST(AttackSpeed)) _attackSpeed = data["AttackSpeed"].cast<float>();
+	if (LUAFIELDEXIST(IsAttacking)) _isAttacking = data["isAttacking"].cast<bool>();
+	if (LUAFIELDEXIST(DamagePerSecond)) _damagePerSecond = data["DamagePerSecond"].cast<float>();
 }
 
 void EnemyBehaviorComponent::start()

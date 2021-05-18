@@ -15,7 +15,7 @@
 ADD_COMPONENT(PlayerAttackComponent);
 
 PlayerAttackComponent::PlayerAttackComponent() : Component(UserComponentId::PlayerAttackComponent),
-_trPlayer(nullptr), _tr(nullptr), _rb(nullptr), _damage(5), _attackHitBoxDistance(0.25f), _windowSizeX(), _windowSizeY(), _playerRange(3.0f),
+_trPlayer(nullptr), _tr(nullptr), _rb(nullptr), _damage(1.0f), _attackHitBoxDistance(0.35f), _windowSizeX(), _windowSizeY(), _playerRange(1.0f),
 _lemonPool(nullptr), _grenadePool(nullptr), _watermelonPool(nullptr),
 _mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _attackRate(0.5), _lastAttack(_engineTime->deltaTime())
 {
@@ -24,7 +24,7 @@ _mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _atta
 PlayerAttackComponent::PlayerAttackComponent(GameObject* gameObject) : Component(UserComponentId::PlayerAttackComponent, gameObject),
 _trPlayer(nullptr), _tr(nullptr), _rb(nullptr), _damage(5), _attackHitBoxDistance(0.25f), _windowSizeX(), _windowSizeY(), _playerRange(3.0f),
 _lemonPool(nullptr), _grenadePool(nullptr), _watermelonPool(nullptr),
-_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _attackRate(0.5), _lastAttack(_engineTime->deltaTime())
+_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _attackRate(2.0f), _lastAttack(_engineTime->deltaTime())
 {
 }
 
@@ -34,10 +34,10 @@ PlayerAttackComponent::~PlayerAttackComponent()
 
 void PlayerAttackComponent::awake(luabridge::LuaRef& data)
 {
-	_damage = data["Damage"].cast<float>();
-	_attackRate = data["AtackRate"].cast<float>();
-	_attackHitBoxDistance = data["AttackHitBoxDistance"].cast<float>();
-	_playerRange = data["PlayerRange"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damage = data["Damage"].cast<float>();
+	if(LUAFIELDEXIST(AtackRate)) _attackRate = data["AtackRate"].cast<float>();
+	if(LUAFIELDEXIST(AttackHitBoxDistance)) _attackHitBoxDistance = data["AttackHitBoxDistance"].cast<float>();
+	if(LUAFIELDEXIST(PlayerRange)) _playerRange = data["PlayerRange"].cast<float>();
 }
 
 void PlayerAttackComponent::start()

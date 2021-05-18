@@ -13,7 +13,8 @@
 
 ADD_COMPONENT(GrenadeBulletBehaviorComponent);
 
-GrenadeBulletBehaviorComponent::GrenadeBulletBehaviorComponent() : Component(UserComponentId::GrenadeBulletBehaviourComponent), _rigidbody(nullptr), _tr(nullptr)
+GrenadeBulletBehaviorComponent::GrenadeBulletBehaviorComponent() : Component(UserComponentId::GrenadeBulletBehaviourComponent), _rigidbody(nullptr), _tr(nullptr), _movementSpeed(3.0f),
+_lifeTime(0.5f), _damage(1.0f),_timeToDie(0.5f),_myCollider(nullptr),_pool(nullptr)
 {
 }
 
@@ -23,9 +24,9 @@ GrenadeBulletBehaviorComponent::~GrenadeBulletBehaviorComponent()
 
 void GrenadeBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_movementSpeed = data["MovementSpeed"].cast<float>();
-	_damage = data["Damage"].cast<float>();
-	_lifeTime = data["LifeTime"].cast<float>();
+	if(LUAFIELDEXIST(MovementSpeed)) _movementSpeed = data["MovementSpeed"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damage = data["Damage"].cast<float>();
+	if(LUAFIELDEXIST(LifeTime)) _lifeTime = data["LifeTime"].cast<float>();
 	_timeToDie = _lifeTime;
 }
 
