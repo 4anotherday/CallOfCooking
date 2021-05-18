@@ -47,7 +47,7 @@ private:
 	MouseInput* _mouse;
 	GameObject* _gameManager;
 	PlayerBulletPoolComponent* _bulletsManager;
-	Vector3* shotDirection;
+	Vector3* _shotDirection;
 
 	float _windowSizeX, _windowSizeY;
 	float _offsetX, _offsetZ;

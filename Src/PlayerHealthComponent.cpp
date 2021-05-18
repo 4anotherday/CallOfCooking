@@ -8,22 +8,22 @@
 
 ADD_COMPONENT(PlayerHealthComponent);
 
-PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::PlayerHealthComponent), _maxLife(0), _lives(0)
+PlayerHealthComponent::PlayerHealthComponent() : Component(UserComponentId::PlayerHealthComponent), _maxLife(3), _lives(3),_lvlManager(nullptr),_uimanager(nullptr)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::PlayerHealthComponent), _maxLife(nLives), _lives(nLives)
+PlayerHealthComponent::PlayerHealthComponent(int nLives) : Component(UserComponentId::PlayerHealthComponent), _maxLife(nLives), _lives(nLives), _lvlManager(nullptr), _uimanager(nullptr)
 {
 }
 
-PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::PlayerHealthComponent, go), _maxLife(nLives), _lives(nLives)
+PlayerHealthComponent::PlayerHealthComponent(int nLives, GameObject* go) : Component(UserComponentId::PlayerHealthComponent, go), _maxLife(nLives), _lives(nLives), _lvlManager(nullptr), _uimanager(nullptr)
 {
 }
 
 void PlayerHealthComponent::awake(luabridge::LuaRef& data)
 {
-	_lives = data["Lives"].cast<int>();
-	_maxLife = data["MaxLife"].cast<int>();
+	if(LUAFIELDEXIST(Lives)) _lives = data["Lives"].cast<int>();
+	if(LUAFIELDEXIST(MaxLife)) _maxLife = data["MaxLife"].cast<int>();
 }
 
 void PlayerHealthComponent::start()

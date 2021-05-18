@@ -12,7 +12,8 @@
 
 ADD_COMPONENT(PlayerBulletBehaviorComponent);
 
-PlayerBulletBehaviorComponent::PlayerBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviorComponent), _rigidbody(nullptr), _tr(nullptr), _damage()
+PlayerBulletBehaviorComponent::PlayerBulletBehaviorComponent() : Component(UserComponentId::PlayerBulletBehaviorComponent), _rigidbody(nullptr), _tr(nullptr), _damage(5.0f),
+_movementSpeed(3.0f),_lifeTime(0.5f),_timeToDie(0.5f),_collider(nullptr),_pool(nullptr)
 {
 }
 
@@ -22,9 +23,9 @@ PlayerBulletBehaviorComponent::~PlayerBulletBehaviorComponent()
 
 void PlayerBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 {
-	_movementSpeed = data["MovementSpeed"].cast<float>();
-	_damage = data["Damage"].cast<float>();
-	_lifeTime = data["LifeTime"].cast<float>();
+	if(LUAFIELDEXIST(MovementSpeed)) _movementSpeed = data["MovementSpeed"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damage = data["Damage"].cast<float>();
+	if(LUAFIELDEXIST(LifeTime)) _lifeTime = data["LifeTime"].cast<float>();
 	_timeToDie = _lifeTime;
 }
 

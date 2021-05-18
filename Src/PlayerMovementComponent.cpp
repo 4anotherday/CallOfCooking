@@ -8,21 +8,20 @@
 #include "EngineTime.h"
 #include "includeLUA.h"
 #include <math.h>
-#include "includeLUA.h"
-#include "Engine.h";
+#include "Engine.h"
 
 ADD_COMPONENT(PlayerMovementComponent);
 
 PlayerMovementComponent::PlayerMovementComponent() :Component(UserComponentId::PlayerMovementComponent),
 _tr(nullptr), _rb(nullptr), _velocity(),
-_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
+_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(100.0f), _rotationSpeed(1.0f),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()),_windowSizeX(),_windowSizeY(), _gameOver(false)
 {
 }
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
 _tr(nullptr), _rb(nullptr), _velocity(),
-_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(10), _rotationSpeed(8),
+_keyUp(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyDown(KeyCode::KEYCODE_S), _speed(100.0f), _rotationSpeed(1.0f),
 _keyboard(KeyBoardInput::getInstance()), _mouseInput(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _windowSizeX(), _windowSizeY(), _gameOver(false)
 {
 }
@@ -33,8 +32,8 @@ PlayerMovementComponent::~PlayerMovementComponent()
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
-	_speed = data["Speed"].cast<float>();
-	_rotationSpeed = data["RotationSpeed"].cast<float>();
+	if(LUAFIELDEXIST(Speed)) _speed = data["Speed"].cast<float>();
+	if(LUAFIELDEXIST(RotationSpeed)) _rotationSpeed = data["RotationSpeed"].cast<float>();
 }
 
 void PlayerMovementComponent::start()

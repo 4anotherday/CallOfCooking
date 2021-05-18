@@ -11,26 +11,25 @@
 #include "RigidBodyComponent.h"
 #include "PlayerBulletPoolComponent.h"
 #include "PlayerBulletBehaviorComponent.h"
-#include "includeLUA.h"
 
 ADD_COMPONENT(PlayerShootComponent);
 
 PlayerShootComponent::PlayerShootComponent() : Component(UserComponentId::PlayerShootComponent),
-_tr(nullptr), _rb(nullptr), _damage(5),
-_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _timeToShoot(_engineTime->deltaTime()), _cadence(0.5)
+_tr(nullptr), _rb(nullptr), _damage(5.0f),_windowSizeX(),_windowSizeY(),_offsetX(),_offsetZ(),_bulletsManager(nullptr),_gameManager(nullptr),
+_mouse(MouseInput::getInstance()), _engineTime(EngineTime::getInstance()), _timeToShoot(_engineTime->deltaTime()), _cadence(1.0f),_shotDirection(nullptr)
 {
 	//_mouse->setMouseRelativeMode(true);
 }
 
 PlayerShootComponent::~PlayerShootComponent()
 {
-	if (shotDirection != nullptr)delete shotDirection;
+	if (_shotDirection != nullptr)delete _shotDirection;
 }
 
 void PlayerShootComponent::awake(luabridge::LuaRef& data)
 {
-	_damage = data["Damage"].cast<float>();
-	_cadence = data["Cadence"].cast<float>();
+	if(LUAFIELDEXIST(Damage)) _damage = data["Damage"].cast<float>();
+	if (LUAFIELDEXIST(Cadence)) _cadence = data["Cadence"].cast<float>();
 }
 
 void PlayerShootComponent::start()
@@ -41,7 +40,7 @@ void PlayerShootComponent::start()
 	_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
 	_offsetX = 40;
 	_offsetZ = 40;
-	shotDirection = new Vector3(0, 0, 1);
+	_shotDirection = new Vector3(0, 0, 1);
 	std::pair<int, int> size = Engine::getInstance()->getWindowSize();
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
