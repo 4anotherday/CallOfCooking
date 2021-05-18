@@ -29,7 +29,7 @@ void PlayButtonComponent::startGame(void* null)
 {
 	MouseInput::getInstance()->setMouseRelativeMode(true);
 
-	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(ComponentId::AudioSource))->stopChannel(0);
+	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("Camera")->getComponent(ComponentId::AudioSource))->stopChannel(0);
 
 	Engine::getInstance()->changeScene("Level1.lua");
 }
