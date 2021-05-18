@@ -13,7 +13,7 @@ ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
 	_score(0),_maxScore(0), _comboHitPoints(0), _comboDeathPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
-	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager()
+	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f)
 {
 }
 
@@ -30,7 +30,8 @@ void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 
 void ScoreManagerComponent::update() 
 {
-	if (_actualComboSequenceTime + _comboTime <= _engineTime->deltaTime()) {
+	_time += _engineTime->deltaTime();
+	if (_actualComboSequenceTime + _comboTime <= _time) {
 		addTotalComboScore();
 	}
 }

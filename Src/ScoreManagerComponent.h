@@ -103,6 +103,7 @@ private:
 	int _comboHitPoints;
 	float _comboTime;
 	float _actualComboSequenceTime;
+	float _time;
 };
 #endif // !SCOREMANAGERCOMPONENT_H
 
