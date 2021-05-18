@@ -47,7 +47,7 @@ void PlayerHealthComponent::loseLife(int n)
 {
 	if (n > 0) {
 		_lives -= n;
-		if (_lives == 0)
+		if (_lives <= 0)
 			_lvlManager->gameOver();
 
 		updateUIlifes();
