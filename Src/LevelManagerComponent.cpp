@@ -119,7 +119,7 @@ void LevelManagerComponent::start()
 
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
 	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-	_uiManager->setRoundsText(_currentLevel);
+	_uiManager->setRoundsText(_currentRound);
 
 	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
 }
