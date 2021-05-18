@@ -48,6 +48,8 @@ public:
 	/// <param name="extraSpeed">Amount of speed</param>
 	void increaseSpeed(float extraSpeed);
 
+	inline void gameOver(bool b) { _gameOver = b; };
+
 private:
 
 	Transform* _tr;
@@ -60,5 +62,6 @@ private:
 	Vector3 _velocity;
 	float _speed, _rotationSpeed;
 	int _windowSizeX, _windowSizeY;
+	bool _gameOver;
 };
 #endif // !PLAYERMOVEMENTCOMPONENT_H

@@ -9,6 +9,8 @@
 #include "WatermelonPoolComponent.h"
 #include "PrefabLoader.h"
 #include "UIManagerComponent.h"
+#include "ScoreManagerComponent.h"
+#include "PlayerMovementComponent.h"
 #include "CardSystemComponent.h"
 
 ADD_COMPONENT(LevelManagerComponent);
@@ -16,7 +18,7 @@ ADD_COMPONENT(LevelManagerComponent);
 LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
 _engineTime(EngineTime::getInstance()), _levelsInfo(), _respawnPositions(), _cardSystem(nullptr),
 _granadePool(), _lemonPool(), _watermelonPool(), _uiManager(nullptr),
-_currentLevel(0), _waveStartTime(0.0f), _time(), _newWave(true)
+_currentRound(0), _waveStartTime(0.0f), _time(), _newWave(true), _howManyRounds(false), _infiniteRound(false)
 {
 }
 
@@ -28,7 +30,7 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 {
 	//bool loaded = true;
 
-	if (LUAFIELDEXIST(CurrentLevel)) _currentLevel = GETLUAFIELD(CurrentLevel, int);
+	if (LUAFIELDEXIST(CurrentLevel)) _currentRound = GETLUAFIELD(CurrentLevel, int);
 
 	std::string path = "";
 	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
@@ -44,7 +46,10 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 		_respawnPositions.push_back(Vector3(x, y, z));
 	}
 
-	for (int x = 1; x <= configData.length(); ++x) {
+
+	_howManyRounds = configData[0]["HowManyRounds"].cast<int>();
+
+	for (int x = 1; x <= _howManyRounds; ++x) {
 		Wave wave;
 		wave.enemiesLeft = wave.totalEnemies = configData[x]["TotalEnemies"].cast<int>();
 		wave.waveTime = configData[x]["WaveTime"].cast<float>();
@@ -74,18 +79,27 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 void LevelManagerComponent::update()
 {
 	_time += _engineTime->deltaTime();
-	if (_newWave && _time >= _waveStartTime + _levelsInfo.at(_currentLevel).waveTime) {
+	if (!_infiniteRound && (_newWave && _time >= _waveStartTime + _levelsInfo.at(_currentRound).waveTime)) {
 		_cardSystem->setCardsUp(false);
-		enemiesSpawn();
+		enemiesSpawn();				
 		_newWave = false;
 	}
 
-	if (_levelsInfo.at(_currentLevel).enemiesLeft == 0) {
+	if (!_infiniteRound && _levelsInfo.at(_currentRound).enemiesLeft == 0) {
 		_cardSystem->setCardsUp(true);
-		++_currentLevel;
+
+		++_currentRound;
+		if (_currentRound >= _howManyRounds) {
+			_infiniteRound = true;
+			startInfiniteRound();
+
+			//One round is subtracted to use the wave time of the previous round
+			--_currentRound; 
+		}
+		
 		_newWave = true;
 		_waveStartTime = _time;
-		_uiManager->setRoundsText(_currentLevel);
+		_uiManager->setRoundsText(_currentRound);
 	}
 	Engine::getInstance()->setViewportColour(0.4, 0.2, 0.5);
 	Engine::getInstance()->setShadowColour(0.8, 0.75, 0.75);
@@ -106,13 +120,15 @@ void LevelManagerComponent::start()
 	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
 	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
 	_uiManager->setRoundsText(_currentLevel);
+
+	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
 }
 
 void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 {
-	--_levelsInfo.at(_currentLevel).enemiesLeft;
+	--_levelsInfo.at(_currentRound).enemiesLeft;
 
-	if (_levelsInfo.at(_currentLevel).enemiesLeft >= 0)
+	if (_levelsInfo.at(_currentRound).enemiesLeft >= 0)
 		switch (type) {
 		case EnemyType::GRANADE: {
 			_granadePool->setInactiveGO(go);
@@ -127,21 +143,45 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 			break;
 		}
 		default: {
-			//LANZAR EXCEPCIÓN DE ENEMIGO DESCONOCIDO
+			//LANZAR EXCEPCIï¿½N DE ENEMIGO DESCONOCIDO
 			break;
 		}
 		}
-	std::cout << "Enemigo muere " << _levelsInfo.at(_currentLevel).enemiesLeft << std::endl;
+	std::cout << "Enemigo muere " << _levelsInfo.at(_currentRound).enemiesLeft << std::endl;
+}
+
+void LevelManagerComponent::gameOver()
+{
+	_scoreManager->gameOver();
+	_uiManager->showFinalPanel();
+
+	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
+}
+
+void LevelManagerComponent::restartGame()
+{
+	_scoreManager->resetScore();
+	_uiManager->hideFinalPanel();
+
+	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
+
 }
 
 void LevelManagerComponent::enemiesSpawn()
 {
 	for (int x = EnemyType::GRANADE; x != EnemyType::UNKNOW; x++) {
-		if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::GRANADE)
-			_granadePool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
-		else if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::LEMON)
-			_lemonPool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
-		else if (_levelsInfo.at(_currentLevel).enemies.at(x).type == EnemyType::WATERMELON)
-			_watermelonPool->wakeUpEnemies(_levelsInfo.at(_currentLevel).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentLevel).enemies.at(x).spawnEnemyTime);
+		if (_levelsInfo.at(_currentRound).enemies.at(x).type == EnemyType::GRANADE)
+			_granadePool->wakeUpEnemies(_levelsInfo.at(_currentRound).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentRound).enemies.at(x).spawnEnemyTime);
+		else if (_levelsInfo.at(_currentRound).enemies.at(x).type == EnemyType::LEMON)
+			_lemonPool->wakeUpEnemies(_levelsInfo.at(_currentRound).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentRound).enemies.at(x).spawnEnemyTime);
+		else if (_levelsInfo.at(_currentRound).enemies.at(x).type == EnemyType::WATERMELON)
+			_watermelonPool->wakeUpEnemies(_levelsInfo.at(_currentRound).enemies.at(x).howManyEnemies, _levelsInfo.at(_currentRound).enemies.at(x).spawnEnemyTime);
 	}
+}
+
+void LevelManagerComponent::startInfiniteRound()
+{
+	_granadePool->setInfinityRound(true);
+	_lemonPool->setInfinityRound(true);
+	_watermelonPool->setInfinityRound(true);
 }

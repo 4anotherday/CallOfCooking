@@ -5,6 +5,7 @@
 #define PLAYERHEALTHCOMPONENT_H
 
 class UIManagerComponent;
+class LevelManagerComponent;
 
 class PlayerHealthComponent : public Component
 {
@@ -54,5 +55,6 @@ private:
 	int _maxLife;
 
 	UIManagerComponent* _uimanager;
+	LevelManagerComponent* _lvlManager;
 };
 #endif // !PLAYERHEALTHCOMPONENT_H

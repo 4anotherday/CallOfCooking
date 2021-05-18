@@ -11,6 +11,7 @@ class WatermelonPoolComponent;
 class EngineTime;
 class CardSystemComponent;
 class UIManagerComponent;
+class ScoreManagerComponent;
 
 enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
@@ -42,12 +43,18 @@ public:
 
 	inline std::vector<Wave> getLevelInfo() const { return _levelsInfo; }
 
-	inline int getCurrentLevel() const { return _currentLevel; }
+	inline int getCurrentLevel() const { return _currentRound; }
 
 	void enemyDeath(GameObject* go, EnemyType type);
 
+	void gameOver();
+
+	void restartGame();
+
 private:
 	void enemiesSpawn();
+
+	void startInfiniteRound();
 
 	EngineTime* _engineTime;
 	std::vector<Wave> _levelsInfo;
@@ -57,8 +64,11 @@ private:
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
 	UIManagerComponent* _uiManager;
+	ScoreManagerComponent* _scoreManager;
 
-	int _currentLevel;
+	int _howManyRounds;
+	bool _infiniteRound;
+	int _currentRound;
 	float _waveStartTime;
 	float _time;
 	bool _newWave;

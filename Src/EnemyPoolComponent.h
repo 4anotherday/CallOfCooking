@@ -30,11 +30,26 @@ public:
 	/// </summary>
 	void setRespawnPositions(std::vector<Vector3> &rP) { _respawnsPositions = rP; };
 
+	/// <summary>
+	///	Set an infinite round
+	/// </summary>
+	void setInfinityRound(bool iR);
+
+	/// <summary>
+	///	Set the spawn enemy time
+	/// </summary>
+	void spawnEnemyTime(float sT) { _spawnEnemyTime = sT; }
+
 protected:
 	/// <summary>
 	///	Check if it's time to spawn an enemy
 	/// </summary>	
 	bool isTimeToSpawn();
+
+	/// <summary>
+	///	Spawn an enemy so infinite enemies will appear
+	/// </summary>	
+	void enemySpawn();
 
 	std::vector<Vector3> _respawnsPositions;
 
@@ -43,5 +58,7 @@ protected:
 	int _totalEnemiesSpawned;
 	float _spawnEnemyTime;
 	float _lastSpawnEnemyTime;
+	bool _infiniteRound;
+	float _time;
 };
 #endif // !ENEMYPOOLCOMPONENT_H

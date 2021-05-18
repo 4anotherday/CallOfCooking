@@ -23,6 +23,11 @@ void UIManagerComponent::awake(luabridge::LuaRef& data)
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
 	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
+
+	_finalPanel = new OverlayElementMngr("GameUI/FinalPanel");
+	_finalPanel->setEnabled(false);
+
+	_textFinalScore = new TextManagerElement("GameUI/PlayerFinalScore");
 }
 
 void UIManagerComponent::start()
@@ -57,4 +62,19 @@ void UIManagerComponent::changeWeapon(int weaponNumber)
 		_weaponPanel->setMaterial("CallOfCooking/Rifle");
 	else
 		_weaponPanel->setMaterial("CallOfCooking/Cuchillo");
+}
+
+void UIManagerComponent::showFinalPanel()
+{
+	_finalPanel->setEnabled(true);
+}
+
+void UIManagerComponent::hideFinalPanel()
+{
+	_finalPanel->setEnabled(false);
+}
+
+void UIManagerComponent::setFinalPanelScore(int score)
+{
+	_textFinalScore->setText(std::to_string(score));
 }

@@ -84,7 +84,7 @@ go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Heig
 
 go_8={}
 go_8[0] = { Name="GameManager", HowManyCmps=7, Persist = false}
-go_8[1] = { Component = "LevelManagerComponent", CurrentLevel=0, Path = "Assets/Levels/prefabLevelManager.lua"}
+go_8[1] = { Component = "LevelManagerComponent", CurrentLevel=0, Path = "Assets/Levels/levelManagerInfo.lua"}
 go_8[2] = { Component = "ScoreManagerComponent", Score = 0, MaxScore = 0, ComboTime = 2 }
 go_8[3] = { Component = "GranadePoolComponent", MaxPool = 10, Path = "Assets/Levels/prefabGrenade.lua"}
 go_8[4] = { Component = "GranadeBulletPoolComponent", MaxPool = 10, Path = "Assets/Levels/prefabGrenadeBullet.lua"}

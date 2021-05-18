@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "UserComponentIDs.h"
 #include "UIManagerComponent.h"
+#include "LevelManagerComponent.h"
 #include "includeLUA.h"
 
 ADD_COMPONENT(PlayerHealthComponent);
@@ -29,6 +30,8 @@ void PlayerHealthComponent::start()
 {
 	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
 	_uimanager->setPlayerLife(_maxLife);
+
+	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 }
 
 void PlayerHealthComponent::addLife(int n)
@@ -42,11 +45,13 @@ void PlayerHealthComponent::addLife(int n)
 
 void PlayerHealthComponent::loseLife(int n)
 {
-	if (n > 0)
-		if (_lives - n > 0)
-			_lives -= n;
-		else reset();
-	updateUIlifes();
+	if (n > 0) {
+		_lives -= n;
+		if (_lives == 0)
+			_lvlManager->gameOver();
+
+		updateUIlifes();
+	}	
 }
 
 void PlayerHealthComponent::reset()
