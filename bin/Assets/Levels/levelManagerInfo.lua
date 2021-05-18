@@ -1,7 +1,7 @@
 -- prefab[1] = ROUND1 CONFIG, prefab[2] = ROUND2 CONFIG... prefab[N] = ROUNDN CONFIG
 prefab={}
-prefab[0] = { HowManyRespawnPositions = 3, HowManyRounds = 1, RespawnPositions = {{X=2,Y=0.5,Z=2}, {X=-2,Y=0.5,Z=0}, {X=2,Y=0.5,Z=-2}}}
-prefab[1] = { TotalEnemies = 10, WaveTime = 6,
+prefab[0] = { HowManyRespawnPositions = 4, HowManyRounds = 1, RespawnPositions = {{X=3,Y=0.5,Z=1.5}, {X=-3,Y=0.5,Z=-1.5}, {X=-3,Y=0.5,Z=1.5}, {X=3,Y=0.5,Z=-1.5}}}
+prefab[1] = { TotalEnemies = 10, WaveTime = 2,
 			  Granade    = { HowMany = 1, RespawnTime = 2}, 
 			  Lemon      = { HowMany = 0, RespawnTime = 2}, 
 			  Watermelon = { HowMany = 9, RespawnTime = 1}} 
