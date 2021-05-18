@@ -13,7 +13,7 @@ ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
 	_score(0),_maxScore(0), _comboHitPoints(0), _comboDeathPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
-	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f)
+	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f), _uimanager(nullptr)
 {
 }
 
@@ -31,7 +31,7 @@ void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 void ScoreManagerComponent::update() 
 {
 	_time += _engineTime->deltaTime();
-	if (_actualComboSequenceTime + _comboTime <= _time) {
+	if (_isComboSequence && (_actualComboSequenceTime + _comboTime <= _time)) {
 		addTotalComboScore();
 	}
 }
@@ -51,14 +51,14 @@ void ScoreManagerComponent::addComboHitPoint()
 
 void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 {
-	_comboDeathPoints += deathPoints * (_lvlManager->getCurrentLevel() / 10);
+	_comboDeathPoints += deathPoints * ((_lvlManager->getCurrentLevel() / 10) + 1);
 	startOrRenewComboTime();
 }
 
 void ScoreManagerComponent::addTotalComboScore()
 {
 	//Adding combo hit extra points
-	int totalPoints = (_comboHitPoints / 20) * 5;
+	int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
 
 	//Adding combo death extra points
 	totalPoints += _comboDeathPoints;
@@ -71,11 +71,12 @@ void ScoreManagerComponent::addTotalComboScore()
 
 	_score += totalPoints;
 	_uimanager->setPlayerScore(_score);
+	_isComboSequence = false;
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()
 {
-	_actualComboSequenceTime = _engineTime->deltaTime();
+	_actualComboSequenceTime = _time;
 	if (!_isComboSequence) _isComboSequence = true;
 }
 
