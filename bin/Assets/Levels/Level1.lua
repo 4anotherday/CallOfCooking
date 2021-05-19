@@ -16,7 +16,7 @@ HowManyGameObjects = 13
 
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=2,Z=10}}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=0.1,Z=10}}
 go_0[2] = {	Component = "RenderObject", MeshName="suelo.mesh", Material="suelo", 
 			LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 9999}
@@ -45,7 +45,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_3 = {}
 go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 1, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0.5, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
 go_3[2] = {	Component = "RenderObject", MeshName="cerdo.mesh", Material= "Cerdi", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1, ConstrainAngle = true, Bounciness = 1}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=150, RotationSpeed=1}
@@ -58,28 +58,28 @@ go_3[8] = { Component = "AudioSource", Route = {"Assets/Audio/damagePlayeer.mp3"
 
 go_4={}
 go_4[0] = { Name ="ParedIzq" , HowManyCmps=3,Persist=false}
-go_4[1] = { Component = "Transform", Coord = {X = -5.55, Y = 0.4, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
+go_4[1] = { Component = "Transform", Coord = {X = -5.55, Y = -0.5, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
 go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_4[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_5={}
 go_5[0] = { Name ="ParedDer" , HowManyCmps=3,Persist=false}
-go_5[1] = { Component = "Transform", Coord = {X = 5.55, Y = 0.4, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
+go_5[1] = { Component = "Transform", Coord = {X = 5.55, Y = -0.5, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
 go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_5[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_6={}
 go_6[0] = { Name ="ParedArr" , HowManyCmps=3,Persist=false}
-go_6[1] = { Component = "Transform", Coord = {X = 0, Y = 0.4, Z = -5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
+go_6[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = -5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
 go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_6[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_7={}
 go_7[0] = { Name ="ParedAbj" , HowManyCmps=3,Persist=false}
-go_7[1] = {Component = "Transform", Coord = {X = 0, Y = 0.4, Z = 5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
+go_7[1] = {Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
 go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
