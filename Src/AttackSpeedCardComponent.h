@@ -3,7 +3,8 @@
 #define ATTACKSPEEDCARDCOMPONENT_H
 
 #include "CardComponent.h"
-class PlayerAttackComponent;
+
+class PlayerShootComponent;
 
 class AttackSpeedCardComponent : public CardComponent
 {
@@ -26,7 +27,8 @@ public:
 	static void operate(void* player);
 
 protected:
-	PlayerAttackComponent* _player;
+
+	PlayerShootComponent* _shootComponent;
 	static float _attackRate;
 };
 #endif // !ATTACKSPEEDCARDCOMPONENT_H

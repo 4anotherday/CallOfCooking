@@ -73,6 +73,12 @@ void PlayerShootComponent::onTrigger(GameObject* other)
 {
 }
 
+void PlayerShootComponent::increaseAttackSpeed()
+{
+	if(_cadence > 0)
+		_cadence -= 0.01;
+}
+
 void PlayerShootComponent::shoot()
 {
 	//Instanciar la bala

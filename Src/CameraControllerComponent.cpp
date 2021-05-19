@@ -32,9 +32,9 @@ void CameraControllerComponent::awake(luabridge::LuaRef& data)
 	if(LUAFIELDEXIST(Target)) _target = GETLUASTRINGFIELD(Target);
 	if(LUAFIELDEXIST(Offset))
 	{
-		if(LUAFIELDEXIST(X)) _offsetX = data["Offset"]["X"].cast<float>();
-		if(LUAFIELDEXIST(Y))_offsetY = data["Offset"]["Y"].cast<float>();
-		if(LUAFIELDEXIST(Z))_offsetZ = data["Offset"]["Z"].cast<float>();
+		if(!data["Offset"]["X"].isNil()) _offsetX = data["Offset"]["X"].cast<float>();
+		if(!data["Offset"]["Y"].isNil()) _offsetY = data["Offset"]["Y"].cast<float>();
+		if(!data["Offset"]["Z"].isNil()) _offsetZ = data["Offset"]["Z"].cast<float>();
 	}	
 }
 

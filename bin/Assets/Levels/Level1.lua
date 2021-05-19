@@ -40,7 +40,7 @@ go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}, Rotation = 
 go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
  			Diffuse = {Red = 1, Green= 1, Blue =1}, 
  			Specular = {Red = 1, Green= 1, Blue = 1},
- 			LightDirection = {X = 0, Y = -1,Z = 0},
+ 			LightDirection = {X = 0.9, Y = -0.8,Z = 0},
 			Intensity = 20}
 
 go_3 = {}
@@ -48,9 +48,9 @@ go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
 go_3[2] = {	Component = "RenderObject", MeshName="cerdo.mesh", Material= "Cerdi", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1, ConstrainAngle = true, Bounciness = 1}
-go_3[4] = { Component = "PlayerMovementComponent", Speed=100, RotationSpeed=1}
+go_3[4] = { Component = "PlayerMovementComponent", Speed=150, RotationSpeed=1}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=3, MaxLife=3}
-go_3[6] = { Component = "PlayerShootComponent", Damage=5, Cadence=1}
+go_3[6] = { Component = "PlayerShootComponent", Damage=1, Cadence=0.4}
 go_3[7] = { Component = "PlayerBulletPoolComponent", MaxPool = 30, Path = "Assets/Levels/prefabBullet.lua",
 			RespawnPositions={{10,25,30},{25,50,60},{35,40,40}}}
 go_3[8] = { Component = "AudioSource", Route = {"Assets/Audio/damagePlayeer.mp3", "Assets/Audio/shootPlayer.mp3"}, Stereo = true,
@@ -104,10 +104,10 @@ go_9[3] = {Component = "OverlayComponent", Name = "GameUI", Hide = false}
 
 go_10 = {}
 go_10[0] = {Name = "PlayerAttackHitBox", HowManyCmps = 4, Persist = false}
-go_10[1] = {Component = "Transform", Coord = {X = 0.5, Y = 2, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.12,Y=0.01,Z=0.12}}
+go_10[1] = {Component = "Transform", Coord = {X = 0.5, Y = 2, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.12,Y=0.2,Z=.12}}
 go_10[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			Visible=true, Shadows=true, RenderingDistance = 9999}
-go_10[3] = {Component = "SphereCollider", Radius=0.3, IsTrigger=true}
+go_10[3] = {Component = "SphereCollider", Radius=1, IsTrigger=true}
 go_10[4] = {Component = "PlayerAttackComponent", Damage = 1,AtackRate = 2,AttackHitBoxDistance = 0.35, PlayerRange = 1}
 
 go_11 = {}

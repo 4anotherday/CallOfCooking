@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PLAYERATTACKCOMPONENT_H
-#define PLAYERATTACKCOMPONENT_H
+#ifndef PLAYERSHOOTCOMPONENT_H
+#define PLAYERSHOOTCOMPONENT_H
 
 #include "Component.h"
 #include "KeyCodes.h"
@@ -33,6 +33,8 @@ public:
 	virtual void update() override;
 	virtual void onTrigger(GameObject* other) override;
 
+	void increaseAttackSpeed();
+
 private:
 
 	/// <summary>
@@ -55,4 +57,4 @@ private:
 	float _offsetX, _offsetZ;
 	float _damage, _timeToShoot, _cadence;
 };
-#endif // !PLAYERATTACKCOMPONENT_H
+#endif // !PLAYERSHOOTCOMPONENT_H

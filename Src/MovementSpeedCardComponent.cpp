@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "Engine.h"
 
-int MovementSpeedCardComponent::_extraMovementSpeed = 3;
+int MovementSpeedCardComponent::_extraMovementSpeed = 30;
 
 ADD_COMPONENT(MovementSpeedCardComponent);
 
