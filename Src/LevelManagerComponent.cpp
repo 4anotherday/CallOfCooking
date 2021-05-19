@@ -19,7 +19,7 @@ ADD_COMPONENT(LevelManagerComponent);
 
 LevelManagerComponent::LevelManagerComponent() : Component(UserComponentId::LevelManagerComponent),
 _engineTime(EngineTime::getInstance()), _levelsInfo(), _respawnPositions(), _cardSystem(nullptr),
-_granadePool(), _lemonPool(), _watermelonPool(), _uiManager(nullptr),
+_granadePool(), _lemonPool(), _watermelonPool(), _uiManager(nullptr),_scoreManager(nullptr),
 _currentRound(0), _waveStartTime(0.0f), _time(), _newWave(true), _howManyRounds(false), _infiniteRound(false), _gameOver(false)
 {
 }
@@ -94,9 +94,9 @@ void LevelManagerComponent::start()
 
 	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
 
-	Engine::getInstance()->setViewportColour(0.4, 0.2, 0.5);
-	Engine::getInstance()->setShadowColour(0.8, 0.75, 0.75);
-	Engine::getInstance()->setAmbientLight(0.5, 0.4, 0.4);
+	Engine::getInstance()->setViewportColour(0.4f, 0.2f, 0.5f);
+	Engine::getInstance()->setShadowColour(0.8f, 0.75f, 0.75f);
+	Engine::getInstance()->setAmbientLight(0.5f, 0.4f, 0.4f);
 }
 
 void LevelManagerComponent::update()

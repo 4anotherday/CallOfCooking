@@ -7,7 +7,8 @@
 
 ADD_COMPONENT(UIManagerComponent);
 
-UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr), _gameOver(false)
+UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr), _gameOver(false),
+_finalPanel(nullptr),_textFinalScore(nullptr)
 {
 }
 

@@ -23,9 +23,9 @@ ScoreManagerComponent::~ScoreManagerComponent()
 
 void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 {
-	_score = data["Score"].cast<int>();
-	_maxScore = data["MaxScore"].cast<int>();	
-	_comboTime = data["ComboTime"].cast<float>();
+	if(LUAFIELDEXIST(Score)) _score = data["Score"].cast<int>();
+	if(LUAFIELDEXIST(MaxScore)) _maxScore = data["MaxScore"].cast<int>();
+	if(LUAFIELDEXIST(ComboTime)) _comboTime = data["ComboTime"].cast<float>();
 }
 
 void ScoreManagerComponent::update() 
