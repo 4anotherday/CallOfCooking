@@ -18,6 +18,7 @@ UIManagerComponent::~UIManagerComponent()
 
 void UIManagerComponent::awake(luabridge::LuaRef& data)
 {
+	//Recoger todos los elementos de la GUI para despues actuar con ellos
 	_textRounds = new TextManagerElement("GameUI/Rounds");
 	_textScore = new TextManagerElement("GameUI/Points");
 

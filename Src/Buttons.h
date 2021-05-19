@@ -9,12 +9,22 @@ class ButtonComponent;
 //-----------------------------------------------PLAY BUTTON-------------------------------------------------------------
 class PlayButtonComponent : public Component {
 public:
+	/// <summary>
+	/// Class constructor
+	/// </summary>
 	PlayButtonComponent();
 	
+	/// <summary>
+	/// Class destructor
+	/// </summary>
 	~PlayButtonComponent();
 	
 	virtual void start() override;
 private:
+	/// <summary>
+	/// Change scene to Level1
+	/// </summary>
+	/// <param name="player"></param>
 	static void startGame(void* player);
 	
 	ButtonComponent* _buttonComp;
@@ -23,12 +33,19 @@ private:
 //-----------------------------------------------QUIT BUTTON-------------------------------------------------------------
 class QuitButtonComponent : public Component {
 public:
+	/// <summary>
+	/// Class constructor
+	/// </summary>
 	QuitButtonComponent();
 
 	~QuitButtonComponent();
 
 	virtual void start() override;
 private:
+	/// <summary>
+	/// Called to stop execution of the engine
+	/// </summary>
+	/// <param name="player"></param>
 	static void quitGame(void* player);
 
 	ButtonComponent* _buttonComp;
@@ -37,15 +54,24 @@ private:
 //-----------------------------------------------RESTARTGAME BUTTON-------------------------------------------------------------
 class RestartGameButtonComponent : public Component {
 public:
+	/// <summary>
+	/// Class constructor
+	/// </summary>
 	RestartGameButtonComponent();
 
 	~RestartGameButtonComponent();
 
 	virtual void start() override;
 
+	/// <summary>
+	/// enables or disables the button
+	/// </summary>
 	void enableButton(bool b);
 private:
-	static void restartGame(void* player);
+	/// <summary>
+	/// Goes back to main menu
+	/// </summary>
+	static void backToMainMenu(void* player);
 
 	ButtonComponent* _buttonComp;
 };
@@ -53,14 +79,24 @@ private:
 //-----------------------------------------------QUITEND BUTTON-------------------------------------------------------------
 class QuitEndGameButtonComponent : public Component {
 public:
+	/// <summary>
+	/// Class constructor
+	/// </summary>
 	QuitEndGameButtonComponent();
 
 	~QuitEndGameButtonComponent();
 
 	virtual void start() override;
 
+	/// <summary>
+	/// Enables or disables the button
+	/// </summary>
 	void enableButton(bool b);
 private:
+	/// <summary>
+	/// Quits the game
+	/// </summary>
+	/// <param name="player"></param>
 	static void quitGame(void* player);
 
 	ButtonComponent* _buttonComp;

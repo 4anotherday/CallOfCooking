@@ -51,11 +51,15 @@ public:
 	/// </summary>
 	void hideFinalPanel();
 
+	/// <summary>
+	/// Sets the final score to show the score in the final game panel
+	/// </summary>
 	void setFinalPanelScore(int score);
 
+	/// <summary>
+	/// Called when player dies
+	/// </summary>
 	inline void setGameOver(bool gOver) { _gameOver = gOver; }
-
-	//lifesPanel method (WIP)
 private:
 	TextManagerElement* _textRounds;
 	TextManagerElement* _textScore;

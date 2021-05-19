@@ -48,8 +48,14 @@ public:
 	/// <param name="extraSpeed">Amount of speed</param>
 	void increaseSpeed(float extraSpeed);
 
+	/// <summary>
+	/// Resets the player position to 0, 0, 0
+	/// </summary>
 	void resetPosition();
 
+	/// <summary>
+	/// Called when player dies and disables player movement
+	/// </summary>
 	inline void gameOver(bool b) { _gameOver = b; };
 
 private:
