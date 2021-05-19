@@ -1,6 +1,6 @@
 prefab = {}
 prefab[0] = { Name = "Watermelon_"}
-prefab[1] = { Component = "Transform", Coord = {X = 0, Y = -500, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.3,Y=0.3,Z=0.4}}
+prefab[1] = { Component = "Transform", Coord = {X = 0, Y = -500, Z = -300},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.3,Y=0.3,Z=0.4}}
 prefab[2] = { Component = "RenderObject", MeshName="sandia.mesh", Material="sandia", 
 				LookAt ={X=1, Y=1, Z=1},
 				Visible=true, Shadows=true, RenderingDistance = 9999}
