@@ -17,19 +17,19 @@ HowManyGameObjects = 13
 go_0 = {}
 go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=7,Y=2,Z=4}}
-go_0[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
+go_0[2] = {	Component = "RenderObject", MeshName="suelo.mesh", Material="suelo", 
 			LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 9999}
 go_0[3] = { Component = "BoxCollider",IsTrigger=false}
 
 go_1 = {}
 go_1[0] = { Name = "Camara", HowManyCmps = 4, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 0, Y = 6, Z = 0}, Rotation={X=-90, Y=0, Z=0}}
+go_1[1] = { Component = "Transform", Coord = {X = 0, Y = 6, Z = 0}, Rotation={X=-70, Y=0, Z=0}}
 go_1[2] = { Component = "Camera", SlaveRotation = true, Plane = {Near = 1, Far = 9999},
 			Projection = true, Fovy = 60, Frustrum = {Left = 1, Right = 1, Top = 1, Bot = 1}, 
 			OrthoWindow = {W = 100, H = 100}, Viewport = {Left = 0, Top = 0, W = 1, H = 1},
 			DisplayOverlays= true, zOrder = 1}
-go_1[3] = { Component = "CameraControllerComponent",Target="Player", Offset = {X =0, Y = 4, Z = 0}}
+go_1[3] = { Component = "CameraControllerComponent",Target="Player", Offset = {X =0, Y = 4, Z = 1.5}}
 go_1[4] = { Component = "AudioSource", Route = {"Assets/Audio/GameMusic.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = -1, Stereo = false, Play = true}
 
@@ -45,8 +45,8 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_3 = {}
 go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.2}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material= "Practica1/Yellow", Visible=true, Shadows=true, RenderingDistance = 1000}		
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
+go_3[2] = {	Component = "RenderObject", MeshName="cerdo.mesh", Material= "Cerdi", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1, ConstrainAngle = true, Bounciness = 1}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=100, RotationSpeed=1}
 go_3[5] = { Component = "PlayerHealthComponent", Lives=3, MaxLife=3}
