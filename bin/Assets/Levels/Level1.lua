@@ -45,7 +45,7 @@ go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_3 = {}
 go_3[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0.5, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 1, Z = 0}, Rotation = {X = 0, Y =0, Z = 0}, Scale = {X = 0.5, Y = 0.5, Z = 0.5}}
 go_3[2] = {	Component = "RenderObject", MeshName="cerdo.mesh", Material= "Cerdi", Visible=true, Shadows=true, RenderingDistance = 1000}		
 go_3[3] = { Component = "RigidBody", Type="Box", Mass=1, ConstrainAngle = true, Bounciness = 1}
 go_3[4] = { Component = "PlayerMovementComponent", Speed=150, RotationSpeed=1}
