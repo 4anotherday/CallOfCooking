@@ -14,6 +14,19 @@ material CallOfCooking/Corazon{
 		}
 	}
 }
+
+material CallOfCooking/PanelFinalPartida{
+	technique{
+		pass{
+            lighting off
+			depth_check off
+            scene_blend alpha_blend
+			texture_unit{
+				texture PanelGameOver.png
+			}
+		}
+	}
+}
 //Menu...................................
 material CallOfCooking/Button{
 	technique{

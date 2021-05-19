@@ -109,7 +109,7 @@ overlay GameUI
         top 0.05
         width 0.9
         height 0.9
-        material OverlayNegro
+        material CallOfCooking/PanelFinalPartida
 
         overlay_element GameUI/PlayerFinalScoreText TextArea
         {
@@ -138,7 +138,7 @@ overlay GameUI
 
     overlay_element GameUI/RestartGame Panel
     {
-        left 0.1
+        left 0.2
         top 0.6
         width 0.2
         height 0.15
@@ -147,7 +147,7 @@ overlay GameUI
         overlay_element GameUI/RestartGame/Restarttext TextArea
         {
             caption BACK
-            colour 1. .1 .1
+            colour 0 0 0
             font_name publicSecretFont
             char_height	0.1
             horz_align center
@@ -167,7 +167,7 @@ overlay GameUI
         overlay_element GameUI/RestartGame/QuitText TextArea
         {
             caption QUIT
-            colour 1. .1 .1
+            colour 0 0 0
             font_name publicSecretFont
             char_height	0.1
             horz_align center
