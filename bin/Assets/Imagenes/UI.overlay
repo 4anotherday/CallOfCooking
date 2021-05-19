@@ -146,7 +146,7 @@ overlay GameUI
 
         overlay_element GameUI/RestartGame/Restarttext TextArea
         {
-            caption RESTART
+            caption BACK
             colour 1. .1 .1
             font_name publicSecretFont
             char_height	0.1

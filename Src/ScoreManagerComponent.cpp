@@ -13,7 +13,7 @@ ADD_COMPONENT(ScoreManagerComponent);
 
 ScoreManagerComponent::ScoreManagerComponent(): Component(UserComponentId::ScoreManagerComponent),
 	_score(0),_maxScore(0), _comboHitPoints(0), _comboDeathPoints(0), _comboTime(0.0f), _actualComboSequenceTime(0.0f), 
-	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f), _uimanager(nullptr)
+	_engineTime(EngineTime::getInstance()), _isComboSequence(false), _lvlManager(), _time(0.0f), _uimanager(nullptr), _gameOver(false)
 {
 }
 
@@ -23,9 +23,9 @@ ScoreManagerComponent::~ScoreManagerComponent()
 
 void ScoreManagerComponent::awake(luabridge::LuaRef& data)
 {
-	_score = data["Score"].cast<int>();
-	_maxScore = data["MaxScore"].cast<int>();	
-	_comboTime = data["ComboTime"].cast<float>();
+	if(LUAFIELDEXIST(Score)) _score = data["Score"].cast<int>();
+	if(LUAFIELDEXIST(MaxScore)) _maxScore = data["MaxScore"].cast<int>();
+	if(LUAFIELDEXIST(ComboTime)) _comboTime = data["ComboTime"].cast<float>();
 }
 
 void ScoreManagerComponent::update() 
@@ -59,6 +59,7 @@ void ScoreManagerComponent::addComboDeathPoint(int deathPoints)
 void ScoreManagerComponent::gameOver()
 {
 	addTotalComboScore();
+	_gameOver = true;
 }
 
 void ScoreManagerComponent::reset()
@@ -69,23 +70,27 @@ void ScoreManagerComponent::reset()
 
 void ScoreManagerComponent::addTotalComboScore()
 {
-	//Adding combo hit extra points
-	int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
+	if (!_gameOver) {
+		_isComboSequence = false;
 
-	//Adding combo death extra points
-	totalPoints += _comboDeathPoints;
+		//Adding combo hit extra points
+		int totalPoints = ((_comboHitPoints / 20) + 1) * 5;
 
-	//Adding multiplier extra points
-	float multiplier = 0.1f * ((_comboHitPoints + _comboDeathPoints) / 10);
-	float multiplierExtraPoints = totalPoints * multiplier;
+		//Adding combo death extra points
+		totalPoints += _comboDeathPoints;
 
-	totalPoints += int(multiplierExtraPoints);
+		//Adding multiplier extra points
+		float multiplier = 0.1f * ((_comboHitPoints + _comboDeathPoints) / 10);
+		float multiplierExtraPoints = totalPoints * multiplier;
 
-	_score += totalPoints;
-	_uimanager->setPlayerScore(_score);
-	_uimanager->setFinalPanelScore(_score);
-	
-	clearComboSequence();
+		totalPoints += int(multiplierExtraPoints);
+
+		_score += totalPoints;
+		_uimanager->setPlayerScore(_score);
+		_uimanager->setFinalPanelScore(_score);
+
+		clearComboSequence();
+	}
 }
 
 void ScoreManagerComponent::startOrRenewComboTime()

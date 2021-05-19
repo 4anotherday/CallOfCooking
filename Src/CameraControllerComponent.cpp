@@ -14,12 +14,12 @@
 ADD_COMPONENT(CameraControllerComponent);
 
 CameraControllerComponent::CameraControllerComponent() :Component(UserComponentId::PlayerMovementComponent),
-_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr),_myCam(nullptr) ,_offsetX(), _offsetY(), _offsetZ()
+_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr), _myCam(nullptr), _offsetX(0.0f), _offsetY(4.0f), _offsetZ(0.0f),_target("Player")
 {
 }
 
 CameraControllerComponent::CameraControllerComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
-_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr),_myCam(nullptr) ,_offsetX(), _offsetY(), _offsetZ()
+_tr(nullptr), _targetTr(nullptr), _engineTime(nullptr),_myCam(nullptr) , _offsetX(0.0f), _offsetY(4.0f), _offsetZ(0.0f), _target("Player")
 {
 }
 
@@ -29,10 +29,13 @@ CameraControllerComponent::~CameraControllerComponent()
 
 void CameraControllerComponent::awake(luabridge::LuaRef& data)
 {
-	_target = GETLUASTRINGFIELD(Target);
-	_offsetX = data["Offset"]["X"].cast<float>();
-	_offsetY = data["Offset"]["Y"].cast<float>();
-	_offsetZ = data["Offset"]["Z"].cast<float>();
+	if(LUAFIELDEXIST(Target)) _target = GETLUASTRINGFIELD(Target);
+	if(LUAFIELDEXIST(Offset))
+	{
+		if(LUAFIELDEXIST(X)) _offsetX = data["Offset"]["X"].cast<float>();
+		if(LUAFIELDEXIST(Y))_offsetY = data["Offset"]["Y"].cast<float>();
+		if(LUAFIELDEXIST(Z))_offsetZ = data["Offset"]["Z"].cast<float>();
+	}	
 }
 
 void CameraControllerComponent::start()

@@ -7,7 +7,8 @@
 
 ADD_COMPONENT(UIManagerComponent);
 
-UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr)
+UIManagerComponent::UIManagerComponent() : Component(UserComponentId::UIManagerComponent), _textRounds(nullptr), _textScore(nullptr), _weaponPanel(nullptr), _gameOver(false),
+_finalPanel(nullptr),_textFinalScore(nullptr)
 {
 }
 
@@ -76,5 +77,8 @@ void UIManagerComponent::hideFinalPanel()
 
 void UIManagerComponent::setFinalPanelScore(int score)
 {
-	_textFinalScore->setText(std::to_string(score));
+	if (!_gameOver) {
+		std::cout << "CAMBIA VALOR DEL SCORE EN PANEL FINAL" << std::endl;
+		_textFinalScore->setText(std::to_string(score));
+	}
 }

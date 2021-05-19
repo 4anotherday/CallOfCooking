@@ -23,9 +23,9 @@ void EnemyPoolComponent::update()
 {
 	_time += EngineTime::getInstance()->deltaTime();
 
-	if (!_infiniteRound && _totalEnemiesSpawned < _howManyEnemiesSpawn && isTimeToSpawn()) 
+	if (!_isPause && !_infiniteRound && _totalEnemiesSpawned < _howManyEnemiesSpawn && isTimeToSpawn()) 
 		enemySpawn();
-	else if (_infiniteRound && isTimeToSpawn()) 
+	else if (!_isPause && _infiniteRound && isTimeToSpawn()) 
 		enemySpawn();
 }
 
@@ -65,7 +65,6 @@ bool EnemyPoolComponent::isTimeToSpawn()
 
 void EnemyPoolComponent::enemySpawn()
 {
-	if (!_isPause) {
 		GameObject* go = getInactiveGO();
 
 		if (go != nullptr) {
@@ -78,5 +77,4 @@ void EnemyPoolComponent::enemySpawn()
 			}
 			_totalEnemiesSpawned++;
 		}
-	}	
 }

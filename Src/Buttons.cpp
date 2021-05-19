@@ -84,7 +84,8 @@ void RestartGameButtonComponent::enableButton(bool b)
 
 void RestartGameButtonComponent::restartGame(void* null)
 {
-	static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent))->restartGame();
+	Engine::getInstance()->changeScene("Menu.lua");
+	//static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent))->restartGame();
 }
 
 //-------------------------------------QUITENDBUTTON BUTTON------------------------------------------------------------------

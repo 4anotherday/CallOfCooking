@@ -81,6 +81,8 @@ public:
 	/// </summary>
 	inline int getMaxScore() const { return _maxScore; }
 
+	inline void setGameOver(bool gOver) { _gameOver = gOver; }
+
 private:
 	/// </summary>
 	/// Renews or start the timing of the current combo sequence
@@ -106,6 +108,7 @@ private:
 	float _comboTime;
 	float _actualComboSequenceTime;
 	float _time;
+	bool _gameOver;
 };
 #endif // !SCOREMANAGERCOMPONENT_H
 
