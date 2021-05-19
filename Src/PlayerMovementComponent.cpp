@@ -93,7 +93,7 @@ void PlayerMovementComponent::update()
 
 	float angle = -atan2(dir.getZ(),dir.getX()) * 180.0f;
 	
-	_tr->setRotation(Vector3(0.0f, angle, 0.0f) * 0.005f * _rotationSpeed);
+	_tr->setRotation(Vector3(0.0f, angle + 270, 0.0f) * 0.005f * _rotationSpeed);
 }
 
 void PlayerMovementComponent::fixedUpdate()

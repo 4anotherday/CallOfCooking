@@ -1,11 +1,11 @@
-18:24:44 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
-18:24:48 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
-18:24:48 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:13:47 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
+18:13:50 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
+18:13:50 -> INFO: Archivo de carga de escena de lua correctamente inicializado
