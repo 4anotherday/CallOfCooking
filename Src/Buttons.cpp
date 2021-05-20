@@ -84,7 +84,7 @@ void RestartGameButtonComponent::enableButton(bool b)
 
 void RestartGameButtonComponent::backToMainMenu(void* null)
 {
-	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("Camara")->getComponent(ComponentId::AudioSource))->stopChannel(0);
+	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("Camera")->getComponent(ComponentId::AudioSource))->stopChannel(0);
 
 	Engine::getInstance()->changeScene("Menu.lua");
 }
