@@ -69,7 +69,10 @@ void PlayerAttackComponent::onTrigger(GameObject* other)
 {
 	//The enemy is in player range
 	EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));
-	if (h != nullptr) h->setInPlayerRange(true);
+	if (h != nullptr)
+	{
+		h->setInPlayerRange(true);
+	}
 }
 
 void PlayerAttackComponent::increaseAttackRate(float extraAttackRate)
@@ -117,7 +120,7 @@ void PlayerAttackComponent::enemiesNotInPlayerRange()
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 		float distance = (_tr->getPosition() - enemyTr->getPosition()).magnitude();
 
-		if (distance > _playerRange)
+		if (e->getEnabled() && distance > _playerRange)
 		{
 			h->setInPlayerRange(false);
 		}
@@ -129,14 +132,11 @@ void PlayerAttackComponent::enemiesNotInPlayerRange()
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 		float distance = (_tr->getPosition() - enemyTr->getPosition()).magnitude();
 
-		if (distance > _playerRange)
+		if (e->getEnabled() && distance > _playerRange)
 		{
 			h->setInPlayerRange(false);
 		}
 	}
-
-	std::vector<GameObject*> vector2 = _lemonPool->getPool();
-	std::vector<GameObject*> vector = _watermelonPool->getPool();
 
 	for (auto& e : _watermelonPool->getPool())
 	{
@@ -144,7 +144,7 @@ void PlayerAttackComponent::enemiesNotInPlayerRange()
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 		float distance = (_tr->getPosition() - enemyTr->getPosition()).magnitude();
 
-		if (distance > _playerRange)
+		if (e->getEnabled() && distance > _playerRange)
 		{
 			h->setInPlayerRange(false);
 		}
@@ -157,7 +157,7 @@ void PlayerAttackComponent::attackEnemies()
 	{
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 
-		if (h->inPlayerRange())
+		if (e->getEnabled() && h->inPlayerRange())
 		{
 			h->reduceLivesPoints(_damage);
 		}
@@ -167,7 +167,7 @@ void PlayerAttackComponent::attackEnemies()
 	{
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 
-		if (h->inPlayerRange())
+		if (e->getEnabled() && h->inPlayerRange())
 		{
 			h->reduceLivesPoints(_damage);
 		}
@@ -177,7 +177,7 @@ void PlayerAttackComponent::attackEnemies()
 	{
 		EnemyHealthComponent* h = static_cast<EnemyHealthComponent*>(e->getComponent(UserComponentId::EnemyHealthComponent));
 
-		if (h->inPlayerRange())
+		if (e->getEnabled() && h->inPlayerRange())
 		{
 			h->reduceLivesPoints(_damage);
 		}
