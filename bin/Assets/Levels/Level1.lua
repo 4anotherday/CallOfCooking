@@ -12,11 +12,11 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 13
+HowManyGameObjects = 53
 
 go_0 = {}
-go_0[0] = { Name = "Floor", HowManyCmps = 3, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=0.1,Z=10}}
+go_0[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = -0.7, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=13,Y=0.1,Z=13}}
 go_0[2] = {	Component = "RenderObject", MeshName="suelo.mesh", Material="suelo", 
 			LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 9999}
@@ -57,30 +57,30 @@ go_3[8] = { Component = "AudioSource", Route = {"Assets/Audio/damagePlayeer.mp3"
 			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = 0, Stereo = false, Play = false}
 
 go_4={}
-go_4[0] = { Name ="LeftWall" , HowManyCmps=3,Persist=false}
-go_4[1] = { Component = "Transform", Coord = {X = -5.55, Y = -0.5, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
-go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_4[0] = { Name ="ParedIzq" , HowManyCmps=3,Persist=false}
+go_4[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_4[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_4[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_5={}
-go_5[0] = { Name ="RightWall" , HowManyCmps=3,Persist=false}
-go_5[1] = { Component = "Transform", Coord = {X = 5.55, Y = -0.5, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=.1,Y=0.3,Z=10.2}}
-go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_5[0] = { Name ="ParedDer" , HowManyCmps=3,Persist=false}
+go_5[1] = { Component = "Transform", Coord = {X = 5.55, Y = -0.6, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_5[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_5[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_6={}
-go_6[0] = { Name ="TopWall" , HowManyCmps=3,Persist=false}
-go_6[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = -5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
-go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_6[0] = { Name ="ParedArr" , HowManyCmps=3,Persist=false}
+go_6[1] = { Component = "Transform", Coord = {X = 0, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_6[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_6[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 go_7={}
-go_7[0] = { Name ="BottomWall" , HowManyCmps=3,Persist=false}
-go_7[1] = {Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 5.05},Rotation = {X=0,Y=0,Z=0},Scale = {X=11,Y=.3,Z=.1}}
-go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_7[0] = { Name ="ParedAb" , HowManyCmps=3,Persist=false}
+go_7[1] = {Component = "Transform", Coord = {X = 0, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_7[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_7[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
@@ -126,6 +126,290 @@ go_12[2] = { Component = "ButtonComponent", Active = true, OverLayName="GameUI",
 go_12[3] = { Component = "QuitEndGameButtonComponent"}
 go_12[4] = { Component = "AudioSource", Route = {"Assets/Audio/button.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume = 0.1, Loop = 0, Stereo = false, Play = true}
+
+--//-------------------------------PARED IZQUIERDA-----------------------------------
+go_13={}
+go_13[0] = { Name ="ParedIzq2" , HowManyCmps=3,Persist=false}
+go_13[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = -1},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_13[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_13[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_14={}
+go_14[0] = { Name ="ParedIzq3" , HowManyCmps=3,Persist=false}
+go_14[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = -2},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_14[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_14[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_15={}
+go_15[0] = { Name ="ParedIzq4" , HowManyCmps=3,Persist=false}
+go_15[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = -3},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_15[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_15[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_16={}
+go_16[0] = { Name ="ParedIzq5" , HowManyCmps=3,Persist=false}
+go_16[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = -4},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_16[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_16[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_17={}
+go_17[0] = { Name ="ParedIzq6" , HowManyCmps=3,Persist=false}
+go_17[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = -5},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_17[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_17[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_18={}
+go_18[0] = { Name ="ParedIzq7" , HowManyCmps=3,Persist=false}
+go_18[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 1},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_18[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_18[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_19={}
+go_19[0] = { Name ="ParedIzq8" , HowManyCmps=3,Persist=false}
+go_19[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 2},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_19[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_19[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_20={}
+go_20[0] = { Name ="ParedIzq9" , HowManyCmps=3,Persist=false}
+go_20[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 3},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_20[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_20[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_21={}
+go_21[0] = { Name ="ParedIzq10" , HowManyCmps=3,Persist=false}
+go_21[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 4},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_21[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_21[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_22={}
+go_22[0] = { Name ="ParedIzq11" , HowManyCmps=3,Persist=false}
+go_22[1] = { Component = "Transform", Coord = {X = -5.5, Y = -0.6, Z = 5},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_22[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_22[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+--//-------------------------------PARED DERECHA-----------------------------------
+go_23={}
+go_23[0] = { Name ="ParedDer2" , HowManyCmps=3,Persist=false}
+go_23[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = -1},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_23[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_23[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_24={}
+go_24[0] = { Name ="ParedDer3" , HowManyCmps=3,Persist=false}
+go_24[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = -2},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_24[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_24[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_25={}
+go_25[0] = { Name ="ParedDer4" , HowManyCmps=3,Persist=false}
+go_25[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = -3},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_25[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_25[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_26={}
+go_26[0] = { Name ="ParedDer5" , HowManyCmps=3,Persist=false}
+go_26[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = -4},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_26[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_26[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_27={}
+go_27[0] = { Name ="ParedDer6" , HowManyCmps=3,Persist=false}
+go_27[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = -5},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_27[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_27[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_28={}
+go_28[0] = { Name ="ParedDer7" , HowManyCmps=3,Persist=false}
+go_28[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = 1},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_28[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_28[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_29={}
+go_29[0] = { Name ="ParedDer8" , HowManyCmps=3,Persist=false}
+go_29[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = 2},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_29[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_29[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_30={}
+go_30[0] = { Name ="ParedDer9" , HowManyCmps=3,Persist=false}
+go_30[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = 3},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_30[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_30[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_31={}
+go_31[0] = { Name ="ParedDer10" , HowManyCmps=3,Persist=false}
+go_31[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = 4},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_31[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_31[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_32={}
+go_32[0] = { Name ="ParedDer11" , HowManyCmps=3,Persist=false}
+go_32[1] = { Component = "Transform", Coord = {X = 5.5, Y = -0.6, Z = 5},Rotation = {X=0,Y=0,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_32[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_32[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+--//-------------------------------PARED ARRIBA-----------------------------------
+go_33={}
+go_33[0] = { Name ="ParedArr2" , HowManyCmps=3,Persist=false}
+go_33[1] = { Component = "Transform", Coord = {X = 1, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_33[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_33[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_34={}
+go_34[0] = { Name ="ParedArr3" , HowManyCmps=3,Persist=false}
+go_34[1] = { Component = "Transform", Coord = {X = 2, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_34[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_34[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_35={}
+go_35[0] = { Name ="ParedArr4" , HowManyCmps=3,Persist=false}
+go_35[1] = { Component = "Transform", Coord = {X = 3, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_35[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_35[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_36={}
+go_36[0] = { Name ="ParedArr5" , HowManyCmps=3,Persist=false}
+go_36[1] = { Component = "Transform", Coord = {X = 4, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_36[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_36[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_37={}
+go_37[0] = { Name ="ParedArr6" , HowManyCmps=3,Persist=false}
+go_37[1] = { Component = "Transform", Coord = {X = 5, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_37[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_37[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_38={}
+go_38[0] = { Name ="ParedArr7" , HowManyCmps=3,Persist=false}
+go_38[1] = { Component = "Transform", Coord = {X = -5, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_38[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_38[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_39={}
+go_39[0] = { Name ="ParedArr8" , HowManyCmps=3,Persist=false}
+go_39[1] = { Component = "Transform", Coord = {X = -1, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_39[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_39[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_40={}
+go_40[0] = { Name ="ParedArr9" , HowManyCmps=3,Persist=false}
+go_40[1] = { Component = "Transform", Coord = {X = -2, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_40[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_40[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_41={}
+go_41[0] = { Name ="ParedArr10" , HowManyCmps=3,Persist=false}
+go_41[1] = { Component = "Transform", Coord = {X = -3, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_41[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_41[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_42={}
+go_42[0] = { Name ="ParedArr11" , HowManyCmps=3,Persist=false}
+go_42[1] = { Component = "Transform", Coord = {X = -4, Y = -0.6, Z = -5.14},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_42[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_42[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+--//-------------------------------PARED ABAJO-----------------------------------
+go_43={}
+go_43[0] = { Name ="ParedAb2" , HowManyCmps=3,Persist=false}
+go_43[1] = { Component = "Transform", Coord = {X = 1, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_43[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_43[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_44={}
+go_44[0] = { Name ="ParedAb3" , HowManyCmps=3,Persist=false}
+go_44[1] = { Component = "Transform", Coord = {X = 2, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_44[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_44[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_45={}
+go_45[0] = { Name ="ParedAb4" , HowManyCmps=3,Persist=false}
+go_45[1] = { Component = "Transform", Coord = {X = 3, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_45[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_45[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_46={}
+go_46[0] = { Name ="ParedAb5" , HowManyCmps=3,Persist=false}
+go_46[1] = { Component = "Transform", Coord = {X = 4, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_46[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_46[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_47={}
+go_47[0] = { Name ="ParedAb6" , HowManyCmps=3,Persist=false}
+go_47[1] = { Component = "Transform", Coord = {X = 5, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_47[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_47[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_48={}
+go_48[0] = { Name ="ParedAb7" , HowManyCmps=3,Persist=false}
+go_48[1] = { Component = "Transform", Coord = {X = -5, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_48[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_48[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_49={}
+go_49[0] = { Name ="ParedAb8" , HowManyCmps=3,Persist=false}
+go_49[1] = { Component = "Transform", Coord = {X = -1, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_49[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_49[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_50={}
+go_50[0] = { Name ="ParedAb9" , HowManyCmps=3,Persist=false}
+go_50[1] = { Component = "Transform", Coord = {X = -2, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_50[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_50[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_51={}
+go_51[0] = { Name ="ParedAb10" , HowManyCmps=3,Persist=false}
+go_51[1] = { Component = "Transform", Coord = {X = -3, Y = -0.6, Z = 5.32},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_51[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_51[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
+
+go_52={}
+go_52[0] = { Name ="ParedAb11" , HowManyCmps=3,Persist=false}
+go_52[1] = { Component = "Transform", Coord = {X = -4, Y = -0.6, Z = 5.27},Rotation = {X=0,Y=90,Z=0},Scale = {X=1,Y=1,Z=1}}
+go_52[2] = {	Component = "RenderObject", MeshName="valla.mesh", Material="LogBody", 
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_52[3] = { Component = "RigidBody", Type="Box",Static=true,Width=1,Depth=1,Height=1}
 
 --go_8={}
 --go_8[0] ={Name ="Enemy" , HowManyCmps=5,Persist=false}
