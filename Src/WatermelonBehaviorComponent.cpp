@@ -87,6 +87,11 @@ void WatermelonBehaviorComponent::walk()
 	Vector3 newPos = myPos + (dir * _movementSpeed * deltaTime);
 	_tr->setPosition(newPos);
 
+	//Rotation to face the player
+	Vector3 dir1 = Vector3(playerPos.getX() - _tr->getPosition().getX(), 0.0f, playerPos.getZ() - _tr->getPosition().getZ());
+	float angle = -atan2(dir1.getZ(), dir1.getX()) * 180.0f;
+	_tr->setRotation(Vector3(0.0f, angle, 0.0f) * 0.005f);
+
 	//With Physx
 	//dir = dir * _movementSpeed;
 	//_rigidbody->setLinearVelocity(dir);

@@ -47,6 +47,11 @@ void LemonBehaviorComponent::update()
 	double distance = (_playerPos->getPosition() - _tr->getPosition()).magnitude();
 	(distance <= _range) ? _isAttacking = true : _isAttacking = false;
 
+	//Rotation to face the player
+	Vector3 dir1 = Vector3(_playerPos->getPosition().getX() - _tr->getPosition().getX(), 0.0f, _playerPos->getPosition().getZ() - _tr->getPosition().getZ());
+	float angle = -atan2(dir1.getZ(), dir1.getX()) * 180.0f;
+	_tr->setRotation(Vector3(0.0f, angle+360, 0.0f) * 0.005f);
+
 	if (distance <= _range) {
 		attack();
 	}
