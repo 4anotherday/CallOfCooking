@@ -7,7 +7,6 @@
 #include "includeLUA.h"
 #include "Engine.h"
 #include "EngineTime.h"
-#include "includeLUA.h"
 #include "RigidBodyComponent.h"
 #include "LemonPoolComponent.h"
 #include "EnemyHealthComponent.h"
@@ -15,7 +14,7 @@
 ADD_COMPONENT(LemonBehaviorComponent);
 
 LemonBehaviorComponent::LemonBehaviorComponent() : EnemyBehaviorComponent(UserComponentId::LemonBehaviorComponent), _pSystem(nullptr),
-_healthPlayer(nullptr),_myHealth(nullptr),_tr(nullptr)
+_healthPlayer(nullptr),_myHealth(nullptr),_tr(nullptr),_lastAttack(0.0f),_attackRate(1.0f)
 {
 }
 
@@ -29,6 +28,8 @@ void LemonBehaviorComponent::awake(luabridge::LuaRef& data)
 		_range = data["Range"].cast<float>();
 	if (LUAFIELDEXIST(MovementSpeed))
 		_movementSpeed = data["MovementSpeed"].cast<float>();
+	if(LUAFIELDEXIST(AttackRate))
+		_attackRate = data["AttackRate"].cast<float>();
 }
 
 void LemonBehaviorComponent::start()
@@ -82,6 +83,14 @@ void LemonBehaviorComponent::walk()
 
 void LemonBehaviorComponent::attack()
 {
-	if (_pSystem)_pSystem->setEnabled(true);
-	_healthPlayer->loseLife(_damagePerSecond);
+	float deltaTime = EngineTime::getInstance()->deltaTime();
+
+	_lastAttack -= deltaTime;
+	if (_lastAttack <= 0)
+	{
+		if (_pSystem)_pSystem->setEnabled(true);
+		_healthPlayer->loseLife(_damagePerSecond);
+		_lastAttack = _attackRate;
+	}
+	
 }

@@ -6,7 +6,6 @@
 #include "Transform.h"
 #include "includeLUA.h"
 #include "Engine.h"
-#include "includeLUA.h"
 #include "RigidBodyComponent.h"
 #include "EngineTime.h"
 #include "WatermelonPoolComponent.h"

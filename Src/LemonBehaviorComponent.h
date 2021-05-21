@@ -47,6 +47,8 @@ public:
 	/// </summary>
 	virtual void attack() override;
 private:
+	float _lastAttack,_attackRate;
+
 	ParticleSystemComponent* _pSystem;
 	Transform* _tr;
 	PlayerHealthComponent* _healthPlayer;

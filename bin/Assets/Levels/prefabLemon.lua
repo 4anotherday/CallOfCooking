@@ -6,5 +6,5 @@ prefab[2] = { Component = "RenderObject", MeshName="lemon.mesh", Material="lemon
 				Visible=true, Shadows=true, RenderingDistance = 9999}
 prefab[3] = { Component = "RigidBody", Type="Box", Mass=1,ConstrainAngle = true, Bounciness=1, Kinematic=true}
 prefab[4] = { Component = "EnemyHealthComponent", Points =5, HitPoints = 1}
-prefab[5] = { Component = "LemonBehaviorComponent", Range =1, MovementSpeed = 0.2, AttackSpeed=2}
+prefab[5] = { Component = "LemonBehaviorComponent", Range =1, MovementSpeed = 0.2, AttackRate=1}
 
