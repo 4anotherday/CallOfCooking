@@ -54,10 +54,26 @@ void GrenadeBulletBehaviorComponent::update()
 void GrenadeBulletBehaviorComponent::onTrigger(GameObject* other)
 {
 	if (other->getName() == "Player") {
-		PlayerHealthComponent* vida = static_cast<PlayerHealthComponent*>(other->getComponent(UserComponentId::PlayerHealthComponent));
-		vida->loseLife(_damage);
+		PlayerHealthComponent* playerHealth = static_cast<PlayerHealthComponent*>(other->getComponent(UserComponentId::PlayerHealthComponent));
+		playerHealth->loseLife(_damage);
 	}
-	deactivate();
+	
+	//Enemy bullet avoids collision with other enemies
+	EnemyHealthComponent* enemyHealth = static_cast<EnemyHealthComponent*>(other->getComponent(UserComponentId::EnemyHealthComponent));	
+	if (enemyHealth != nullptr)
+	{
+		EnemyType type = enemyHealth->getEnemyType();
+
+		if (type != EnemyType::LEMON && type != EnemyType::WATERMELON && type != EnemyType::GRANADE)
+		{
+			deactivate();
+		}
+	}
+	else
+	{	
+		//Enemy bullet deactivates if collides with something else
+		deactivate();
+	}
 }
 
 void GrenadeBulletBehaviorComponent::beShot(Vector3 pos, Vector3 dir)

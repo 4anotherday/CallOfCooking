@@ -93,7 +93,6 @@ void GrenadeBehaviorComponent::attack()
 	Vector3 dir = playerPos - _tr->getPosition();
 
 	dir = dir.normalize();
-	_rigidbody->setLinearVelocity(Vector3(0, 0, 0));
 
 	GameObject* newBullet = _bulletsManager->getInactiveGO();
 	if (newBullet != nullptr) {

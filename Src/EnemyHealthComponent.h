@@ -68,6 +68,11 @@ public:
 	/// <param name="type">Enemy type</param>
 	inline void setMyEnemyType(int type) { _enemyType = (EnemyType)type; }
 
+	/// <summary>
+	/// Returns the enemy type
+	/// </summary>
+	inline EnemyType getEnemyType() const { return _enemyType; }
+
 private:
 	ScoreManagerComponent* _scoreManager;
 	LevelManagerComponent* _lvlManager;
