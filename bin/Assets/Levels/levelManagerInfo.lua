@@ -1,4 +1,4 @@
--- prefab[1] = ROUND1 CONFIG, prefab[2] = ROUND2 CONFIG... prefab[N] = ROUNDN CONFIG
+-- prefab[1] = ROUND1 CONFIG, prefab[2] = ROUND2 CONFIG... prefab[N] = ROUNDN CONFIGsss
 prefab={}
 prefab[0] = { HowManyRespawnPositions = 4, HowManyRounds = 10, RespawnPositions = {{X=5,Y=-0.5,Z=4.5}, {X=-5,Y=-0.5,Z=-4.5}, {X=-5,Y=-0.5,Z=4.5}, {X=5,Y=-0.5,Z=-4.5}}}
 prefab[1] = { TotalEnemies = 10, WaveTime = 6,
@@ -17,27 +17,27 @@ prefab[4] = { TotalEnemies = 13, WaveTime = 5,
 			  Granade    = { HowMany = 5, RespawnTime = 3}, 
 			  Lemon      = { HowMany = 3, RespawnTime = 2}, 
 			  Watermelon = { HowMany = 5, RespawnTime = 4}} 
-prefab[5] = { TotalEnemies = 1, WaveTime = 5,
-			  Granade    = { HowMany = 0, RespawnTime = 1}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 1}, 
-			  Watermelon = { HowMany = 1, RespawnTime = 1}} 
-prefab[6] = { TotalEnemies = 1, WaveTime = 5,
-			  Granade    = { HowMany = 0, RespawnTime = 1}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 1}, 
-			  Watermelon = { HowMany = 1, RespawnTime = 1}} 
-prefab[7] = { TotalEnemies = 1, WaveTime = 4,
-			  Granade    = { HowMany = 1, RespawnTime = 2}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 2}, 
-			  Watermelon = { HowMany = 0, RespawnTime = 2}} 
-prefab[8] = { TotalEnemies = 1, WaveTime = 4,
-			  Granade    = { HowMany = 0, RespawnTime = 1}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 1}, 
-			  Watermelon = { HowMany = 1, RespawnTime = 1}} 
-prefab[9] = { TotalEnemies = 1, WaveTime = 3,
-			  Granade    = { HowMany = 0, RespawnTime = 1}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 1}, 
-			  Watermelon = { HowMany = 1, RespawnTime = 1}} 
-prefab[10] ={ TotalEnemies = 1, WaveTime = 3,
-			  Granade    = { HowMany = 1, RespawnTime = 2}, 
-			  Lemon      = { HowMany = 0, RespawnTime = 2}, 
-			  Watermelon = { HowMany = 0, RespawnTime = 2}} 
+prefab[5] = { TotalEnemies = 11, WaveTime = 4,
+			  Granade    = { HowMany = 6, RespawnTime = 2}, 
+			  Lemon      = { HowMany = 2, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 3, RespawnTime = 5}} 
+prefab[6] = { TotalEnemies = 14, WaveTime = 4,
+			  Granade    = { HowMany = 7, RespawnTime = 3}, 
+			  Lemon      = { HowMany = 3, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 4, RespawnTime = 4}} 
+prefab[7] = { TotalEnemies = 15, WaveTime = 4,
+			  Granade    = { HowMany = 8, RespawnTime = 3}, 
+			  Lemon      = { HowMany = 4, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 3, RespawnTime = 5}} 
+prefab[8] = { TotalEnemies = 15, WaveTime = 4,
+			  Granade    = { HowMany = 8, RespawnTime = 3}, 
+			  Lemon      = { HowMany = 4, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 3, RespawnTime = 4}} 
+prefab[9] = { TotalEnemies = 16, WaveTime = 4,
+			  Granade    = { HowMany = 8, RespawnTime = 3}, 
+			  Lemon      = { HowMany = 4, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 4, RespawnTime = 5}} 
+prefab[10] = { TotalEnemies = 17, WaveTime = 4,
+			  Granade    = { HowMany = 8, RespawnTime = 2}, 
+			  Lemon      = { HowMany = 4, RespawnTime = 3}, 
+			  Watermelon = { HowMany = 5, RespawnTime = 5}} 

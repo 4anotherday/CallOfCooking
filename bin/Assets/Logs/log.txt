@@ -1,12 +1,23 @@
-20:14:34 -> INFO: Creacion
-20:14:38 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
-20:14:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
-20:14:40 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:31:10 -> INFO: Creacion
+18:31:12 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
+18:31:23 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
+18:31:23 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:32:19 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
+18:32:22 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
+18:32:22 -> INFO: Archivo de carga de escena de lua correctamente inicializado
