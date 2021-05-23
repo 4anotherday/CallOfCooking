@@ -11,6 +11,7 @@
 #include "GrenadeBulletBehaviorComponent.h"
 #include "RigidBodyComponent.h"
 #include "EnemyHealthComponent.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(GrenadeBehaviorComponent);
 
@@ -32,15 +33,20 @@ void GrenadeBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void GrenadeBehaviorComponent::start()
 {
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	try {
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+		_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+		_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 
-	_gameManager = Engine::getInstance()->findGameObject("GameManager");
-	_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
-	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
-	_myHealth->setMyEnemyType(0);
+		_gameManager = Engine::getInstance()->findGameObject("GameManager");
+		_bulletsManager = static_cast<GranadeBulletPoolComponent*>(_gameManager->getComponent(UserComponentId::GranadeBulletPoolComponent));
+		_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+		_myHealth->setMyEnemyType(0);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error loading the attributes in the object " + _gameObject->getName() + " Component:GrenadeBehaviorComponent");
+	}
 }
 
 void GrenadeBehaviorComponent::update()

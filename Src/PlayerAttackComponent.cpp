@@ -11,6 +11,7 @@
 #include "LemonPoolComponent.h"
 #include "WatermelonPoolComponent.h"
 #include "GranadePoolComponent.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(PlayerAttackComponent);
 
@@ -46,13 +47,17 @@ void PlayerAttackComponent::start()
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
 
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-	//_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	try {
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 
-	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
-	_grenadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
-	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
+		_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
+		_grenadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
+		_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in PlayerAttackComponent at the gameobject " + _gameObject->getName());
+	}
 
 	_mouse->setMouseRelativeMode(false);
 }

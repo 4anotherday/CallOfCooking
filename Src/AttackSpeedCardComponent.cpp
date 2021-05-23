@@ -3,6 +3,7 @@
 #include "PlayerShootComponent.h"
 #include "CardSystemComponent.h"
 #include "UserComponentIDs.h"
+#include "Exceptions.h"
 #include "GameObject.h"
 #include "Engine.h"
 
@@ -21,12 +22,16 @@ AttackSpeedCardComponent::~AttackSpeedCardComponent()
 
 void AttackSpeedCardComponent::start()
 {
-	CardComponent::start();
-	//_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
-	_shootComponent = static_cast<PlayerShootComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerShootComponent));
+	try {
+		CardComponent::start();
+		_shootComponent = static_cast<PlayerShootComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerShootComponent));
+		setCallBackParam(_shootComponent);
+		setCallBack(operate);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: AttackSpeedCardComponent");
+	}
 
-	setCallBackParam(_shootComponent);
-	setCallBack(operate);
 }
 
 void AttackSpeedCardComponent::operate(void* player)

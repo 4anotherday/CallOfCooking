@@ -9,6 +9,7 @@
 #include "EngineTime.h"
 #include "Engine.h"
 #include "includeLUA.h"
+#include "Exceptions.h"
 #include <math.h>
 
 ADD_COMPONENT(CameraControllerComponent);
@@ -40,9 +41,14 @@ void CameraControllerComponent::awake(luabridge::LuaRef& data)
 
 void CameraControllerComponent::start()
 {
-	_targetTr = static_cast<Transform*>(Engine::getInstance()->findGameObject(_target)->getComponent(ComponentId::Transform));
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_myCam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
+	try {
+		_targetTr = static_cast<Transform*>(Engine::getInstance()->findGameObject(_target)->getComponent(ComponentId::Transform));
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		_myCam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error in the object: " + _gameObject->getName() + ". The components of the target doesn't exist");
+	}
 }
 
 void CameraControllerComponent::postFixedUpdate()

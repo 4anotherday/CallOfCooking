@@ -17,7 +17,12 @@ PoolComponent::~PoolComponent()
 
 void PoolComponent::start()
 {
-	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	try {
+		_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in PoolComponent at the gameobject " + _gameObject->getName());
+	}
 }
 
 GameObject* PoolComponent::getInactiveGO()

@@ -36,12 +36,6 @@ public:
 	void setPlayerLife(int life);
 
 	/// <summary>
-	/// Changes the weapon GUI sprite
-	/// </summary>
-	/// <param name="weaponNumber"></param>
-	void changeWeapon(int weaponNumber);
-
-	/// <summary>
 	/// Shows the final game panel
 	/// </summary>
 	void showFinalPanel();

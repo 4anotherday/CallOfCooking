@@ -11,10 +11,18 @@
 class GranadePoolComponent;
 class LemonPoolComponent;
 class WatermelonPoolComponent;
+
 class EngineTime;
+
 class CardSystemComponent;
 class UIManagerComponent;
 class ScoreManagerComponent;
+
+class QuitEndGameButtonComponent;
+class RestartGameButtonComponent;
+
+class PlayerMovementComponent;
+class PlayerHealthComponent;
 
 enum EnemyType{ GRANADE, LEMON, WATERMELON, UNKNOW };
 
@@ -62,12 +70,21 @@ private:
 	EngineTime* _engineTime;
 	std::vector<Wave> _levelsInfo;
 	std::vector<Vector3> _respawnPositions;
+
 	CardSystemComponent* _cardSystem;
+
 	GranadePoolComponent* _granadePool;
 	LemonPoolComponent* _lemonPool;
 	WatermelonPoolComponent* _watermelonPool;
+
 	UIManagerComponent* _uiManager;
 	ScoreManagerComponent* _scoreManager;
+
+	QuitEndGameButtonComponent* _quitButton;
+	RestartGameButtonComponent* _restardButton;
+
+	PlayerMovementComponent* _playerMovementComponent;
+	PlayerHealthComponent* _playerHealthComponent;
 
 	int _howManyRounds;
 	bool _infiniteRound;

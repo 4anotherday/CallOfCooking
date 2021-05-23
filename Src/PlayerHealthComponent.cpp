@@ -7,6 +7,7 @@
 #include "includeLUA.h"
 #include "AudioSourceComponent.h"
 #include "GameObject.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(PlayerHealthComponent);
 
@@ -33,11 +34,16 @@ void PlayerHealthComponent::awake(luabridge::LuaRef& data)
 
 void PlayerHealthComponent::start()
 {
-	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-	_uimanager->setPlayerLife(_maxLife);
+	try {
+		_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+		_uimanager->setPlayerLife(_maxLife);
 
-	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
-	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+		_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+		_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in PlayerHealthComponent at the gameobject " + _gameObject->getName());
+	}
 }
 
 void PlayerHealthComponent::addLife(int n)

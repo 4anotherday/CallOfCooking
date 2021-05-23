@@ -10,6 +10,7 @@
 #include "EnemyHealthComponent.h"
 #include "PlayerHealthComponent.h"
 #include "ColliderComponent.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(GrenadeBulletBehaviorComponent);
 
@@ -32,11 +33,16 @@ void GrenadeBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void GrenadeBulletBehaviorComponent::start()
 {
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	//_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_myCollider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
-	_direction = Vector3(1, 0, 0);
-	_pool = static_cast<GranadeBulletPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadeBulletPoolComponent));
+	try {
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		//_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+		_myCollider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
+		_direction = Vector3(1, 0, 0);
+		_pool = static_cast<GranadeBulletPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadeBulletPoolComponent));
+	}
+	catch(...){
+		throw ExcepcionTAD("Error loading the attributes in the object " + _gameObject->getName() + " Component:GrenadeBehaviorComponent");
+	}
 }
 
 void GrenadeBulletBehaviorComponent::update()

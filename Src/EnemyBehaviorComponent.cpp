@@ -4,6 +4,7 @@
 #include "RigidBodyComponent.h"
 #include "Engine.h"
 #include "includeLUA.h"
+#include "Exceptions.h"
 
 EnemyBehaviorComponent::EnemyBehaviorComponent(UserComponentId::UserComponentId id) : Component(id), _rigidbody(nullptr), _playerPos(nullptr),
 _attackSpeed(2.0f), _isAttacking(), _damagePerSecond(1.0f),_movementSpeed(1.0f),_range(1.0f)
@@ -23,6 +24,11 @@ void EnemyBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void EnemyBehaviorComponent::start()
 {
-	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	try {
+		_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+		_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in EnemyBehaviorComponent at the gameobject " + _gameObject->getName());
+	}
 }

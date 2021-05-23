@@ -3,6 +3,7 @@
 #include "LifeCardComponent.h"
 #include "UserComponentIDs.h"
 #include "includeLUA.h"
+#include "Exceptions.h"
 #include "GameObject.h"
 #include "Engine.h"
 
@@ -19,11 +20,16 @@ LifeCardComponent::~LifeCardComponent()
 
 void LifeCardComponent::start()
 {
-	CardComponent::start();
+	try {
+		CardComponent::start();
 
-	_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-	setCallBackParam(_player);
-	setCallBack(operate);
+		_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+		setCallBackParam(_player);
+		setCallBack(operate);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: LifeCardComponent");
+	}
 }
 
 void LifeCardComponent::operate(void* player)

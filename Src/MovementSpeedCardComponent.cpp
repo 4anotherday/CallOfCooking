@@ -4,6 +4,7 @@
 #include "UserComponentIDs.h"
 #include "ButtonComponent.h"
 #include "GameObject.h"
+#include "Exceptions.h"
 #include "Engine.h"
 
 int MovementSpeedCardComponent::_extraMovementSpeed = 30;
@@ -19,10 +20,15 @@ MovementSpeedCardComponent::~MovementSpeedCardComponent()
 
 void MovementSpeedCardComponent::start()
 {
-	CardComponent::start();
-	_player = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
-	setCallBackParam(_player);
-	setCallBack(operate);
+	try {
+		CardComponent::start();
+		_player = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
+		setCallBackParam(_player);
+		setCallBack(operate);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: MovementSpeedCardComponent");
+	}
 }
 
 void MovementSpeedCardComponent::operate(void* player)

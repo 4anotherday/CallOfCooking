@@ -14,6 +14,7 @@
 #include "PlayerHealthComponent.h"
 #include "Buttons.h"
 #include "CardSystemComponent.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(LevelManagerComponent);
 
@@ -80,19 +81,30 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 void LevelManagerComponent::start()
 {
-	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
-	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
-	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
+	try {
+		_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
+		_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
+		_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 
-	if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
-	if (_lemonPool != nullptr) _lemonPool->setRespawnPositions(_respawnPositions);
-	if (_watermelonPool != nullptr) _watermelonPool->setRespawnPositions(_respawnPositions);
+		if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+		if (_lemonPool != nullptr) _lemonPool->setRespawnPositions(_respawnPositions);
+		if (_watermelonPool != nullptr) _watermelonPool->setRespawnPositions(_respawnPositions);
 
-	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
-	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-	_uiManager->setRoundsText(_currentRound);
+		_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
+		_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+		_uiManager->setRoundsText(_currentRound);
 
-	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+		_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+
+		_quitButton = static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent));
+		_restardButton = static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent));
+
+		_playerMovementComponent = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
+		_playerHealthComponent = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in LevelManagerComponent at the gameobject " + _gameObject->getName());
+	}
 
 	Engine::getInstance()->setViewportColour(0.4f, 0.2f, 0.5f);
 	Engine::getInstance()->setShadowColour(0.8f, 0.75f, 0.75f);
@@ -151,7 +163,7 @@ void LevelManagerComponent::enemyDeath(GameObject* go, EnemyType type)
 			break;
 		}
 		default: {
-			//LANZAR EXCEPCI�N DE ENEMIGO DESCONOCIDO
+			throw ExcepcionTAD("Error: There is no existing that type of enemy");
 			break;
 		}
 	}
@@ -175,9 +187,9 @@ void LevelManagerComponent::gameOver()
 	_watermelonPool->reset();
 
 
-	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(true);
-	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(true);
-	static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(true);
+	_quitButton->enableButton(true);
+	_restardButton->enableButton(true);
+	_playerMovementComponent->gameOver(true);
 
 	_uiManager->showFinalPanel();
 	std::cout << "GAME OVER" << std::endl;
@@ -190,11 +202,11 @@ void LevelManagerComponent::restartGame()
 	_uiManager->hideFinalPanel();
 	
 	GameObject* player = Engine::getInstance()->findGameObject("Player");	
-	static_cast<PlayerMovementComponent*>(player->getComponent(UserComponentId::PlayerMovementComponent))->gameOver(false);
-	static_cast<PlayerMovementComponent*>(player->getComponent(UserComponentId::PlayerMovementComponent))->resetPosition();
-	static_cast<PlayerHealthComponent*>(player->getComponent(UserComponentId::PlayerHealthComponent))->reset();
-	static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent))->enableButton(false);
-	static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent))->enableButton(false);
+	_playerMovementComponent->gameOver(false);
+	_playerMovementComponent->resetPosition();
+	_playerHealthComponent->reset();
+	_quitButton->enableButton(false);
+	_restardButton->enableButton(false);
 
 	for (int x = 0; x < _levelsInfo.size(); ++x) {
 		_levelsInfo.at(x).enemiesLeft = _levelsInfo.at(x).totalEnemies;

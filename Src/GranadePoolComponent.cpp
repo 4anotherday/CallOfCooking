@@ -2,6 +2,7 @@
 #include "UserComponentIDs.h"
 #include "Engine.h"
 #include "PrefabLoader.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(GranadePoolComponent);
 
@@ -20,6 +21,10 @@ void GranadePoolComponent::awake(luabridge::LuaRef& data)
 
 	std::string path = "";
 	if (LUAFIELDEXIST(Path)) path = GETLUAFIELD(Path, std::string);
-
-	PrefabLoader::getInstance()->loadPoolPrefab(path, maxPoolItems, _mainPool, _inactivePool);
+	try {
+		PrefabLoader::getInstance()->loadPoolPrefab(path, maxPoolItems, _mainPool, _inactivePool);
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading prefab in GranadePoolComponent");
+	}
 }

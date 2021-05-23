@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Engine.h"
 #include "includeLUA.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(EnemyHealthComponent);
 
@@ -25,8 +26,13 @@ void EnemyHealthComponent::awake(luabridge::LuaRef& data)
 
 void EnemyHealthComponent::start()
 {
-	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
-	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	try {
+		_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+		_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in EnemyHealthComponent at the gameobject " + _gameObject->getName());
+	}
 }
 
 void EnemyHealthComponent::reduceLivesPoints(int damage)

@@ -3,6 +3,7 @@
 #include "UserComponentIDs.h"
 #include "MouseInput.h"
 #include "EngineTime.h"
+#include "Exceptions.h"
 #include "Engine.h"
 
 #include "includeLUA.h"
@@ -45,11 +46,16 @@ void PlayerShootComponent::awake(luabridge::LuaRef& data)
 
 void PlayerShootComponent::start()
 {
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
-	_gameManager = Engine::getInstance()->findGameObject("GameManager");
-	_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
+	try {
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+		_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+		_gameManager = Engine::getInstance()->findGameObject("GameManager");
+		_bulletsManager = static_cast<PlayerBulletPoolComponent*>(_gameObject->getComponent(UserComponentId::PlayerBulletPoolComponent));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in PlayerShootComponent at the gameobject " + _gameObject->getName());
+	}
 	_offsetX = 40;
 	_offsetZ = 40;
 	_shotDirection = new Vector3(0, 0, 1);

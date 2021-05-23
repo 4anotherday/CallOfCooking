@@ -9,6 +9,7 @@
 #include "includeLUA.h"
 #include <math.h>
 #include "Engine.h"
+#include "Exceptions.h"
 
 ADD_COMPONENT(PlayerMovementComponent);
 
@@ -42,8 +43,13 @@ void PlayerMovementComponent::start()
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
 
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	try {
+		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+		_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in PlayerMovementComponent at the gameobject " + _gameObject->getName());
+	}
 }
 
 void PlayerMovementComponent::update()

@@ -4,6 +4,8 @@
 #include "TextManagerElement.h"
 #include "OverlayElementMngr.h"
 #include "OverlayComponent.h"
+#include "Exceptions.h"
+#include "GameObject.h"
 
 ADD_COMPONENT(UIManagerComponent);
 
@@ -18,18 +20,23 @@ UIManagerComponent::~UIManagerComponent()
 
 void UIManagerComponent::awake(luabridge::LuaRef& data)
 {
-	//Recoger todos los elementos de la GUI para despues actuar con ellos
-	_textRounds = new TextManagerElement("GameUI/Rounds");
-	_textScore = new TextManagerElement("GameUI/Points");
+	try {
+		//Recoger todos los elementos de la GUI para despues actuar con ellos
+		_textRounds = new TextManagerElement("GameUI/Rounds");
+		_textScore = new TextManagerElement("GameUI/Points");
 
-	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
-	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
-	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
+		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
+		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
+		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
 
-	_finalPanel = new OverlayElementMngr("GameUI/FinalPanel");
-	_finalPanel->setEnabled(false);
+		_finalPanel = new OverlayElementMngr("GameUI/FinalPanel");
+		_finalPanel->setEnabled(false);
 
-	_textFinalScore = new TextManagerElement("GameUI/PlayerFinalScore");
+		_textFinalScore = new TextManagerElement("GameUI/PlayerFinalScore");
+	}
+	catch (...) {
+		throw ExcepcionTAD("Error while loading attributes in UIManagerComponent at the gameobject " + _gameObject->getName());
+	}
 }
 
 void UIManagerComponent::start()
@@ -56,14 +63,6 @@ void UIManagerComponent::setPlayerLife(int life)
 	for (int i = 0; i < life; i++) {
 		_lifes[i]->setEnabled(true);
 	}
-}
-
-void UIManagerComponent::changeWeapon(int weaponNumber)
-{
-	if (weaponNumber == 0)
-		_weaponPanel->setMaterial("CallOfCooking/Rifle");
-	else
-		_weaponPanel->setMaterial("CallOfCooking/Cuchillo");
 }
 
 void UIManagerComponent::showFinalPanel()
