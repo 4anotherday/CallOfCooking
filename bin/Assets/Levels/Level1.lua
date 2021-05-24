@@ -105,7 +105,7 @@ go_10 = {}
 go_10[0] = { Name = "PlayerAttackHitBox", HowManyCmps = 4, Persist = false}
 go_10[1] = { Component = "Transform", Coord = {X = 0.5, Y = 2, Z = 0},Rotation = {X=0,Y=0,Z=0},Scale = {X=0.1,Y=0.1,Z=.1}}
 go_10[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
-			Visible=true, Shadows=true, RenderingDistance = 9999}
+			Visible=false, Shadows=true, RenderingDistance = 9999}
 go_10[3] = { Component = "SphereCollider", Radius=1, IsTrigger=true}
 go_10[4] = { Component = "PlayerAttackComponent", Damage = 1,AtackRate = 2,AttackHitBoxDistance = 0.35, PlayerRange = 1}
 
