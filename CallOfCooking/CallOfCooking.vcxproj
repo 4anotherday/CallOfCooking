@@ -206,13 +206,13 @@ call "$(ProjectDir)compilePhysx_x86.bat"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\;$(SolutionDir)Motor\dependencies\Lua\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Motor\dependencies\Lua\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);$(SolutionDir)Motor\dependencies\Lua\Buildx64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MotorAudio.lib;liblua.a;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;MotorUnitario.lib;liblua.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>call "$(ProjectDir)compile_x64.bat"
