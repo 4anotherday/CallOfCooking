@@ -43,13 +43,9 @@ void PlayerMovementComponent::start()
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
 
-	try {
-		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-		_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in PlayerMovementComponent at the gameobject " + _gameObject->getName());
-	}
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+
 }
 
 void PlayerMovementComponent::update()

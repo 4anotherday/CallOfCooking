@@ -22,16 +22,10 @@ AttackSpeedCardComponent::~AttackSpeedCardComponent()
 
 void AttackSpeedCardComponent::start()
 {
-	try {
-		CardComponent::start();
-		_shootComponent = static_cast<PlayerShootComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerShootComponent));
-		setCallBackParam(_shootComponent);
-		setCallBack(operate);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: AttackSpeedCardComponent");
-	}
-
+	CardComponent::start();
+	_shootComponent = static_cast<PlayerShootComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerShootComponent));
+	setCallBackParam(_shootComponent);
+	setCallBack(operate);
 }
 
 void AttackSpeedCardComponent::operate(void* player)

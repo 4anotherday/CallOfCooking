@@ -81,30 +81,27 @@ void LevelManagerComponent::awake(luabridge::LuaRef& data)
 
 void LevelManagerComponent::start()
 {
-	try {
-		_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
-		_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
-		_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 
-		if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
-		if (_lemonPool != nullptr) _lemonPool->setRespawnPositions(_respawnPositions);
-		if (_watermelonPool != nullptr) _watermelonPool->setRespawnPositions(_respawnPositions);
+	_granadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
+	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
+	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 
-		_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
-		_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-		_uiManager->setRoundsText(_currentRound);
+	if (_granadePool != nullptr) _granadePool->setRespawnPositions(_respawnPositions);
+	if (_lemonPool != nullptr) _lemonPool->setRespawnPositions(_respawnPositions);
+	if (_watermelonPool != nullptr) _watermelonPool->setRespawnPositions(_respawnPositions);
 
-		_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+	_cardSystem = static_cast<CardSystemComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::CardSystemComponent));
+	_uiManager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uiManager->setRoundsText(_currentRound);
 
-		_quitButton = static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent));
-		_restardButton = static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent));
+	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
 
-		_playerMovementComponent = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
-		_playerHealthComponent = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in LevelManagerComponent at the gameobject " + _gameObject->getName());
-	}
+	_quitButton = static_cast<QuitEndGameButtonComponent*>(Engine::getInstance()->findGameObject("QuitButton")->getComponent(UserComponentId::QuitEndgameButtonComponent));
+	_restardButton = static_cast<RestartGameButtonComponent*>(Engine::getInstance()->findGameObject("RestartButton")->getComponent(UserComponentId::RestartGameButtonComponent));
+
+	_playerMovementComponent = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
+	_playerHealthComponent = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+
 
 	Engine::getInstance()->setViewportColour(0.4f, 0.2f, 0.5f);
 	Engine::getInstance()->setShadowColour(0.8f, 0.75f, 0.75f);

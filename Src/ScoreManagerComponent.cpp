@@ -39,16 +39,13 @@ void ScoreManagerComponent::update()
 
 void ScoreManagerComponent::start()
 {
-	try {
-		_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
-		_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
-		_uimanager->setPlayerScore(_score);
-		_uimanager->setFinalPanelScore(_score);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in ScoreManagerComponent at the gameobject " + _gameObject->getName());
-	}
+	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
+	_uimanager = static_cast<UIManagerComponent*>(Engine::getInstance()->findGameObject("UIManager")->getComponent(UserComponentId::UIManagerComponent));
+	_uimanager->setPlayerScore(_score);
+	_uimanager->setFinalPanelScore(_score);
+
 }
+
 
 void ScoreManagerComponent::addComboHitPoint()
 {

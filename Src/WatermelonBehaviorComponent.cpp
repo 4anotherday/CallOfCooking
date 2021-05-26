@@ -33,18 +33,13 @@ void WatermelonBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void WatermelonBehaviorComponent::start()
 {
-	try {
-		_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-		_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
-		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-		_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-		_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-		_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
-		_myHealth->setMyEnemyType(2);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error loading the attributes in the object " + _gameObject->getName() + " Component:WatermelonBehaviorComponent");
-	}
+	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+	_myHealth->setMyEnemyType(2);
 }
 
 void WatermelonBehaviorComponent::update()

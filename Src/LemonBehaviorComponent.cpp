@@ -35,18 +35,14 @@ void LemonBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void LemonBehaviorComponent::start()
 {
-	try {
-		_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
-		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-		_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-		_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-		_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-		_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
-		_myHealth->setMyEnemyType(1);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error loading the attributes in the object " + _gameObject->getName() + " Component:GrenadeBehaviorComponent");
-	}
+	_pSystem = static_cast<ParticleSystemComponent*>(_gameObject->getComponent(ComponentId::ParticleSystem));
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_healthPlayer = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_myHealth = static_cast<EnemyHealthComponent*>(_gameObject->getComponent(UserComponentId::EnemyHealthComponent));
+	_myHealth->setMyEnemyType(1);
+
 }
 
 void LemonBehaviorComponent::update()

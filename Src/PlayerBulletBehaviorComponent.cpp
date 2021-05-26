@@ -32,14 +32,10 @@ void PlayerBulletBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void PlayerBulletBehaviorComponent::start()
 {
-	try {
-		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-		_collider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
-		_pool = static_cast<PlayerBulletPoolComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerBulletPoolComponent));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in PlayerBulletBehaviorComponent at the gameobject " + _gameObject->getName());
-	}
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_collider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
+	_pool = static_cast<PlayerBulletPoolComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerBulletPoolComponent));
+
 	_direction = Vector3(0, 0, 1);
 }
 

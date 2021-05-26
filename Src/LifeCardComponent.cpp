@@ -20,16 +20,11 @@ LifeCardComponent::~LifeCardComponent()
 
 void LifeCardComponent::start()
 {
-	try {
-		CardComponent::start();
+	CardComponent::start();
 
-		_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
-		setCallBackParam(_player);
-		setCallBack(operate);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: LifeCardComponent");
-	}
+	_player = static_cast<PlayerHealthComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerHealthComponent));
+	setCallBackParam(_player);
+	setCallBack(operate);
 }
 
 void LifeCardComponent::operate(void* player)

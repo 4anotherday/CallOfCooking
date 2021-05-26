@@ -24,11 +24,6 @@ void EnemyBehaviorComponent::awake(luabridge::LuaRef& data)
 
 void EnemyBehaviorComponent::start()
 {
-	try {
-		_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-		_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in EnemyBehaviorComponent at the gameobject " + _gameObject->getName());
-	}
+	_playerPos = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	_rigidbody = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 }

@@ -47,17 +47,12 @@ void PlayerAttackComponent::start()
 	_windowSizeX = size.first;
 	_windowSizeY = size.second;
 
-	try {
-		_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-		_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
 
-		_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
-		_grenadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
-		_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in PlayerAttackComponent at the gameobject " + _gameObject->getName());
-	}
+	_lemonPool = static_cast<LemonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LemonPoolComponent));
+	_grenadePool = static_cast<GranadePoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::GranadePoolComponent));
+	_watermelonPool = static_cast<WatermelonPoolComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::WatermelonPoolComponent));
 
 	_mouse->setMouseRelativeMode(false);
 }

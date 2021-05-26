@@ -20,15 +20,10 @@ MovementSpeedCardComponent::~MovementSpeedCardComponent()
 
 void MovementSpeedCardComponent::start()
 {
-	try {
-		CardComponent::start();
-		_player = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
-		setCallBackParam(_player);
-		setCallBack(operate);
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error in gameobject " + _gameObject->getName() + " :the name of the player was wrong, Component: MovementSpeedCardComponent");
-	}
+	CardComponent::start();
+	_player = static_cast<PlayerMovementComponent*>(Engine::getInstance()->findGameObject("Player")->getComponent(UserComponentId::PlayerMovementComponent));
+	setCallBackParam(_player);
+	setCallBack(operate);
 }
 
 void MovementSpeedCardComponent::operate(void* player)
