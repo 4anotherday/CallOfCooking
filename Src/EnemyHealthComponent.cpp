@@ -26,13 +26,8 @@ void EnemyHealthComponent::awake(luabridge::LuaRef& data)
 
 void EnemyHealthComponent::start()
 {
-	try {
-		_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
-		_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in EnemyHealthComponent at the gameobject " + _gameObject->getName());
-	}
+	_scoreManager = static_cast<ScoreManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::ScoreManagerComponent));
+	_lvlManager = static_cast<LevelManagerComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(UserComponentId::LevelManagerComponent));
 }
 
 void EnemyHealthComponent::reduceLivesPoints(int damage)

@@ -20,23 +20,17 @@ UIManagerComponent::~UIManagerComponent()
 
 void UIManagerComponent::awake(luabridge::LuaRef& data)
 {
-	try {
-		//Recoger todos los elementos de la GUI para despues actuar con ellos
-		_textRounds = new TextManagerElement("GameUI/Rounds");
-		_textScore = new TextManagerElement("GameUI/Points");
+	_textRounds = new TextManagerElement("GameUI/Rounds");
+	_textScore = new TextManagerElement("GameUI/Points");
 
-		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
-		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
-		_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon1"));
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon2"));
+	_lifes.push_back(new OverlayElementMngr("GameUI/Corazon3"));
 
-		_finalPanel = new OverlayElementMngr("GameUI/FinalPanel");
-		_finalPanel->setEnabled(false);
+	_finalPanel = new OverlayElementMngr("GameUI/FinalPanel");
+	_finalPanel->setEnabled(false);
 
-		_textFinalScore = new TextManagerElement("GameUI/PlayerFinalScore");
-	}
-	catch (...) {
-		throw ExcepcionTAD("Error while loading attributes in UIManagerComponent at the gameobject " + _gameObject->getName());
-	}
+	_textFinalScore = new TextManagerElement("GameUI/PlayerFinalScore");
 }
 
 void UIManagerComponent::start()

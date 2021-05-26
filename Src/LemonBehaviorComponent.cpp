@@ -10,7 +10,7 @@
 #include "RigidBodyComponent.h"
 #include "LemonPoolComponent.h"
 #include "EnemyHealthComponent.h"
-#include "Exceptions.h"
+
 
 ADD_COMPONENT(LemonBehaviorComponent);
 

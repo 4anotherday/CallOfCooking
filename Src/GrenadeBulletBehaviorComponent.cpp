@@ -10,7 +10,7 @@
 #include "EnemyHealthComponent.h"
 #include "PlayerHealthComponent.h"
 #include "ColliderComponent.h"
-#include "Exceptions.h"
+
 
 ADD_COMPONENT(GrenadeBulletBehaviorComponent);
 
