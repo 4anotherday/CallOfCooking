@@ -1,13 +1,18 @@
-19:43:36 -> INFO: Creacion
-19:43:38 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
-19:43:40 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
-19:43:40 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:44:15 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+15:39:51 -> INFO: Creacion
+15:39:52 -> INFO: Graphics Engine initialized correctly
+15:39:52 -> INFO: Physics Engine initialized correctly
+15:39:52 -> INFO: Audio Engine initialized correctly
+15:39:52 -> INFO: Input manager initialized correctly
+15:39:54 -> INFO: Lua scene properly initialized
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabBullet.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/levelManagerInfo.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenade.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabGrenadeBullet.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabLemon.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabWatermelon.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardAttack.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardLife.lua correctamente inicializado
+15:39:56 -> INFO: Fichero de prefab en ruta Assets/Levels/prefabCardSpeedMov.lua correctamente inicializado
+15:39:56 -> INFO: Lua scene properly initialized
+15:39:57 -> WARN: The component with the ID nt in the gameobject Player has not been found
+15:40:03 -> WARN: The component with the ID nt in the gameobject Suelo has not been found

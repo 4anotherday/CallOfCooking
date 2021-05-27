@@ -18,7 +18,7 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		Engine* prueba = Engine::getInstance();
 		PrefabLoader::CreateInstance();
 
-		prueba->init("Assets/prueba.cfg", "Assets/Levels");
+		prueba->init("Assets/Resources.cfg", "Assets/Levels");
 		prueba->changeScene("Menu.lua");
 		prueba->run();
 	}
